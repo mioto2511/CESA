@@ -18,20 +18,24 @@ public class MoveCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.A)) //Iキーが押されていれば
+        float rsh = Input.GetAxis("R_Stick_H");//横軸
+        float rsv = Input.GetAxis("R_Stick_V");//縦軸
+
+        if (rsh < 0)
         {
             tf.position = tf.position + new Vector3(-speed, 0.0f, 0.0f); //カメラを左へ移動。
         }
-        else if (Input.GetKey(KeyCode.D)) //Iキーが押されていれば
+        else if (rsh > 0)
         {
             tf.position = tf.position + new Vector3(+speed, 0.0f, 0.0f); //カメラを左へ移動。
         }
 
-        if (Input.GetKey(KeyCode.W)) //Iキーが押されていれば
+
+        if (rsv > 0) //Iキーが押されていれば
         {
             tf.position = tf.position + new Vector3(0.0f, +speed, 0.0f); //カメラを左へ移動。
         }
-        else if (Input.GetKey(KeyCode.S)) //Iキーが押されていれば
+        else if (rsv < 0) //Iキーが押されていれば
         {
             tf.position = tf.position + new Vector3(0.0f, -speed, 0.0f); //カメラを左へ移動。
         }
