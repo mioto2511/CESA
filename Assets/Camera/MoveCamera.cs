@@ -6,6 +6,7 @@ public class MoveCamera : MonoBehaviour
 {
     Transform tf;
 
+    public float speed;
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +20,20 @@ public class MoveCamera : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A)) //Iキーが押されていれば
         {
-            tf.position = tf.position + new Vector3(-1.0f, 0.0f, 0.0f); //カメラを左へ移動。
+            tf.position = tf.position + new Vector3(-speed, 0.0f, 0.0f); //カメラを左へ移動。
         }
         else if (Input.GetKey(KeyCode.D)) //Iキーが押されていれば
         {
-            tf.position = tf.position + new Vector3(+1.0f, 0.0f, 0.0f); //カメラを左へ移動。
+            tf.position = tf.position + new Vector3(+speed, 0.0f, 0.0f); //カメラを左へ移動。
+        }
+
+        if (Input.GetKey(KeyCode.W)) //Iキーが押されていれば
+        {
+            tf.position = tf.position + new Vector3(0.0f, +speed, 0.0f); //カメラを左へ移動。
+        }
+        else if (Input.GetKey(KeyCode.S)) //Iキーが押されていれば
+        {
+            tf.position = tf.position + new Vector3(0.0f, -speed, 0.0f); //カメラを左へ移動。
         }
     }
 }
