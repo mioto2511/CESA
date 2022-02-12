@@ -8,10 +8,13 @@ public class GenelateGear : MonoBehaviour
 
     GameObject cursor;
 
+    //ê∂ê¨ÉtÉâÉO
+    public bool GenerateFlg = true;
+
     // Start is called before the first frame update
     void Start()
     {
-        cursor = GameObject.Find("Cursor");
+        
     }
 
     // Update is called once per frame
@@ -23,11 +26,14 @@ public class GenelateGear : MonoBehaviour
         //vector3Ç…ïœä∑
         Vector3 pos = myTransform.position;
 
+        cursor = GameObject.Find("Cursor");
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(gear, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
-
-            Destroy(cursor); //çÌèú
+            if(GenerateFlg == true)
+            {
+                Instantiate(gear, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
+            }
         }
     }
 }

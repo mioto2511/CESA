@@ -8,6 +8,9 @@ public class GenerateTransparentGear : MonoBehaviour
     public GameObject TransparentGear;
     public GameObject CursorGear;
 
+    //生成フラグ
+    public bool generateflg = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,21 +27,29 @@ public class GenerateTransparentGear : MonoBehaviour
         //vector3に変換
         Vector3 pos = myTransform.position;
 
+        var parent = this.transform;
+
         //ボタンを押すと周りに生成
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //上下左右に生成
-            Instantiate(TransparentGear, new Vector3(pos.x + 1.0F, 0, 0), Quaternion.identity);
-            Instantiate(TransparentGear, new Vector3(0, pos.y + 1.0F, 0), Quaternion.identity);
-            Instantiate(TransparentGear, new Vector3(pos.x - 1.0F, 0, 0), Quaternion.identity);
-            Instantiate(TransparentGear, new Vector3(0, pos.y - 1.0F, 0), Quaternion.identity);
-            //斜めに生成
-            Instantiate(TransparentGear, new Vector3(pos.x + 1.0F, pos.y + 1.0F, 0), Quaternion.identity);
-            Instantiate(TransparentGear, new Vector3(pos.x + 1.0F, pos.y - 1.0F, 0), Quaternion.identity);
-            Instantiate(TransparentGear, new Vector3(pos.x - 1.0F, pos.y + 1.0F, 0), Quaternion.identity);
-            Instantiate(TransparentGear, new Vector3(pos.x - 1.0F, pos.y - 1.0F, 0), Quaternion.identity);
+            if(generateflg == true)
+            {
+                //上下左右に生成
+                Instantiate(TransparentGear, new Vector3(pos.x + 1.0F, pos.y, 0), Quaternion.identity,parent);
+                Instantiate(TransparentGear, new Vector3(pos.x, pos.y + 1.0F, 0), Quaternion.identity,parent);
+                Instantiate(TransparentGear, new Vector3(pos.x - 1.0F, pos.y, 0), Quaternion.identity,parent);
+                Instantiate(TransparentGear, new Vector3(pos.x, pos.y - 1.0F, 0), Quaternion.identity,parent);
+                //斜めに生成
+                Instantiate(TransparentGear, new Vector3(pos.x + 1.0F, pos.y + 1.0F, 0), Quaternion.identity,parent);
+                Instantiate(TransparentGear, new Vector3(pos.x + 1.0F, pos.y - 1.0F, 0), Quaternion.identity,parent);
+                Instantiate(TransparentGear, new Vector3(pos.x - 1.0F, pos.y + 1.0F, 0), Quaternion.identity,parent);
+                Instantiate(TransparentGear, new Vector3(pos.x - 1.0F, pos.y - 1.0F, 0), Quaternion.identity,parent);
 
-            Instantiate(CursorGear, new Vector3(0, pos.y + 1.0F, 0), Quaternion.identity);
+                Instantiate(CursorGear, new Vector3(pos.x, pos.y + 1.0F, 0), Quaternion.identity,parent);
+
+                //生成をフラグを折る
+                generateflg = false;
+            }
         }
     }
 }

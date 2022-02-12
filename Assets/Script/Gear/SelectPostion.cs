@@ -140,26 +140,6 @@ public class SelectPostion : MonoBehaviour
                 break;
         }
 
-        Debug.Log(position);
-
-
-        //if (Input.GetKeyDown(KeyCode.UpArrow))
-        //{
-        //    pos.y += 1;
-        //}
-        //else if (Input.GetKeyDown(KeyCode.DownArrow))
-        //{
-        //    pos.y -= 1;
-        //}
-        //else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        //{
-        //    pos.x -= 1;
-        //}
-        //else if (Input.GetKeyDown(KeyCode.RightArrow))
-        //{
-        //    pos.x += 1;
-        //}
-
         myTransform.position = pos;  // ç¿ïWÇê›íË
     }
 }
