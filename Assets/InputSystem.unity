@@ -123,6 +123,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &626393077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 626393078}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &626393078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626393077}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.005582057, y: 0.09341836, z: -0.38919142}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &859767126
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 859767128}
   - component: {fileID: 859767127}
+  - component: {fileID: 859767129}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -205,6 +236,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &859767129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859767126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b79814414d324489155b323d438dc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransparentGear: {fileID: 294689743842205105, guid: c4589e322619c264c9857e8408556338, type: 3}
+  CursorGear: {fileID: 7244547051032071104, guid: bb7d8f3d2747a4f41b3b89f4833dd20e, type: 3}
 --- !u!1 &1237820484
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +262,7 @@ GameObject:
   - component: {fileID: 1237820486}
   - component: {fileID: 1237820485}
   - component: {fileID: 1237820488}
+  - component: {fileID: 1237820489}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -302,3 +348,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
+--- !u!114 &1237820489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237820484}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 587499cdf6d903543be5e0c73e69cf74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gear: {fileID: 0}
