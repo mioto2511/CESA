@@ -10,9 +10,14 @@ public class GenelateGear : MonoBehaviour
         
     }
 
+    public GameObject prefab;
+
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(prefab, new Vector3(2.0F, 0, 0), Quaternion.identity);
+        }
     }
 }
