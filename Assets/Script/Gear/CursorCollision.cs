@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class CursorCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool cursorhit;
+
+    //éïé‘Ç…êGÇÍÇΩÇÁ
+    void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.gameObject.CompareTag("Gear"))
+        {
+            cursorhit = true;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    //éïé‘Ç©ÇÁó£ÇÍÇΩÇÁ
+    void OnTriggerExit2D(Collider2D other)
     {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log("Ç®Çã");
+        if (other.gameObject.CompareTag("Gear"))
+        {
+            cursorhit = false;
+        }
     }
 }

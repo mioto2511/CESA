@@ -30,7 +30,7 @@ public class GenerateTransparentGear : MonoBehaviour
         var parent = this.transform;
 
         //ƒ{ƒ^ƒ“‚ğ‰Ÿ‚·‚Æü‚è‚É¶¬
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown("joystick button 0"))
         {
             if(generateflg == true)
             {

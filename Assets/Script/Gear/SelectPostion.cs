@@ -5,7 +5,7 @@ using UnityEngine;
 public class SelectPostion : MonoBehaviour
 {
     //カーソルの位置用
-    enum POSITION
+    private enum POSITION
     {
         NORTH,
         NORTHEAST,
@@ -17,144 +17,170 @@ public class SelectPostion : MonoBehaviour
         NORTHWEST,
     }
 
-    POSITION position = POSITION.NORTH;
+    //カーソルの位置用
+    public struct POSITION_DATA
+    {
+        public float x;
+        public float y;
+
+        public POSITION_DATA(float p1, float p2)
+        {
+            this.x = p1;
+            this.y = p2;
+        }
+    };
+
+    private POSITION_DATA[] position_data = {
+        new POSITION_DATA(0,0),
+        new POSITION_DATA(0,0),
+        new POSITION_DATA(0,0),
+        new POSITION_DATA(0,0),
+        new POSITION_DATA(0,0),
+        new POSITION_DATA(0,0),
+        new POSITION_DATA(0,0),
+        new POSITION_DATA(0,0),
+    };
+
+    Transform myTransform;
+    public Vector3 pos;
+    public Vector3 old_pos;
+
+    //CursorCollisionの変数を使う
+    CursorCollision cursor_collision;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        // transformを取得
+        myTransform = this.transform;
+
+        //vector3に変換
+        pos = myTransform.position;
+
+        //保存
+        old_pos = pos;
+
+        for (int i = 0; i < 8; i++)
+        {
+            if (i == (int)POSITION.NORTH)
+            {
+                position_data[(int)POSITION.NORTH].x = pos.x;
+                position_data[(int)POSITION.NORTH].y = pos.y;
+            }
+            else if (i == (int)POSITION.EAST)
+            {
+                position_data[(int)POSITION.EAST].x = pos.x + 1.0f;
+                position_data[(int)POSITION.EAST].y = pos.y - 1.0f;
+            }
+            else if (i == (int)POSITION.WEST)
+            {
+                position_data[(int)POSITION.WEST].x = pos.x - 1.0f;
+                position_data[(int)POSITION.WEST].y = pos.y - 1.0f;
+            }
+            else if (i == (int)POSITION.SOUTH)
+            {
+                position_data[(int)POSITION.SOUTH].x = pos.x;
+                position_data[(int)POSITION.SOUTH].y = pos.y - 2.0f;
+            }
+            else if (i == (int)POSITION.NORTHEAST)
+            {
+                position_data[(int)POSITION.NORTHEAST].x = pos.x + 0.7f;
+                position_data[(int)POSITION.NORTHEAST].y = pos.y - 0.3f;
+            }
+            else if (i == (int)POSITION.NORTHWEST)
+            {
+                position_data[(int)POSITION.NORTHWEST].x = pos.x - 0.7f;
+                position_data[(int)POSITION.NORTHWEST].y = pos.y - 0.3f;
+            }
+
+            else if (i == (int)POSITION.SOUTHEAST)
+            {
+                position_data[(int)POSITION.SOUTHEAST].x = pos.x + 0.7f;
+                position_data[(int)POSITION.SOUTHEAST].y = pos.y - 1.7f;
+            }
+            else if (i == (int)POSITION.SOUTHWEST)
+            {
+                position_data[(int)POSITION.SOUTHWEST].x = pos.x - 0.7f;
+                position_data[(int)POSITION.SOUTHWEST].y = pos.y - 1.7f;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // transformを取得
-        Transform myTransform = this.transform;
+        cursor_collision = GetComponent<CursorCollision>();
 
-        //vector3に変換
-        Vector3 pos = myTransform.position;
+        float lsh = Input.GetAxis("L_Stick_H");//横軸
+        float lsv = Input.GetAxis("L_Stick_V");//縦軸
 
-        switch (position) {
-            case POSITION.NORTH:
-                if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    pos.x -= 0.7f;
-                    pos.y -= 0.3f;
-                    position = POSITION.NORTHWEST;
-                }
-                else if (Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    pos.x += 0.7f;
-                    pos.y -= 0.3f;
-                    position = POSITION.NORTHEAST;
-                }
-                break;
+        //当たっていたら前回に戻す
+        //if (cursor_collision.cursorhit == true)
+        //{
+        //    pos = old_pos;
+        //}
 
-            case POSITION.NORTHEAST:
-                if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    pos.x -= 0.7f;
-                    pos.y += 0.3f;
-                    position = POSITION.NORTH;
-                }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    pos.x += 0.3f;
-                    pos.y -= 0.7f;
-                    position = POSITION.EAST;
-                }
-                break;
+        ////前回情報保存
+        //old_pos = pos;
 
-            case POSITION.EAST:
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    pos.x -= 0.3f;
-                    pos.y += 0.7f;
-                    position = POSITION.NORTHEAST;
-                }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    pos.x -= 0.3f;
-                    pos.y -= 0.7f;
-                    position = POSITION.SOUTHEAST;
-                }
-                break;
+        if ((lsv >= 0.5f) || (lsv <= -0.5f) || (lsh >= 0.5f) || (lsh <= -0.5f))
+        {
+            //ステックの角度産出
+            float radian = Mathf.Atan2(lsv, lsh) * Mathf.Rad2Deg;
 
-            case POSITION.SOUTHEAST:
-                if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    pos.x -= 0.7f;
-                    pos.y -= 0.3f;
-                    position = POSITION.SOUTH;
-                }
-                else if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    pos.x += 0.3f;
-                    pos.y += 0.7f;
-                    position = POSITION.EAST;
-                }
-                break;
+            if (radian < 0)
+            {
+                radian += 360;
+            }
 
-            case POSITION.SOUTH:
-                if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    pos.x -= 0.7f;
-                    pos.y += 0.3f;
-                    position = POSITION.SOUTHWEST;
-                }
-                else if (Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    pos.x += 0.7f;
-                    pos.y += 0.3f;
-                    position = POSITION.SOUTHEAST;
-                }
-                break;
+            
 
-            case POSITION.SOUTHWEST:
-                if (Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    pos.x += 0.7f;
-                    pos.y -= 0.3f;
-                    position = POSITION.SOUTH;
-                }
-                else if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    pos.x -= 0.3f;
-                    pos.y += 0.7f;
-                    position = POSITION.WEST;
-                }
-                break;
+            //座標代入
+            if (radian == 0)
+            {
+                pos.x = position_data[(int)POSITION.EAST].x;
+                pos.y = position_data[(int)POSITION.EAST].y;
+            }
+            else if (radian == 180)
+            {
+                pos.x = position_data[(int)POSITION.WEST].x;
+                pos.y = position_data[(int)POSITION.WEST].y;
+            }
+            else if (radian == 270)
+            {
+                pos.x = position_data[(int)POSITION.SOUTH].x;
+                pos.y = position_data[(int)POSITION.SOUTH].y;
+            }
+            else if (radian == 90)
+            {
+                pos.x = position_data[(int)POSITION.NORTH].x;
+                pos.y = position_data[(int)POSITION.NORTH].y;
+            }
+            else if ((radian >= 22) && (radian <= 68))
+            {
+                pos.x = position_data[(int)POSITION.NORTHEAST].x;
+                pos.y = position_data[(int)POSITION.NORTHEAST].y;
+            }
+            else if ((radian >= 112) && (radian <= 158))
+            {
+                pos.x = position_data[(int)POSITION.NORTHWEST].x;
+                pos.y = position_data[(int)POSITION.NORTHWEST].y;
+            }
+            else if ((radian >= 292) && (radian <= 338))
+            {
+                pos.x = position_data[(int)POSITION.SOUTHEAST].x;
+                pos.y = position_data[(int)POSITION.SOUTHEAST].y;
+            }
+            else if ((radian >= 202) && (radian <= 248))
+            {
+                pos.x = position_data[(int)POSITION.SOUTHWEST].x;
+                pos.y = position_data[(int)POSITION.SOUTHWEST].y;
+            }
 
-            case POSITION.WEST:
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    pos.x += 0.3f;
-                    pos.y += 0.7f;
-                    position = POSITION.NORTHWEST;
-                }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    pos.x += 0.3f;
-                    pos.y -= 0.7f;
-                    position = POSITION.SOUTHWEST;
-                }
-                break;
-
-            case POSITION.NORTHWEST:
-                if (Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    pos.x += 0.7f;
-                    pos.y += 0.3f;
-                    position = POSITION.NORTH;
-                }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    pos.x -= 0.3f;
-                    pos.y -= 0.7f;
-                    position = POSITION.WEST;
-                }
-                break;
+            
         }
+
+        
 
         myTransform.position = pos;  // 座標を設定
     }

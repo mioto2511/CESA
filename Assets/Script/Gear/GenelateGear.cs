@@ -11,11 +11,8 @@ public class GenelateGear : MonoBehaviour
     //生成フラグ
     public bool GenerateFlg = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //CursorCollisionの変数を使う
+    CursorCollision cursor_collision;
 
     // Update is called once per frame
     void Update()
@@ -26,13 +23,21 @@ public class GenelateGear : MonoBehaviour
         //vector3に変換
         Vector3 pos = myTransform.position;
 
+        //変数を使える用にする
+        cursor_collision = GetComponent<CursorCollision>();
+
+        //カーソルを見つける
         cursor = GameObject.Find("Cursor");
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown("joystick button 0"))
         {
-            if(GenerateFlg == true)
+            //ほかの歯車に当たってないなら
+            if(cursor_collision.cursorhit == false)
             {
-                Instantiate(gear, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
+                if (GenerateFlg == true)
+                {
+                    Instantiate(gear, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
+                }
             }
         }
     }
