@@ -16,45 +16,42 @@ public class Resize : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //10サイズから拡大
-        if (Input.GetKey(KeyCode.RightArrow) && scale == 1.0f)
+        //拡大
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             if (pushFlag == false)  // 押しっぱなしではないとき
             {
                 pushFlag = true;    // 押し状態にする
-                scale += 0.5f;
-                transform.localScale = new Vector3(scale, scale, 1.0f);
-            }
-        }
-        else
-        {
-            pushFlag = false;
-        }
 
-        //15サイズから拡大
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            if (pushFlag == false)  // 押しっぱなしではないとき
-            {
-                if (scale == 1.5f)
+                if (scale == 1.0f)   //10サイズから
                 {
                     scale += 0.5f;
                     transform.localScale = new Vector3(scale, scale, 1.0f);
                 }
-                pushFlag = true;    // 押し状態にする
+                else if (scale == 1.5f)   //15サイズから
+                {
+                    scale += 0.5f;
+                    transform.localScale = new Vector3(scale, scale, 1.0f);
+                }
             }
         }
-        else
+        else if(Input.GetKeyUp(KeyCode.RightArrow))
         {
             pushFlag = false;
         }
 
-        //15サイズから縮小
-        if (Input.GetKey(KeyCode.LeftArrow))
+        //縮小
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             if (pushFlag == false)  // 押しっぱなしではないとき
             {
-                if (scale == 1.5f)
+                if (scale == 1.5f)//15サイズから
+                {
+                    pushFlag = true;    // 押し状態にする
+                    scale -= 0.5f;
+                    transform.localScale = new Vector3(scale, scale, 1.0f);
+                }
+                else if (scale == 2.0f)  //20サイズから
                 {
                     pushFlag = true;    // 押し状態にする
                     scale -= 0.5f;
@@ -62,25 +59,9 @@ public class Resize : MonoBehaviour
                 }
             }
         }
-        else
+        else if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
             pushFlag = false;
         }
-
-        //20サイズから縮小
-        if (Input.GetKey(KeyCode.LeftArrow) && scale == 2.0f)
-        {
-            if (pushFlag == false)  // 押しっぱなしではないとき
-            {
-                pushFlag = true;    // 押し状態にする
-                scale -= 0.5f;
-                transform.localScale = new Vector3(scale, scale, 1.0f);
-            }
-        }
-        else
-        {
-            pushFlag = false;
-        }
-
     }
 }
