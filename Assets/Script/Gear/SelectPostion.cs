@@ -38,12 +38,14 @@ public class SelectPostion : MonoBehaviour
             case POSITION.NORTH:
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    pos.x -= 1;
+                    pos.x -= 0.7f;
+                    pos.y -= 0.3f;
                     position = POSITION.NORTHWEST;
                 }
                 else if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    pos.x += 1;
+                    pos.x += 0.7f;
+                    pos.y -= 0.3f;
                     position = POSITION.NORTHEAST;
                 }
                 break;
@@ -51,12 +53,14 @@ public class SelectPostion : MonoBehaviour
             case POSITION.NORTHEAST:
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    pos.x -= 1;
+                    pos.x -= 0.7f;
+                    pos.y += 0.3f;
                     position = POSITION.NORTH;
                 }
                 else if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
-                    pos.y -= 1;
+                    pos.x += 0.3f;
+                    pos.y -= 0.7f;
                     position = POSITION.EAST;
                 }
                 break;
@@ -64,12 +68,14 @@ public class SelectPostion : MonoBehaviour
             case POSITION.EAST:
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
-                    pos.y += 1;
+                    pos.x -= 0.3f;
+                    pos.y += 0.7f;
                     position = POSITION.NORTHEAST;
                 }
                 else if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
-                    pos.y -= 1;
+                    pos.x -= 0.3f;
+                    pos.y -= 0.7f;
                     position = POSITION.SOUTHEAST;
                 }
                 break;
@@ -77,12 +83,14 @@ public class SelectPostion : MonoBehaviour
             case POSITION.SOUTHEAST:
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    pos.x -= 1;
+                    pos.x -= 0.7f;
+                    pos.y -= 0.3f;
                     position = POSITION.SOUTH;
                 }
                 else if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
-                    pos.y += 1;
+                    pos.x += 0.3f;
+                    pos.y += 0.7f;
                     position = POSITION.EAST;
                 }
                 break;
@@ -90,12 +98,14 @@ public class SelectPostion : MonoBehaviour
             case POSITION.SOUTH:
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    pos.x -= 1;
+                    pos.x -= 0.7f;
+                    pos.y += 0.3f;
                     position = POSITION.SOUTHWEST;
                 }
                 else if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    pos.x += 1;
+                    pos.x += 0.7f;
+                    pos.y += 0.3f;
                     position = POSITION.SOUTHEAST;
                 }
                 break;
@@ -103,12 +113,14 @@ public class SelectPostion : MonoBehaviour
             case POSITION.SOUTHWEST:
                 if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    pos.x += 1;
+                    pos.x += 0.7f;
+                    pos.y -= 0.3f;
                     position = POSITION.SOUTH;
                 }
                 else if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
-                    pos.y += 1;
+                    pos.x -= 0.3f;
+                    pos.y += 0.7f;
                     position = POSITION.WEST;
                 }
                 break;
@@ -116,12 +128,14 @@ public class SelectPostion : MonoBehaviour
             case POSITION.WEST:
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
-                    pos.y += 1;
+                    pos.x += 0.3f;
+                    pos.y += 0.7f;
                     position = POSITION.NORTHWEST;
                 }
                 else if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
-                    pos.y -= 1;
+                    pos.x += 0.3f;
+                    pos.y -= 0.7f;
                     position = POSITION.SOUTHWEST;
                 }
                 break;
@@ -129,12 +143,14 @@ public class SelectPostion : MonoBehaviour
             case POSITION.NORTHWEST:
                 if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    pos.x += 1;
+                    pos.x += 0.7f;
+                    pos.y += 0.3f;
                     position = POSITION.NORTH;
                 }
                 else if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
-                    pos.y -= 1;
+                    pos.x -= 0.3f;
+                    pos.y -= 0.7f;
                     position = POSITION.WEST;
                 }
                 break;

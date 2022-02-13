@@ -40,10 +40,10 @@ public class GenerateTransparentGear : MonoBehaviour
                 Instantiate(TransparentGear, new Vector3(pos.x - 1.0F, pos.y, 0), Quaternion.identity,parent);
                 Instantiate(TransparentGear, new Vector3(pos.x, pos.y - 1.0F, 0), Quaternion.identity,parent);
                 //éŒÇﬂÇ…ê∂ê¨
-                Instantiate(TransparentGear, new Vector3(pos.x + 1.0F, pos.y + 1.0F, 0), Quaternion.identity,parent);
-                Instantiate(TransparentGear, new Vector3(pos.x + 1.0F, pos.y - 1.0F, 0), Quaternion.identity,parent);
-                Instantiate(TransparentGear, new Vector3(pos.x - 1.0F, pos.y + 1.0F, 0), Quaternion.identity,parent);
-                Instantiate(TransparentGear, new Vector3(pos.x - 1.0F, pos.y - 1.0F, 0), Quaternion.identity,parent);
+                Instantiate(TransparentGear, new Vector3(pos.x + 0.7F, pos.y + 0.7F, 0), Quaternion.identity,parent);
+                Instantiate(TransparentGear, new Vector3(pos.x + 0.7F, pos.y - 0.7F, 0), Quaternion.identity,parent);
+                Instantiate(TransparentGear, new Vector3(pos.x - 0.7F, pos.y + 0.7F, 0), Quaternion.identity,parent);
+                Instantiate(TransparentGear, new Vector3(pos.x - 0.7F, pos.y - 0.7F, 0), Quaternion.identity,parent);
 
                 Instantiate(CursorGear, new Vector3(pos.x, pos.y + 1.0F, 0), Quaternion.identity,parent);
 
