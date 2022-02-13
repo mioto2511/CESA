@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class GenelateGear : MonoBehaviour
 {
+    //生成するオブジェクト
     public GameObject gear;
-
-    GameObject cursor;
 
     //生成フラグ
     public bool GenerateFlg = true;
 
     //CursorCollisionの変数を使う
     CursorCollision cursor_collision;
+
+    //GearDataの変数を使う
+    GearData gear_data;
 
     // Update is called once per frame
     void Update()
@@ -26,8 +28,9 @@ public class GenelateGear : MonoBehaviour
         //変数を使える用にする
         cursor_collision = GetComponent<CursorCollision>();
 
-        //カーソルを見つける
-        cursor = GameObject.Find("Cursor");
+        //変数を使える用にする
+        GameObject obj = GameObject.Find("GearData"); 
+        gear_data = obj.GetComponent<GearData>();
 
         if (Input.GetKeyDown("joystick button 0"))
         {
@@ -36,7 +39,13 @@ public class GenelateGear : MonoBehaviour
             {
                 if (GenerateFlg == true)
                 {
-                    Instantiate(gear, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
+                    GameObject newgear = Instantiate(gear, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
+                    gear_data.GearList.Add(newgear);// リストにプレファブを加える
+
+                    for (int i = 0; i < gear_data.GearList.Count; i++)
+                    {
+                        Debug.Log(gear_data.GearList[i]);
+                    }
                 }
             }
         }

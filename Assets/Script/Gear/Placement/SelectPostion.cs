@@ -41,9 +41,8 @@ public class SelectPostion : MonoBehaviour
         new POSITION_DATA(0,0),
     };
 
-    Transform myTransform;
-    public Vector3 pos;
-    public Vector3 old_pos;
+    private Transform myTransform;
+    private Vector3 pos;
 
     //CursorCollisionの変数を使う
     CursorCollision cursor_collision;
@@ -56,9 +55,6 @@ public class SelectPostion : MonoBehaviour
 
         //vector3に変換
         pos = myTransform.position;
-
-        //保存
-        old_pos = pos;
 
         for (int i = 0; i < 8; i++)
         {
@@ -114,15 +110,7 @@ public class SelectPostion : MonoBehaviour
         float lsh = Input.GetAxis("L_Stick_H");//横軸
         float lsv = Input.GetAxis("L_Stick_V");//縦軸
 
-        //当たっていたら前回に戻す
-        //if (cursor_collision.cursorhit == true)
-        //{
-        //    pos = old_pos;
-        //}
-
-        ////前回情報保存
-        //old_pos = pos;
-
+        //ステックが倒れている
         if ((lsv >= 0.5f) || (lsv <= -0.5f) || (lsh >= 0.5f) || (lsh <= -0.5f))
         {
             //ステックの角度産出
@@ -132,8 +120,6 @@ public class SelectPostion : MonoBehaviour
             {
                 radian += 360;
             }
-
-            
 
             //座標代入
             if (radian == 0)
@@ -176,11 +162,7 @@ public class SelectPostion : MonoBehaviour
                 pos.x = position_data[(int)POSITION.SOUTHWEST].x;
                 pos.y = position_data[(int)POSITION.SOUTHWEST].y;
             }
-
-            
         }
-
-        
 
         myTransform.position = pos;  // 座標を設定
     }
