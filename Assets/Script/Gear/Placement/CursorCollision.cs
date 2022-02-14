@@ -12,6 +12,7 @@ public class CursorCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Gear"))
         {
             cursorhit = true;
+            
         }
     }
 
@@ -21,6 +22,19 @@ public class CursorCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Gear"))
         {
             cursorhit = false;
+            
+        }
+    }
+
+    void Update()
+    {
+        if(cursorhit == true)
+        {
+            GetComponent<Renderer>().material.color = Color.red;
+        }
+        else if (cursorhit == false)
+        {
+            gameObject.GetComponent<Renderer>().material.color = Color.green;
         }
     }
 }
