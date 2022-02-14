@@ -10,9 +10,18 @@ public class GenerateTransparentGear : MonoBehaviour
 
     //CursorColitionの変数を使う
     CursorColition cursor_colition;
+    //MoveCursor変数を使う
+    MoveCursor move_cursor;
 
     //生成フラグ
     public bool generateflg = true;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        GameObject obj = GameObject.Find("SelectCursor"); //オブジェクトを探す
+        move_cursor = obj.GetComponent<MoveCursor>();　//付いているスクリプトを取得
+    }
 
     // Update is called once per frame
     void Update()
@@ -26,6 +35,7 @@ public class GenerateTransparentGear : MonoBehaviour
         //vector3に変換
         Vector3 pos = myTransform.position;
 
+        //親にする
         var parent = this.transform;
 
         //ボタンを押すと周りに生成
@@ -45,11 +55,14 @@ public class GenerateTransparentGear : MonoBehaviour
                     Instantiate(TransparentGear, new Vector3(pos.x + 0.7F, pos.y - 0.7F, 0), Quaternion.identity, parent);
                     Instantiate(TransparentGear, new Vector3(pos.x - 0.7F, pos.y + 0.7F, 0), Quaternion.identity, parent);
                     Instantiate(TransparentGear, new Vector3(pos.x - 0.7F, pos.y - 0.7F, 0), Quaternion.identity, parent);
-
+                    //カーソル生成
                     Instantiate(CursorGear, new Vector3(pos.x, pos.y + 1.0F, 0), Quaternion.identity, parent);
 
                     //生成をフラグを折る
                     generateflg = false;
+
+                    //カーソルを動かなくする
+                    move_cursor.moveflg = false;
                 }
             }
             

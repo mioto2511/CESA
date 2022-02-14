@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenelateGear : MonoBehaviour
+public class GenerateGear : MonoBehaviour
 {
     //生成するオブジェクト
     public GameObject wood_gear;
     public GameObject iron_gear;
 
+    //材質用
     enum MATERIAL
     { 
         WOOD,
         IRON,
     };
 
-    private int material_flg = (int)MATERIAL.WOOD;
+    private int now_material = (int)MATERIAL.WOOD;
 
     //生成フラグ
-    public bool GenerateFlg = true;
+    public bool generateflg = true;
 
     //SelectCollisionの変数を使う
     SelectCollision select_collision;
@@ -47,11 +48,11 @@ public class GenelateGear : MonoBehaviour
         //材質選択
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            material_flg = (int)MATERIAL.WOOD;
+            now_material = (int)MATERIAL.WOOD;
         }
         else if(Input.GetKeyDown(KeyCode.DownArrow))
         {
-            material_flg = (int)MATERIAL.IRON;
+            now_material = (int)MATERIAL.IRON;
         }
 
 
@@ -60,25 +61,27 @@ public class GenelateGear : MonoBehaviour
             //ほかの歯車に当たってないなら
             if(select_collision.cursorhit == false)
             {
-                if (GenerateFlg == true)
+                if (generateflg == true)
                 {
-                    if(material_flg == (int)MATERIAL.WOOD)
+                    if(now_material == (int)MATERIAL.WOOD)
                     {
                         GameObject newgear = Instantiate(wood_gear, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
                         gear_data.GearList.Add(newgear);// リストにプレファブを加える
                     }
-                    else if (material_flg == (int)MATERIAL.IRON)
+                    else if (now_material == (int)MATERIAL.IRON)
                     {
                         GameObject newgear = Instantiate(iron_gear, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
                         gear_data.GearList.Add(newgear);// リストにプレファブを加える
                     }
 
+                    //デバック用
                     for (int i = 0; i < gear_data.GearList.Count; i++)
                     {
                         Debug.Log(gear_data.GearList[i]);
                     }
 
-                    GenerateFlg = false;
+                    //歯車生成フラグを折る
+                    generateflg = false;
                 }
             }
         }

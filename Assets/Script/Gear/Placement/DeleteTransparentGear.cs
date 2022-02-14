@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class DeleteTransparentGear : MonoBehaviour
 {
-    //GenerateTransparentGearの変数を使う
-    GenerateTransparentGear generate_transparent_gear;
+    //GenerateGearの変数を使う
+    GenerateGear generate_gear;
+    //MoveCursor変数を使う
+    MoveCursor move_cursor;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        GameObject obj = GameObject.Find("SelectCursor"); //オブジェクトを探す
+        move_cursor = obj.GetComponent<MoveCursor>();　//付いているスクリプトを取得
+    }
 
     // Update is called once per frame
     void Update()
     {
-        //GenerateTransparentGearがついているオブジェクト
-        GameObject gear = GameObject.Find("Gear");
-
-        generate_transparent_gear = gear.GetComponent<GenerateTransparentGear>();
+        //GenerateGearの変数を使う
+        generate_gear = GetComponent<GenerateGear>();
 
         if (Input.GetKeyDown("joystick button 0"))
         {
             //範囲の生成フラグがfalseなら消す
-            if (generate_transparent_gear.generateflg == false)
+            if (generate_gear.generateflg == false)
             {
                 GameObject[] objects = GameObject.FindGameObjectsWithTag("Select");
                 foreach (GameObject del in objects)
@@ -27,6 +34,9 @@ public class DeleteTransparentGear : MonoBehaviour
                 }
 
                 Destroy(gameObject);
+
+                //カーソルが動くようにする
+                move_cursor.moveflg = true;
             }
         }
     }

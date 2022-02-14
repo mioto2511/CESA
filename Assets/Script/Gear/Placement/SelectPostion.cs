@@ -30,6 +30,7 @@ public class SelectPostion : MonoBehaviour
         }
     };
 
+    //\‘¢‘Ì‰Šú‰»
     private POSITION_DATA[] position_data = {
         new POSITION_DATA(0,0),
         new POSITION_DATA(0,0),

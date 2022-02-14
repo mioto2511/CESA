@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8574770025049786848}
   - component: {fileID: 1938913057991323991}
-  - component: {fileID: -4954177743625195996}
-  - component: {fileID: 751585442262061863}
   - component: {fileID: 8022766131727371109}
   - component: {fileID: -4118377517384741049}
+  - component: {fileID: -4954177743625195996}
   m_Layer: 0
   m_Name: SelectCursor
   m_TagString: Cursor
@@ -86,32 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-4954177743625195996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7092246097288145133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31e8da13598519a4981a136ba1f208cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.1
---- !u!114 &751585442262061863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7092246097288145133}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 523d05ca958c84f48bab3c278b95a191, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cursorhit: 0
 --- !u!58 &8022766131727371109
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -149,3 +122,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4954177743625195996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7092246097288145133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31e8da13598519a4981a136ba1f208cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.05
+  moveflg: 1
+  deadzone: 0.2
