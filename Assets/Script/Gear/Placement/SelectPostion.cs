@@ -57,6 +57,8 @@ public class SelectPostion : MonoBehaviour
         //vector3‚É•ÏŠ·
         pos = myTransform.position;
 
+        pos.y += 1.0f;
+
         for (int i = 0; i < 8; i++)
         {
             if (i == (int)POSITION.NORTH)
@@ -101,6 +103,11 @@ public class SelectPostion : MonoBehaviour
                 position_data[(int)POSITION.SOUTHWEST].y = pos.y - 1.7f;
             }
         }
+
+        pos.x = position_data[(int)POSITION.NORTH].x;
+        pos.y = position_data[(int)POSITION.NORTH].y;
+
+        myTransform.position = pos;  // À•W‚ðÝ’è
     }
 
     // Update is called once per frame

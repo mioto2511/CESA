@@ -12,7 +12,6 @@ public class SelectCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Gear"))
         {
             cursorhit = true;
-            
         }
     }
 

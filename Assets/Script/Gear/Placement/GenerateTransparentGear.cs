@@ -56,7 +56,7 @@ public class GenerateTransparentGear : MonoBehaviour
                     Instantiate(TransparentGear, new Vector3(pos.x - 0.7F, pos.y + 0.7F, 0), Quaternion.identity, parent);
                     Instantiate(TransparentGear, new Vector3(pos.x - 0.7F, pos.y - 0.7F, 0), Quaternion.identity, parent);
                     //カーソル生成
-                    Instantiate(CursorGear, new Vector3(pos.x, pos.y + 1.0F, 0), Quaternion.identity, parent);
+                    Instantiate(CursorGear, new Vector3(pos.x, pos.y, 0), Quaternion.identity, parent);
 
                     //生成をフラグを折る
                     generateflg = false;
