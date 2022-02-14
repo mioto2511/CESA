@@ -7,7 +7,7 @@ public class SelectCollision : MonoBehaviour
     public bool cursorhit;
 
     //•Ô‚ÉG‚ê‚½‚ç
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Gear"))
         {
