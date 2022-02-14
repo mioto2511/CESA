@@ -73,6 +73,7 @@ public class SelectGear : MonoBehaviour
 
             //vector3‚É•ÏŠ·
             Vector3 usepos = usetransform.position;
+            
 
             //‰E‘¤‚ ‚é
             if (usepos.x > mypos.x)
@@ -80,6 +81,7 @@ public class SelectGear : MonoBehaviour
                 if(Mathf.Abs(usepos.x)> Mathf.Abs(usepos.y))
                 {
                     near_right_pos = usepos;
+                    Debug.Log(near_right_pos);
 
                     //‘O‰ñî•ñ‚æ‚è‰“‚¢‚È‚ç–ß‚·
                     if (near_right_pos.x > old_right_pos.x)
@@ -143,9 +145,9 @@ public class SelectGear : MonoBehaviour
             }
         }
 
-        Debug.Log(near_up_pos);
-        Debug.Log(near_right_pos);
-        Debug.Log(near_down_pos);
-        Debug.Log(near_left_pos);
+        //Debug.Log(near_up_pos);
+        //Debug.Log(near_right_pos);
+        //Debug.Log(near_down_pos);
+        //Debug.Log(near_left_pos);
     }
 }

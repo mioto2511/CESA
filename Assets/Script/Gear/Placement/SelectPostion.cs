@@ -44,8 +44,8 @@ public class SelectPostion : MonoBehaviour
     private Transform myTransform;
     private Vector3 pos;
 
-    //CursorCollision‚Ì•Ï”‚ğg‚¤
-    CursorCollision cursor_collision;
+    //SelectCollision‚Ì•Ï”‚ğg‚¤
+    SelectCollision select_collision;
 
     // Start is called before the first frame update
     void Start()
@@ -105,7 +105,7 @@ public class SelectPostion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cursor_collision = GetComponent<CursorCollision>();
+        select_collision = GetComponent<SelectCollision>();
 
         float lsh = Input.GetAxis("L_Stick_H");//‰¡²
         float lsv = Input.GetAxis("L_Stick_V");//c²

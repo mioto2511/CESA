@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CursorCollision : MonoBehaviour
+public class SelectCollision : MonoBehaviour
 {
     public bool cursorhit;
 
