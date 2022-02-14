@@ -30,6 +30,7 @@ public class SelectPostion : MonoBehaviour
         }
     };
 
+    //構造体初期化
     private POSITION_DATA[] position_data = {
         new POSITION_DATA(0,0),
         new POSITION_DATA(0,0),
@@ -44,8 +45,8 @@ public class SelectPostion : MonoBehaviour
     private Transform myTransform;
     private Vector3 pos;
 
-    //CursorCollisionの変数を使う
-    CursorCollision cursor_collision;
+    //SelectCollisionの変数を使う
+    SelectCollision select_collision;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +56,8 @@ public class SelectPostion : MonoBehaviour
 
         //vector3に変換
         pos = myTransform.position;
+
+        pos.y += 1.0f;
 
         for (int i = 0; i < 8; i++)
         {
@@ -100,12 +103,17 @@ public class SelectPostion : MonoBehaviour
                 position_data[(int)POSITION.SOUTHWEST].y = pos.y - 1.7f;
             }
         }
+
+        pos.x = position_data[(int)POSITION.NORTH].x;
+        pos.y = position_data[(int)POSITION.NORTH].y;
+
+        myTransform.position = pos;  // 座標を設定
     }
 
     // Update is called once per frame
     void Update()
     {
-        cursor_collision = GetComponent<CursorCollision>();
+        select_collision = GetComponent<SelectCollision>();
 
         float lsh = Input.GetAxis("L_Stick_H");//横軸
         float lsv = Input.GetAxis("L_Stick_V");//縦軸
