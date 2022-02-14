@@ -5,7 +5,16 @@ using UnityEngine;
 public class GenelateGear : MonoBehaviour
 {
     //生成するオブジェクト
-    public GameObject gear;
+    public GameObject wood_gear;
+    public GameObject iron_gear;
+
+    enum MATERIAL
+    { 
+        WOOD,
+        IRON,
+    };
+
+    private int material_flg = (int)MATERIAL.WOOD;
 
     //生成フラグ
     public bool GenerateFlg = true;
@@ -15,6 +24,13 @@ public class GenelateGear : MonoBehaviour
 
     //GearDataの変数を使う
     GearData gear_data;
+
+    void Start()
+    {
+        //変数を使える用にする
+        GameObject obj = GameObject.Find("GearData");
+        gear_data = obj.GetComponent<GearData>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -28,9 +44,16 @@ public class GenelateGear : MonoBehaviour
         //変数を使える用にする
         cursor_collision = GetComponent<CursorCollision>();
 
-        //変数を使える用にする
-        GameObject obj = GameObject.Find("GearData"); 
-        gear_data = obj.GetComponent<GearData>();
+        //材質選択
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            material_flg = (int)MATERIAL.WOOD;
+        }
+        else if(Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            material_flg = (int)MATERIAL.IRON;
+        }
+
 
         if (Input.GetKeyDown("joystick button 0"))
         {
@@ -39,8 +62,16 @@ public class GenelateGear : MonoBehaviour
             {
                 if (GenerateFlg == true)
                 {
-                    GameObject newgear = Instantiate(gear, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
-                    gear_data.GearList.Add(newgear);// リストにプレファブを加える
+                    if(material_flg == (int)MATERIAL.WOOD)
+                    {
+                        GameObject newgear = Instantiate(wood_gear, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
+                        gear_data.GearList.Add(newgear);// リストにプレファブを加える
+                    }
+                    else if (material_flg == (int)MATERIAL.IRON)
+                    {
+                        GameObject newgear = Instantiate(iron_gear, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
+                        gear_data.GearList.Add(newgear);// リストにプレファブを加える
+                    }
 
                     for (int i = 0; i < gear_data.GearList.Count; i++)
                     {
