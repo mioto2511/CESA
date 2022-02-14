@@ -13,6 +13,6 @@ public class Iron_Manegement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject, 3.0f);
+       
     }
 }
