@@ -7,18 +7,21 @@ public class Elevetor : MonoBehaviour
     private enum MoveDir
     {
         Up,
-        Down,
+        Stop,
     }
 
     [SerializeField]
     private MoveDir _moveDir;
 
+     
     //à⁄ìÆÇÃë¨Ç≥
     [SerializeField]
     private float _moveSpeed = 0.0f;
     //à⁄ìÆïù
     [SerializeField]
     private float _moveRange = 1;
+
+    
 
     private Rigidbody2D Rb { get; set; }
 
@@ -31,16 +34,18 @@ public class Elevetor : MonoBehaviour
     //à⁄ìÆå„ÇÃà íu
     private Vector2 AfterPos { get; set; }
 
+    
     void Start()
     {
         Rb = GetComponent<Rigidbody2D>();
 
+        
         InitPos = transform.position;
         BeforePos = transform.position;
 
-        if (_moveDir == MoveDir.Down)
+        if (_moveDir == MoveDir.Stop)
         {
-            _moveRange *= -1;
+            //script.IsOn = true;
         }
 
         AfterPos = transform.position + new Vector3(_moveRange, _moveRange);
@@ -48,6 +53,7 @@ public class Elevetor : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         //Rb.MovePosition(new Vector2(InitPos.x, Mathf.Lerp(BeforePos.y, AfterPos.y, t)));
         Rb.MovePosition(new Vector2(InitPos.x, Mathf.SmoothStep(BeforePos.y, AfterPos.y, t)));
 
@@ -60,11 +66,16 @@ public class Elevetor : MonoBehaviour
     {
         if (t > 1.0f)
         {
-            var temp = BeforePos;
-            BeforePos = AfterPos;
-            AfterPos = temp;
+            //var temp = BeforePos;
+            //BeforePos = AfterPos;
+            //AfterPos = temp;
 
-            t = 0.0f;
+
+            //t = 0.0f;
+
+            Add_force script = GetComponent<Add_force>();
+            script.IsOn = true;
+
         }
     }
 }
