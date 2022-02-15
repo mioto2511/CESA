@@ -12,10 +12,24 @@ public class Conveyer_Management : MonoBehaviour
     //ベルトコンベアの現在の速度
     private float _current_speed = 0;
 
+    public bool right_rotate;
+    public bool left_rotate;
+
     void FixedUpdate()
     {
         _current_speed = IsOn? target_driveSpeed : 0;
         SurfaceEffector2D rb = GetComponent<SurfaceEffector2D>();
-        rb.speed = _current_speed;
+
+        //右回転で右に動く
+        if(right_rotate == true)
+        {
+            rb.speed = _current_speed;
+        }
+        //左回転で左に動く
+        else if (left_rotate == true)
+        {
+            rb.speed = -_current_speed;
+        }
+
     }
 }
