@@ -23,21 +23,21 @@ public class MoveCamera : MonoBehaviour
 
         if (rsh < 0)
         {
-            tf.position = tf.position + new Vector3(-speed, 0.0f, 0.0f); //カメラを左へ移動。
+            tf.position = tf.position + new Vector3(-speed, 0.0f, 0.0f);
         }
         else if (rsh > 0)
         {
-            tf.position = tf.position + new Vector3(+speed, 0.0f, 0.0f); //カメラを左へ移動。
+            tf.position = tf.position + new Vector3(+speed, 0.0f, 0.0f);
         }
 
 
         if (rsv > 0) //Iキーが押されていれば
         {
-            tf.position = tf.position + new Vector3(0.0f, +speed, 0.0f); //カメラを左へ移動。
+            tf.position = tf.position + new Vector3(0.0f, +speed, 0.0f);
         }
         else if (rsv < 0) //Iキーが押されていれば
         {
-            tf.position = tf.position + new Vector3(0.0f, -speed, 0.0f); //カメラを左へ移動。
+            tf.position = tf.position + new Vector3(0.0f, -speed, 0.0f);
         }
     }
 }

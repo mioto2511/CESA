@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class MainPowrGear : MonoBehaviour
 {
-    public bool right_rotate;
-    public bool left_rotate;
-
-    public bool IsOn = false;
+    //スクリプト用変数
+    GimmickData gimmick_data;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //ここで親を取得
+        GameObject gimmick = this.transform.parent.gameObject;
+        //親オブジェクトのスクリプトから参照したい変数を代入
+        gimmick_data = gimmick.GetComponent<GimmickData>();
     }
 
     // Update is called once per frame
@@ -23,26 +24,25 @@ public class MainPowrGear : MonoBehaviour
 
         if (Input.GetKey("joystick button 0"))
         {
-            left_rotate = true;
-            right_rotate = false;
-            IsOn = true;
+            gimmick_data.left_rotate = true;
+            gimmick_data.right_rotate = false;
+            gimmick_data.IsOn = true;
         }
         else if (Input.GetKey("joystick button 1"))
         {
-            right_rotate = true;
-            left_rotate = false;
-            IsOn = true;
+            gimmick_data.right_rotate = true;
+            gimmick_data.left_rotate = false;
+            gimmick_data.IsOn = true;
         }
 
         //左回転
-        if (left_rotate == true)
+        if (gimmick_data.left_rotate == true)
         {
             transform.Rotate(new Vector3(0, 0, 2));
         }
-        else if (right_rotate == true)
+        else if (gimmick_data.right_rotate == true)
         {
             transform.Rotate(new Vector3(0, 0, -2));
         }
-        
     }
 }
