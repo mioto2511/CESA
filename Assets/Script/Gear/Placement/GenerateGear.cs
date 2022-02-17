@@ -15,7 +15,7 @@ public class GenerateGear : MonoBehaviour
         IRON,
     };
 
-    private int now_material = (int)MATERIAL.WOOD;
+    private int now_material = (int)MATERIAL.IRON;
 
     //生成フラグ
     public bool generateflg = true;
@@ -77,7 +77,7 @@ public class GenerateGear : MonoBehaviour
                     //デバック用
                     for (int i = 0; i < gear_data.GearList.Count; i++)
                     {
-                        Debug.Log(gear_data.GearList[i]);
+                        //Debug.Log(gear_data.GearList[i]);
                     }
 
                     //歯車生成フラグを折る

@@ -22,7 +22,7 @@ public class GearData : MonoBehaviour
 
         for (int i = 0; i < GearList.Count; i++)
         {
-            Debug.Log(GearList[i]);
+            //Debug.Log(GearList[i]);
         }
     }
 
