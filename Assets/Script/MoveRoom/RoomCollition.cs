@@ -8,8 +8,13 @@ public class RoomCollition : MonoBehaviour
     RotateRoom rotate_room;
     //ParentRoom変数を使う
     ParentRoom parent_room;
+    //AddParent変数を使う
+    //AddParent add_parent;
 
+    //自身のtf
     Transform my_transform;
+
+    public bool become_child = false;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +24,8 @@ public class RoomCollition : MonoBehaviour
 
         GameObject obj1 = GameObject.Find("Room"); //オブジェクトを探す
         parent_room = obj1.GetComponent<ParentRoom>();　//付いているスクリプトを取得
+
+        //add_parent = GetComponent<AddParent>();　//付いているスクリプトを取得
     }
 
     // Update is called once per frame
@@ -26,31 +33,48 @@ public class RoomCollition : MonoBehaviour
     {
         // transformを取得
         my_transform = this.transform;
+
+        if(parent_room.room_hit == true)
+        {
+            //位置の誤差修正
+            this.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+
+            Vector3 my_pos = this.transform.position;
+
+            my_pos.x = Mathf.Round(my_pos.x);     //四捨五入
+            my_pos.y = Mathf.Round(my_pos.y);     //四捨五入
+
+            this.transform.position = my_pos;
+        }
     }
 
     void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Room"))
         {
-            Debug.Log("A");
+            
             if (rotate_room.rotate_flg == true)
             {
-                //回転フラグを折る
-                rotate_room.rotate_flg = false;
-
-                parent_room.room_hit = true;
-
-                //位置の誤差修正
-                this.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-
-                Vector3 my_pos = this.transform.position;
-
-                my_pos.x = Mathf.Round(my_pos.x);     //四捨五入
-                my_pos.y = Mathf.Round(my_pos.y);     //四捨五入
-
-                this.transform.position = my_pos;
+                Debug.Log(this);
+                
             }
+            //回転フラグを折る
+            rotate_room.rotate_flg = false;
 
+            //部屋同士があたった
+            parent_room.room_hit = true;
+
+            become_child = true;
+
+            //位置の誤差修正
+            this.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+
+            Vector3 my_pos = this.transform.position;
+
+            my_pos.x = Mathf.Round(my_pos.x);     //四捨五入
+            my_pos.y = Mathf.Round(my_pos.y);     //四捨五入
+
+            this.transform.position = my_pos;
         }
     }
 }

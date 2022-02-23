@@ -39,20 +39,20 @@ public class RotateRoom : MonoBehaviour
         {
             right_rotate = true;
             left_rotate = false;
-            Debug.Log(right_rotate);
+            Debug.Log("R");
         }
         else if (Input.GetKeyDown("joystick button 4"))//左
         {
             left_rotate = true;
             right_rotate = false;
-            Debug.Log(left_rotate);
+            Debug.Log("L");
         }
 
         //ボタンを押すと回転
-        if (Input.GetKeyDown("joystick button 0"))//右下
-        {
-            rotate_flg = true;
-        }
+        //if (Input.GetKeyDown("joystick button 0"))//右下
+        //{
+        //    rotate_flg = true;
+        //}
 
         // 指定オブジェクトを中心に回転する
         if (rotate_flg == true)//右下
