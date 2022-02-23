@@ -60,11 +60,25 @@ public class Rotate : MonoBehaviour
         if (other.gameObject.CompareTag("RDrive"))
         {
             rflg = true;   // 回転フラグオン
+            this.tag = "LGear";
         }
         else if (other.gameObject.CompareTag("LDrive"))
         {
             lflg = true;   // 回転フラグオン
+            this.tag = "RGear";
         }
+        //歯車に当たった時
+        else if (other.gameObject.CompareTag("RGear"))
+        {
+            rflg = true;   // 回転フラグオン
+            this.tag = "LGear";
+        }
+        else if (other.gameObject.CompareTag("LGear"))
+        {
+            lflg = true;   // 回転フラグオン
+            this.tag = "RGear";
+        }
+
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -73,10 +87,23 @@ public class Rotate : MonoBehaviour
         if (other.gameObject.CompareTag("RDrive"))
         {
             rflg = false;   //回転フラグオフ
+            this.tag = "Gear";
         }
         else if (other.gameObject.CompareTag("LDrive"))
         {
             lflg = false;   //回転フラグオフ
+            this.tag = "Gear";
+        }
+        //離れたら
+        else if (other.gameObject.CompareTag("RGear"))
+        {
+            rflg = false;   //回転フラグオフ
+            this.tag = "Gear";
+        }
+        else if (other.gameObject.CompareTag("LGear"))
+        {
+            lflg = false;   //回転フラグオフ
+            this.tag = "Gear";
         }
     }
 

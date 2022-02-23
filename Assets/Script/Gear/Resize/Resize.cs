@@ -17,7 +17,7 @@ public class Resize : MonoBehaviour
     void Update()
     {
         //ägëÂ
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown("joystick button 4"))
         {
             if (scale == 1.0f)   //10ÉTÉCÉYÇ©ÇÁ
             {
