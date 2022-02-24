@@ -8,12 +8,11 @@ public class RoomCollition : MonoBehaviour
     RotateRoom rotate_room;
     //ParentRoom変数を使う
     ParentRoom parent_room;
-    //AddParent変数を使う
-    //AddParent add_parent;
 
     //自身のtf
     Transform my_transform;
 
+    //子になるフラグ
     public bool become_child = false;
 
     // Start is called before the first frame update
@@ -24,8 +23,6 @@ public class RoomCollition : MonoBehaviour
 
         GameObject obj1 = GameObject.Find("Room"); //オブジェクトを探す
         parent_room = obj1.GetComponent<ParentRoom>();　//付いているスクリプトを取得
-
-        //add_parent = GetComponent<AddParent>();　//付いているスクリプトを取得
     }
 
     // Update is called once per frame
@@ -65,6 +62,13 @@ public class RoomCollition : MonoBehaviour
             parent_room.room_hit = true;
 
             become_child = true;
+
+            //設置した歯車を削除
+            GameObject[] objects = GameObject.FindGameObjectsWithTag("Gear");
+            foreach (GameObject del in objects)
+            {
+                Destroy(del);
+            }
 
             //位置の誤差修正
             this.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);

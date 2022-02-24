@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CursorColition : MonoBehaviour
+public class CursorCollision : MonoBehaviour
 {
     public bool cursorhit;
 
     //éïé‘Ç…êGÇÍÇΩÇÁ
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Cursor"))
+        if (other.gameObject.CompareTag("Select"))
         {
             cursorhit = true;
         }
@@ -18,7 +18,7 @@ public class CursorColition : MonoBehaviour
     //éïé‘Ç©ÇÁó£ÇÍÇΩÇÁ
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Cursor"))
+        if (other.gameObject.CompareTag("Select"))
         {
             cursorhit = false;
         }

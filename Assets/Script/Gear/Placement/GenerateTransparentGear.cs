@@ -8,8 +8,8 @@ public class GenerateTransparentGear : MonoBehaviour
     public GameObject TransparentGear;
     public GameObject CursorGear;
 
-    //CursorColitionの変数を使う
-    CursorColition cursor_colition;
+    //CursorCollisionの変数を使う
+    CursorCollision cursor_colition;
     //MoveCursor変数を使う
     MoveCursor move_cursor;
 
@@ -27,7 +27,7 @@ public class GenerateTransparentGear : MonoBehaviour
     void Update()
     {
         //変数を使える用にする
-        cursor_colition = GetComponent<CursorColition>();
+        cursor_colition = GetComponent<CursorCollision>();
 
         // transformを取得
         Transform myTransform = this.transform;

@@ -1,0 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GearCollision : MonoBehaviour
+{
+    public bool gear_hit;
+
+    //éïé‘Ç…êGÇÍÇΩÇÁ
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Gear"))
+        {
+            gear_hit = true;
+            Debug.Log("hit");
+        }
+    }
+
+    //éïé‘Ç©ÇÁó£ÇÍÇΩÇÁ
+    //void OnTriggerExit2D(Collider2D other)
+    //{
+    //    if (other.gameObject.CompareTag("Gear"))
+    //    {
+    //        gear_hit = false;
+    //    }
+    //}
+}

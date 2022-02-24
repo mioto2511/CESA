@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParentRoom : MonoBehaviour
+public class MoveAxisOfRotate : MonoBehaviour
 {
-    public bool room_hit = false;
+    public bool move_flg;
 
-    //RotateRoom変数を使う
+    public Vector3 axis_pos;
+
+    //RotateRoomの変数を使う
     RotateRoom rotate_room;
 
     // Start is called before the first frame update
@@ -19,17 +21,13 @@ public class ParentRoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ボタンを押すと回転
-        if (rotate_room.rotate_flg == true)
+        if (move_flg == true)
         {
-            transform.parent = GameObject.Find("RotateRoom").transform;
-        }
+            this.transform.position = axis_pos;
 
-        if(room_hit == true)
-        {
-            this.gameObject.transform.parent = null;
-            room_hit = false;
-        }
+            move_flg = false;
 
+            rotate_room.rotate_flg = true;
+        }
     }
 }

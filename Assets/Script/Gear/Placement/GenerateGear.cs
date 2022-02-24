@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenerateGear : MonoBehaviour
+public class GenerateGear2 : MonoBehaviour
 {
     //生成するオブジェクト
     public GameObject wood_gear;

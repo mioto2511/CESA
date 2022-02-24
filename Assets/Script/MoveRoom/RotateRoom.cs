@@ -48,12 +48,6 @@ public class RotateRoom : MonoBehaviour
             Debug.Log("L");
         }
 
-        //ボタンを押すと回転
-        //if (Input.GetKeyDown("joystick button 0"))//右下
-        //{
-        //    rotate_flg = true;
-        //}
-
         // 指定オブジェクトを中心に回転する
         if (rotate_flg == true)//右下
         {

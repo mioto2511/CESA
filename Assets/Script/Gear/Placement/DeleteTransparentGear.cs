@@ -5,7 +5,7 @@ using UnityEngine;
 public class DeleteTransparentGear : MonoBehaviour
 {
     //GenerateGear‚Ì•Ï”‚ğg‚¤
-    GenerateGear generate_gear;
+    GenerateGear2 generate_gear;
     //MoveCursor•Ï”‚ğg‚¤
     MoveCursor move_cursor;
 
@@ -20,7 +20,7 @@ public class DeleteTransparentGear : MonoBehaviour
     void Update()
     {
         //GenerateGear‚Ì•Ï”‚ğg‚¤
-        generate_gear = GetComponent<GenerateGear>();
+        generate_gear = GetComponent<GenerateGear2>();
 
         if (Input.GetKeyDown("joystick button 0"))
         {
