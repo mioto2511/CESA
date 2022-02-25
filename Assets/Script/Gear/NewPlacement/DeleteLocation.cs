@@ -6,10 +6,13 @@ public class DeleteLocation : MonoBehaviour
 {
     public bool delete_flg;
 
+    //GenerateInstallation
+    GenerateInstallation generate_installation;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        generate_installation = GetComponent<GenerateInstallation>();
     }
 
     // Update is called once per frame
@@ -26,6 +29,11 @@ public class DeleteLocation : MonoBehaviour
             {
                 Destroy(del);
             }
+
+
+            delete_flg = false;
+
+            generate_installation.location_flg = true;
         }
     }
 }
