@@ -4,27 +4,11 @@ using UnityEngine;
 
 public class FulcrumDistance : MonoBehaviour
 {
+    //支点との距離
     public float distance;
 
-    public GameObject[] near_obj; //オブジェクト
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        near_obj = new GameObject[4];
-
-        near_obj = serchTag(gameObject, "FulcrumGear");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     //指定されたタグの中で最も近いものを取得
-    GameObject[] serchTag(GameObject this_obj, string tag_name)
+    public GameObject[] serchTag(GameObject this_obj, string tag_name)
     {
         float tmpDis = 0;           //距離用一時変数
         GameObject[] target_obj; //オブジェクト
