@@ -17,51 +17,38 @@ public class Resize : MonoBehaviour
     void Update()
     {
         //拡大
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown("joystick button 4"))
         {
-            if (pushFlag == false)  // 押しっぱなしではないとき
+            if (scale == 1.0f)   //10サイズから
             {
-                pushFlag = true;    // 押し状態にする
-
-                if (scale == 1.0f)   //10サイズから
-                {
-                    scale += 0.5f;
-                    transform.localScale = new Vector3(scale, scale, 1.0f);
-                }
-                else if (scale == 1.5f)   //15サイズから
-                {
-                    scale += 0.5f;
-                    transform.localScale = new Vector3(scale, scale, 1.0f);
-                }
+                scale += 0.5f;
+                transform.localScale = new Vector3(scale, scale, 1.0f);
             }
+            else if (scale == 1.5f)   //15サイズから
+            {
+                scale += 0.5f;
+                transform.localScale = new Vector3(scale, scale, 1.0f);
+            }
+            
         }
-        else if(Input.GetKeyUp(KeyCode.RightArrow))
-        {
-            pushFlag = false;
-        }
+        
 
         //縮小
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (pushFlag == false)  // 押しっぱなしではないとき
+            if (scale == 1.5f)//15サイズから
             {
-                if (scale == 1.5f)//15サイズから
-                {
-                    pushFlag = true;    // 押し状態にする
-                    scale -= 0.5f;
-                    transform.localScale = new Vector3(scale, scale, 1.0f);
-                }
-                else if (scale == 2.0f)  //20サイズから
-                {
-                    pushFlag = true;    // 押し状態にする
-                    scale -= 0.5f;
-                    transform.localScale = new Vector3(scale, scale, 1.0f);
-                }
+                pushFlag = true;    // 押し状態にする
+                scale -= 0.5f;
+                transform.localScale = new Vector3(scale, scale, 1.0f);
             }
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftArrow))
-        {
-            pushFlag = false;
+            else if (scale == 2.0f)  //20サイズから
+            {
+                pushFlag = true;    // 押し状態にする
+                scale -= 0.5f;
+                transform.localScale = new Vector3(scale, scale, 1.0f);
+            }
+            
         }
     }
 }
