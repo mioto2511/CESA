@@ -14,7 +14,8 @@ public class MoveAxisOfRotate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject obj = GameObject.Find("RotateRoom"); //オブジェクトを探す
+        //GameObject obj = GameObject.Find("RotateRoom"); //オブジェクトを探す
+        GameObject obj = GameObject.Find("Room"); //オブジェクトを探す
         rotate_room = obj.GetComponent<RotateRoom>();　//付いているスクリプトを取得
     }
 
