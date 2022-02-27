@@ -26,6 +26,8 @@ public class RotateRoom : MonoBehaviour
     private bool right_rotate = false;
     private bool left_rotate = false;
 
+    public bool room_hit = false;
+
     Transform my_transform;
     Vector3 my_rotate;
 
@@ -46,6 +48,12 @@ public class RotateRoom : MonoBehaviour
             left_rotate = true;
             right_rotate = false;
             Debug.Log("L");
+        }
+
+        //部屋が当たった
+        if (room_hit == true)
+        {
+            room_hit = false;
         }
 
         // 指定オブジェクトを中心に回転する

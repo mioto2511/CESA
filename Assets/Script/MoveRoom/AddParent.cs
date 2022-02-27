@@ -4,25 +4,40 @@ using UnityEngine;
 
 public class AddParent : MonoBehaviour
 {
-    //public bool become_child = false;
     //RoomCollition変数を使う
     RoomCollition room_collition;
+    //BoxVariable
+    BoxVariable box_variable;
 
     // Start is called before the first frame update
     void Start()
     {
-        room_collition = GetComponent<RoomCollition>();　//付いているスクリプトを取得
+        //room_collition = GetComponent<RoomCollition>(); //付いているスクリプトを取得
+
+        GameObject obj = transform.parent.gameObject;
+        box_variable = obj.GetComponent<BoxVariable>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(room_collition.become_child);
-        if (room_collition.become_child == true)
+        if (box_variable.become_child == true)
         {
-            Debug.Log("A");
-            transform.parent = GameObject.Find("Room").transform;
-            room_collition.become_child = false;
+            GameObject parent = this.transform.parent.gameObject;
+
+            Debug.Log("become"+parent);
+            parent.transform.parent = GameObject.Find("Room").transform;
+            //this.transform.parent = GameObject.Find("Room").transform;
+
+            //room_collition.root = this.transform.parent.parent.gameObject;
+            gameObject.AddComponent<RoomCollition>();
+
+            box_variable.child_cnt++;
+
+            if (box_variable.child_cnt >= 4)
+            {
+                box_variable.become_child = false;
+            }
         }
     }
 }

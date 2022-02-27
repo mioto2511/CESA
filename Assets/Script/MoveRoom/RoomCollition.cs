@@ -5,24 +5,25 @@ using UnityEngine;
 public class RoomCollition : MonoBehaviour
 {
     //RotateRoom変数を使う
-    RotateRoom rotate_room;
-    //ParentRoom変数を使う
-    ParentRoom parent_room;
+    RotateRoom root_room;
+    //BoxVariable
+    BoxVariable box_variable;
 
     //自身のtf
     Transform my_transform;
 
-    //子になるフラグ
-    public bool become_child = false;
+    GameObject parent;
+    GameObject root;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameObject obj = GameObject.Find("RotateRoom"); //オブジェクトを探す
-        rotate_room = obj.GetComponent<RotateRoom>();　//付いているスクリプトを取得
+        //root = this.transform.parent.parent.gameObject; //オブジェクトを探す
+        root = GameObject.Find("Room");
+        root_room = root.GetComponent<RotateRoom>(); //付いているスクリプトを取得
 
-        GameObject obj1 = GameObject.Find("Room"); //オブジェクトを探す
-        parent_room = obj1.GetComponent<ParentRoom>();　//付いているスクリプトを取得
+        parent = this.transform.parent.gameObject; //オブジェクトを探す
+        box_variable = parent.GetComponent<BoxVariable>();
     }
 
     // Update is called once per frame
@@ -31,17 +32,27 @@ public class RoomCollition : MonoBehaviour
         // transformを取得
         my_transform = this.transform;
 
-        if(parent_room.room_hit == true)
+        //Debug.Log(root.transform.rotation.z);
+
+        if(root != null)
+        {
+            
+        }
+
+        if (root_room.room_hit == true)
         {
             //位置の誤差修正
-            this.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            ErrorCorrection();
+            //root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Round(root.transform.rotation.z));
+            //if((root.transform.rotation.z >= -1.01f) &&(root.transform.rotation.z <= -0.98f))
+            //{
+            //    root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -1);
+            //}
 
-            Vector3 my_pos = this.transform.position;
-
-            my_pos.x = Mathf.Round(my_pos.x);     //四捨五入
-            my_pos.y = Mathf.Round(my_pos.y);     //四捨五入
-
-            this.transform.position = my_pos;
+            //Vector3 my_pos = parent.transform.position;
+            //my_pos.x = Mathf.Round(my_pos.x);     //四捨五入
+            //my_pos.y = Mathf.Round(my_pos.y);     //四捨五入
+            //parent.transform.position = my_pos;
         }
     }
 
@@ -49,19 +60,21 @@ public class RoomCollition : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Room"))
         {
-            
-            if (rotate_room.rotate_flg == true)
-            {
-                Debug.Log(this);
-                
-            }
             //回転フラグを折る
-            rotate_room.rotate_flg = false;
+            root_room.rotate_flg = false;
 
             //部屋同士があたった
-            parent_room.room_hit = true;
+            root_room.room_hit = true;
 
-            become_child = true;
+            //Debug.Log("hit"+this);
+
+            //接続されてるか？
+            //当たった先の変数をいじる
+            //GameObject collision_parent = collision.transform.parent.gameObject;
+            //BoxVariable collision_box_variable = collision_parent.GetComponent<BoxVariable>(); //付いているスクリプトを取得
+            //collision_box_variable.become_child = true;
+
+            
 
             //設置した歯車を削除
             GameObject[] objects = GameObject.FindGameObjectsWithTag("Gear");
@@ -71,14 +84,45 @@ public class RoomCollition : MonoBehaviour
             }
 
             //位置の誤差修正
-            this.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            ErrorCorrection();
 
-            Vector3 my_pos = this.transform.position;
+            
+            ////root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Round(root.transform.rotation.z));
 
-            my_pos.x = Mathf.Round(my_pos.x);     //四捨五入
-            my_pos.y = Mathf.Round(my_pos.y);     //四捨五入
 
-            this.transform.position = my_pos;
+            //Vector3 my_pos = parent.transform.position;
+            //my_pos.x = Mathf.Round(my_pos.x);     //四捨五入
+            //my_pos.y = Mathf.Round(my_pos.y);     //四捨五入
+            //parent.transform.position = my_pos;
+            //Debug.Log(root.transform.rotation.z);
         }
+    }
+
+    //位置の誤差修正
+    void ErrorCorrection()
+    {
+        parent.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Round(parent.transform.rotation.z));
+        //if ((root.transform.rotation.z >= -1.01f) && (root.transform.rotation.z <= -0.98f))
+        //{
+        //    root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180);
+        //}
+        //else if ((root.transform.rotation.z >= -0.51f) && (root.transform.rotation.z <= -0.48f))
+        //{
+        //    root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90);
+        //}
+        //else if ((root.transform.rotation.z <= 1.01f) && (root.transform.rotation.z >= 0.98f))
+        //{
+        //    root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -180);
+        //}
+        //else if ((root.transform.rotation.z <= 0.51f) && (root.transform.rotation.z >= 0.48f))
+        //{
+        //    root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90);
+        //}
+        //root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+
+        Vector3 my_pos = parent.transform.position;
+        my_pos.x = Mathf.Round(my_pos.x);     //四捨五入
+        my_pos.y = Mathf.Round(my_pos.y);     //四捨五入
+        parent.transform.position = my_pos;
     }
 }
