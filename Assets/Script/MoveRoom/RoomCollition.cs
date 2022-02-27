@@ -18,8 +18,8 @@ public class RoomCollition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //root = this.transform.parent.parent.gameObject; //オブジェクトを探す
-        root = GameObject.Find("Room");
+        root = this.transform.parent.parent.gameObject; //オブジェクトを探す
+        //root = GameObject.Find("Room");
         root_room = root.GetComponent<RotateRoom>(); //付いているスクリプトを取得
 
         parent = this.transform.parent.gameObject; //オブジェクトを探す
