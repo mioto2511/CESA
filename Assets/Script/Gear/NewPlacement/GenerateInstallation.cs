@@ -13,6 +13,8 @@ public class GenerateInstallation : MonoBehaviour
 
     public bool location_flg = true;
 
+    public float distance = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +33,7 @@ public class GenerateInstallation : MonoBehaviour
             //自身と取得したオブジェクトの距離を取得
             tmpDis = Vector3.Distance(player.transform.position, this.transform.position);
 
-            if (tmpDis < 2)
+            if (tmpDis < distance)
             {
                 Generate();
             }

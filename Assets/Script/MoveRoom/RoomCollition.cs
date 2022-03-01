@@ -101,24 +101,33 @@ public class RoomCollition : MonoBehaviour
     //ˆÊ’u‚ÌŒë·C³
     void ErrorCorrection()
     {
-        parent.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Round(parent.transform.rotation.z));
-        //if ((root.transform.rotation.z >= -1.01f) && (root.transform.rotation.z <= -0.98f))
-        //{
-        //    root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180);
-        //}
-        //else if ((root.transform.rotation.z >= -0.51f) && (root.transform.rotation.z <= -0.48f))
-        //{
-        //    root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90);
-        //}
-        //else if ((root.transform.rotation.z <= 1.01f) && (root.transform.rotation.z >= 0.98f))
-        //{
-        //    root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -180);
-        //}
-        //else if ((root.transform.rotation.z <= 0.51f) && (root.transform.rotation.z >= 0.48f))
-        //{
-        //    root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90);
-        //}
-        //root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        //Debug.Log(root.transform.rotation.z);
+        //parent.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Round(parent.transform.rotation.z));
+        if ((root.transform.rotation.z >= -1.01f) && (root.transform.rotation.z <= -0.98f))
+        {
+            root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180);
+        }
+        else if ((root.transform.rotation.z >= -0.51f) && (root.transform.rotation.z <= -0.48f))
+        {
+            root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90);
+        }
+        else if ((root.transform.rotation.z <= 1.01f) && (root.transform.rotation.z >= 0.98f))
+        {
+            root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -180);
+        }
+        else if ((root.transform.rotation.z <= 0.51f) && (root.transform.rotation.z >= 0.48f))
+        {
+            root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90);
+        }
+        else if ((root.transform.rotation.z <= 0.02f) && (root.transform.rotation.z >= -0.01f))
+        {
+            root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0);
+        }
+        else if ((root.transform.rotation.z >= -0.02f) && (root.transform.rotation.z <= 0.01f))
+        {
+            root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0);
+        }
+        //root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Round(root.transform.rotation.z));
 
         Vector3 my_pos = parent.transform.position;
         my_pos.x = Mathf.Round(my_pos.x);     //ŽlŽÌŒÜ“ü
