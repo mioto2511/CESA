@@ -37,14 +37,14 @@ public class PlayerMove : MonoBehaviour
             }
 
 
-            //if (lsv > deadzone)
-            //{
-            //    tf.position = tf.position + new Vector3(0.0f, +speed, 0.0f);
-            //}
-            //else if (lsv < -deadzone)
-            //{
-            //    tf.position = tf.position + new Vector3(0.0f, -speed, 0.0f);
-            //}
+           if (lsv > deadzone)
+           {
+                tf.position = tf.position + new Vector3(0.0f, +speed, 0.0f);
+            }
+            else if (lsv < -deadzone)
+            {
+                tf.position = tf.position + new Vector3(0.0f, -speed, 0.0f);
+            }
         }
 
         //カーソルがカメラに追従

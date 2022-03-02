@@ -34,10 +34,13 @@ public class AddParent : MonoBehaviour
 
             box_variable.child_cnt++;
 
+            //4つの壁にスクリプトを割りあてる
             if (box_variable.child_cnt >= 4)
             {
                 box_variable.become_child = false;
+
             }
+            Destroy(this);
         }
     }
 }

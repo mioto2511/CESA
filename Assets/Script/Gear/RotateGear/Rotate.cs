@@ -24,33 +24,35 @@ public class Rotate : MonoBehaviour
 
         if (rflg == true)
         {
-            if (gScale.x == 1.0f)  //10サイズの時
-            {
-                this.transform.Rotate(new Vector3(0, 0, 3));
-            }
-            if (gScale.x == 1.5f)   //15サイズの時
-            {
-                this.transform.Rotate(new Vector3(0, 0, 2));
-            }
-            if (gScale.x == 2.0f)   //20サイズの時
-            {
-                this.transform.Rotate(new Vector3(0, 0, 1));
-            }
+            //if (gScale.x == 1.0f)  //10サイズの時
+            //{
+            //    this.transform.Rotate(new Vector3(0, 0, 3));
+            //}
+            //if (gScale.x == 1.5f)   //15サイズの時
+            //{
+            //    this.transform.Rotate(new Vector3(0, 0, 2));
+            //}
+            //if (gScale.x == 2.0f)   //20サイズの時
+            //{
+            //    this.transform.Rotate(new Vector3(0, 0, 1));
+            //}
+            this.transform.Rotate(new Vector3(0, 0, 2));
         }
         if (lflg == true)
         {
-            if (gScale.x == 1.0f)  //10サイズの時
-            {
-                this.transform.Rotate(new Vector3(0, 0, -3));
-            }
-            if (gScale.x == 1.5f)   //15サイズの時
-            {
-                this.transform.Rotate(new Vector3(0, 0, -2));
-            }
-            if (gScale.x == 2.0f)   //20サイズの時
-            {
-                this.transform.Rotate(new Vector3(0, 0, -1));
-            }
+            //if (gScale.x == 1.0f)  //10サイズの時
+            //{
+            //    this.transform.Rotate(new Vector3(0, 0, -3));
+            //}
+            //if (gScale.x == 1.5f)   //15サイズの時
+            //{
+            //    this.transform.Rotate(new Vector3(0, 0, -2));
+            //}
+            //if (gScale.x == 2.0f)   //20サイズの時
+            //{
+            //    this.transform.Rotate(new Vector3(0, 0, -1));
+            //}
+            this.transform.Rotate(new Vector3(0, 0, -2));
         }
     }
 
@@ -72,6 +74,7 @@ public class Rotate : MonoBehaviour
         {
             rflg = true;   // 回転フラグオン
             this.tag = "LGear";
+            Debug.Log("a");
         }
         else if (other.gameObject.CompareTag("LGear"))
         {
@@ -81,31 +84,31 @@ public class Rotate : MonoBehaviour
 
     }
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        //離れたら
-        if (other.gameObject.CompareTag("RDrive"))
-        {
-            rflg = false;   //回転フラグオフ
-            this.tag = "Gear";
-        }
-        else if (other.gameObject.CompareTag("LDrive"))
-        {
-            lflg = false;   //回転フラグオフ
-            this.tag = "Gear";
-        }
-        //離れたら
-        else if (other.gameObject.CompareTag("RGear"))
-        {
-            rflg = false;   //回転フラグオフ
-            this.tag = "Gear";
-        }
-        else if (other.gameObject.CompareTag("LGear"))
-        {
-            lflg = false;   //回転フラグオフ
-            this.tag = "Gear";
-        }
-    }
+    //void OnTriggerExit2D(Collider2D other)
+    //{
+    //    //離れたら
+    //    if (other.gameObject.CompareTag("RDrive"))
+    //    {
+    //        rflg = false;   //回転フラグオフ
+    //        this.tag = "Gear";
+    //    }
+    //    else if (other.gameObject.CompareTag("LDrive"))
+    //    {
+    //        lflg = false;   //回転フラグオフ
+    //        this.tag = "Gear";
+    //    }
+    //    //離れたら
+    //    else if (other.gameObject.CompareTag("RGear"))
+    //    {
+    //        rflg = false;   //回転フラグオフ
+    //        this.tag = "Gear";
+    //    }
+    //    else if (other.gameObject.CompareTag("LGear"))
+    //    {
+    //        lflg = false;   //回転フラグオフ
+    //        this.tag = "Gear";
+    //    }
+    //}
 
 
 }

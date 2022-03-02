@@ -7,6 +7,9 @@ public class GenerateGear : MonoBehaviour
     //生成するオブジェクト
     public GameObject gear;
 
+    //削除用
+    BoxVariable box_variable;
+
     //CursorCollisionの変数を使う
     CursorCollision cursor_collision;
     //DeleteLocationの変数を使う
@@ -20,11 +23,13 @@ public class GenerateGear : MonoBehaviour
         //スクリプトを取得
         cursor_collision = GetComponent<CursorCollision>();
 
-        GameObject obj = transform.parent.gameObject;
-        delete_location = obj.GetComponent<DeleteLocation>();
+        //GameObject obj = transform.parent.gameObject;
+        //delete_location = obj.GetComponent<DeleteLocation>();
 
+        GameObject obj = transform.parent.gameObject;
+        box_variable = obj.GetComponent<BoxVariable>();
         //親を取得
-        parent_obj = transform.parent.gameObject;
+        parent_obj = transform.parent.parent.gameObject;
     }
 
     // Update is called once per frame
@@ -43,10 +48,12 @@ public class GenerateGear : MonoBehaviour
                 //親にする
                 var parent = parent_obj.transform;
 
-                Instantiate(gear, new Vector3(pos.x, pos.y, 0), Quaternion.identity,parent);
-
+                GameObject gear_obj =Instantiate(gear, new Vector3(pos.x, pos.y, 0), Quaternion.identity,parent);
+                //そのうち実数から変更（萩野直す）
+                //スケール変更
+                gear_obj.transform.localScale = new Vector3(2, 2, 0);
                 //設置用のオブジェクトを削除
-                delete_location.delete_flg = true;
+                box_variable.delete_flg = true;
             }
         }
     }

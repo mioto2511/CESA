@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DeleteLocation : MonoBehaviour
 {
-    public bool delete_flg;
-
+    //public bool delete_flg;
+    BoxVariable box_variable;
     //GenerateInstallation
     GenerateInstallation generate_installation;
 
@@ -13,12 +13,14 @@ public class DeleteLocation : MonoBehaviour
     void Start()
     {
         generate_installation = GetComponent<GenerateInstallation>();
+        GameObject obj = transform.parent.gameObject;
+        box_variable = obj.GetComponent<BoxVariable>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(delete_flg == true)
+        if(box_variable.delete_flg == true)
         {
             //foreach (Transform child in gameObject.transform)
             //{
@@ -31,7 +33,7 @@ public class DeleteLocation : MonoBehaviour
             }
 
 
-            delete_flg = false;
+            box_variable.delete_flg = false;
 
             generate_installation.location_flg = true;
         }

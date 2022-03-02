@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BoxVariable : MonoBehaviour
 {
+    public bool delete_flg;
     public bool become_child = false;
     public int child_cnt = 0;
 

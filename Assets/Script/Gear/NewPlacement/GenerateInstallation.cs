@@ -15,11 +15,14 @@ public class GenerateInstallation : MonoBehaviour
 
     public float distance = 0;
 
+    private GameObject parent_obj;
+
     // Start is called before the first frame update
     void Start()
     {
         //スクリプトを取得
         fulcrum_distance = GetComponent<FulcrumDistance>();
+        parent_obj = transform.parent.gameObject;
     }
 
     // Update is called once per frame
@@ -53,14 +56,14 @@ public class GenerateInstallation : MonoBehaviour
             near_obj = fulcrum_distance.serchTag(gameObject, "FulcrumGear");
 
             // 取得
-            Transform my_transform = this.transform;
+            Transform my_transform = parent_obj.transform;
             Vector3 my_pos = my_transform.position;
 
             //設置座標
             Vector3[] center_pos = new Vector3[4];
 
             //親にする
-            var parent = this.transform;
+            var parent = parent_obj.transform;
 
             //4箇所の位置取得
             for (int i = 0; i < installation_transform.Length; i++)
@@ -73,8 +76,8 @@ public class GenerateInstallation : MonoBehaviour
                 center_pos[i] = (my_pos + installation_pos[i]) / 2;
 
                 //生成
-                Instantiate(installation_location, new Vector3(center_pos[i].x, center_pos[i].y, 0), Quaternion.identity, parent);
-
+                GameObject gear_obj　=Instantiate(installation_location, new Vector3(center_pos[i].x, center_pos[i].y, 0), Quaternion.identity, parent);
+                gear_obj.transform.localScale = new Vector3(0.375f, 0.375f, 0);
 
             }
 
@@ -82,7 +85,8 @@ public class GenerateInstallation : MonoBehaviour
             location_flg = false;
 
             //生成
-            Instantiate(cursor, new Vector3(my_pos.x, my_pos.y, 0), Quaternion.identity, parent);
+            GameObject cursor_obj = Instantiate(cursor, new Vector3(my_pos.x, my_pos.y, 0), Quaternion.identity, parent);
+            cursor_obj.transform.localScale = new Vector3(0.375f, 0.375f, 0);
         }
     }
 }
