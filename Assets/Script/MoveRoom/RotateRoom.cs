@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class RotateRoom : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     [SerializeField, Tooltip("ターゲットオブジェクト")]
     private GameObject target_object;
 
@@ -26,8 +20,10 @@ public class RotateRoom : MonoBehaviour
     private bool right_rotate = false;
     private bool left_rotate = false;
 
+    //部屋同士が当たったか
     public bool room_hit = false;
 
+    //自身のtf
     Transform my_transform;
     Vector3 my_rotate;
 
@@ -57,7 +53,7 @@ public class RotateRoom : MonoBehaviour
         }
 
         // 指定オブジェクトを中心に回転する
-        if (rotate_flg == true)//右下
+        if (rotate_flg == true)
         {
             if(right_rotate == true)
             {

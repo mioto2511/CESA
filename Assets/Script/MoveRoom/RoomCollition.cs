@@ -5,25 +5,25 @@ using UnityEngine;
 public class RoomCollition : MonoBehaviour
 {
     //RotateRoom変数を使う
-    RotateRoom root_room;
+    private RotateRoom root_room;
     //BoxVariable
-    BoxVariable box_variable;
+    private BoxVariable box_variable;
 
     //自身のtf
-    Transform my_transform;
+    private Transform my_transform;
 
-    GameObject parent;
-    GameObject root;
+    //親と親の親
+    private GameObject parent;
+    private GameObject root;
 
     // Start is called before the first frame update
     void Start()
     {
         root = this.transform.parent.parent.gameObject; //オブジェクトを探す
-        //root = GameObject.Find("Room");
         root_room = root.GetComponent<RotateRoom>(); //付いているスクリプトを取得
 
         parent = this.transform.parent.gameObject; //オブジェクトを探す
-        box_variable = parent.GetComponent<BoxVariable>();
+        box_variable = parent.GetComponent<BoxVariable>();//付いているスクリプトを取得
     }
 
     // Update is called once per frame
@@ -32,27 +32,11 @@ public class RoomCollition : MonoBehaviour
         // transformを取得
         my_transform = this.transform;
 
-        //Debug.Log(root.transform.rotation.z);
-
-        if(root != null)
-        {
-            
-        }
-
+        //自身以外の部屋が当たった場合
         if (root_room.room_hit == true)
         {
             //位置の誤差修正
             ErrorCorrection();
-            //root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Round(root.transform.rotation.z));
-            //if((root.transform.rotation.z >= -1.01f) &&(root.transform.rotation.z <= -0.98f))
-            //{
-            //    root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -1);
-            //}
-
-            //Vector3 my_pos = parent.transform.position;
-            //my_pos.x = Mathf.Round(my_pos.x);     //四捨五入
-            //my_pos.y = Mathf.Round(my_pos.y);     //四捨五入
-            //parent.transform.position = my_pos;
         }
     }
 
@@ -85,50 +69,42 @@ public class RoomCollition : MonoBehaviour
 
             //位置の誤差修正
             ErrorCorrection();
-
-            
-            ////root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Round(root.transform.rotation.z));
-
-
-            //Vector3 my_pos = parent.transform.position;
-            //my_pos.x = Mathf.Round(my_pos.x);     //四捨五入
-            //my_pos.y = Mathf.Round(my_pos.y);     //四捨五入
-            //parent.transform.position = my_pos;
-            //Debug.Log(root.transform.rotation.z);
         }
     }
 
     //位置の誤差修正
     void ErrorCorrection()
     {
+        // クォータニオン → オイラー角への変換
+        Vector3 rotationAngles = root.transform.rotation.eulerAngles;
+
         //Debug.Log(root.transform.rotation.z);
         //parent.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Round(parent.transform.rotation.z));
-        if ((root.transform.rotation.z >= -1.01f) && (root.transform.rotation.z <= -0.98f))
+
+        //角度の誤差修正
+        if ((rotationAngles.z >= 178) && (rotationAngles.z <= 182))
         {
             root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180);
         }
-        else if ((root.transform.rotation.z >= -0.51f) && (root.transform.rotation.z <= -0.48f))
+        else if ((rotationAngles.z >= 88) && (rotationAngles.z <= 92))
         {
             root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90);
         }
-        else if ((root.transform.rotation.z <= 1.01f) && (root.transform.rotation.z >= 0.98f))
+        else if ((rotationAngles.z >= 268) && (rotationAngles.z <= 272))
         {
-            root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -180);
+            root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 270);
         }
-        else if ((root.transform.rotation.z <= 0.51f) && (root.transform.rotation.z >= 0.48f))
-        {
-            root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90);
-        }
-        else if ((root.transform.rotation.z <= 0.02f) && (root.transform.rotation.z >= -0.01f))
+        else if ((rotationAngles.z >= -2) && (rotationAngles.z <= 2))
         {
             root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0);
         }
-        else if ((root.transform.rotation.z >= -0.02f) && (root.transform.rotation.z <= 0.01f))
+        else if ((rotationAngles.z >= 358) && (rotationAngles.z <= 362))
         {
-            root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0);
+            root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 360);
         }
         //root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Round(root.transform.rotation.z));
 
+        //位置の誤差修正
         Vector3 my_pos = parent.transform.position;
         my_pos.x = Mathf.Round(my_pos.x);     //四捨五入
         my_pos.y = Mathf.Round(my_pos.y);     //四捨五入

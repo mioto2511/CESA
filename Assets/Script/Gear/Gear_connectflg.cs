@@ -19,12 +19,12 @@ public class Gear_connectflg : MonoBehaviour
         if (this.tag == "LGear")
         {
             box_variable.become_child = true;
-            Debug.Log("b");
+            //Debug.Log("b");
         }
         else if(this.tag == "RGear")
         {
             box_variable.become_child = true;
-            Debug.Log("b");
+            //Debug.Log("b");
         }
     }
 }

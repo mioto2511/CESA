@@ -4,30 +4,28 @@ using UnityEngine;
 
 public class GenerateGear : MonoBehaviour
 {
-    //生成するオブジェクト
-    public GameObject gear;
+    [SerializeField, Tooltip("生成する歯車")]
+    private GameObject gear;
 
     //削除用
-    BoxVariable box_variable;
+    private BoxVariable box_variable;
 
     //CursorCollisionの変数を使う
-    CursorCollision cursor_collision;
+    private CursorCollision cursor_collision;
     //DeleteLocationの変数を使う
-    DeleteLocation delete_location;
+    private DeleteLocation delete_location;
 
+    //親
     private GameObject parent_obj;
 
     // Start is called before the first frame update
     void Start()
     {
-        //スクリプトを取得
-        cursor_collision = GetComponent<CursorCollision>();
+        cursor_collision = GetComponent<CursorCollision>();//付いているスクリプトを取得
 
-        //GameObject obj = transform.parent.gameObject;
-        //delete_location = obj.GetComponent<DeleteLocation>();
+        GameObject obj = transform.parent.gameObject;//オブジェクトを探す
+        box_variable = obj.GetComponent<BoxVariable>();//付いているスクリプトを取得
 
-        GameObject obj = transform.parent.gameObject;
-        box_variable = obj.GetComponent<BoxVariable>();
         //親を取得
         parent_obj = transform.parent.parent.gameObject;
     }

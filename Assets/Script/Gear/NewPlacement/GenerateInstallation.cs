@@ -7,21 +7,27 @@ public class GenerateInstallation : MonoBehaviour
     //FulcrumDistanceの変数を使う
     FulcrumDistance fulcrum_distance;
 
-    //生成するオブジェクト
-    public GameObject installation_location;
-    public GameObject cursor;
+    [SerializeField, Tooltip("生成する設置位置")]
+    private GameObject installation_location;
 
+    [SerializeField, Tooltip("生成するカーソル")]
+    private GameObject cursor;
+
+    [SerializeField, Tooltip("DriveとPlayerの距離")]
+    private float distance = 0;
+
+    //設置用のフラグ
     public bool location_flg = true;
 
-    public float distance = 0;
-
+    //親
     private GameObject parent_obj;
 
     // Start is called before the first frame update
     void Start()
     {
-        //スクリプトを取得
-        fulcrum_distance = GetComponent<FulcrumDistance>();
+        fulcrum_distance = GetComponent<FulcrumDistance>();//付いているスクリプトを取得
+        
+        //親を取得
         parent_obj = transform.parent.gameObject;
     }
 
@@ -53,6 +59,7 @@ public class GenerateInstallation : MonoBehaviour
             Vector3[] installation_pos = new Vector3[4];
             GameObject[] near_obj = new GameObject[4];
 
+            //Driveに近い四つの支点を取得
             near_obj = fulcrum_distance.serchTag(gameObject, "FulcrumGear");
 
             // 取得
@@ -76,8 +83,8 @@ public class GenerateInstallation : MonoBehaviour
                 center_pos[i] = (my_pos + installation_pos[i]) / 2;
 
                 //生成
-                GameObject gear_obj　=Instantiate(installation_location, new Vector3(center_pos[i].x, center_pos[i].y, 0), Quaternion.identity, parent);
-                gear_obj.transform.localScale = new Vector3(0.375f, 0.375f, 0);
+                GameObject location_obj = Instantiate(installation_location, new Vector3(center_pos[i].x, center_pos[i].y, 0), Quaternion.identity, parent);
+                location_obj.transform.localScale = new Vector3(0.375f, 0.375f, 0);
 
             }
 
