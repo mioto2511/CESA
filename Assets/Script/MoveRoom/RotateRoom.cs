@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class RotateRoom : MonoBehaviour
 {
+    public static RotateRoom instance;
+    public int rotate_cnt = 0;
+
+    public void Awake()
+    {
+        if(instance==null)
+        {
+            instance = this;
+        }
+    }
+
     [SerializeField, Tooltip("ターゲットオブジェクト")]
     private GameObject target_object;
 
@@ -49,6 +60,7 @@ public class RotateRoom : MonoBehaviour
         //部屋が当たった
         if (room_hit == true)
         {
+            rotate_cnt++;
             room_hit = false;
         }
 
