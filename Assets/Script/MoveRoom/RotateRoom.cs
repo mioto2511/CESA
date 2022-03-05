@@ -60,7 +60,6 @@ public class RotateRoom : MonoBehaviour
         //•”‰®‚ª“–‚½‚Á‚½
         if (room_hit == true)
         {
-            rotate_cnt++;
             room_hit = false;
         }
 

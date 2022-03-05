@@ -74,7 +74,6 @@ public class Rotate : MonoBehaviour
         {
             rflg = true;   // ‰ñ“]ƒtƒ‰ƒOƒIƒ“
             this.tag = "LGear";
-            Debug.Log("a");
         }
         else if (other.gameObject.CompareTag("LGear"))
         {
