@@ -1,0 +1,73 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AutoPlayerMove : MonoBehaviour
+{
+    private Rigidbody2D rb = null;
+
+    [Header("キャラの速さ")] public float speed;
+
+    //現在の向き
+    private bool right_f = true;
+
+    //スクリプト取得
+    [Header("壁接触判定")] public PlayerWallTrigger wall_trigger;
+    [Header("床接触判定")] public PlayerGroundTrigger ground_trigger;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        float xSpeed = 0.0f;
+
+        //壁に衝突したら向き変更
+        if (wall_trigger.isOn)
+        {
+            right_f = !right_f;
+        }
+
+        //地面の端で向き変更
+        if (ground_trigger.isOn == false)
+        {
+            right_f = !right_f;
+        }
+
+        //if (Input.GetKey(KeyCode.LeftArrow))
+        //{
+        //    xSpeed = -speed;
+        //}
+        //// 右に移動
+        //else if (Input.GetKey(KeyCode.RightArrow))
+        //{
+        //    xSpeed = speed;
+        //}
+        //else
+        //{
+        //    xSpeed = 0.0f;
+        //}
+
+        //右向き
+        if (right_f)
+        {
+            //進行方向
+            xSpeed = speed;
+            //向き
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        //左向き
+        else
+        {
+            xSpeed = -speed;
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+
+        //代入
+        rb.velocity = new Vector2(xSpeed, rb.velocity.y);
+    }
+}
