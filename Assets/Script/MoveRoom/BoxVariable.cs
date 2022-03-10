@@ -12,4 +12,7 @@ public class BoxVariable : MonoBehaviour
 
     //Wall用のカウント
     public int child_cnt = 0;
+
+    //設置用のフラグ
+    public bool location_flg = true;
 }

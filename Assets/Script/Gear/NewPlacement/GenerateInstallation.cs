@@ -5,7 +5,9 @@ using UnityEngine;
 public class GenerateInstallation : MonoBehaviour
 {
     //FulcrumDistanceの変数を使う
-    FulcrumDistance fulcrum_distance;
+    private FulcrumDistance fulcrum_distance;
+    //BoxVariableの変数を使う
+    private BoxVariable box_variable;
 
     [SerializeField, Tooltip("生成する設置位置")]
     private GameObject installation_location;
@@ -15,9 +17,6 @@ public class GenerateInstallation : MonoBehaviour
 
     [SerializeField, Tooltip("DriveとPlayerの距離")]
     private float distance = 0;
-
-    //設置用のフラグ
-    public bool location_flg = true;
 
     //親
     private GameObject parent_obj;
@@ -29,6 +28,8 @@ public class GenerateInstallation : MonoBehaviour
         
         //親を取得
         parent_obj = transform.parent.gameObject;
+
+        box_variable = parent_obj.GetComponent<BoxVariable>();//付いているスクリプトを取得
     }
 
     // Update is called once per frame
@@ -52,7 +53,7 @@ public class GenerateInstallation : MonoBehaviour
     void Generate()
     {
         //生成
-        if (location_flg == true)
+        if (box_variable.location_flg == true)
         {
             // 支点を取得
             Transform[] installation_transform = new Transform[4];
@@ -89,7 +90,7 @@ public class GenerateInstallation : MonoBehaviour
             }
 
             //設置フラグを折る
-            location_flg = false;
+            box_variable.location_flg = false;
 
             //生成
             GameObject cursor_obj = Instantiate(cursor, new Vector3(my_pos.x, my_pos.y, 0), Quaternion.identity, parent);

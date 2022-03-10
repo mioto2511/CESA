@@ -27,7 +27,7 @@ public class GenerateGear : MonoBehaviour
         box_variable = obj.GetComponent<BoxVariable>();//付いているスクリプトを取得
 
         //親を取得
-        parent_obj = transform.parent.parent.gameObject;
+        parent_obj = transform.parent.gameObject;
     }
 
     // Update is called once per frame
@@ -49,7 +49,7 @@ public class GenerateGear : MonoBehaviour
                 GameObject gear_obj =Instantiate(gear, new Vector3(pos.x, pos.y, 0), Quaternion.identity,parent);
                 //そのうち実数から変更（萩野直す）
                 //スケール変更
-                gear_obj.transform.localScale = new Vector3(2, 2, 0);
+                gear_obj.transform.localScale = new Vector3(0.375f, 0.375f, 0);
                 //設置用のオブジェクトを削除
                 box_variable.delete_flg = true;
             }

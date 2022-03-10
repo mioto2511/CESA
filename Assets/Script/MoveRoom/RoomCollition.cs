@@ -50,6 +50,9 @@ public class RoomCollition : MonoBehaviour
             //部屋同士があたった
             root_room.room_hit = true;
 
+            //再び設置できるようにする
+            box_variable.location_flg = true;
+
             //Debug.Log("hit"+this);
 
             //接続されてるか？
@@ -58,7 +61,7 @@ public class RoomCollition : MonoBehaviour
             //BoxVariable collision_box_variable = collision_parent.GetComponent<BoxVariable>(); //付いているスクリプトを取得
             //collision_box_variable.become_child = true;
 
-            
+
 
             //設置した歯車を削除
             GameObject[] objects = GameObject.FindGameObjectsWithTag("Gear");

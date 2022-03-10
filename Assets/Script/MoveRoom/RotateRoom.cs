@@ -34,6 +34,8 @@ public class RotateRoom : MonoBehaviour
     //部屋同士が当たったか
     public bool room_hit = false;
 
+    private int child_cnt = 0;
+
     //自身のtf
     Transform my_transform;
     Vector3 my_rotate;
@@ -60,7 +62,14 @@ public class RotateRoom : MonoBehaviour
         //部屋が当たった
         if (room_hit == true)
         {
-            room_hit = false;
+            child_cnt++;
+
+            if (child_cnt >= this.transform.childCount)
+            {
+                room_hit = false;
+                child_cnt = 0;
+            }
+            
         }
 
         // 指定オブジェクトを中心に回転する

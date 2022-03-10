@@ -20,7 +20,7 @@ public class Count : MonoBehaviour
         if (RotateRoom.instance.room_hit == true)
         {
             rotate_cnt += 1;
-            RotateRoom.instance.room_hit = false;
+            //RotateRoom.instance.room_hit = false;
         }
 
         textCount.text = string.Format("{0}", rotate_cnt);

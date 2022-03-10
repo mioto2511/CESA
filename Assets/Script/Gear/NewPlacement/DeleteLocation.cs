@@ -6,14 +6,10 @@ public class DeleteLocation : MonoBehaviour
 {
     //BoxVariableの変数を使う
     private BoxVariable box_variable;
-    //GenerateInstallationの変数を使う
-    private GenerateInstallation generate_installation;
 
     // Start is called before the first frame update
     void Start()
     {
-        generate_installation = GetComponent<GenerateInstallation>();//付いているスクリプトを取得
-
         GameObject obj = transform.parent.gameObject;//オブジェクトを探す
         box_variable = obj.GetComponent<BoxVariable>();//付いているスクリプトを取得
     }
@@ -32,9 +28,6 @@ public class DeleteLocation : MonoBehaviour
 
             //削除フラグを折る
             box_variable.delete_flg = false;
-
-            //再び設置できるようにする
-            generate_installation.location_flg = true;
         }
     }
 }
