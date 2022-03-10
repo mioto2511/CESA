@@ -37,8 +37,8 @@ public class PlayerMove : MonoBehaviour
             }
 
 
-            if (lsv > deadzone)
-            {
+           if (lsv > deadzone)
+           {
                 tf.position = tf.position + new Vector3(0.0f, +speed, 0.0f);
             }
             else if (lsv < -deadzone)

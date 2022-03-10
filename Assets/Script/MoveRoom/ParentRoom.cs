@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//このスクリプトはいらない子です
 public class ParentRoom : MonoBehaviour
 {
+    //部屋同士が当たったフラグ
     public bool room_hit = false;
 
     //RotateRoom変数を使う

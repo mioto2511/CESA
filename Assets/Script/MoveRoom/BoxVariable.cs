@@ -4,18 +4,12 @@ using UnityEngine;
 
 public class BoxVariable : MonoBehaviour
 {
+    //設置用オブジェクトを削除するフラグ
+    public bool delete_flg;
+
+    //この箱が子になるフラグ
     public bool become_child = false;
+
+    //Wall用のカウント
     public int child_cnt = 0;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

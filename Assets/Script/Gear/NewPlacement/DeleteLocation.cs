@@ -4,35 +4,36 @@ using UnityEngine;
 
 public class DeleteLocation : MonoBehaviour
 {
-    public bool delete_flg;
-
-    //GenerateInstallation
-    GenerateInstallation generate_installation;
+    //BoxVariableの変数を使う
+    private BoxVariable box_variable;
+    //GenerateInstallationの変数を使う
+    private GenerateInstallation generate_installation;
 
     // Start is called before the first frame update
     void Start()
     {
-        generate_installation = GetComponent<GenerateInstallation>();
+        generate_installation = GetComponent<GenerateInstallation>();//付いているスクリプトを取得
+
+        GameObject obj = transform.parent.gameObject;//オブジェクトを探す
+        box_variable = obj.GetComponent<BoxVariable>();//付いているスクリプトを取得
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(delete_flg == true)
+        if(box_variable.delete_flg == true)
         {
-            //foreach (Transform child in gameObject.transform)
-            //{
-            //    Destroy(child.gameObject);
-            //}
+            //設置用のオブジェクトを削除
             GameObject[] objects = GameObject.FindGameObjectsWithTag("Select");
             foreach (GameObject del in objects)
             {
                 Destroy(del);
             }
 
+            //削除フラグを折る
+            box_variable.delete_flg = false;
 
-            delete_flg = false;
-
+            //再び設置できるようにする
             generate_installation.location_flg = true;
         }
     }
