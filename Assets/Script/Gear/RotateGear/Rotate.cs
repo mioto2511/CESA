@@ -56,29 +56,33 @@ public class Rotate : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
-        //原動力に当たった時
-        if (other.gameObject.CompareTag("RDrive"))
+        if (rflg == false && lflg == false)
         {
-            rflg = true;   // 回転フラグオン
-            this.tag = "LGear";
-        }
-        else if (other.gameObject.CompareTag("LDrive"))
-        {
-            lflg = true;   // 回転フラグオン
-            this.tag = "RGear";
-        }
-        //歯車に当たった時
-        else if (other.gameObject.CompareTag("RGear"))
-        {
-            rflg = true;   // 回転フラグオン
-            this.tag = "LGear";
-        }
-        else if (other.gameObject.CompareTag("LGear"))
-        {
-            lflg = true;   // 回転フラグオン
-            this.tag = "RGear";
+            //原動力に当たった時
+            if (other.gameObject.CompareTag("RDrive"))
+            {
+                rflg = true;   // 回転フラグオン
+                this.tag = "LGear";
+            }
+            else if (other.gameObject.CompareTag("LDrive"))
+            {
+                lflg = true;   // 回転フラグオン
+                this.tag = "RGear";
+            }
+            //歯車に当たった時
+            else if (other.gameObject.CompareTag("RGear"))
+            {
+                rflg = true;   // 回転フラグオン
+                this.tag = "LGear";
+                Debug.Log("a");
+            }
+            else if (other.gameObject.CompareTag("LGear"))
+            {
+                lflg = true;   // 回転フラグオン
+                this.tag = "RGear";
+            }
         }
 
     }

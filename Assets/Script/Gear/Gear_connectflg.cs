@@ -16,12 +16,12 @@ public class Gear_connectflg : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.tag == "LGear")
+        if (this.tag == "LGear_Connect")
         {
             box_variable.become_child = true;
             //Debug.Log("b");
         }
-        else if(this.tag == "RGear")
+        else if(this.tag == "RGear_Connect")
         {
             box_variable.become_child = true;
             //Debug.Log("b");
