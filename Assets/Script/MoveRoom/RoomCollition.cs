@@ -24,6 +24,9 @@ public class RoomCollition : MonoBehaviour
 
         parent = this.transform.parent.gameObject; //オブジェクトを探す
         box_variable = parent.GetComponent<BoxVariable>();//付いているスクリプトを取得
+
+        //位置の誤差修正
+        ErrorCorrection();
     }
 
     // Update is called once per frame
@@ -42,7 +45,7 @@ public class RoomCollition : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Room"))
+        if (collision.gameObject.CompareTag("Wall"))
         {
             //回転フラグを折る
             root_room.rotate_flg = false;

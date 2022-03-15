@@ -6,6 +6,8 @@ public class AutoPlayerMove : MonoBehaviour
 {
     private Rigidbody2D rb = null;
 
+    public bool move_flg = true;
+
     [Header("キャラの速さ")] public float speed;
 
     //現在の向き
@@ -24,50 +26,54 @@ public class AutoPlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float xSpeed = 0.0f;
-
-        //壁に衝突したら向き変更
-        if (wall_trigger.isOn)
+        if (move_flg)
         {
-            right_f = !right_f;
-        }
+            float xSpeed = 0.0f;
 
-        //地面の端で向き変更
-        if (ground_trigger.isOn == false)
-        {
-            right_f = !right_f;
-        }
+            //壁に衝突したら向き変更
+            if (wall_trigger.isOn)
+            {
+                right_f = !right_f;
+            }
 
-        //if (Input.GetKey(KeyCode.LeftArrow))
-        //{
-        //    xSpeed = -speed;
-        //}
-        //// 右に移動
-        //else if (Input.GetKey(KeyCode.RightArrow))
-        //{
-        //    xSpeed = speed;
-        //}
-        //else
-        //{
-        //    xSpeed = 0.0f;
-        //}
+            //地面の端で向き変更
+            if (ground_trigger.isOn == false)
+            {
+                right_f = !right_f;
+            }
 
-        //右向き
-        if (right_f)
-        {
-            //進行方向
-            xSpeed = speed;
-            //向き
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        //左向き
-        else
-        {
-            xSpeed = -speed;
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
+            //if (Input.GetKey(KeyCode.LeftArrow))
+            //{
+            //    xSpeed = -speed;
+            //}
+            //// 右に移動
+            //else if (Input.GetKey(KeyCode.RightArrow))
+            //{
+            //    xSpeed = speed;
+            //}
+            //else
+            //{
+            //    xSpeed = 0.0f;
+            //}
 
-        //代入
-        rb.velocity = new Vector2(xSpeed, rb.velocity.y);
+            //右向き
+            if (right_f)
+            {
+                //進行方向
+                xSpeed = speed;
+                //向き
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            //左向き
+            else
+            {
+                xSpeed = -speed;
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+
+            //代入
+            rb.velocity = new Vector2(xSpeed, rb.velocity.y);
+        }
+        
     }
 }

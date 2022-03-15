@@ -9,12 +9,20 @@ public class PlayerGroundTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isOn = true;
+        if(collision.gameObject.CompareTag("Wall"))
+        {
+            isOn = true;
+        }
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("out");
-        isOn = false;
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Debug.Log("out");
+            isOn = false;
+        }
+        
     }
 }
