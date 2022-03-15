@@ -40,6 +40,15 @@ public class RotateRoom : MonoBehaviour
     Transform my_transform;
     Vector3 my_rotate;
 
+    //AutoPlayerMoveの変数を使う
+    AutoPlayerMove auto_player_move;
+
+    void Start()
+    {
+        GameObject obj2 = GameObject.Find("Player"); //オブジェクトを探す
+        auto_player_move = obj2.GetComponent<AutoPlayerMove>();　//付いているスクリプトを取得
+    }
+
     void Update()
     {
         // transformを取得
@@ -68,6 +77,9 @@ public class RotateRoom : MonoBehaviour
             {
                 room_hit = false;
                 child_cnt = 0;
+
+                //プレイヤーを起動
+                auto_player_move.move_flg = true;
             }
             
         }

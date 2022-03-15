@@ -58,7 +58,7 @@ public class Drive_gearRotate : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log("hit");
+        //Debug.Log("hit");
         //Œ´“®—Í‚É“–‚½‚Á‚½Žž
         if (other.gameObject.CompareTag("RDrive"))
         {
@@ -75,7 +75,7 @@ public class Drive_gearRotate : MonoBehaviour
         {
             rflg = true;   // ‰ñ“]ƒtƒ‰ƒOƒIƒ“
             this.tag = "LDrive";
-            Debug.Log("a");
+            //Debug.Log("a");
         }
         else if (other.gameObject.CompareTag("LGear_Connect"))
         {
