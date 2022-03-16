@@ -27,6 +27,9 @@ public class RoomCollition : MonoBehaviour
 
         //位置の誤差修正
         ErrorCorrection();
+
+        //座標取得
+        box_variable.box_pos = parent.transform.position;
     }
 
     // Update is called once per frame
@@ -111,9 +114,19 @@ public class RoomCollition : MonoBehaviour
         //root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Round(root.transform.rotation.z));
 
         //位置の誤差修正
-        Vector3 my_pos = parent.transform.position;
-        my_pos.x = Mathf.Round(my_pos.x);     //四捨五入
-        my_pos.y = Mathf.Round(my_pos.y);     //四捨五入
-        parent.transform.position = my_pos;
+        Vector3 parent_pos = parent.transform.position;
+        parent_pos.x = Mathf.Round(parent_pos.x);     //四捨五入
+        parent_pos.y = Mathf.Round(parent_pos.y);     //四捨五入
+        parent.transform.position = parent_pos;
+
+
+        Vector3 my_pos = this.transform.position;
+        my_pos.x = my_pos.x * 100000;
+        my_pos.y = my_pos.y * 100000;
+
+        my_pos.x = Mathf.Floor(my_pos.x) / 100000;
+        my_pos.y = Mathf.Floor(my_pos.y) / 100000;
+
+        this.transform.position = my_pos;
     }
 }

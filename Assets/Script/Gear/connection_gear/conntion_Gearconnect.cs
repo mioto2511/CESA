@@ -31,7 +31,5 @@ public class conntion_Gearconnect : MonoBehaviour
             other.tag = "LGear_Connect";
             Debug.Log("connect");
         }
-       
-
     }
 }

@@ -36,7 +36,11 @@ public class MoveAxisOfRotate : MonoBehaviour
             //プレイヤーを停止
             auto_player_move.move_flg = false;
 
+            //回転開始
             rotate_room.rotate_flg = true;
+
+            //歯車のコライダー削除
+
         }
     }
 }

@@ -78,6 +78,8 @@ public class RotateRoom : MonoBehaviour
                 room_hit = false;
                 child_cnt = 0;
 
+                //歯車のコライダーON
+
                 //プレイヤーを起動
                 auto_player_move.move_flg = true;
             }

@@ -15,4 +15,7 @@ public class BoxVariable : MonoBehaviour
 
     //設置用のフラグ
     public bool location_flg = true;
+
+    //カメラ用の中心座標
+    public Vector2 box_pos;
 }
