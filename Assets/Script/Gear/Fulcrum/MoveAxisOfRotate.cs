@@ -40,6 +40,13 @@ public class MoveAxisOfRotate : MonoBehaviour
             rotate_room.rotate_flg = true;
 
             //歯車のコライダー削除
+            GameObject[] objects = GameObject.FindGameObjectsWithTag("LGear");
+            objects = GameObject.FindGameObjectsWithTag("RGear");
+            foreach (GameObject num in objects)
+            {
+                var colliderTest = num.GetComponent<Collider2D>();
+                colliderTest.enabled = false;
+            }
 
         }
     }

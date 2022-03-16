@@ -79,6 +79,13 @@ public class RotateRoom : MonoBehaviour
                 child_cnt = 0;
 
                 //歯車のコライダーON
+                GameObject[] objects = GameObject.FindGameObjectsWithTag("LGear");
+                objects = GameObject.FindGameObjectsWithTag("RGear");
+                foreach (GameObject num in objects)
+                {
+                    var colliderTest = num.GetComponent<Collider2D>();
+                    colliderTest.enabled = true;
+                }
 
                 //プレイヤーを起動
                 auto_player_move.move_flg = true;
