@@ -20,7 +20,7 @@ public class DeleteLocation : MonoBehaviour
         if(box_variable.delete_flg == true)
         {
             //設置用のオブジェクトを削除
-            GameObject[] objects = GameObject.FindGameObjectsWithTag("Select");
+            GameObject[] objects = GameObject.FindGameObjectsWithTag("Location");
             foreach (GameObject del in objects)
             {
                 Destroy(del);

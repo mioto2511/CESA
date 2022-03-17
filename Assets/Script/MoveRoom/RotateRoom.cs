@@ -28,8 +28,8 @@ public class RotateRoom : MonoBehaviour
     public bool rotate_flg = false;
 
     //何周りか
-    private bool right_rotate = false;
-    private bool left_rotate = false;
+    public bool right_rotate = false;
+    public bool left_rotate = false;
 
     //部屋同士が当たったか
     public bool room_hit = false;
@@ -54,19 +54,19 @@ public class RotateRoom : MonoBehaviour
         // transformを取得
         my_transform = this.transform;
 
-        //回転方向の変更
-        if (Input.GetKeyDown("joystick button 5"))//右
-        {
-            right_rotate = true;
-            left_rotate = false;
-            Debug.Log("R");
-        }
-        else if (Input.GetKeyDown("joystick button 4"))//左
-        {
-            left_rotate = true;
-            right_rotate = false;
-            Debug.Log("L");
-        }
+        ////回転方向の変更
+        //if (Input.GetKeyDown("joystick button 5"))//右
+        //{
+        //    right_rotate = true;
+        //    left_rotate = false;
+        //    Debug.Log("R");
+        //}
+        //else if (Input.GetKeyDown("joystick button 4"))//左
+        //{
+        //    left_rotate = true;
+        //    right_rotate = false;
+        //    Debug.Log("L");
+        //}
 
         //部屋が当たった
         if (room_hit == true)
@@ -78,6 +78,10 @@ public class RotateRoom : MonoBehaviour
                 room_hit = false;
                 child_cnt = 0;
 
+                //回転方向の初期化
+                left_rotate = false;
+                right_rotate = false;
+
                 //歯車のコライダーON
                 GameObject[] objects = GameObject.FindGameObjectsWithTag("LGear");
                 objects = GameObject.FindGameObjectsWithTag("RGear");
@@ -86,6 +90,10 @@ public class RotateRoom : MonoBehaviour
                     var colliderTest = num.GetComponent<Collider2D>();
                     colliderTest.enabled = true;
                 }
+
+                //カーソルのタグ変更
+                GameObject obj = GameObject.Find("SelectCursor"); //オブジェクトを探す
+                obj.tag = "Cursor";
 
                 //プレイヤーを起動
                 auto_player_move.move_flg = true;

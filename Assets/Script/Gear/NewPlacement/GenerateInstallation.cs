@@ -8,6 +8,10 @@ public class GenerateInstallation : MonoBehaviour
     private FulcrumDistance fulcrum_distance;
     //BoxVariableの変数を使う
     private BoxVariable box_variable;
+    //MoveCursor
+    private MoveCursor move_cursor;
+    //CursorCollisionの変数を使う
+    private CursorCollision cursor_colition;
 
     [SerializeField, Tooltip("生成する設置位置")]
     private GameObject installation_location;
@@ -30,6 +34,11 @@ public class GenerateInstallation : MonoBehaviour
         parent_obj = transform.parent.gameObject;
 
         box_variable = parent_obj.GetComponent<BoxVariable>();//付いているスクリプトを取得
+
+        GameObject obj = GameObject.Find("SelectCursor"); //オブジェクトを探す
+        move_cursor = obj.GetComponent<MoveCursor>();　//付いているスクリプトを取得
+
+        cursor_colition = GetComponent<CursorCollision>();　//付いているスクリプトを取得
     }
 
     // Update is called once per frame
@@ -37,15 +46,28 @@ public class GenerateInstallation : MonoBehaviour
     {
         if(Input.GetKeyDown("joystick button 0"))
         {
-            float tmpDis = 0;           //距離用一時変数
-            GameObject player = GameObject.Find("Player");//プレイヤー取得
+            //float tmpDis = 0;           //距離用一時変数
+            //GameObject player = GameObject.Find("Player");//プレイヤー取得
 
-            //自身と取得したオブジェクトの距離を取得
-            tmpDis = Vector3.Distance(player.transform.position, this.transform.position);
+            ////自身と取得したオブジェクトの距離を取得
+            //tmpDis = Vector3.Distance(player.transform.position, this.transform.position);
 
-            if (tmpDis < distance)
+            //if (tmpDis < distance)
+            //{
+            //    Generate();
+            //}
+
+            if (cursor_colition.cursor_hit)
             {
-                Generate();
+                if(this.transform.tag == "RDrive")
+                {
+                    Generate();
+                }
+                else if (this.transform.tag == "LDrive")
+                {
+                    Generate();
+                }
+
             }
         } 
     }
@@ -92,9 +114,16 @@ public class GenerateInstallation : MonoBehaviour
             //設置フラグを折る
             box_variable.location_flg = false;
 
+            //カーソルのhitフラグを折る
+            cursor_colition.cursor_hit = false;
+
+            //カーソルのタグ変更
+            GameObject obj = GameObject.Find("SelectCursor"); //オブジェクトを探す
+            obj.tag = "Select";
+
             //生成
-            GameObject cursor_obj = Instantiate(cursor, new Vector3(my_pos.x, my_pos.y, 0), Quaternion.identity, parent);
-            cursor_obj.transform.localScale = new Vector3(0.375f, 0.375f, 0);
+            //GameObject cursor_obj = Instantiate(cursor, new Vector3(my_pos.x, my_pos.y, 0), Quaternion.identity, parent);
+            //cursor_obj.transform.localScale = new Vector3(0.275f, 0.275f, 0);
         }
     }
 }

@@ -41,7 +41,7 @@ public class GenerateTransparentGear : MonoBehaviour
         //ƒ{ƒ^ƒ“‚ğ‰Ÿ‚·‚Æü‚è‚É¶¬
         if (Input.GetKeyDown("joystick button 0"))
         {
-            if(cursor_colition.cursorhit == true)
+            if(cursor_colition.cursor_hit == true)
             {
                 if (generateflg == true)
                 {
