@@ -17,11 +17,11 @@ public class PlayerWallTrigger : MonoBehaviour
             //‰E‚©¶‚©
             if (hitPos.x > transform.position.x)
             {
-                Debug.Log("right");
+                //Debug.Log("right");
             }
             else if (hitPos.x < transform.position.x)
             {
-                Debug.Log("left");
+                //Debug.Log("left");
             }
 
             isOn = true;

@@ -17,10 +17,15 @@ public class AutoPlayerMove : MonoBehaviour
     [Header("壁接触判定")] public PlayerWallTrigger wall_trigger;
     [Header("床接触判定")] public PlayerGroundTrigger ground_trigger;
 
+    //スケール保存
+    Vector3 tf_s;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        tf_s = transform.localScale;
     }
 
     // Update is called once per frame
@@ -62,13 +67,13 @@ public class AutoPlayerMove : MonoBehaviour
                 //進行方向
                 xSpeed = speed;
                 //向き
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(tf_s.x, tf_s.y, 1);
             }
             //左向き
             else
             {
                 xSpeed = -speed;
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(-tf_s.x, tf_s.y, 1);
             }
 
             //代入

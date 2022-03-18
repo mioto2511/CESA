@@ -41,6 +41,12 @@ public class MoveAxisOfRotate : MonoBehaviour
 
             //歯車のコライダー削除
             GameObject[] objects = GameObject.FindGameObjectsWithTag("LGear");
+            foreach (GameObject num in objects)
+            {
+                var colliderTest = num.GetComponent<Collider2D>();
+                colliderTest.enabled = false;
+            }
+
             objects = GameObject.FindGameObjectsWithTag("RGear");
             foreach (GameObject num in objects)
             {
