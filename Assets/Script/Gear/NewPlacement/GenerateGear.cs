@@ -58,7 +58,7 @@ public class GenerateGear : MonoBehaviour
                 GameObject gear_obj =Instantiate(gear, new Vector3(pos.x, pos.y, 0), Quaternion.identity,parent);
                 //そのうち実数から変更（萩野直す）
                 //スケール変更
-                gear_obj.transform.localScale = new Vector3(0.375f, 0.375f, 0);
+                gear_obj.transform.localScale = new Vector3(0.0359f, 0.0359f, 0);
                 //設置用のオブジェクトを削除
                 box_variable.delete_flg = true;
             }
@@ -76,7 +76,7 @@ public class GenerateGear : MonoBehaviour
                 GameObject gear_obj = Instantiate(gear, new Vector3(pos.x, pos.y, 0), Quaternion.identity, parent);
                 //そのうち実数から変更（萩野直す）
                 //スケール変更
-                gear_obj.transform.localScale = new Vector3(0.375f, 0.375f, 0);
+                gear_obj.transform.localScale = new Vector3(0.0359f, 0.0359f, 0);
                 //設置用のオブジェクトを削除
                 box_variable.delete_flg = true;
             }

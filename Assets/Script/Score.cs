@@ -5,6 +5,7 @@ using UnityEngine;
 public class Score : MonoBehaviour
 {
     public GameObject star;
+    public GameObject score_back;
     public int score;
     private int count = 0;
 
@@ -13,6 +14,7 @@ public class Score : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        score_back.SetActive(false);
     }
 
     // Update is called once per frame
@@ -28,6 +30,8 @@ public class Score : MonoBehaviour
             if (count <= score)
             {
                 star.SetActive(true);
+                score_back.SetActive(true);
+
                 Debug.Log("a");
             }
         }
