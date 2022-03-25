@@ -7,6 +7,8 @@ public class Rotate : MonoBehaviour
     private bool rflg = false;   //右回転フラグ
     private bool lflg = false;   //左回転フラグ
 
+    private float speed = 0.22f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,7 @@ public class Rotate : MonoBehaviour
             //{
             //    this.transform.Rotate(new Vector3(0, 0, 1));
             //}
-            this.transform.Rotate(new Vector3(0, 0, 2));
+            this.transform.Rotate(new Vector3(0, 0, speed));
         }
         if (lflg == true)
         {
@@ -52,7 +54,7 @@ public class Rotate : MonoBehaviour
             //{
             //    this.transform.Rotate(new Vector3(0, 0, -1));
             //}
-            this.transform.Rotate(new Vector3(0, 0, -2));
+            this.transform.Rotate(new Vector3(0, 0, -speed));
         }
     }
 
@@ -76,7 +78,7 @@ public class Rotate : MonoBehaviour
             {
                 rflg = true;   // 回転フラグオン
                 this.tag = "LGear";
-                Debug.Log("a");
+                //Debug.Log("a");
             }
             else if (other.gameObject.CompareTag("LGear"))
             {
@@ -84,7 +86,6 @@ public class Rotate : MonoBehaviour
                 this.tag = "RGear";
             }
         }
-
     }
 
     //void OnTriggerExit2D(Collider2D other)
@@ -112,6 +113,4 @@ public class Rotate : MonoBehaviour
     //        this.tag = "Gear";
     //    }
     //}
-
-
 }

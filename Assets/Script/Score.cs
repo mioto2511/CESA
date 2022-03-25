@@ -9,12 +9,19 @@ public class Score : MonoBehaviour
     public int score;
     private int count = 0;
 
-    bool flg = true;
+    private bool flg = false;
+
+    //GoalFlgの変数を使用
+    private GoalFlg goal_flg;
 
     // Start is called before the first frame update
     void Start()
     {
+        //リザルト背景を消す
         score_back.SetActive(false);
+
+        GameObject goal = GameObject.Find("Player"); //オブジェクトを探す
+        goal_flg = goal.GetComponent<GoalFlg>();　//付いているスクリプトを取得
     }
 
     // Update is called once per frame
@@ -25,14 +32,19 @@ public class Score : MonoBehaviour
             count++;
         }
 
+        
+
         if (GameObject.Find("Room").transform.childCount >= 3)
         {
-            if (count <= score)
+            if (goal_flg.goal_flg == true)
             {
-                star.SetActive(true);
-                score_back.SetActive(true);
+                if (count <= score)
+                {
+                    star.SetActive(true);
+                    score_back.SetActive(true);
 
-                Debug.Log("a");
+                    //Debug.Log("a");
+                }
             }
         }
     }

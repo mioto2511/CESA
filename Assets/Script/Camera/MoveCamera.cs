@@ -79,15 +79,15 @@ public class MoveCamera : MonoBehaviour
         {
             if (camerazoom == 1)
             {
-                cam.orthographicSize = 4.2f;
+                cam.orthographicSize = 3.18f;
             }
             if (camerazoom == 2)
             {
-                cam.orthographicSize = 10.2f;
+                cam.orthographicSize = 6.36f;
             }
             if (camerazoom == 3)
             {
-                cam.orthographicSize = 16.2f;
+                cam.orthographicSize = 9.54f;
             }
         }
         if (cflg == false)

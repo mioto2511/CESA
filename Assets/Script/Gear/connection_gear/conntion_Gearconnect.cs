@@ -24,12 +24,12 @@ public class conntion_Gearconnect : MonoBehaviour
         {
             // ‰ñ“]ƒtƒ‰ƒOƒIƒ“
             other.tag = "RGear_Connect";
-            Debug.Log("a");
+            //Debug.Log("a");
         }
         else if (other.gameObject.CompareTag("LGear"))
         {
             other.tag = "LGear_Connect";
-            Debug.Log("connect");
+            //Debug.Log("connect");
         }
     }
 }
