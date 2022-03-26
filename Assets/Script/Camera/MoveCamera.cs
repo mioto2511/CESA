@@ -9,10 +9,11 @@ public class MoveCamera : MonoBehaviour
     public float speed;
 
     private Camera cam;
-    public GameObject room;
+    public GameObject cplayer;
     private Vector2 pos;
     private GameObject parent;
     public int camerazoom = 1;
+    public float zoom;
     private bool cflg = false;
 
     // Start is called before the first frame update
@@ -22,6 +23,8 @@ public class MoveCamera : MonoBehaviour
         tf = this.gameObject.GetComponent<Transform>();
 
         cam = this.gameObject.GetComponent<Camera>();//CameraŽæ“¾
+
+        pos = cplayer.transform.position;
     }
 
     // Update is called once per frame
@@ -49,9 +52,6 @@ public class MoveCamera : MonoBehaviour
         //    tf.position = tf.position + new Vector3(0.0f, -speed, 0.0f);
         //}
 
-        pos = room.transform.position;
-        transform.position = new Vector3(pos.x, pos.y, -10);
-
         if (Input.GetKeyDown("joystick button 2"))
         {
             if (cflg == false)
@@ -71,28 +71,35 @@ public class MoveCamera : MonoBehaviour
                 break;
 
             case 3:
+                cam.orthographicSize = 6.36f;
                 camerazoom = 3;
                 break;
         }
 
         if (cflg == true)
         {
+            //pos.x = cplayer.transform.position.x;
+            //pos.y = GameObject.Find(PlayerPosition.instance.pPosition).transform.position.y;
+            pos = cplayer.transform.position;
+            transform.position = new Vector3(pos.x, pos.y + 1.86f, -10);
+
             if (camerazoom == 1)
             {
-                cam.orthographicSize = 3.18f;
+                cam.orthographicSize = 4.1f;
             }
             if (camerazoom == 2)
             {
-                cam.orthographicSize = 6.36f;
+                cam.orthographicSize = 6.2f;
             }
             if (camerazoom == 3)
             {
-                cam.orthographicSize = 9.54f;
+                cam.orthographicSize = 8.3f;
             }
         }
         if (cflg == false)
         {
-            cam.orthographicSize = 16.2f;
+            transform.position = new Vector3(0, 0, -10);
+            cam.orthographicSize = zoom;
         }
     }
 }

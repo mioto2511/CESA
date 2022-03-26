@@ -221,8 +221,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  room: {fileID: 6513633297772639202}
+  cplayer: {fileID: 344047312}
   camerazoom: 1
+  zoom: 16.2
 --- !u!114 &63515802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1509,6 +1510,7 @@ GameObject:
   - component: {fileID: 344047314}
   - component: {fileID: 344047313}
   - component: {fileID: 344047319}
+  - component: {fileID: 344047320}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1674,6 +1676,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal_flg: 0
+--- !u!114 &344047320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344047312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50249d85eeb15347ac6a124db2a9300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pPosition: 
 --- !u!1 &422913156
 GameObject:
   m_ObjectHideFlags: 0
@@ -7400,9 +7415,10 @@ GameObject:
   - component: {fileID: 5247449003744301614}
   - component: {fileID: 5247449003744301609}
   - component: {fileID: 5247449003744301611}
+  - component: {fileID: 5247449003744301612}
   m_Layer: 0
   m_Name: Box3
-  m_TagString: Room
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7424,6 +7440,32 @@ MonoBehaviour:
   child_cnt: 0
   location_flg: 1
   box_pos: {x: 0, y: 0}
+--- !u!61 &5247449003744301612
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5247449003744301610}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!4 &5247449003744301614
 Transform:
   m_ObjectHideFlags: 0
@@ -7471,9 +7513,10 @@ GameObject:
   - component: {fileID: 6513633297772639207}
   - component: {fileID: 6513633297772639205}
   - component: {fileID: 6513633297772639203}
+  - component: {fileID: 6513633297772639204}
   m_Layer: 0
   m_Name: Box1
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7490,6 +7533,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581ebd9439abbcb4f9e696e0c387654a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &6513633297772639204
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513633297772639202}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &6513633297772639205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7719,13 +7788,40 @@ GameObject:
   - component: {fileID: 7413049291088521272}
   - component: {fileID: 7413049291088521273}
   - component: {fileID: 7413049291088521274}
+  - component: {fileID: 7413049291088521276}
   m_Layer: 0
   m_Name: Box2
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!61 &7413049291088521276
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7413049291088521275}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!222 &7926878593316712902
 CanvasRenderer:
   m_ObjectHideFlags: 0
