@@ -19,8 +19,8 @@ public class GenerateInstallation : MonoBehaviour
     [SerializeField, Tooltip("生成するカーソル")]
     private GameObject cursor;
 
-    [SerializeField, Tooltip("DriveとPlayerの距離")]
-    private float distance = 0;
+    //[SerializeField, Tooltip("DriveとPlayerの距離")]
+    //private float distance = 0;
 
     //親
     private GameObject parent_obj;
@@ -42,7 +42,7 @@ public class GenerateInstallation : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(Input.GetKeyDown("joystick button 0"))
         {

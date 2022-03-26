@@ -7,6 +7,8 @@ public class Drive_gearRotate : MonoBehaviour
     private bool rflg = false;   //右回転フラグ
     private bool lflg = false;   //左回転フラグ
 
+    private float speed = 1.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +16,7 @@ public class Drive_gearRotate : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // transformを取得
         Transform mytransform = this.transform;
@@ -36,7 +38,7 @@ public class Drive_gearRotate : MonoBehaviour
             //{
             //    this.transform.Rotate(new Vector3(0, 0, 1));
             //}
-            this.transform.Rotate(new Vector3(0, 0, 2));
+            this.transform.Rotate(new Vector3(0, 0, speed));
         }
         if (lflg == true)
         {
@@ -52,7 +54,7 @@ public class Drive_gearRotate : MonoBehaviour
             //{
             //    this.transform.Rotate(new Vector3(0, 0, -1));
             //}
-            this.transform.Rotate(new Vector3(0, 0, -2));
+            this.transform.Rotate(new Vector3(0, 0, -speed));
         }
     }
 

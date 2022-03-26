@@ -9,7 +9,7 @@ public class Score : MonoBehaviour
     public int score;
     private int count = 0;
 
-    private bool flg = false;
+    //private bool flg = false;
 
     //GoalFlg‚Ì•Ï”‚ğg—p
     private GoalFlg goal_flg;

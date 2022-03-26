@@ -11,8 +11,8 @@ public class RightRotate : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.Rotate(new Vector3(0, 0, -0.2f));
+        transform.Rotate(new Vector3(0, 0, -1.5f));
     }
 }

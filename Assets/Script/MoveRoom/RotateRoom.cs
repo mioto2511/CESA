@@ -49,7 +49,7 @@ public class RotateRoom : MonoBehaviour
         auto_player_move = obj2.GetComponent<AutoPlayerMove>();　//付いているスクリプトを取得
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // transformを取得
         my_transform = this.transform;

@@ -7,7 +7,7 @@ public class Rotate : MonoBehaviour
     private bool rflg = false;   //右回転フラグ
     private bool lflg = false;   //左回転フラグ
 
-    private float speed = 0.22f;
+    private float speed = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,7 @@ public class Rotate : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // transformを取得
         Transform mytransform  = this.transform;
