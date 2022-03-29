@@ -7,14 +7,13 @@ public class Character_Move : MonoBehaviour
     [Header("移動経路")] public GameObject[] movePoint;
     [Header("早さ")] public float speed = 1.0f;
 
-
     private Rigidbody2D rb = null;
     private int nowPoint = 0;
+    private int point_scene = 0;
     private bool PointMax = false;
     private bool PointMin = false;
     private bool RightMove = false;
     private bool LeftMove = false;
-
 
     // Start is called before the first frame update
     void Start()
@@ -27,21 +26,44 @@ public class Character_Move : MonoBehaviour
         }
     }
 
+    // Select_Managerから送られてきたシーン番号を受け取る
+    public void Scene(int sceneNo)
+    {
+        point_scene = sceneNo;
+    }
+
+    private void Update()
+    {
+        // ゲームパッドの入力処理(今はキーボードの矢印入力になっている)
+        if (Input.GetKeyDown(KeyCode.RightArrow) && RightMove == false && LeftMove == false && PointMax == false)
+        {
+            int nextPoint = nowPoint + 1;
+
+            //移動先が未開放の場合行けないようにする
+            if (movePoint[nextPoint].GetComponent<Select_Manager>().NewStageFlg == true)
+            {
+                RightMove = true;
+                Debug.Log(nextPoint);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && RightMove == false && LeftMove == false && PointMin == false)
+        {
+            LeftMove = true;
+            //Debug.Log("L");
+        }
+
+        // ステージ選択処理
+        if (Input.GetKeyDown("joystick button 0") && RightMove == false && LeftMove == false)
+        {
+            Fade_Manager.FadeOut(point_scene);
+            //Debug.Log(point_scene);
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
-        
-        if (Input.GetKey(KeyCode.RightArrow) && RightMove == false && LeftMove == false && PointMax == false)
-        {
-            RightMove = true;
-            Debug.Log("R");
-        }
-        if (Input.GetKey(KeyCode.LeftArrow) && RightMove == false && LeftMove == false && PointMin == false)
-        {
-            LeftMove = true;
-            Debug.Log("L");
-        }
-
+        // 動作処理
         if (movePoint != null && movePoint.Length > 1 && rb != null)
         {
             // 通常進行
@@ -62,9 +84,8 @@ public class Character_Move : MonoBehaviour
                 { // 次のポイントを１つ進める 
                     rb.MovePosition(movePoint[nextPoint].transform.position);
                     ++nowPoint;
+                    // 目的地に着いたら動作を止める
                     RightMove = false;
-
-                    
                 }
             }
             else if (LeftMove == true)
@@ -84,14 +105,18 @@ public class Character_Move : MonoBehaviour
                 { // 次のポイントを１つ進める 
                     rb.MovePosition(movePoint[nextPoint].transform.position);
                     --nowPoint;
+                    // 目的地に着いたら動作を止める
                     LeftMove = false;
                 }
+                //
+
             }
+
             // 現在地が配列の最後だった場合
             if (nowPoint + 1 >= movePoint.Length)
             {
                 PointMax = true;
-                Debug.Log("max");
+                //Debug.Log("max");
             }
             else
             {
@@ -101,7 +126,7 @@ public class Character_Move : MonoBehaviour
             if (nowPoint <= 0)
             {
                 PointMin = true;
-                Debug.Log("min");
+                //Debug.Log("min");
             }
             else
             {

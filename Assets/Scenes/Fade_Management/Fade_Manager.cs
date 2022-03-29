@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 /*「使い方」
  * フェードアウトしたいタイミングでFade_Manager.FadeOut(フェード先のシーン"番号");を呼び出す。
  * シーンをフェードインで始めたい場合StartにFade_Manager.FadeIn();を呼び出す。
+ * https://kenko-san.com/unity-fade/
  */
 
 public class Fade_Manager : MonoBehaviour
