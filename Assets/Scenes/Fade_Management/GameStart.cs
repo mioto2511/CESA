@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ゲームシーンはフェードインから始まるのでオブジェクトにこのスクリプトを持たせないといけない
+// フェードアウトから始まるシーンはこのスクリプトを持たせてフェードインするようにしないと画面が急に明るくなる
 // プレイヤーが絶対居ると思うのでそれに貼るのがいいと思う
 
 public class GameStart : MonoBehaviour

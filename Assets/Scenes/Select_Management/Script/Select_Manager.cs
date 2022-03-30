@@ -25,7 +25,7 @@ public class Select_Manager : MonoBehaviour
             GetComponent<Renderer>().material.color = Color.blue;
             NewStageFlg = false;
         }
-        
+
         if (NewStageFlg == true)
         {
             GetComponent<Renderer>().material.color = Color.red;

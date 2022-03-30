@@ -55,8 +55,13 @@ public class Character_Move : MonoBehaviour
         // ステージ選択処理
         if (Input.GetKeyDown("joystick button 0") && RightMove == false && LeftMove == false)
         {
-            Fade_Manager.FadeOut(point_scene);
-            //Debug.Log(point_scene);
+            Fade_Manager.FadeOut(point_scene); // Aボタンが押されたらフェードアウトしてシーン遷移する
+        }
+
+        // オプションボタンが押されたらワールドセレクトにシーン遷移する
+        if(Input.GetKeyDown("joystick button 7"))
+        {
+            Fade_Manager.FadeOut(10);
         }
     }
 
@@ -108,8 +113,6 @@ public class Character_Move : MonoBehaviour
                     // 目的地に着いたら動作を止める
                     LeftMove = false;
                 }
-                //
-
             }
 
             // 現在地が配列の最後だった場合
