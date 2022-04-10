@@ -42,7 +42,7 @@ public class GenerateInstallation : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if(Input.GetKeyDown("joystick button 0"))
         {
@@ -62,6 +62,7 @@ public class GenerateInstallation : MonoBehaviour
                 if(this.transform.tag == "RDrive")
                 {
                     Generate();
+                    
                 }
                 else if (this.transform.tag == "LDrive")
                 {

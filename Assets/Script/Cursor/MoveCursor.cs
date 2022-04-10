@@ -45,29 +45,8 @@ public class MoveCursor : MonoBehaviour
             {
                 tf.position = tf.position + new Vector3(0.0f, -speed, 0.0f);
             }
-        }
-
-        //カーソルがカメラに追従
-        float rsh = Input.GetAxis("R_Stick_H");//横軸
-        float rsv = Input.GetAxis("R_Stick_V");//縦軸
-
-        if (rsh < 0)
-        {
-            tf.position = tf.position + new Vector3(-camera_speed, 0.0f, 0.0f);
-        }
-        else if (rsh > 0)
-        {
-            tf.position = tf.position + new Vector3(+camera_speed, 0.0f, 0.0f);
-        }
 
 
-        if (rsv > 0)
-        {
-            tf.position = tf.position + new Vector3(0.0f, +camera_speed, 0.0f);
-        }
-        else if (rsv < 0)
-        {
-            tf.position = tf.position + new Vector3(0.0f, -camera_speed, 0.0f);
         }
     }
 }
