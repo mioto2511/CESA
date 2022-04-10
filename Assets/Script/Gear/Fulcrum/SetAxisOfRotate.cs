@@ -28,6 +28,7 @@ public class SetAxisOfRotate : MonoBehaviour
         //gear_collision = GetComponent<GearCollision>(); //スクリプトを取得
 
         collider = this.GetComponent<Collider2D>();
+        collider.enabled = true;
 
         GameObject obj1 = GameObject.Find("AxisOfRotation"); //オブジェクトを探す
         move_axis = obj1.GetComponent<MoveAxisOfRotate>();　//付いているスクリプトを取得
