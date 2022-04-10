@@ -6,6 +6,7 @@ public class MoveAxisOfRotate : MonoBehaviour
 {
     public bool move_flg;
 
+    public List<Vector3> axis_poses = new List<Vector3>();// リスト
     public Vector3 axis_pos;
 
     //RotateRoomの変数を使う
@@ -13,10 +14,14 @@ public class MoveAxisOfRotate : MonoBehaviour
     //AutoPlayerMoveの変数を使う
     AutoPlayerMove auto_player_move;
 
+    public bool chang_axis = false;
+    private int axis_num = 0;
+
+    public bool delete_list = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        //GameObject obj = GameObject.Find("RotateRoom"); //オブジェクトを探す
         GameObject obj = GameObject.Find("Room"); //オブジェクトを探す
         rotate_room = obj.GetComponent<RotateRoom>();　//付いているスクリプトを取得
 
@@ -27,9 +32,16 @@ public class MoveAxisOfRotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (move_flg == true)
+        if (move_flg)
         {
-            this.transform.position = axis_pos;
+            Debug.Log(string.Join(",", axis_poses));
+            this.transform.position = axis_poses[0];
+
+            //if(axis_poses.Count < 2)
+            //{
+            //    Vector3 pos = axis_poses[0];
+            //    axis_poses.Add(pos);
+            //}
 
             move_flg = false;
 
@@ -38,6 +50,8 @@ public class MoveAxisOfRotate : MonoBehaviour
 
             //回転開始
             rotate_room.rotate_flg = true;
+
+            rotate_room.collider_flg = false;
 
             //歯車のコライダー削除
             GameObject[] objects = GameObject.FindGameObjectsWithTag("LGear");
@@ -54,6 +68,33 @@ public class MoveAxisOfRotate : MonoBehaviour
                 colliderTest.enabled = false;
             }
 
+        }
+
+        if (chang_axis)
+        {
+            if(axis_num == 0)
+            {
+                if (axis_poses.Count >= 2)
+                {
+                    this.transform.position = axis_poses[1];
+                    axis_num = 1;
+                }
+                
+            }
+            else if (axis_num == 1)
+            {
+                this.transform.position = axis_poses[0];
+                axis_num = 0;
+            }
+
+            chang_axis = false;
+        }
+
+        if (delete_list)
+        {
+            delete_list = false;
+
+            axis_poses.Clear();
         }
     }
 }

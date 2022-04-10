@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectGear : MonoBehaviour
+public class SelectGear2 : MonoBehaviour
 {
     //GearData‚Ì•Ï”‚ğg‚¤
     GearData gear_data;

@@ -28,6 +28,8 @@ public class AddParent : MonoBehaviour
             //親
             GameObject parent = this.transform.parent.gameObject;
 
+            parent.tag = "ActiveBox";
+
             //Debug.Log("become"+parent);
 
             //親の親をRoomにする
@@ -42,9 +44,6 @@ public class AddParent : MonoBehaviour
             //4つの目の壁の時フラグを折る
             if (box_variable.child_cnt >= 4)
             {
-                
-
-                //ErrorCorrection();
                 box_variable.become_child = false;
             }
 

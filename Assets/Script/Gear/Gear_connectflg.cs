@@ -4,13 +4,21 @@ using UnityEngine;
 //接続歯車が回ったら部屋の接続フラグをオンにする
 public class Gear_connectflg : MonoBehaviour
 {
+    //BoxVariableの変数を使う
+    private BoxVariable box_variable;
+    //RotateRoomの変数を使う
+    private RotateRoom rotate_room;
 
-    BoxVariable box_variable;
+    private bool flg = true;
+
     // Start is called before the first frame update
     void Start()
     {
         GameObject Boxobj = transform.parent.gameObject;
         box_variable = Boxobj.GetComponent<BoxVariable>();
+
+        GameObject obj = GameObject.Find("Room"); //オブジェクトを探す
+        rotate_room = obj.GetComponent<RotateRoom>();　//付いているスクリプトを取得
     }
 
     // Update is called once per frame
@@ -19,12 +27,22 @@ public class Gear_connectflg : MonoBehaviour
         if (this.tag == "LGear_Connect")
         {
             box_variable.become_child = true;
-            //Debug.Log("b");
+
+            if (flg)
+            {
+                flg = false;
+                rotate_room.connect_flg = true;
+            }
         }
         else if(this.tag == "RGear_Connect")
         {
             box_variable.become_child = true;
-            //Debug.Log("b");
+
+            if (flg)
+            {
+                flg = false;
+                rotate_room.connect_flg = true;
+            }
         }
     }
 }

@@ -16,6 +16,7 @@ public class RoomCollition : MonoBehaviour
     private GameObject parent;
     private GameObject root;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,35 +47,37 @@ public class RoomCollition : MonoBehaviour
         }
     }
 
-    void OnCollisionStay2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
             //回転フラグを折る
-            root_room.rotate_flg = false;
+            //root_room.rotate_flg = false;
 
             //部屋同士があたった
             root_room.room_hit = true;
+            Debug.Log("hit");
+            
 
-            //再び設置できるようにする
-            box_variable.location_flg = true;
+            ////再び設置できるようにする
+            //box_variable.location_flg = true;
 
-            //Debug.Log("hit"+this);
+            ////Debug.Log("hit"+this);
 
-            //接続されてるか？
-            //当たった先の変数をいじる
-            //GameObject collision_parent = collision.transform.parent.gameObject;
-            //BoxVariable collision_box_variable = collision_parent.GetComponent<BoxVariable>(); //付いているスクリプトを取得
-            //collision_box_variable.become_child = true;
+            ////接続されてるか？
+            ////当たった先の変数をいじる
+            ////GameObject collision_parent = collision.transform.parent.gameObject;
+            ////BoxVariable collision_box_variable = collision_parent.GetComponent<BoxVariable>(); //付いているスクリプトを取得
+            ////collision_box_variable.become_child = true;
 
 
 
-            //設置した歯車を削除
-            GameObject[] objects = GameObject.FindGameObjectsWithTag("Gear");
-            foreach (GameObject del in objects)
-            {
-                Destroy(del);
-            }
+            ////設置した歯車を削除
+            //GameObject[] objects = GameObject.FindGameObjectsWithTag("Gear");
+            //foreach (GameObject del in objects)
+            //{
+            //    Destroy(del);
+            //}
 
             //位置の誤差修正
             ErrorCorrection();
@@ -84,6 +87,12 @@ public class RoomCollition : MonoBehaviour
     //位置の誤差修正
     void ErrorCorrection()
     {
+        //位置の誤差修正
+        Vector3 root_pos = root.transform.position;
+        root_pos.x = Mathf.Round(root_pos.x);     //四捨五入
+        root_pos.y = Mathf.Round(root_pos.y);     //四捨五入
+        root.transform.position = root_pos;
+
         // クォータニオン → オイラー角への変換
         Vector3 rotationAngles = root.transform.rotation.eulerAngles;
 
@@ -118,6 +127,11 @@ public class RoomCollition : MonoBehaviour
         parent_pos.x = Mathf.Round(parent_pos.x);     //四捨五入
         parent_pos.y = Mathf.Round(parent_pos.y);     //四捨五入
         parent.transform.position = parent_pos;
+
+        //Vector3 parent_lpos = parent.transform.localPosition;
+        //parent_lpos.x = Mathf.Round(parent_lpos.x);     //四捨五入
+        //parent_lpos.y = Mathf.Round(parent_lpos.y);     //四捨五入
+        //parent.transform.localPosition = parent_lpos;
 
 
         Vector3 my_pos = this.transform.position;
