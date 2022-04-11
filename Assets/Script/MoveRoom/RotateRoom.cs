@@ -48,7 +48,7 @@ public class RotateRoom : MonoBehaviour
 
     public float deadzone = 0.2f;
     float start_radian = 0;
-    float goal_radian = 0;
+    float old_radian = 0;
     bool flg = true;
     public bool connect_flg = false;
 
@@ -131,7 +131,7 @@ public class RotateRoom : MonoBehaviour
                     cursor.transform.position = player_pos;
 
                     start_radian = 0;
-                    goal_radian = 0;
+                    old_radian = 0;
                     flg = true;
 
                     //歯車のコライダーON
@@ -181,7 +181,7 @@ public class RotateRoom : MonoBehaviour
                     cursor.transform.position = player_pos;
 
                     start_radian = 0;
-                    goal_radian = 0;
+                    old_radian = 0;
                     flg = true;
 
                     //歯車のコライダーON
@@ -251,15 +251,29 @@ public class RotateRoom : MonoBehaviour
 
                 if (left_rotate == false && right_rotate == false)
                 {
-                    if (start_radian - radian > 90)
+                    float now_radian = start_radian - radian;
+
+                    if (old_radian >= 0 &&now_radian<-200)
+                    {
+                        now_radian += 360;
+                    }
+                    else if (old_radian <= 0 && now_radian > 200)
+                    {
+                        now_radian -= 360;
+                    }
+
+                    if (now_radian >= 90)
                     {
                         right_rotate = true;
                     }
-                    else if (start_radian - radian < -90)
+                    else if (now_radian <= -90)
                     {
                         //move_axis.chang_axis = true;
                         left_rotate = true;
                     }
+                    Debug.Log(now_radian);
+                    //保存
+                    old_radian = now_radian;
                 }
             }
         }

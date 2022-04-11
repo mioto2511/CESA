@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class MoveCursor : MonoBehaviour
 {
-    Transform tf;
+    
 
-    public float speed;
-    public float camera_speed;
+    [Header("カーソルの速さ")] public float speed;
+    
+    [Header("カーソルのデットゾーン")] public float deadzone;
+
+    //自身のtf
+    private Transform tf;
+
+    //カーソルの移動フラグ
     public bool moveflg = true;
-    public float deadzone;
+
+    //XYの速さ
+    private float speed_x = 0;
+    private float speed_y = 0;
 
 
     // Start is called before the first frame update
@@ -29,24 +38,35 @@ public class MoveCursor : MonoBehaviour
 
             if (lsh < -deadzone)
             {
-                tf.position = tf.position + new Vector3(-speed, 0.0f, 0.0f);
+                speed_x = -speed;
             }
             else if (lsh > deadzone)
             {
-                tf.position = tf.position + new Vector3(+speed, 0.0f, 0.0f);
+                speed_x = speed;
+            }
+            else if(lsh == 0)
+            {
+                speed_x = 0;
             }
 
 
             if (lsv > deadzone)
             {
-                tf.position = tf.position + new Vector3(0.0f, +speed, 0.0f);
+                speed_y = speed;
             }
             else if (lsv < -deadzone)
             {
-                tf.position = tf.position + new Vector3(0.0f, -speed, 0.0f);
+                speed_y = -speed;
             }
-
-
+            else if(lsv == 0)
+            {
+                speed_y = 0;
+            }
         }
+    }
+
+    void FixedUpdate()
+    {
+        tf.position = tf.position + new Vector3(speed_x, speed_y, 0.0f);
     }
 }

@@ -8,26 +8,28 @@ public class PauseActive : MonoBehaviour
     //　ポーズした時に表示するUIのプレハブ
     private GameObject pauseUI;
 
+    //ポーズの表示フラグ
 	private bool pause_flg = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         //リザルト背景を消す
         pauseUI.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (pause_flg)
         {
             if (Input.GetKeyDown("joystick button 7"))
             {
-                Time.timeScale = 1;  // 時間停止
-                                     //リザルト背景を消す
+                // 時間再起
+                Time.timeScale = 1;  
+
+                //ポーズを消す
                 pauseUI.SetActive(false);
 
+                //フラグ折る
                 pause_flg = false;
             }
         }
@@ -35,10 +37,13 @@ public class PauseActive : MonoBehaviour
         {
             if (Input.GetKeyDown("joystick button 7"))
             {
-                Time.timeScale = 0;  // 時間停止
-                                     //リザルト背景を消す
+                // 時間停止
+                Time.timeScale = 0;  
+
+                //ポーズを出す
                 pauseUI.SetActive(true);
 
+                //フラグ立つ
                 pause_flg = true;
             }
         }

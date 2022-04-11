@@ -1052,9 +1052,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 295412166}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
 --- !u!114 &295412168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5764,10 +5771,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e8da13598519a4981a136ba1f208cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.05
-  camera_speed: 0
-  moveflg: 1
+  speed: 0.1
   deadzone: 0.2
+  moveflg: 1
 --- !u!4 &2510892809040874422
 Transform:
   m_ObjectHideFlags: 0
