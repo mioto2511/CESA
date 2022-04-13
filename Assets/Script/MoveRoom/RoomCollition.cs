@@ -56,8 +56,8 @@ public class RoomCollition : MonoBehaviour
 
             //部屋同士があたった
             root_room.room_hit = true;
-            Debug.Log("hit");
-            
+            //Debug.Log("hit");
+
 
             ////再び設置できるようにする
             //box_variable.location_flg = true;
@@ -87,7 +87,7 @@ public class RoomCollition : MonoBehaviour
     //位置の誤差修正
     void ErrorCorrection()
     {
-        //位置の誤差修正
+        //Room位置の誤差修正
         Vector3 root_pos = root.transform.position;
         root_pos.x = Mathf.Round(root_pos.x);     //四捨五入
         root_pos.y = Mathf.Round(root_pos.y);     //四捨五入
@@ -96,33 +96,29 @@ public class RoomCollition : MonoBehaviour
         // クォータニオン → オイラー角への変換
         Vector3 rotationAngles = root.transform.rotation.eulerAngles;
 
-        //Debug.Log(root.transform.rotation.z);
-        //parent.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Round(parent.transform.rotation.z));
-
         //角度の誤差修正
-        if ((rotationAngles.z >= 178) && (rotationAngles.z <= 182))
+        if ((rotationAngles.z >= 170) && (rotationAngles.z <= 190))
         {
             root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180);
         }
-        else if ((rotationAngles.z >= 88) && (rotationAngles.z <= 92))
+        else if ((rotationAngles.z >= 80) && (rotationAngles.z <= 100))
         {
             root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90);
         }
-        else if ((rotationAngles.z >= 268) && (rotationAngles.z <= 272))
+        else if ((rotationAngles.z >= 260) && (rotationAngles.z <= 280))
         {
             root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 270);
         }
-        else if ((rotationAngles.z >= -2) && (rotationAngles.z <= 2))
+        else if ((rotationAngles.z >= -10) && (rotationAngles.z <= 10))
         {
             root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0);
         }
-        else if ((rotationAngles.z >= 358) && (rotationAngles.z <= 362))
+        else if ((rotationAngles.z >= 350) && (rotationAngles.z <= 370))
         {
             root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 360);
         }
-        //root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Round(root.transform.rotation.z));
 
-        //位置の誤差修正
+        //親の位置の誤差修正
         Vector3 parent_pos = parent.transform.position;
         parent_pos.x = Mathf.Round(parent_pos.x);     //四捨五入
         parent_pos.y = Mathf.Round(parent_pos.y);     //四捨五入
@@ -133,7 +129,7 @@ public class RoomCollition : MonoBehaviour
         //parent_lpos.y = Mathf.Round(parent_lpos.y);     //四捨五入
         //parent.transform.localPosition = parent_lpos;
 
-
+        //壁の位置の誤差修正
         Vector3 my_pos = this.transform.position;
         my_pos.x = my_pos.x * 100000;
         my_pos.y = my_pos.y * 100000;
