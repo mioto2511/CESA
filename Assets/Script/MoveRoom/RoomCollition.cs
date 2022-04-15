@@ -83,6 +83,20 @@ public class RoomCollition : MonoBehaviour
             ErrorCorrection();
         }
     }
+    //void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Box"))
+    //    {
+    //        //‰ñ“]ƒtƒ‰ƒO‚ğÜ‚é
+    //        //root_room.rotate_flg = false;
+
+    //        //•”‰®“¯m‚ª‚ ‚½‚Á‚½
+    //        root_room.room_hit = true;
+
+    //        //ˆÊ’u‚ÌŒë·C³
+    //        ErrorCorrection();
+    //    }
+    //}
 
     //ˆÊ’u‚ÌŒë·C³
     void ErrorCorrection()

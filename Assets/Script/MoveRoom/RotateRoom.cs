@@ -228,7 +228,7 @@ public class RotateRoom : MonoBehaviour
                     start_radian = radian;
                     //goal_radian = start_radian+
                     initial_pos = this.transform.position;
-                    Debug.Log(initial_pos);
+                    //Debug.Log(initial_pos);
                 }
 
 
@@ -271,7 +271,7 @@ public class RotateRoom : MonoBehaviour
                         //move_axis.chang_axis = true;
                         left_rotate = true;
                     }
-                    Debug.Log(now_radian);
+                    //Debug.Log(now_radian);
                     //保存
                     old_radian = now_radian;
                 }
@@ -281,17 +281,6 @@ public class RotateRoom : MonoBehaviour
 
     void FixedUpdate()
     {
-        
-
-        //if (connect_flg)
-        //{
-        //    connect_flg = false;
-
-        //    rotate_flg = false;
-
-            
-        //}
-
         // 指定オブジェクトを中心に回転する
         if (rotate_flg == true)
         {

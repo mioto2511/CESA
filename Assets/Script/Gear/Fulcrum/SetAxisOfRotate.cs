@@ -40,10 +40,6 @@ public class SetAxisOfRotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(gear_collision.gear_hit == true)
-        //{
-            
-        //}
         //•Ç4‚Â‚É“–‚½‚Á‚Ä‚¢‚é
         if (cunt == 4)
         {
@@ -88,7 +84,7 @@ public class SetAxisOfRotate : MonoBehaviour
                 //    right_flg = true;
                 //}
 
-                Debug.Log(this.name);
+                //Debug.Log(this.name);
                 active = false;
 
                 //Žx“_‚ðˆÚ“®‚³‚¹‚é
