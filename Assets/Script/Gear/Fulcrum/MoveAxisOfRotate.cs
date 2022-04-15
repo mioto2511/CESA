@@ -34,7 +34,7 @@ public class MoveAxisOfRotate : MonoBehaviour
     {
         if (move_flg)
         {
-            //Debug.Log(string.Join(",", axis_poses));
+            Debug.Log(string.Join(",", axis_poses));
             this.transform.position = axis_poses[0];
 
             //if(axis_poses.Count < 2)

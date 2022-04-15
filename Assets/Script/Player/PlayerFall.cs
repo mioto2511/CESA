@@ -73,3 +73,4 @@ public class PlayerFall : MonoBehaviour
 		}
 	}
 }
+//•”‰®‚ð‚R–Ú‚ÅŽ€
