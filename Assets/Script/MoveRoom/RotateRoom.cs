@@ -46,6 +46,9 @@ public class RotateRoom : MonoBehaviour
     //MoveAxisOfRotate
     MoveAxisOfRotate move_axis;
 
+    //RotateStart
+    RotateStart rotate_start;
+
     public float deadzone = 0.2f;
     float start_radian = 0;
     float old_radian = 0;
@@ -62,6 +65,8 @@ public class RotateRoom : MonoBehaviour
 
     void Start()
     {
+        rotate_start = this.GetComponent<RotateStart>();
+
         GameObject obj1 = GameObject.Find("AxisOfRotation"); //オブジェクトを探す
         move_axis = obj1.GetComponent<MoveAxisOfRotate>();　//付いているスクリプトを取得
 
@@ -98,115 +103,115 @@ public class RotateRoom : MonoBehaviour
 
             rotate_flg = false;
 
-            if (move_axis.axis_poses.Count >= 2)
+            //if (move_axis.axis_poses.Count >= 2)
+            //{
+            //    if (initial_pos == this.transform.position)
+            //    {
+            //        room_hit = false;
+            //        rotate_flg = true;
+            //        move_axis.chang_axis = true;
+            //    }
+            //    else if (child_cnt >= this.transform.childCount)
+            //    {
+            //        room_hit = false;
+
+            //        room_hit = false;
+            //        child_cnt = 0;
+
+            //        //回転方向の初期化
+            //        left_rotate = false;
+            //        right_rotate = false;
+
+            //        Invoke("DelayMethod", 0.1f);
+
+            //        //プレイヤーを起動
+            //        auto_player_move.move_flg = true;
+
+            //        //カーソル復活           
+            //        cursor.SetActive(true);
+
+            //        move_axis.delete_list = true;
+
+            //        Vector3 player_pos = player.transform.position;
+            //        cursor.transform.position = player_pos;
+
+            //        start_radian = 0;
+            //        old_radian = 0;
+            //        flg = true;
+
+            //        //歯車のコライダーON
+            //        GameObject[] objects = GameObject.FindGameObjectsWithTag("LGear");
+            //        foreach (GameObject num in objects)
+            //        {
+            //            var colliderTest = num.GetComponent<Collider2D>();
+            //            colliderTest.enabled = true;
+            //        }
+            //        objects = GameObject.FindGameObjectsWithTag("RGear");
+            //        foreach (GameObject num in objects)
+            //        {
+            //            var colliderTest = num.GetComponent<Collider2D>();
+            //            colliderTest.enabled = true;
+            //        }
+
+            //        //カーソルのタグ変更
+            //        //GameObject obj = GameObject.Find("SelectCursor"); //オブジェクトを探す
+            //        //obj.tag = "Cursor";
+
+            //    }
+            //}
+            //else
+            //{
+                
+            //}
+            if (child_cnt >= this.transform.childCount)
             {
-                if (initial_pos == this.transform.position)
+                room_hit = false;
+
+                child_cnt = 0;
+
+                //回転方向の初期化
+                left_rotate = false;
+                right_rotate = false;
+
+                Invoke("DelayMethod", 0.5f);
+
+                //プレイヤーを起動
+                auto_player_move.move_flg = true;
+
+                //カーソル復活           
+                cursor.SetActive(true);
+
+                move_axis.delete_list = true;
+
+                Vector3 player_pos = player.transform.position;
+                cursor.transform.position = player_pos;
+
+                start_radian = 0;
+                old_radian = 0;
+                flg = true;
+
+                //歯車のコライダーON
+                GameObject[] objects = GameObject.FindGameObjectsWithTag("LGear");
+                foreach (GameObject num in objects)
                 {
-                    room_hit = false;
-                    rotate_flg = true;
-                    move_axis.chang_axis = true;
+                    var colliderTest = num.GetComponent<Collider2D>();
+                    colliderTest.enabled = true;
                 }
-                else if (child_cnt >= this.transform.childCount)
+                objects = GameObject.FindGameObjectsWithTag("RGear");
+                foreach (GameObject num in objects)
                 {
-                    room_hit = false;
-
-                    room_hit = false;
-                    child_cnt = 0;
-
-                    //回転方向の初期化
-                    left_rotate = false;
-                    right_rotate = false;
-
-                    Invoke("DelayMethod", 0.1f);
-
-                    //プレイヤーを起動
-                    auto_player_move.move_flg = true;
-
-                    //カーソル復活           
-                    cursor.SetActive(true);
-
-                    move_axis.delete_list = true;
-
-                    Vector3 player_pos = player.transform.position;
-                    cursor.transform.position = player_pos;
-
-                    start_radian = 0;
-                    old_radian = 0;
-                    flg = true;
-
-                    //歯車のコライダーON
-                    GameObject[] objects = GameObject.FindGameObjectsWithTag("LGear");
-                    foreach (GameObject num in objects)
-                    {
-                        var colliderTest = num.GetComponent<Collider2D>();
-                        colliderTest.enabled = true;
-                    }
-                    objects = GameObject.FindGameObjectsWithTag("RGear");
-                    foreach (GameObject num in objects)
-                    {
-                        var colliderTest = num.GetComponent<Collider2D>();
-                        colliderTest.enabled = true;
-                    }
-
-                    //カーソルのタグ変更
-                    //GameObject obj = GameObject.Find("SelectCursor"); //オブジェクトを探す
-                    //obj.tag = "Cursor";
-
+                    var colliderTest = num.GetComponent<Collider2D>();
+                    colliderTest.enabled = true;
                 }
-            }
-            else
-            {
-                if (child_cnt >= this.transform.childCount)
-                {
-                    room_hit = false;
 
-                    room_hit = false;
-                    child_cnt = 0;
-
-                    //回転方向の初期化
-                    left_rotate = false;
-                    right_rotate = false;
-
-                    Invoke("DelayMethod", 0.5f);
-
-                    //プレイヤーを起動
-                    auto_player_move.move_flg = true;
-
-                    //カーソル復活           
-                    cursor.SetActive(true);
-
-                    move_axis.delete_list = true;
-
-                    Vector3 player_pos = player.transform.position;
-                    cursor.transform.position = player_pos;
-
-                    start_radian = 0;
-                    old_radian = 0;
-                    flg = true;
-
-                    //歯車のコライダーON
-                    GameObject[] objects = GameObject.FindGameObjectsWithTag("LGear");
-                    foreach (GameObject num in objects)
-                    {
-                        var colliderTest = num.GetComponent<Collider2D>();
-                        colliderTest.enabled = true;
-                    }
-                    objects = GameObject.FindGameObjectsWithTag("RGear");
-                    foreach (GameObject num in objects)
-                    {
-                        var colliderTest = num.GetComponent<Collider2D>();
-                        colliderTest.enabled = true;
-                    }
-
-                    //カーソルのタグ変更
-                    //GameObject obj = GameObject.Find("SelectCursor"); //オブジェクトを探す
-                    //obj.tag = "Cursor";
-
-                }
+                //カーソルのタグ変更
+                //GameObject obj = GameObject.Find("SelectCursor"); //オブジェクトを探す
+                //obj.tag = "Cursor";
 
             }
 
-            
+
+
         }
         if (rotate_flg == true)
         {
@@ -265,11 +270,16 @@ public class RotateRoom : MonoBehaviour
                     if (now_radian >= 90)
                     {
                         right_rotate = true;
+
+                        //軸決め
+                        move_axis.SetAxis(0);
                     }
                     else if (now_radian <= -90)
                     {
-                        //move_axis.chang_axis = true;
                         left_rotate = true;
+
+                        //軸決め
+                        move_axis.SetAxis(1);
                     }
                     //Debug.Log(now_radian);
                     //保存
@@ -403,5 +413,6 @@ public class RotateRoom : MonoBehaviour
     private void DelayMethod()
     {
         collider_flg = true;
+        rotate_start.botton_flg = true;
     }
 }

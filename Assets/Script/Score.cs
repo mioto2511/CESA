@@ -9,6 +9,8 @@ public class Score : MonoBehaviour
     public int score;
     private int count = 0;
 
+    private GameObject room;
+
     //private bool flg = false;
 
     //GoalFlgの変数を使用
@@ -22,6 +24,8 @@ public class Score : MonoBehaviour
 
         GameObject goal = GameObject.Find("Player"); //オブジェクトを探す
         goal_flg = goal.GetComponent<GoalFlg>();　//付いているスクリプトを取得
+
+        room = GameObject.Find("Room"); //オブジェクトを探す
     }
 
     // Update is called once per frame
@@ -34,7 +38,7 @@ public class Score : MonoBehaviour
 
         
 
-        if (GameObject.Find("Room").transform.childCount >= 3)
+        if (room.transform.childCount >= 3)
         {
             if (goal_flg.goal_flg == true)
             {
