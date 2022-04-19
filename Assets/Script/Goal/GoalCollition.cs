@@ -12,6 +12,7 @@ public class GoalCollition : MonoBehaviour
     {
         child = transform.GetChild(0).gameObject;//オブジェクトを探す
 
+        //プレイヤーとの判定OFF
         child.gameObject.SetActive(false);
     }
 
@@ -19,6 +20,7 @@ public class GoalCollition : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
+            //プレイヤーとの判定ON
             child.gameObject.SetActive(true);
 
             //Rigidbodyを取得

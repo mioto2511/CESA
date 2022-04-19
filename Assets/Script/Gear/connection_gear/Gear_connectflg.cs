@@ -31,7 +31,6 @@ public class Gear_connectflg : MonoBehaviour
             if (flg)
             {
                 flg = false;
-                rotate_room.connect_flg = true;
             }
         }
         else if(this.tag == "RGear_Connect")
@@ -41,7 +40,6 @@ public class Gear_connectflg : MonoBehaviour
             if (flg)
             {
                 flg = false;
-                rotate_room.connect_flg = true;
             }
         }
     }

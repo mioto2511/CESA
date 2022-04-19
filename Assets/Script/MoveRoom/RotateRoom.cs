@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class RotateRoom : MonoBehaviour
 {
+    //AutoPlayerMoveの変数を使う
+    private AutoPlayerMove auto_player_move;
+    //MoveAxisOfRotateの変数を使う
+    private MoveAxisOfRotate move_axis;
+    //RotateStartの変数を使う
+    private RotateStart rotate_start;
+
     public static RotateRoom instance;
     public int rotate_cnt = 0;
 
@@ -15,14 +22,12 @@ public class RotateRoom : MonoBehaviour
         }
     }
 
-    [SerializeField, Tooltip("ターゲットオブジェクト")]
-    private GameObject target_object;
+    [Header("ターゲットオブジェクト")] public GameObject target_object;
 
-    [SerializeField, Tooltip("回転軸")]
+    [Header("速度係数")] public float SpeedFactor = 0.1f;
+
+    //回転軸
     private Vector3 RotateAxis = Vector3.forward;
-
-    [SerializeField, Tooltip("速度係数")]
-    private float SpeedFactor = 0.1f;
 
     //回すか
     public bool rotate_flg = false;
@@ -34,38 +39,37 @@ public class RotateRoom : MonoBehaviour
     //部屋同士が当たったか
     public bool room_hit = false;
 
+    //子のBOXのカウント
     private int child_cnt = 0;
 
     //自身のtf
-    Transform my_transform;
-    Vector3 my_rotate;
+    private Transform my_transform;
 
-    //AutoPlayerMoveの変数を使う
-    AutoPlayerMove auto_player_move;
+    //デットゾーン
+    private float deadzone = 0.2f;
 
-    //MoveAxisOfRotate
-    MoveAxisOfRotate move_axis;
+    //ステックの開始地点
+    private float start_radian = 0;
 
-    //RotateStart
-    RotateStart rotate_start;
+    //ステックの前回角度
+    private float old_radian = 0;
 
-    public float deadzone = 0.2f;
-    float start_radian = 0;
-    float old_radian = 0;
-    bool flg = true;
-    public bool connect_flg = false;
+    //初期位置フラグ
+    private bool initial_flg = true;
 
+    //初期位置
     private Vector3 initial_pos;
-    //private bool initial_flg = true;
 
+    //オブジェクト
     private GameObject player;
-    private GameObject cursor;
+    //private GameObject cursor;
 
+    //支点のコライダーフラグ
     public bool collider_flg = true;
 
     void Start()
     {
-        rotate_start = this.GetComponent<RotateStart>();
+        rotate_start = this.GetComponent<RotateStart>();//付いているスクリプトを取得
 
         GameObject obj1 = GameObject.Find("AxisOfRotation"); //オブジェクトを探す
         move_axis = obj1.GetComponent<MoveAxisOfRotate>();　//付いているスクリプトを取得
@@ -73,96 +77,22 @@ public class RotateRoom : MonoBehaviour
         player = GameObject.Find("Player"); //オブジェクトを探す
         auto_player_move = player.GetComponent<AutoPlayerMove>();　//付いているスクリプトを取得
 
-        cursor = GameObject.Find("SelectCursor"); //オブジェクトを探す
+        //cursor = GameObject.Find("SelectCursor"); //オブジェクトを探す
     }
 
     void Update()
     {
-        // transformを取得Fixed
+        // transformを取得
         my_transform = this.transform;
-
-        ////回転方向の変更
-        //if (Input.GetKeyDown("joystick button 5"))//右
-        //{
-        //    right_rotate = true;
-        //    left_rotate = false;
-        //    Debug.Log("R");
-        //}
-        //else if (Input.GetKeyDown("joystick button 4"))//左
-        //{
-        //    left_rotate = true;
-        //    right_rotate = false;
-        //    Debug.Log("L");
-        //}
 
         //部屋が当たった
         if (room_hit == true)
         {
-
             child_cnt++;
 
             rotate_flg = false;
 
-            //if (move_axis.axis_poses.Count >= 2)
-            //{
-            //    if (initial_pos == this.transform.position)
-            //    {
-            //        room_hit = false;
-            //        rotate_flg = true;
-            //        move_axis.chang_axis = true;
-            //    }
-            //    else if (child_cnt >= this.transform.childCount)
-            //    {
-            //        room_hit = false;
-
-            //        room_hit = false;
-            //        child_cnt = 0;
-
-            //        //回転方向の初期化
-            //        left_rotate = false;
-            //        right_rotate = false;
-
-            //        Invoke("DelayMethod", 0.1f);
-
-            //        //プレイヤーを起動
-            //        auto_player_move.move_flg = true;
-
-            //        //カーソル復活           
-            //        cursor.SetActive(true);
-
-            //        move_axis.delete_list = true;
-
-            //        Vector3 player_pos = player.transform.position;
-            //        cursor.transform.position = player_pos;
-
-            //        start_radian = 0;
-            //        old_radian = 0;
-            //        flg = true;
-
-            //        //歯車のコライダーON
-            //        GameObject[] objects = GameObject.FindGameObjectsWithTag("LGear");
-            //        foreach (GameObject num in objects)
-            //        {
-            //            var colliderTest = num.GetComponent<Collider2D>();
-            //            colliderTest.enabled = true;
-            //        }
-            //        objects = GameObject.FindGameObjectsWithTag("RGear");
-            //        foreach (GameObject num in objects)
-            //        {
-            //            var colliderTest = num.GetComponent<Collider2D>();
-            //            colliderTest.enabled = true;
-            //        }
-
-            //        //カーソルのタグ変更
-            //        //GameObject obj = GameObject.Find("SelectCursor"); //オブジェクトを探す
-            //        //obj.tag = "Cursor";
-
-            //    }
-            //}
-            //else
-            //{
-                
-            //}
+            //boxの数とカウントが同じか以上なら
             if (child_cnt >= this.transform.childCount)
             {
                 room_hit = false;
@@ -173,22 +103,25 @@ public class RotateRoom : MonoBehaviour
                 left_rotate = false;
                 right_rotate = false;
 
-                Invoke("DelayMethod", 0.5f);
+                //遅らせて処理するもの
+                Invoke("DelayMethod", 0.25f);
 
                 //プレイヤーを起動
                 auto_player_move.move_flg = true;
 
+                //配列削除
+                move_axis.Delete();
+
                 //カーソル復活           
-                cursor.SetActive(true);
+                //cursor.SetActive(true);
+                //プレイヤーの位置にカーソル生成
+                //Vector3 player_pos = player.transform.position;
+                //cursor.transform.position = player_pos;
 
-                move_axis.delete_list = true;
-
-                Vector3 player_pos = player.transform.position;
-                cursor.transform.position = player_pos;
-
+                //回転初期位置の初期化
                 start_radian = 0;
                 old_radian = 0;
-                flg = true;
+                initial_flg = true;
 
                 //歯車のコライダーON
                 GameObject[] objects = GameObject.FindGameObjectsWithTag("LGear");
@@ -203,90 +136,11 @@ public class RotateRoom : MonoBehaviour
                     var colliderTest = num.GetComponent<Collider2D>();
                     colliderTest.enabled = true;
                 }
-
-                //カーソルのタグ変更
-                //GameObject obj = GameObject.Find("SelectCursor"); //オブジェクトを探す
-                //obj.tag = "Cursor";
-
-            }
-
-
-
-        }
-        if (rotate_flg == true)
-        {
-
-            float lsh = Input.GetAxis("L_Stick_H");//横軸
-            float lsv = Input.GetAxis("L_Stick_V");//縦軸
-                                                   //ステックの角度産出
-            float radian = Mathf.Atan2(lsv, lsh) * Mathf.Rad2Deg;
-            if (radian < 0)
-            {
-                radian += 360;
-            }
-
-            if ((lsh > deadzone) || (lsh < -deadzone) || (lsv > deadzone) || (lsv < -deadzone))
-            {
-                if (flg)
-                {
-                    flg = false;
-                    start_radian = radian;
-                    //goal_radian = start_radian+
-                    initial_pos = this.transform.position;
-                    //Debug.Log(initial_pos);
-                }
-
-
-                //else if (initial_pos == this.transform.position && room_hit == true)
-                //{
-                //}
-
-
-                //初期位置かつ一度動いた
-                //if (initial_pos == this.transform.position && initial_flg == false)
-                //{
-                //    Debug.Log("a");
-                //    move_axis.chang_axis = true;
-                //}
-
-                //if (initial_pos != this.transform.position)
-                //{
-                //    initial_flg = false;
-                //}
-
-                if (left_rotate == false && right_rotate == false)
-                {
-                    float now_radian = start_radian - radian;
-
-                    if (old_radian >= 0 &&now_radian<-200)
-                    {
-                        now_radian += 360;
-                    }
-                    else if (old_radian <= 0 && now_radian > 200)
-                    {
-                        now_radian -= 360;
-                    }
-
-                    if (now_radian >= 90)
-                    {
-                        right_rotate = true;
-
-                        //軸決め
-                        move_axis.SetAxis(0);
-                    }
-                    else if (now_radian <= -90)
-                    {
-                        left_rotate = true;
-
-                        //軸決め
-                        move_axis.SetAxis(1);
-                    }
-                    //Debug.Log(now_radian);
-                    //保存
-                    old_radian = now_radian;
-                }
             }
         }
+
+        //コントローラーの処理
+        StickMove();
     }
 
     void FixedUpdate()
@@ -310,109 +164,91 @@ public class RotateRoom : MonoBehaviour
                 360.0f / (1.0f / SpeedFactor) * Time.deltaTime
                 );
             }
-
-            //float lsh = Input.GetAxis("L_Stick_H");//横軸
-            //float lsv = Input.GetAxis("L_Stick_V");//縦軸
-            ////ステックの角度産出
-            //float radian = Mathf.Atan2(lsv, lsh) * Mathf.Rad2Deg;
-            //if (radian < 0)
-            //{
-            //    radian += 360;
-            //}
-
-            //if ((lsh > deadzone) || (lsh < -deadzone) || (lsv > deadzone) || (lsv < -deadzone))
-            //{
-            //    if (flg)
-            //    {
-            //        flg = false;
-            //        start_radian = radian;
-            //        //goal_radian = start_radian+
-            //        initial_pos = this.transform.position;
-            //    }
-
-                
-            //    //else if (initial_pos == this.transform.position && room_hit == true)
-            //    //{
-            //    //}
-                
-
-            //    //初期位置かつ一度動いた
-            //    if (initial_pos == this.transform.position && initial_flg == false)
-            //    {
-            //        Debug.Log("a");
-            //        move_axis.chang_axis = true;
-            //    }
-
-            //    if (initial_pos != this.transform.position)
-            //    {
-            //        initial_flg = false;
-            //    }
-
-            //    if (left_rotate == false && right_rotate == false)
-            //    {
-            //        if (start_radian > radian)
-            //        {
-            //            right_rotate = true;
-            //        }
-            //        else if (start_radian < radian)
-            //        {
-            //            //move_axis.chang_axis = true;
-            //            left_rotate = true;
-            //        }
-            //    }
-
-                //if (old_radian > radian)
-                //{
-                //    this.transform.RotateAround(
-                //    target_object.transform.position,
-                //    RotateAxis,
-                //    360.0f / (1.0f / -SpeedFactor) * Time.deltaTime
-                //    );
-
-                //    old_radian = radian;
-                //}
-                //else if (old_radian < radian)
-                //{
-                //    this.transform.RotateAround(
-                //    target_object.transform.position,
-                //    RotateAxis,
-                //    360.0f / (1.0f / SpeedFactor) * Time.deltaTime
-                //    );
-
-                //    old_radian = radian;
-                //}
-            //}
-
-
-            //now_radian = radian;
-
-            //float speed = old_radian - now_radian;
-
-            //speed = -speed;
-
-            //if ((lsh > deadzone) || (lsh < -deadzone) || (lsv > deadzone) || (lsv < -deadzone))
-            //{
-            //    this.transform.RotateAround(
-            //            target_object.transform.position,
-            //            RotateAxis,
-            //            speed
-            //            );
-            //}
-
-            //if(lsh == 0 && lsv == 0)
-            //{
-            //    now_radian = 0;
-            //}
-
-            //old_radian = radian;
-
-            
         }       
     }
 
+    //コントローラーの処理
+    private void StickMove()
+    {
+        if (rotate_flg == true)
+        {
+            float lsh = Input.GetAxis("L_Stick_H");//横軸
+            float lsv = Input.GetAxis("L_Stick_V");//縦軸
+
+            //ステックの角度産出
+            float radian = Mathf.Atan2(lsv, lsh) * Mathf.Rad2Deg;
+            if (radian < 0)
+            {
+                radian += 360;
+            }
+
+            //スティック入力がはいったら
+            if ((lsh > deadzone) || (lsh < -deadzone) || (lsv > deadzone) || (lsv < -deadzone))
+            {
+                //初期位置の時
+                if (initial_flg)
+                {
+                    initial_flg = false;
+
+                    //スティックの開始角度
+                    start_radian = radian;
+
+                    //回転前の初期位置
+                    initial_pos = this.transform.position;
+                }
+
+
+                if (left_rotate == false && right_rotate == false)
+                {
+                    float now_radian = start_radian - radian;
+
+                    //0～360で飛ぶのを改善
+                    if (old_radian >= 0 && now_radian < -200)
+                    {
+                        now_radian += 360;
+                    }
+                    else if (old_radian <= 0 && now_radian > 200)
+                    {
+                        now_radian -= 360;
+                    }
+
+                    //90度回転したら回転開始
+                    if (now_radian >= 90)
+                    {
+                        right_rotate = true;
+
+                        //軸決め
+                        move_axis.SetAxis(0);
+                    }
+                    else if (now_radian <= -90)
+                    {
+                        left_rotate = true;
+
+                        //軸決め
+                        move_axis.SetAxis(1);
+                    }
+
+                    //保存
+                    old_radian = now_radian;
+                }
+            }
+            else if (lsh == 0 && lsv == 0)
+            {
+                //回転初期位置の初期化
+                start_radian = 0;
+                old_radian = 0;
+                initial_flg = true;
+            }
+        }
+    }
+
+    //遅延処理
     private void DelayMethod()
     {
+        //支点のコライダーON
         collider_flg = true;
+
+        //ボタンをふたたび押せる
         rotate_start.botton_flg = true;
     }
 }

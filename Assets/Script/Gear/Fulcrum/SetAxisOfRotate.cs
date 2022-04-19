@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SetAxisOfRotate : MonoBehaviour
 {
-    //GearCollisionの変数を使う
-    //GearCollision gear_collision;
     //MoveAxisOfRotateの変数を使う
     MoveAxisOfRotate move_axis;
     //RotateRoomの変数を使う
@@ -15,19 +13,14 @@ public class SetAxisOfRotate : MonoBehaviour
     //LeftRotateTestの変数を使う
     LeftRotateTest leftrotate_test;
 
-    private int cunt = 0;
+    private int count = 0;
 
     private bool active = false;
 
     public bool collider_flg = true;
 
     //軸のコライダー
-    private Collider2D collider;
-
-    public bool check = false;
-
-    private bool right = false;
-    private bool left = false;
+    private Collider2D my_collider;
 
     //テストの初期位置保存用
     private Vector3 activebox_pos;
@@ -35,19 +28,17 @@ public class SetAxisOfRotate : MonoBehaviour
     private GameObject right_obj;
     private GameObject left_obj;
 
-    //Vector3 box_pos;
-
     // Start is called before the first frame update
     void Start()
     {
-        right_obj = transform.Find("RightTrigger").gameObject;
+        //自身のコライダー
+        my_collider = this.GetComponent<Collider2D>();
+
+        right_obj = transform.Find("RightTrigger").gameObject;//オブジェクトを探す
         rightrotate_test = right_obj.GetComponent<RightRotateTest>(); //スクリプトを取得
 
-        left_obj = transform.Find("LeftTrigger").gameObject;
+        left_obj = transform.Find("LeftTrigger").gameObject;//オブジェクトを探す
         leftrotate_test = left_obj.GetComponent<LeftRotateTest>(); //スクリプトを取得
-
-        collider = this.GetComponent<Collider2D>();
-
 
         GameObject obj1 = GameObject.Find("AxisOfRotation"); //オブジェクトを探す
         move_axis = obj1.GetComponent<MoveAxisOfRotate>();　//付いているスクリプトを取得
@@ -60,7 +51,7 @@ public class SetAxisOfRotate : MonoBehaviour
     void Update()
     {
         //壁4つ以上に当たっている
-        if (cunt >= 4)
+        if (count >= 4)
         {
             //RoomのBoxに当たっている
             if (active)
@@ -68,38 +59,26 @@ public class SetAxisOfRotate : MonoBehaviour
                 //自身を取得
                 Vector3 my_pos = this.transform.position;
 
-                //リストに追加
-                //move_axis.axis_poses[0] = my_pos;
-                //move_axis.axis_poses.Add(my_pos);
-
-                //Debug.Log(this.name);
                 active = false;
 
-                //支点を移動させる
-                //move_axis.move_flg = true;
-
-                //right = true;
-
+                //支点に触れているBoxの位置にテストオブジェクト配置
                 right_obj.transform.position = activebox_pos;
                 left_obj.transform.position = activebox_pos;
 
+                //回転テスト
                 rightrotate_test.Move();
                 leftrotate_test.Move();
             }
-
-
-            //支点に移動させる
-            //move_axis.axis_pos = my_pos;
         }
 
+        //テストオブジェクトがBoxに触れてないなら配列に代入
         if (rightrotate_test.box_hit == false)
         {
             if(right_obj.transform.position != this.transform.position)
             {
                 Vector3 my_pos = this.transform.position;
                 move_axis.axis_poses[0] = my_pos;
-            }
-            
+            }          
         }
         if (leftrotate_test.box_hit == false)
         {
@@ -107,30 +86,26 @@ public class SetAxisOfRotate : MonoBehaviour
             {
                 Vector3 my_pos = this.transform.position;
                 move_axis.axis_poses[1] = my_pos;
-            }
-                
+            }                
         }
 
         //コライダーのON/OFF
         if (rotate_room.collider_flg)
         {
-            collider.enabled = true;
-
-            //rightrotate_test.ColliderSwith(1);
-            //leftrotate_test.ColliderSwith(1);
+            //コライダーON
+            my_collider.enabled = true;
         }
         else
         {
-            collider.enabled = false;
-            cunt = 0;
-            //active = false;
+            //コライダーOFF
+            my_collider.enabled = false;
 
-            //rightrotate_test.ColliderSwith(0);
-            //leftrotate_test.ColliderSwith(0);
+            //カウント初期化
+            count = 0;
 
+            //テストオブジェクト位置初期化
             right_obj.transform.localPosition = new Vector3(0, 0, 0);
             left_obj.transform.localPosition = new Vector3(0, 0, 0);
-
         }
     }
 
@@ -138,7 +113,7 @@ public class SetAxisOfRotate : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Wall"))
         {
-            cunt++;
+            count++;
         }
 
         if (other.gameObject.CompareTag("ActiveBox"))

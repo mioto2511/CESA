@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 1396023894953596346}
   - component: {fileID: 1396023894953596343}
   - component: {fileID: 1396023894953596342}
-  - component: {fileID: 1396023894953596347}
-  - component: {fileID: 1396023894953596336}
   m_Layer: 0
   m_Name: Box1
   m_TagString: ActiveBox
@@ -102,7 +100,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1396023894953596337}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -158,31 +156,6 @@ MonoBehaviour:
   child_cnt: 0
   location_flg: 1
   box_pos: {x: 0, y: 0}
---- !u!114 &1396023894953596347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1396023894953596337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f569f6ceb3c035488c4f6dca71f1116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1396023894953596336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1396023894953596337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1432aeebac0f39044bcaeda6c6b3783a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cursor_hit: 0
 --- !u!1 &5276739572517758699
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +261,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 7
 --- !u!61 &5276739572517758702
 BoxCollider2D:
@@ -445,7 +418,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 7
 --- !u!61 &5276739572710179992
 BoxCollider2D:
@@ -796,7 +769,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 7
 --- !u!61 &5276739573589832048
 BoxCollider2D:
@@ -942,7 +915,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5276739573928009059}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1100,7 +1073,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 7
 --- !u!61 &5276739574272313333
 BoxCollider2D:
@@ -1198,12 +1171,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotate_cnt: 0
   target_object: {fileID: 0}
-  RotateAxis: {x: 0, y: 0, z: 1}
   SpeedFactor: 0.15
   rotate_flg: 0
   right_rotate: 0
   left_rotate: 0
   room_hit: 0
-  deadzone: 0.2
-  connect_flg: 0
   collider_flg: 1

@@ -18,7 +18,7 @@ public class AutoPlayerMove : MonoBehaviour
     [Header("床接触判定")] public PlayerGroundTrigger ground_trigger;
 
     //スケール保存
-    Vector3 tf_s;
+    private Vector3 tf_s;
 
     // Start is called before the first frame update
     void Start()
@@ -46,20 +46,6 @@ public class AutoPlayerMove : MonoBehaviour
             {
                 right_f = !right_f;
             }
-
-            //if (Input.GetKey(KeyCode.LeftArrow))
-            //{
-            //    xSpeed = -speed;
-            //}
-            //// 右に移動
-            //else if (Input.GetKey(KeyCode.RightArrow))
-            //{
-            //    xSpeed = speed;
-            //}
-            //else
-            //{
-            //    xSpeed = 0.0f;
-            //}
 
             //右向き
             if (right_f)

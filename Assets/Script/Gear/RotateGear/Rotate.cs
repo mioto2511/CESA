@@ -7,7 +7,8 @@ public class Rotate : MonoBehaviour
     private bool rflg = false;   //右回転フラグ
     private bool lflg = false;   //左回転フラグ
 
-    private float speed = 2f;
+    //回転速度
+    private float speed = 0.2f;
 
     // Start is called before the first frame update
     void Start()

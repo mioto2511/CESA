@@ -7,14 +7,14 @@ public class RightRotateTest : MonoBehaviour
 
     public bool box_hit = false;
 
-    private Collider2D collider;
+    private Collider2D my_collider;
 
     private Vector3 parent_pos;
 
     // Start is called before the first frame update
     void Start()
     {
-        collider = this.GetComponent<Collider2D>();
+        my_collider = this.GetComponent<Collider2D>();
 
         GameObject parent = this.transform.parent.gameObject; //オブジェクトを探す
         parent_pos = parent.transform.position;
@@ -65,11 +65,11 @@ public class RightRotateTest : MonoBehaviour
     {
         if (id == 0)
         {
-            collider.enabled = false;
+            my_collider.enabled = false;
         }
         else if (id == 1)
         {
-            collider.enabled = true;
+            my_collider.enabled = true;
         }
     }
 }

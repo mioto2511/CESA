@@ -7,7 +7,8 @@ public class Drive_gearRotate : MonoBehaviour
     private bool rflg = false;   //右回転フラグ
     private bool lflg = false;   //左回転フラグ
 
-    private float speed = 1.5f;
+    //回転速度
+    private float speed = 0.15f;
 
     // Start is called before the first frame update
     void Start()

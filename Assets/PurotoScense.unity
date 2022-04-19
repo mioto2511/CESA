@@ -558,9 +558,6 @@ GameObject:
   - component: {fileID: 129198244}
   - component: {fileID: 129198250}
   - component: {fileID: 129198249}
-  - component: {fileID: 129198247}
-  - component: {fileID: 129198246}
-  - component: {fileID: 129198245}
   m_Layer: 0
   m_Name: DriveGear
   m_TagString: RDrive
@@ -633,45 +630,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &129198245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129198242}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 733d7010c70b0034fa28ef4b7d6b1a1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &129198246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129198242}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59ddec1b99890da4687267cbe560a49e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  installation_location: {fileID: 2959681727042344899, guid: 275730f246ccba44eb27bce2396e509b, type: 3}
-  cursor: {fileID: 8094034349971809505, guid: 8f1683f46c951cf44bb883b006e0cf32, type: 3}
---- !u!114 &129198247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129198242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5516668656fa1ec43a2c844de618442a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 6
 --- !u!114 &129198249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6815,7 +6773,6 @@ GameObject:
   - component: {fileID: 6513633297772639209}
   - component: {fileID: 6513633297772639204}
   - component: {fileID: 6513633297772639205}
-  - component: {fileID: 6513633297772639203}
   m_Layer: 0
   m_Name: Box1
   m_TagString: ActiveBox
@@ -6823,19 +6780,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6513633297772639203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6513633297772639202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1432aeebac0f39044bcaeda6c6b3783a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cursor_hit: 0
 --- !u!61 &6513633297772639204
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7236,8 +7180,6 @@ GameObject:
   - component: {fileID: 7413049291088521274}
   - component: {fileID: 7413049291088521279}
   - component: {fileID: 7413049291088521276}
-  - component: {fileID: 7413049291088521278}
-  - component: {fileID: 7413049291088521277}
   m_Layer: 0
   m_Name: Box2
   m_TagString: Box
@@ -7271,32 +7213,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.99, y: 0.99}
   m_EdgeRadius: 0.01
---- !u!114 &7413049291088521277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7413049291088521275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1432aeebac0f39044bcaeda6c6b3783a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cursor_hit: 0
---- !u!114 &7413049291088521278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7413049291088521275}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f569f6ceb3c035488c4f6dca71f1116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  botton_flg: 1
 --- !u!50 &7413049291088521279
 Rigidbody2D:
   serializedVersion: 4
