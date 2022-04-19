@@ -21,6 +21,7 @@ public class ShutterL : MonoBehaviour
         if (Input.GetKeyDown("joystick button 0"))
         {
             Change_Start = true;
+            SoundManager.Instance.PlaySE(SESoundData.SE.Pick);
         }
 
         if (Change_Start == true)

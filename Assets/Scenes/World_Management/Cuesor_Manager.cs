@@ -22,6 +22,7 @@ public class Cuesor_Manager : MonoBehaviour
         // ワールド選択処理
         if (Input.GetKeyDown("joystick button 0"))
         {
+            SoundManager.Instance.PlaySE(SESoundData.SE.Pick);
             Fade_Manager.FadeOut(movePoint[nowPoint].GetComponent<World_Manager>().World_No); // Aボタンが押されたらフェードアウトしてシーン遷移する
             //Debug.Log(movePoint[nowPoint].GetComponent<World_Manager>().World_No);
         }
@@ -34,11 +35,13 @@ public class Cuesor_Manager : MonoBehaviour
             //移動先が未開放の場合行けないようにする
             if (movePoint[nextPoint].GetComponent<World_Manager>().clear == true)
             {
+                SoundManager.Instance.PlaySE(SESoundData.SE.Select);
                 ++nowPoint;
             }
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow) && PointMin == false)
         {
+            SoundManager.Instance.PlaySE(SESoundData.SE.Select);
             --nowPoint;
             //Debug.Log("L");
         }

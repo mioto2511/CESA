@@ -43,18 +43,21 @@ public class Character_Move : MonoBehaviour
             if (movePoint[nextPoint].GetComponent<Select_Manager>().NewStageFlg == true)
             {
                 RightMove = true;
+                SoundManager.Instance.PlaySE(SESoundData.SE.Select);
                 Debug.Log(nextPoint);
             }
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow) && RightMove == false && LeftMove == false && PointMin == false)
         {
             LeftMove = true;
+            SoundManager.Instance.PlaySE(SESoundData.SE.Select);
             //Debug.Log("L");
         }
 
         // ステージ選択処理
         if (Input.GetKeyDown("joystick button 0") && RightMove == false && LeftMove == false)
         {
+            SoundManager.Instance.PlaySE(SESoundData.SE.Pick);
             Fade_Manager.FadeOut(point_scene); // Aボタンが押されたらフェードアウトしてシーン遷移する
         }
 
