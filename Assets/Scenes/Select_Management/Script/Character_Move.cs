@@ -34,6 +34,7 @@ public class Character_Move : MonoBehaviour
 
     private void Update()
     {
+        //if(Input.GetAxis(""))
         // ゲームパッドの入力処理(今はキーボードの矢印入力になっている)
         if (Input.GetKeyDown(KeyCode.RightArrow) && RightMove == false && LeftMove == false && PointMax == false)
         {
@@ -44,7 +45,7 @@ public class Character_Move : MonoBehaviour
             {
                 RightMove = true;
                 SoundManager.Instance.PlaySE(SESoundData.SE.Select);
-                Debug.Log(nextPoint);
+                //Debug.Log(nextPoint);
             }
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow) && RightMove == false && LeftMove == false && PointMin == false)
