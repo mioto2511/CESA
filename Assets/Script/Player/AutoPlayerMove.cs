@@ -65,6 +65,10 @@ public class AutoPlayerMove : MonoBehaviour
             //‘ã“ü
             rb.velocity = new Vector2(xSpeed, rb.velocity.y);
         }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
         
     }
 }
