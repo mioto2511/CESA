@@ -22,7 +22,7 @@ public class Score : MonoBehaviour
         //リザルト背景を消す
         score_back.SetActive(false);
 
-        GameObject goal = GameObject.Find("Player"); //オブジェクトを探す
+        GameObject goal = GameObject.Find("GoalTrigger"); //オブジェクトを探す
         goal_flg = goal.GetComponent<GoalFlg>();　//付いているスクリプトを取得
 
         room = GameObject.Find("Room"); //オブジェクトを探す

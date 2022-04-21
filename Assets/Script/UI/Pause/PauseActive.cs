@@ -9,10 +9,16 @@ public class PauseActive : MonoBehaviour
     private GameObject pauseUI;
 
     //ポーズの表示フラグ
-	private bool pause_flg = false;
+	public bool pause_flg = false;
+
+    //RotateStartの変数を使う
+    private RotateStart rotate_start;
 
     void Start()
     {
+        GameObject obj1 = GameObject.Find("Room"); //オブジェクトを探す
+        rotate_start = obj1.GetComponent<RotateStart>();//付いているスクリプトを取得
+
         //リザルト背景を消す
         pauseUI.SetActive(false);
     }
@@ -31,6 +37,9 @@ public class PauseActive : MonoBehaviour
 
                 //フラグ折る
                 pause_flg = false;
+
+                //回転ボタンON
+                rotate_start.botton_flg = true;
             }
         }
         else
@@ -45,6 +54,9 @@ public class PauseActive : MonoBehaviour
 
                 //フラグ立つ
                 pause_flg = true;
+
+                //回転ボタンOFF
+                rotate_start.botton_flg = false;
             }
         }
 	}

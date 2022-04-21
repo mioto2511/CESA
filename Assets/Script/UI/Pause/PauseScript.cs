@@ -5,9 +5,9 @@ using UnityEngine.UI; // UIコンポーネントの使用
 
 public class PauseScript : MonoBehaviour
 {
-	Button b1;
-	Button b2;
-	Button b3;
+	private Button b1;
+	private Button b2;
+	private Button b3;
 
 	// Start is called before the first frame update
 	void Start()

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerFall : MonoBehaviour
 {
+	//GoalTrigger
+	private GoalTrigger goal_trigger;
+
 	//レイの開始地点
 	[SerializeField]
 	private Transform ray_position;
@@ -20,7 +23,10 @@ public class PlayerFall : MonoBehaviour
 	//自身のコライダー
 	private Collider2D my_collider;
 
-	GameObject player;
+	private GameObject player;
+
+	//死亡フラグ
+	public bool death_flg = false;
 
 	// Start is called before the first frame update
 	void Start()
@@ -28,6 +34,9 @@ public class PlayerFall : MonoBehaviour
 		fall_flg = false;
 
 		player = this.transform.parent.gameObject; //オブジェクトを探す
+
+		GameObject obj1 = GameObject.Find("GoalTrigger"); //オブジェクトを探す
+		goal_trigger = obj1.GetComponent<GoalTrigger>();//付いているスクリプトを取得
 
 		//コライダーOFF
 		my_collider = this.GetComponent<Collider2D>();
@@ -46,11 +55,16 @@ public class PlayerFall : MonoBehaviour
 			//　地面にレイが届いていたら
 			if (Physics2D.Linecast(ray_position.position, ray_position.position + Vector3.down * ray_range, LayerMask.GetMask("Wall")))
 			{
+				//ゴールに接触できる
+				goal_trigger.ColliderSwitch(true);
+
 				//部屋３個分落下したら
-				if(count >= 3)
+				if (count >= 3)
                 {
-					Destroy(player);
+					death_flg = true;
+					//Destroy(player);
 					Debug.Log("shi");
+					goal_trigger.ColliderSwitch(false);
 				}
 
 				fall_flg = false;
@@ -71,6 +85,8 @@ public class PlayerFall : MonoBehaviour
 
 				//コライダーON
 				my_collider.enabled = true;
+
+				goal_trigger.ColliderSwitch(false);
 			}
 		}
 	}
