@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MoveSelect : MonoBehaviour
 {
     public void OnClickStartButton()
     {
-        //ceneManager.LoadScene("game");
+        SceneManager.LoadScene("SelectScene");
 
-        //Time.timeScale = 1;  // ŽžŠÔ’âŽ~
+        Time.timeScale = 1;
     }
 }
