@@ -10,6 +10,8 @@ public class RotateRoom : MonoBehaviour
     private MoveAxisOfRotate move_axis;
     //RotateStartの変数を使う
     private RotateStart rotate_start;
+    //ChainGearを使う
+    private ChainGear chain_gear;
 
     public static RotateRoom instance;
     public int rotate_cnt = 0;
@@ -73,6 +75,9 @@ public class RotateRoom : MonoBehaviour
 
         GameObject obj1 = GameObject.Find("AxisOfRotation"); //オブジェクトを探す
         move_axis = obj1.GetComponent<MoveAxisOfRotate>();　//付いているスクリプトを取得
+
+        GameObject chain = GameObject.Find("DriveGear"); // オブジェクトを探す
+        chain_gear = chain.GetComponent<ChainGear>();
 
         player = GameObject.Find("Player"); //オブジェクトを探す
         auto_player_move = player.GetComponent<AutoPlayerMove>();　//付いているスクリプトを取得
@@ -213,14 +218,14 @@ public class RotateRoom : MonoBehaviour
                     }
 
                     //90度回転したら回転開始
-                    if (now_radian >= 90)
+                    if (now_radian >= 90 && chain_gear.dtype == 1)
                     {
                         right_rotate = true;
 
                         //軸決め
                         move_axis.SetAxis(0);
                     }
-                    else if (now_radian <= -90)
+                    else if (now_radian <= -90 && chain_gear.dtype == 0)
                     {
                         left_rotate = true;
 
