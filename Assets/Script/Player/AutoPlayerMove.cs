@@ -42,7 +42,7 @@ public class AutoPlayerMove : MonoBehaviour
             }
 
             //ínñ ÇÃí[Ç≈å¸Ç´ïœçX
-            if (ground_trigger.isOn == false)
+            if (ground_trigger.IsGround() == false)
             {
                 right_f = !right_f;
             }
@@ -65,10 +65,10 @@ public class AutoPlayerMove : MonoBehaviour
             //ë„ì¸
             rb.velocity = new Vector2(xSpeed, rb.velocity.y);
         }
-        else
-        {
-            rb.velocity = Vector3.zero;
-        }
+        //else
+        //{
+        //    rb.velocity = Vector3.zero;
+        //}
         
     }
 }
