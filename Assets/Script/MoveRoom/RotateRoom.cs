@@ -10,6 +10,10 @@ public class RotateRoom : MonoBehaviour
     private MoveAxisOfRotate move_axis;
     //RotateStartの変数を使う
     private RotateStart rotate_start;
+    //ChainGearを使う
+    private ChainGear chain_gear;
+
+    public int dtype;
 
     public static RotateRoom instance;
     public int rotate_cnt = 0;
@@ -74,10 +78,15 @@ public class RotateRoom : MonoBehaviour
         GameObject obj1 = GameObject.Find("AxisOfRotation"); //オブジェクトを探す
         move_axis = obj1.GetComponent<MoveAxisOfRotate>();　//付いているスクリプトを取得
 
+        GameObject chain = GameObject.Find("DriveGear"); // オブジェクトを探す
+        chain_gear = chain.GetComponent<ChainGear>();
+
         player = GameObject.Find("Player"); //オブジェクトを探す
         auto_player_move = player.GetComponent<AutoPlayerMove>();　//付いているスクリプトを取得
 
         //cursor = GameObject.Find("SelectCursor"); //オブジェクトを探す
+
+        dtype = 2;
     }
 
     void Update()
@@ -213,23 +222,57 @@ public class RotateRoom : MonoBehaviour
                     }
 
                     //90度回転したら回転開始
-                    if (now_radian >= 90)
+                    if (dtype == 2)
                     {
-                        right_rotate = true;
+                        if (now_radian >= 90)
+                        {
+                            right_rotate = true;
 
-                        //軸決め
-                        move_axis.SetAxis(0);
+                            //軸決め
+                            move_axis.SetAxis(0);
+                        }
+                        else if (now_radian <= -90)
+                        {
+                            left_rotate = true;
+
+                            //軸決め
+                            move_axis.SetAxis(1);
+                        }
                     }
-                    else if (now_radian <= -90)
+                    else if(dtype <= 1)
                     {
-                        left_rotate = true;
+                        if (dtype == 1)
+                        {
+                            if (now_radian >= -80 && now_radian <= -1)
+                            {
+                                now_radian = 0;
+                            }
+                            if (now_radian >= 90)
+                            {
+                                right_rotate = true;
 
-                        //軸決め
-                        move_axis.SetAxis(1);
+                                //軸決め
+                                move_axis.SetAxis(0);
+                            }
+                        }
+                        if (dtype == 0)
+                        {
+                            if (now_radian <= 80 && now_radian >= 1)
+                            {
+                                now_radian = 0;
+                            }
+                            else if (now_radian <= -90)
+                            {
+                                left_rotate = true;
+
+                                //軸決め
+                                move_axis.SetAxis(1);
+                            }
+                        }
                     }
 
-                    //保存
-                    old_radian = now_radian;
+                        //保存
+                        old_radian = now_radian;
                 }
             }
             else if (lsh == 0 && lsv == 0)
