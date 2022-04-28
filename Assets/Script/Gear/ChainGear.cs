@@ -9,15 +9,14 @@ public class ChainGear : MonoBehaviour
     private GameObject room;
     private GameObject parent;
 
-    public enum derectionType
+    public enum DerectionType
     {
         LeftOnly,
-        RightOnly
+        RightOnly,
+        Neutral
     };
 
-    public derectionType derection;
-
-    public int dtype;
+    public DerectionType derection;
     
     // Start is called before the first frame update
     void Start()
@@ -30,20 +29,26 @@ public class ChainGear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        parent = transform.parent.gameObject;
-        if (derection == derectionType.LeftOnly)
+        parent = transform.root.gameObject;
+        
+        if(parent.name == "Room")
         {
-            if (rotateStart.botton_flg == false && parent.name == "Room")
+            if (derection == DerectionType.LeftOnly)
             {
-                dtype = 0;
+                Debug.Log("R");
+                rotateRoom.dtype = 0;
+            }
+            else if (derection == DerectionType.LeftOnly)
+            {
+                Debug.Log("L");
+                rotateRoom.dtype = 1;
             }
         }
-        if (derection == derectionType.RightOnly)
+
+        if(rotateRoom.room_hit && parent.name == "Room")
         {
-            if (rotateStart.botton_flg == false && parent.name == "Room")
-            {
-                dtype = 1;
-            }
+            derection = DerectionType.Neutral;
+            rotateRoom.dtype = 2;
         }
     }
 }
