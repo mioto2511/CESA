@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cuesor_Manager : MonoBehaviour
+public class CuesorManager : MonoBehaviour
 {
     [Header("ワールドマップ")] public GameObject[] movePoint;
 
@@ -10,10 +10,21 @@ public class Cuesor_Manager : MonoBehaviour
     private bool PointMax = false;
     private bool PointMin = false;
 
+    private Shutter shutterL;
+    private Shutter shutterR;
+    private ChangeScene change_scene;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject L = GameObject.Find("ShutterL"); // オブジェクトを探す
+        shutterL = L.GetComponent<Shutter>();
+
+        GameObject R = GameObject.Find("ShutterR"); // オブジェクトを探す
+        shutterR = R.GetComponent<Shutter>();
+
+        GameObject T = GameObject.Find("ShutterTrigger"); // オブジェクトを探す
+        change_scene = T.GetComponent<ChangeScene>();
     }
 
     // Update is called once per frame
@@ -23,7 +34,13 @@ public class Cuesor_Manager : MonoBehaviour
         if (Input.GetKeyDown("joystick button 0"))
         {
             SoundManager.Instance.PlaySE(SESoundData.SE.Pick);
-            Fade_Manager.FadeOut(movePoint[nowPoint].GetComponent<World_Manager>().World_No); // Aボタンが押されたらフェードアウトしてシーン遷移する
+
+            shutterL.shutter_flg = true;
+            shutterR.shutter_flg = true;
+
+            change_scene.NextScene(movePoint[nowPoint].GetComponent<WorldManager>().World_No);
+
+            //Fade_Manager.FadeOut(movePoint[nowPoint].GetComponent<WorldManager>().World_No); // Aボタンが押されたらフェードアウトしてシーン遷移する
             //Debug.Log(movePoint[nowPoint].GetComponent<World_Manager>().World_No);
         }
 
@@ -33,7 +50,7 @@ public class Cuesor_Manager : MonoBehaviour
             int nextPoint = nowPoint + 1;
 
             //移動先が未開放の場合行けないようにする
-            if (movePoint[nextPoint].GetComponent<World_Manager>().clear == true)
+            if (movePoint[nextPoint].GetComponent<WorldManager>().clear == true)
             {
                 SoundManager.Instance.PlaySE(SESoundData.SE.Select);
                 ++nowPoint;
