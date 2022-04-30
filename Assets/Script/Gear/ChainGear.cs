@@ -38,7 +38,7 @@ public class ChainGear : MonoBehaviour
                 Debug.Log("R");
                 rotateRoom.dtype = 0;
             }
-            else if (derection == DerectionType.LeftOnly)
+            else if (derection == DerectionType.RightOnly)
             {
                 Debug.Log("L");
                 rotateRoom.dtype = 1;
