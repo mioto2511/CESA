@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShutterL : MonoBehaviour
+public class ShutterR : MonoBehaviour
 {
     private Vector2 pos;
     bool Change_Start = false;
 
     private void Start()
     {
-       
+
     }
     // Update is called once per frame
     void Update()
@@ -21,19 +21,18 @@ public class ShutterL : MonoBehaviour
         if (Input.GetKeyDown("joystick button 0"))
         {
             Change_Start = true;
-            SoundManager.Instance.PlaySE(SESoundData.SE.Pick);
         }
 
         if (Change_Start == true)
         {
-            if ((pos.x <= -4.5f))
+            
+            if ((pos.x >= 4.4f))
             {
-                //Debug.Log("L");
-                pos.x += 0.01f;
+                //Debug.Log("R");
+                pos.x -= 0.02f;
                 transform.position = new Vector2(pos.x, pos.y);
             }
-
         }
-       
+
     }
 }
