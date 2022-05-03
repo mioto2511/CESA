@@ -7,24 +7,27 @@ public class WorldManager : MonoBehaviour
     [Header("ワールド開放")] public bool clear = false;
     [Header("シーンビルドの番号")] public int World_No = 0;
 
-    private Shutter shutterL;
-    private Shutter shutterR;
-    private ChangeScene change_scene;
+    [Header("ワールドの番号")] public int world_num;
 
     void Start()
     {
-        GameObject L = GameObject.Find("ShutterL"); // オブジェクトを探す
-        shutterL = L.GetComponent<Shutter>();
+        //現在のworld_numを呼び出す
+        int now_world_num = PlayerPrefs.GetInt("WORLD", 1);
 
-        GameObject R = GameObject.Find("ShutterR"); // オブジェクトを探す
-        shutterR = R.GetComponent<Shutter>();
-
-        GameObject T = GameObject.Find("ShutterTrigger"); // オブジェクトを探す
-        change_scene = T.GetComponent<ChangeScene>();
+        //現在のワールド番号が満たしていたら解放
+        if (now_world_num >= world_num)
+        {
+            clear = true;
+        }
     }
 
     // Update is called once per frame
     void Update()
+    {
+        ColorChange();
+    }
+
+    private void ColorChange()
     {
         if (clear == true)
         {
@@ -34,13 +37,5 @@ public class WorldManager : MonoBehaviour
         {
             GetComponent<Renderer>().material.color = Color.black;
         }
-    }
-
-    public void OnClickStartButton()
-    {
-        shutterL.shutter_flg = true;
-        shutterR.shutter_flg = true;
-
-        change_scene.NextScene(World_No);
     }
 }
