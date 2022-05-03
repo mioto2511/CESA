@@ -12,8 +12,15 @@ public class SelectRotate : MonoBehaviour
     private bool down_flg = false;
 
     private float max_rotate = 45f;
+    private float hight_max_rotate = 225f;
     private float now_rotate = 0;
-    private float speed = 0.1f;
+
+    [Header("回転速度")] public float speed = 0.1f;
+    [Header("倍率")] public float magnification = 4f;
+
+    private int count = 1;
+
+    private GameObject trigger_obj;
 
     //ステックの開始地点
     private float start_radian = 0;
@@ -23,6 +30,11 @@ public class SelectRotate : MonoBehaviour
 
     //初期位置フラグ
     private bool initial_flg = true;
+
+    void Start()
+    {
+        trigger_obj = GameObject.Find("Trigger"); // オブジェクトを探す
+    }
 
     // Update is called once per frame
     void Update()
@@ -85,6 +97,8 @@ public class SelectRotate : MonoBehaviour
                         rotate_flg = false;
 
                         initial_flg = true;
+
+                        trigger_obj.SetActive(false);
                     }
                     else if (now_radian <= -90)
                     {
@@ -93,6 +107,8 @@ public class SelectRotate : MonoBehaviour
                         rotate_flg = false;
 
                         initial_flg = true;
+
+                        trigger_obj.SetActive(false);
                     }
 
                     //保存
@@ -111,33 +127,71 @@ public class SelectRotate : MonoBehaviour
 
     void FixedUpdate()
     {
-
+        //Debug.Log(count);
         if (up_flg)
         {
-            this.transform.Rotate(new Vector3(0, 0, -speed));
-
-            now_rotate += -speed;
-
-            if(-max_rotate >= now_rotate)
+            if(count <= 1)
             {
-                up_flg = false;
-                now_rotate = 0;
-                Invoke("DelayMethod", 0.25f);
+                this.transform.Rotate(new Vector3(0, 0, speed*magnification));
+
+                now_rotate += speed* magnification;
+
+                if (hight_max_rotate <= now_rotate)
+                {
+                    count = 6;
+                    up_flg = false;
+                    now_rotate = 0;
+                    Invoke("DelayMethod", 0.25f);
+                }
             }
+            else
+            {
+                this.transform.Rotate(new Vector3(0, 0, -speed));
+
+                now_rotate += -speed;
+
+                if (-max_rotate >= now_rotate)
+                {
+                    count -= 1;
+                    up_flg = false;
+                    now_rotate = 0;
+                    Invoke("DelayMethod", 0.25f);
+                }
+            }
+            
         }
 
         if (down_flg)
         {
-            this.transform.Rotate(new Vector3(0, 0, speed));
-
-            now_rotate += speed;
-
-            if (max_rotate <= now_rotate)
+            if (count >= 6)
             {
-                down_flg = false;
-                now_rotate = 0;
-                Invoke("DelayMethod", 0.25f);
+                this.transform.Rotate(new Vector3(0, 0, -speed * magnification));
+
+                now_rotate += -speed * magnification;
+
+                if (-hight_max_rotate >= now_rotate)
+                {
+                    count = 1;
+                    down_flg = false;
+                    now_rotate = 0;
+                    Invoke("DelayMethod", 0.25f);
+                }
             }
+            else
+            {
+                this.transform.Rotate(new Vector3(0, 0, speed));
+
+                now_rotate += speed;
+
+                if (max_rotate <= now_rotate)
+                {
+                    count += 1;
+                    down_flg = false;
+                    now_rotate = 0;
+                    Invoke("DelayMethod", 0.25f);
+                }
+            }
+            
         }
     }
 
@@ -145,5 +199,6 @@ public class SelectRotate : MonoBehaviour
     private void DelayMethod()
     {
         rotate_flg = true;
+        trigger_obj.SetActive(true);
     }
 }

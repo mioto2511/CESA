@@ -11,11 +11,19 @@ public class StageCollision : MonoBehaviour
 
     [Header("次のシーン")] public int scene;
 
+    [Header("再生する動画")] public GameObject mp4;
+
+    [Header("ワールド番号")] public int world_num;
+
+    [Header("ステージ番号")] public int stage_num;
+
     private bool hit = false;
 
     private Shutter shutterL;
     private Shutter shutterR;
     private ChangeScene change_scene;
+
+    private int now_stage_num;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +36,35 @@ public class StageCollision : MonoBehaviour
 
         GameObject T = GameObject.Find("ShutterTrigger"); // オブジェクトを探す
         change_scene = T.GetComponent<ChangeScene>();
+
+        //現在のstage_numを呼び出す
+        switch (world_num) {
+            case 1:
+                now_stage_num = PlayerPrefs.GetInt("STAGE1", 1);
+                break;
+            case 2:
+                now_stage_num = PlayerPrefs.GetInt("STAGE2", 1);
+                break;
+            case 3:
+                now_stage_num = PlayerPrefs.GetInt("STAGE3", 1);
+                break;
+            case 4:
+                now_stage_num = PlayerPrefs.GetInt("STAGE4", 1);
+                break;
+            case 5:
+                now_stage_num = PlayerPrefs.GetInt("STAGE5", 1);
+                break;
+            case 6:
+                now_stage_num = PlayerPrefs.GetInt("STAGE6", 1);
+                break;
+        }
+
+        if (now_stage_num >= stage_num)
+        {
+            Collider2D my_collider;
+            my_collider = GetComponent<Collider2D>();
+            my_collider.enabled = true;
+        }
     }
 
     // Update is called once per frame
@@ -45,14 +82,24 @@ public class StageCollision : MonoBehaviour
         }
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         hit = true;
+        mp4.SetActive(true);
+        //Invoke("DelayMethod", 0.3f);
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         hit = false;
+
+        mp4.SetActive(false);
+    }
+
+    //遅延処理
+    private void DelayMethod()
+    {
+        mp4.SetActive(true);
     }
 
 
