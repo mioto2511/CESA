@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class TitleScript : MonoBehaviour
 {
-    private Shutter shutterL;
-    private Shutter shutterR;
+    private Shutter shutter;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameObject L = GameObject.Find("ShutterL"); // オブジェクトを探す
-        shutterL = L.GetComponent<Shutter>();
-
-        GameObject R = GameObject.Find("ShutterR"); // オブジェクトを探す
-        shutterR = R.GetComponent<Shutter>();
+        GameObject T = GameObject.Find("ShutterTrigger"); // オブジェクトを探す
+        shutter = T.GetComponent<Shutter>();
     }
 
     // Update is called once per frame
@@ -22,8 +18,7 @@ public class TitleScript : MonoBehaviour
     {
         if (Input.GetKeyDown("joystick button 0"))
         {
-            shutterL.shutter_flg = true;
-            shutterR.shutter_flg = true;
+            shutter.shutter_flg = true;
         }
     }
 }
