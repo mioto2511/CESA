@@ -14,6 +14,10 @@ public class GoalFlg : MonoBehaviour
 
     [Header("ゴールからのセレクト")] public int scene = 2;
 
+    [Header("ワールド番号")] public int world_num = 1;
+
+    [Header("次のステージ番号")] public int stage_num = 2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +38,35 @@ public class GoalFlg : MonoBehaviour
             if (Input.GetKeyDown("joystick button 0"))
             {
                 shutter.shutter_flg = true;
+
+                switch (world_num)
+                {
+                    case 1:
+                        PlayerPrefs.SetInt("STAGE1", stage_num);
+                        break;
+                    case 2:
+                        PlayerPrefs.SetInt("STAGE2", stage_num);
+                        break;
+                    case 3:
+                        PlayerPrefs.SetInt("STAGE3", stage_num);
+                        break;
+                    case 4:
+                        PlayerPrefs.SetInt("STAGE4", stage_num);
+                        break;
+                    case 5:
+                        PlayerPrefs.SetInt("STAGE5", stage_num);
+                        break;
+                    case 6:
+                        PlayerPrefs.SetInt("STAGE6", stage_num);
+                        break;
+                }
+
+                if (stage_num == 6)
+                {
+                    PlayerPrefs.SetInt("WORLD", world_num+1);
+                }
+
+                PlayerPrefs.Save();
 
                 change_scene.NextScene(scene);
             }

@@ -19,8 +19,7 @@ public class StageCollision : MonoBehaviour
 
     private bool hit = false;
 
-    private Shutter shutterL;
-    private Shutter shutterR;
+    private Shutter shutter;
     private ChangeScene change_scene;
 
     private int now_stage_num;
@@ -28,14 +27,9 @@ public class StageCollision : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject L = GameObject.Find("ShutterL"); // オブジェクトを探す
-        shutterL = L.GetComponent<Shutter>();
-
-        GameObject R = GameObject.Find("ShutterR"); // オブジェクトを探す
-        shutterR = R.GetComponent<Shutter>();
-
         GameObject T = GameObject.Find("ShutterTrigger"); // オブジェクトを探す
         change_scene = T.GetComponent<ChangeScene>();
+        shutter = T.GetComponent<Shutter>();
 
         //現在のstage_numを呼び出す
         switch (world_num) {
@@ -74,8 +68,7 @@ public class StageCollision : MonoBehaviour
         {
             if (Input.GetKeyDown("joystick button 0"))
             {
-                shutterL.shutter_flg = true;
-                shutterR.shutter_flg = true;
+                shutter.shutter_flg = true;
 
                 change_scene.NextScene(scene);
             }
