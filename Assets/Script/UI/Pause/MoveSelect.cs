@@ -4,28 +4,21 @@ using UnityEngine;
 
 public class MoveSelect : MonoBehaviour
 {
-    private Shutter shutterL;
-    private Shutter shutterR;
+    private Shutter shutter;
     private ChangeScene change_scene;
 
-    private int scene = 1;
+    [Header("ポーズからのセレクト")] public int scene = 2;
 
     void Start()
     {
-        GameObject L = GameObject.Find("Canvas/ShutterL"); // オブジェクトを探す
-        shutterL = L.GetComponent<Shutter>();
-
-        GameObject R = GameObject.Find("Canvas/ShutterR"); // オブジェクトを探す
-        shutterR = R.GetComponent<Shutter>();
-
-        GameObject T = GameObject.Find("Canvas/ShutterTrigger"); // オブジェクトを探す
+        GameObject T = GameObject.Find("ShutterTrigger"); // オブジェクトを探す
         change_scene = T.GetComponent<ChangeScene>();
+        shutter = T.GetComponent<Shutter>();
     }
 
     public void OnClickStartButton()
     {
-        shutterL.shutter_flg = true;
-        shutterR.shutter_flg = true;
+        shutter.shutter_flg = true;
 
         change_scene.NextScene(scene);
 
