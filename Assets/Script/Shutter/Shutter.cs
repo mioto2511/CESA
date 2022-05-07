@@ -11,7 +11,7 @@ public class Shutter : MonoBehaviour
 
     public bool shutter_flg = false;
 
-    [Header("”à‚Ì‘¬‚³")] public float speed = 0.01f;
+    [Header("”à‚Ì‘¬‚³")] public float speed = 10f;
 
     [Header("”àL")] public RectTransform shutterL;
     [Header("”àR")] public RectTransform shutterR;
@@ -36,7 +36,7 @@ public class Shutter : MonoBehaviour
     {
         if (Change_Start == true)
         {
-            if (posL.x <= -181f)
+            if (posL.x <= -479f)
             {
                 posL.x += speed;
                 shutterL.anchoredPosition = new Vector3(posL.x, 0, 0);
