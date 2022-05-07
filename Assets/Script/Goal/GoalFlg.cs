@@ -18,25 +18,39 @@ public class GoalFlg : MonoBehaviour
 
     [Header("次のステージ番号")] public int stage_num = 2;
 
+    /////////////////
+    [SerializeField]
+    private GameObject pauseUI;
+    /////////////////
+
     // Start is called before the first frame update
     void Start()
     {
         GameObject T = GameObject.Find("ShutterTrigger"); // オブジェクトを探す
         change_scene = T.GetComponent<ChangeScene>();
         shutter = T.GetComponent<Shutter>();
+
+        /////////////////
+        pauseUI.SetActive(false);
+        /////////////////
     }
 
     void Update()
     {
         if (goal_flg)
         {
-            Invoke("DelayMethod", 0.25f);
+            goal_flg = false;
+
+            Invoke("DelayMethod", 0.25f);           
         }
 
         if (button_flg)
         {
             if (Input.GetKeyDown("joystick button 0"))
             {
+                // 時間再起
+                Time.timeScale = 1;
+
                 shutter.shutter_flg = true;
 
                 switch (world_num)
@@ -77,6 +91,13 @@ public class GoalFlg : MonoBehaviour
     private void DelayMethod()
     {
         button_flg = true;
+
+        // 時間停止
+        Time.timeScale = 0;
+
+        /////////////////
+        pauseUI.SetActive(true);
+        /////////////////
     }
 
     void OnTriggerEnter2D(Collider2D collision)
