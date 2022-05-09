@@ -13,6 +13,9 @@ public class AutoPlayerMove : MonoBehaviour
     //現在の向き
     private bool right_f = true;
 
+    //滑りフラグ
+    public bool isSlip;
+
     //スクリプト取得
     [Header("壁接触判定")] public PlayerWallTrigger wall_trigger;
     [Header("床接触判定")] public PlayerGroundTrigger ground_trigger;
@@ -26,6 +29,8 @@ public class AutoPlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         tf_s = transform.localScale;
+
+        isSlip = false;
     }
 
     // Update is called once per frame
@@ -42,7 +47,7 @@ public class AutoPlayerMove : MonoBehaviour
             }
 
             //地面の端で向き変更
-            if (ground_trigger.IsGround() == false)
+            if (ground_trigger.IsGround() == false && isSlip == false)
             {
                 right_f = !right_f;
             }
