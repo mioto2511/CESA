@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlipWall : MonoBehaviour
 {
-    private AutoPlayerMove autoPlayerMove;
+    private AutoPlayerMove autoPlayerMove;//player—p
 
     private bool slipflg;
     // Start is called before the first frame update
