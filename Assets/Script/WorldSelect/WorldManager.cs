@@ -9,13 +9,15 @@ public class WorldManager : MonoBehaviour
 
     [Header("ワールドの番号")] public int world_num;
 
+    [Header("ワールド解放スコア")] public int conditions_score;
+
     void Start()
     {
         //現在のworld_numを呼び出す
-        int now_world_num = PlayerPrefs.GetInt("WORLD", 1);
+        int now_world_num = PlayerPrefs.GetInt("WORLD" + world_num + "_SCORE", 0);
 
         //現在のワールド番号が満たしていたら解放
-        if (now_world_num >= world_num)
+        if (now_world_num >= conditions_score)
         {
             clear = true;
         }

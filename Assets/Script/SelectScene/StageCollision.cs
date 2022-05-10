@@ -34,22 +34,22 @@ public class StageCollision : MonoBehaviour
         //åªç›ÇÃstage_numÇåƒÇ—èoÇ∑
         switch (world_num) {
             case 1:
-                now_stage_num = PlayerPrefs.GetInt("STAGE1", 1);
+                now_stage_num = PlayerPrefs.GetInt("WORLD1", 1);
                 break;
             case 2:
-                now_stage_num = PlayerPrefs.GetInt("STAGE2", 1);
+                now_stage_num = PlayerPrefs.GetInt("WORLD2", 1);
                 break;
             case 3:
-                now_stage_num = PlayerPrefs.GetInt("STAGE3", 1);
+                now_stage_num = PlayerPrefs.GetInt("WORLD3", 1);
                 break;
             case 4:
-                now_stage_num = PlayerPrefs.GetInt("STAGE4", 1);
+                now_stage_num = PlayerPrefs.GetInt("WORLD4", 1);
                 break;
             case 5:
-                now_stage_num = PlayerPrefs.GetInt("STAGE5", 1);
+                now_stage_num = PlayerPrefs.GetInt("WORLD5", 1);
                 break;
             case 6:
-                now_stage_num = PlayerPrefs.GetInt("STAGE6", 1);
+                now_stage_num = PlayerPrefs.GetInt("WORLD6", 1);
                 break;
         }
 

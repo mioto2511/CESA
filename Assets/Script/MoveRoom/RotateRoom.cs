@@ -13,6 +13,12 @@ public class RotateRoom : MonoBehaviour
     //ChainGearを使う
     private ChainGear chain_gear;
 
+    [Header("ターゲットオブジェクト")] public GameObject target_object;
+
+    [Header("速度係数")] public float SpeedFactor = 0.1f;
+
+    [Header("デットゾーン")] public float deadzone = 0.2f;
+
     public int dtype;
 
     public static RotateRoom instance;
@@ -25,10 +31,6 @@ public class RotateRoom : MonoBehaviour
             instance = this;
         }
     }
-
-    [Header("ターゲットオブジェクト")] public GameObject target_object;
-
-    [Header("速度係数")] public float SpeedFactor = 0.1f;
 
     //回転軸
     private Vector3 RotateAxis = Vector3.forward;
@@ -49,9 +51,6 @@ public class RotateRoom : MonoBehaviour
     //自身のtf
     private Transform my_transform;
 
-    //デットゾーン
-    private float deadzone = 0.2f;
-
     //ステックの開始地点
     private float start_radian = 0;
 
@@ -66,10 +65,12 @@ public class RotateRoom : MonoBehaviour
 
     //オブジェクト
     private GameObject player;
-    //private GameObject cursor;
 
     //支点のコライダーフラグ
     public bool collider_flg = true;
+
+    //初めの当たり判定用
+    private bool start = true;
 
     void Start()
     {
@@ -84,8 +85,6 @@ public class RotateRoom : MonoBehaviour
         player = GameObject.Find("Player"); //オブジェクトを探す
         auto_player_move = player.GetComponent<AutoPlayerMove>();　//付いているスクリプトを取得
 
-        //cursor = GameObject.Find("SelectCursor"); //オブジェクトを探す
-
         dtype = 2;
     }
 
@@ -97,55 +96,58 @@ public class RotateRoom : MonoBehaviour
         //部屋が当たった
         if (room_hit == true)
         {
-            child_cnt++;
-
-            rotate_flg = false;
-
-            //boxの数とカウントが同じか以上なら
-            if (child_cnt >= this.transform.childCount)
+            if (start)
             {
+                start = false;
                 room_hit = false;
+            }
+            else
+            {
+                child_cnt++;
 
-                child_cnt = 0;
+                rotate_flg = false;
 
-                //回転方向の初期化
-                left_rotate = false;
-                right_rotate = false;
-
-                //遅らせて処理するもの
-                Invoke("DelayMethod", 0.25f);
-
-                //プレイヤーを起動
-                auto_player_move.move_flg = true;
-
-                //配列削除
-                move_axis.Delete();
-
-                //カーソル復活           
-                //cursor.SetActive(true);
-                //プレイヤーの位置にカーソル生成
-                //Vector3 player_pos = player.transform.position;
-                //cursor.transform.position = player_pos;
-
-                //回転初期位置の初期化
-                start_radian = 0;
-                old_radian = 0;
-                initial_flg = true;
-
-                //歯車のコライダーON
-                GameObject[] objects = GameObject.FindGameObjectsWithTag("LGear");
-                foreach (GameObject num in objects)
+                //boxの数とカウントが同じか以上なら
+                if (child_cnt >= this.transform.childCount)
                 {
-                    var colliderTest = num.GetComponent<Collider2D>();
-                    colliderTest.enabled = true;
-                }
-                objects = GameObject.FindGameObjectsWithTag("RGear");
-                foreach (GameObject num in objects)
-                {
-                    var colliderTest = num.GetComponent<Collider2D>();
-                    colliderTest.enabled = true;
+                    room_hit = false;
+
+                    child_cnt = 0;
+
+                    //回転方向の初期化
+                    left_rotate = false;
+                    right_rotate = false;
+
+                    //遅らせて処理するもの
+                    Invoke("DelayMethod", 0.25f);
+
+                    //プレイヤーを起動
+                    auto_player_move.move_flg = true;
+
+                    //配列削除
+                    move_axis.Delete();
+
+                    //回転初期位置の初期化
+                    start_radian = 0;
+                    old_radian = 0;
+                    initial_flg = true;
+
+                    //歯車のコライダーON
+                    GameObject[] objects = GameObject.FindGameObjectsWithTag("LGear");
+                    foreach (GameObject num in objects)
+                    {
+                        var colliderTest = num.GetComponent<Collider2D>();
+                        colliderTest.enabled = true;
+                    }
+                    objects = GameObject.FindGameObjectsWithTag("RGear");
+                    foreach (GameObject num in objects)
+                    {
+                        var colliderTest = num.GetComponent<Collider2D>();
+                        colliderTest.enabled = true;
+                    }
                 }
             }
+            
         }
 
         //コントローラーの処理
