@@ -22,6 +22,8 @@ public class Score : MonoBehaviour
 
     private int stage_score;
 
+    private int star;
+
     public bool score_flg;
 
     private int world_score = 0;
@@ -47,21 +49,26 @@ public class Score : MonoBehaviour
 
             text_obj.SetActive(false);
 
-            if(score < mid_score)
-            {
-                mid_obj.SetActive(false);
-            }
-            if(score < max_score)
+            star = 3;
+
+            if (score < max_score)
             {
                 max_obj.SetActive(false);
+                star -= 1;
             }
+            if (score < mid_score)
+            {
+                mid_obj.SetActive(false);
+                star -= 1;
+            }
+            
 
             //スコア更新
-            if(score > stage_score)
+            if(star > stage_score)
             {
-                world_score += (score - stage_score);
+                world_score += (star - stage_score);
 
-                stage_score = score;
+                stage_score = star;
             }
 
             PlayerPrefs.SetInt("WORLD" + world_num + "_STAGE" + stage_num, stage_score);

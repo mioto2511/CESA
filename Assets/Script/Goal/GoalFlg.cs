@@ -20,7 +20,7 @@ public class GoalFlg : MonoBehaviour
 
     //表示ui
     [SerializeField]
-    private GameObject pauseUI;
+    private GameObject clearUI;
 
     //Scoreの変数
     private Score score;
@@ -35,9 +35,7 @@ public class GoalFlg : MonoBehaviour
         GameObject s = GameObject.Find("Room"); // オブジェクトを探す
         score = s.GetComponent<Score>();
 
-        /////////////////
-        pauseUI.SetActive(false);
-        /////////////////
+        clearUI.SetActive(false);
     }
 
     void Update()
@@ -102,9 +100,7 @@ public class GoalFlg : MonoBehaviour
         // 時間停止
         Time.timeScale = 0;
 
-        /////////////////
-        pauseUI.SetActive(true);
-        /////////////////
+        clearUI.SetActive(true);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

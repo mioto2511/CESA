@@ -32,26 +32,7 @@ public class StageCollision : MonoBehaviour
         shutter = T.GetComponent<Shutter>();
 
         //Œ»Ý‚Ìstage_num‚ðŒÄ‚Ño‚·
-        switch (world_num) {
-            case 1:
-                now_stage_num = PlayerPrefs.GetInt("WORLD1", 1);
-                break;
-            case 2:
-                now_stage_num = PlayerPrefs.GetInt("WORLD2", 1);
-                break;
-            case 3:
-                now_stage_num = PlayerPrefs.GetInt("WORLD3", 1);
-                break;
-            case 4:
-                now_stage_num = PlayerPrefs.GetInt("WORLD4", 1);
-                break;
-            case 5:
-                now_stage_num = PlayerPrefs.GetInt("WORLD5", 1);
-                break;
-            case 6:
-                now_stage_num = PlayerPrefs.GetInt("WORLD6", 1);
-                break;
-        }
+        now_stage_num = PlayerPrefs.GetInt("WORLD"+world_num, 1);
 
         if (now_stage_num >= stage_num)
         {

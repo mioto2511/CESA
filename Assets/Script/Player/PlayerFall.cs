@@ -46,6 +46,7 @@ public class PlayerFall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		//Debug.Log(count);
 		//ƒŒƒC‚Ì‰ÂŽ‹‰»
 		Debug.DrawLine(ray_position.position, ray_position.position + Vector3.down * ray_range, Color.blue);
 

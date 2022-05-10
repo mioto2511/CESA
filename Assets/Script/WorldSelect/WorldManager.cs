@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorldManager : MonoBehaviour
 {
@@ -11,13 +12,17 @@ public class WorldManager : MonoBehaviour
 
     [Header("ワールド解放スコア")] public int conditions_score;
 
+    public Text text;
+
+    private int world_score;
+
     void Start()
     {
         //現在のworld_numを呼び出す
-        int now_world_num = PlayerPrefs.GetInt("WORLD" + world_num + "_SCORE", 0);
+        world_score = PlayerPrefs.GetInt("WORLD" + world_num + "_SCORE", 0);
 
         //現在のワールド番号が満たしていたら解放
-        if (now_world_num >= conditions_score)
+        if (world_score >= conditions_score)
         {
             clear = true;
         }
@@ -27,6 +32,9 @@ public class WorldManager : MonoBehaviour
     void Update()
     {
         ColorChange();
+
+        //テキスト表示
+        text.text = world_score + "/" + conditions_score;
     }
 
     private void ColorChange()

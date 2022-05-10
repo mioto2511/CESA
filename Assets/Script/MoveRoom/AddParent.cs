@@ -55,8 +55,6 @@ public class AddParent : MonoBehaviour
                 //Debug.Log(score.score);
 
                 box_variable.become_child = false;
-
-
             }
 
             //このスクリプトを削除
