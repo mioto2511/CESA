@@ -1,55 +1,72 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    public GameObject star;
-    public GameObject score_back;
-    public int score;
-    private int count = 0;
+    // UI
+    public Text text;
+    public GameObject text_obj;
+    public GameObject mid_obj;
+    public GameObject max_obj;
 
-    private GameObject room;
+    [Header("現在のスコア")] public int score;
 
-    //private bool flg = false;
+    [Header("星2のスコア")] public int mid_score;
 
-    //GoalFlgの変数を使用
-    private GoalFlg goal_flg;
+    [Header("星3のスコア")] public int max_score;
+
+    [Header("ワールドの番号")] public int world_num;
+    [Header("ステージの番号")] public int stage_num;
+
+    private int stage_score;
+
+    public bool score_flg;
+
+    private int world_score = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        //リザルト背景を消す
-        score_back.SetActive(false);
+        //現在のstage_numを呼び出す
+        world_score = PlayerPrefs.GetInt("WORLD" + world_num + "_SCORE", 0);
 
-        GameObject goal = GameObject.Find("GoalTrigger"); //オブジェクトを探す
-        goal_flg = goal.GetComponent<GoalFlg>();　//付いているスクリプトを取得
-
-        room = GameObject.Find("Room"); //オブジェクトを探す
+        stage_score = PlayerPrefs.GetInt("WORLD"+world_num+"_STAGE"+stage_num, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (RotateRoom.instance.room_hit == true)
-        {
-            count++;
-        }
+        //テキスト表示
+        text.text = score + "/" + max_score;
 
-        
-
-        if (room.transform.childCount >= 3)
+        if (score_flg)
         {
-            if (goal_flg.goal_flg == true)
+            score_flg = false;
+
+            text_obj.SetActive(false);
+
+            if(score < mid_score)
             {
-                if (count <= score)
-                {
-                    star.SetActive(true);
-                    score_back.SetActive(true);
-
-                    //Debug.Log("a");
-                }
+                mid_obj.SetActive(false);
             }
+            if(score < max_score)
+            {
+                max_obj.SetActive(false);
+            }
+
+            //スコア更新
+            if(score > stage_score)
+            {
+                world_score += (score - stage_score);
+
+                stage_score = score;
+            }
+
+            PlayerPrefs.SetInt("WORLD" + world_num + "_STAGE" + stage_num, stage_score);
+            PlayerPrefs.SetInt("WORLD" + world_num + "_SCORE", world_score);
+            PlayerPrefs.Save();
         }
     }
 }

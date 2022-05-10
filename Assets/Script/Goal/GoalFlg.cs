@@ -16,12 +16,14 @@ public class GoalFlg : MonoBehaviour
 
     [Header("ワールド番号")] public int world_num = 1;
 
-    [Header("次のステージ番号")] public int stage_num = 2;
+    [Header("現在のステージ番号")] public int stage_num = 1;
 
-    /////////////////
+    //表示ui
     [SerializeField]
     private GameObject pauseUI;
-    /////////////////
+
+    //Scoreの変数
+    private Score score;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,9 @@ public class GoalFlg : MonoBehaviour
         GameObject T = GameObject.Find("ShutterTrigger"); // オブジェクトを探す
         change_scene = T.GetComponent<ChangeScene>();
         shutter = T.GetComponent<Shutter>();
+
+        GameObject s = GameObject.Find("Room"); // オブジェクトを探す
+        score = s.GetComponent<Score>();
 
         /////////////////
         pauseUI.SetActive(false);
@@ -40,6 +45,8 @@ public class GoalFlg : MonoBehaviour
         if (goal_flg)
         {
             goal_flg = false;
+
+            score.score_flg = true;
 
             Invoke("DelayMethod", 0.25f);           
         }
@@ -56,22 +63,22 @@ public class GoalFlg : MonoBehaviour
                 switch (world_num)
                 {
                     case 1:
-                        PlayerPrefs.SetInt("STAGE1", stage_num);
+                        PlayerPrefs.SetInt("WORLD1", stage_num+1);
                         break;
                     case 2:
-                        PlayerPrefs.SetInt("STAGE2", stage_num);
+                        PlayerPrefs.SetInt("WORLD2", stage_num + 1);
                         break;
                     case 3:
-                        PlayerPrefs.SetInt("STAGE3", stage_num);
+                        PlayerPrefs.SetInt("WORLD3", stage_num + 1);
                         break;
                     case 4:
-                        PlayerPrefs.SetInt("STAGE4", stage_num);
+                        PlayerPrefs.SetInt("WORLD4", stage_num + 1);
                         break;
                     case 5:
-                        PlayerPrefs.SetInt("STAGE5", stage_num);
+                        PlayerPrefs.SetInt("WORLD5", stage_num + 1);
                         break;
                     case 6:
-                        PlayerPrefs.SetInt("STAGE6", stage_num);
+                        PlayerPrefs.SetInt("WORLD6", stage_num + 1);
                         break;
                 }
 
