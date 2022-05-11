@@ -6,11 +6,14 @@ using UnityEngine.UI;
 public class WorldManager : MonoBehaviour
 {
     [Header("ワールド開放")] public bool clear = false;
+
     [Header("シーンビルドの番号")] public int World_No = 0;
 
     [Header("ワールドの番号")] public int world_num;
 
     [Header("ワールド解放スコア")] public int conditions_score;
+
+    [Header("ワールド最大スコア")] public int max_score;
 
     public Text text;
 
@@ -34,7 +37,7 @@ public class WorldManager : MonoBehaviour
         ColorChange();
 
         //テキスト表示
-        text.text = world_score + "/" + conditions_score;
+        text.text = world_score + "/" + max_score;
     }
 
     private void ColorChange()
