@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using KanKikuchi.AudioManager;
 
 public class Shutter : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class Shutter : MonoBehaviour
 
             Change_Start = true;
 
-            SoundManager.Instance.PlaySE(SESoundData.SE.Pick);
+            SEManager.Instance.Play(SEPath.SE_005);
         }        
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KanKikuchi.AudioManager;
 
 public class RoomCollition : MonoBehaviour
 {
@@ -42,6 +43,8 @@ public class RoomCollition : MonoBehaviour
         //©gˆÈŠO‚Ì•”‰®‚ª“–‚½‚Á‚½ê‡
         if (root_room.room_hit == true)
         {
+            
+            
             //ˆÊ’u‚ÌŒë·C³
             ErrorCorrection();
         }

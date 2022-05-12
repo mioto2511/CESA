@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KanKikuchi.AudioManager;
 
 public class RotateRoom : MonoBehaviour
 {
@@ -12,12 +13,6 @@ public class RotateRoom : MonoBehaviour
     private RotateStart rotate_start;
     //ChainGearを使う
     private ChainGear chain_gear;
-
-    [Header("ターゲットオブジェクト")] public GameObject target_object;
-
-    [Header("速度係数")] public float SpeedFactor = 0.1f;
-
-    [Header("デットゾーン")] public float deadzone = 0.2f;
 
     public int dtype;
 
@@ -31,6 +26,10 @@ public class RotateRoom : MonoBehaviour
             instance = this;
         }
     }
+
+    [Header("ターゲットオブジェクト")] public GameObject target_object;
+
+    [Header("速度係数")] public float SpeedFactor = 0.1f;
 
     //回転軸
     private Vector3 RotateAxis = Vector3.forward;
@@ -51,6 +50,9 @@ public class RotateRoom : MonoBehaviour
     //自身のtf
     private Transform my_transform;
 
+    //デットゾーン
+    private float deadzone = 0.2f;
+
     //ステックの開始地点
     private float start_radian = 0;
 
@@ -65,12 +67,13 @@ public class RotateRoom : MonoBehaviour
 
     //オブジェクト
     private GameObject player;
+    //private GameObject cursor;
 
     //支点のコライダーフラグ
     public bool collider_flg = true;
 
-    //初めの当たり判定用
-    private bool start = true;
+    // se
+    private int secout;
 
     void Start()
     {
@@ -85,7 +88,11 @@ public class RotateRoom : MonoBehaviour
         player = GameObject.Find("Player"); //オブジェクトを探す
         auto_player_move = player.GetComponent<AutoPlayerMove>();　//付いているスクリプトを取得
 
+        //cursor = GameObject.Find("SelectCursor"); //オブジェクトを探す
+
         dtype = 2;
+
+        secout=0;
     }
 
     void Update()
@@ -96,58 +103,58 @@ public class RotateRoom : MonoBehaviour
         //部屋が当たった
         if (room_hit == true)
         {
-            if (start)
+            child_cnt++;
+
+            rotate_flg = false;
+
+            //boxの数とカウントが同じか以上なら
+            if (child_cnt >= this.transform.childCount)
             {
-                start = false;
+                // SE
+                SEManager.Instance.Play(SEPath.SE_002);
+
                 room_hit = false;
-            }
-            else
-            {
-                child_cnt++;
 
-                rotate_flg = false;
+                child_cnt = 0;
 
-                //boxの数とカウントが同じか以上なら
-                if (child_cnt >= this.transform.childCount)
+                //回転方向の初期化
+                left_rotate = false;
+                right_rotate = false;
+
+                //遅らせて処理するもの
+                Invoke("DelayMethod", 0.25f);
+
+                //プレイヤーを起動
+                auto_player_move.move_flg = true;
+
+                //配列削除
+                move_axis.Delete();
+
+                //カーソル復活           
+                //cursor.SetActive(true);
+                //プレイヤーの位置にカーソル生成
+                //Vector3 player_pos = player.transform.position;
+                //cursor.transform.position = player_pos;
+
+                //回転初期位置の初期化
+                start_radian = 0;
+                old_radian = 0;
+                initial_flg = true;
+
+                //歯車のコライダーON
+                GameObject[] objects = GameObject.FindGameObjectsWithTag("LGear");
+                foreach (GameObject num in objects)
                 {
-                    room_hit = false;
-
-                    child_cnt = 0;
-
-                    //回転方向の初期化
-                    left_rotate = false;
-                    right_rotate = false;
-
-                    //遅らせて処理するもの
-                    Invoke("DelayMethod", 0.25f);
-
-                    //プレイヤーを起動
-                    auto_player_move.move_flg = true;
-
-                    //配列削除
-                    move_axis.Delete();
-
-                    //回転初期位置の初期化
-                    start_radian = 0;
-                    old_radian = 0;
-                    initial_flg = true;
-
-                    //歯車のコライダーON
-                    GameObject[] objects = GameObject.FindGameObjectsWithTag("LGear");
-                    foreach (GameObject num in objects)
-                    {
-                        var colliderTest = num.GetComponent<Collider2D>();
-                        colliderTest.enabled = true;
-                    }
-                    objects = GameObject.FindGameObjectsWithTag("RGear");
-                    foreach (GameObject num in objects)
-                    {
-                        var colliderTest = num.GetComponent<Collider2D>();
-                        colliderTest.enabled = true;
-                    }
+                    var colliderTest = num.GetComponent<Collider2D>();
+                    colliderTest.enabled = true;
+                }
+                objects = GameObject.FindGameObjectsWithTag("RGear");
+                foreach (GameObject num in objects)
+                {
+                    var colliderTest = num.GetComponent<Collider2D>();
+                    colliderTest.enabled = true;
                 }
             }
-            
         }
 
         //コントローラーの処理
@@ -296,4 +303,21 @@ public class RotateRoom : MonoBehaviour
         //ボタンをふたたび押せる
         rotate_start.botton_flg = true;
     }
+
+    //private void RotateSE()
+    //{
+    //    if ((left_rotate == true || right_rotate == true) && secout == 0) 
+    //    {
+    //        SEManager.Instance.Play(SEPath.SE_001);
+    //        //Debug.Log(secout);
+    //        secout = 1;
+    //        Debug.Log(secout);
+    //    }
+    //    else if(left_rotate == false || right_rotate == false)
+    //    {
+    //        //SEManager.Instance.Stop(SEPath.SE_001);
+    //        Debug.Log("Stop");
+    //        secout = 0;
+    //    }
+    //}
 }
