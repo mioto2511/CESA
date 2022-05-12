@@ -1638,6 +1638,7 @@ GameObject:
   - component: {fileID: 137999206}
   - component: {fileID: 137999205}
   - component: {fileID: 137999204}
+  - component: {fileID: 137999208}
   m_Layer: 0
   m_Name: Room
   m_TagString: Room
@@ -1692,11 +1693,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5dcd20ed7a54149b0f3b07ba68573a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target_object: {fileID: 466548776}
-  SpeedFactor: 0.15
-  deadzone: 0.2
   dtype: 0
   rotate_cnt: 0
+  target_object: {fileID: 466548776}
+  SpeedFactor: 0.15
   rotate_flg: 0
   right_rotate: 0
   left_rotate: 0
@@ -1717,6 +1717,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &137999208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137999203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4e2617453db59418f28aec10e49058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &159646484
 GameObject:
   m_ObjectHideFlags: 0

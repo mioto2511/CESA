@@ -111,7 +111,7 @@ public class RotateRoom : MonoBehaviour
             if (child_cnt >= this.transform.childCount)
             {
                 // SE
-                SEManager.Instance.Play(SEPath.SE_002);
+                //SEManager.Instance.Play(SEPath.SE_002);
 
                 room_hit = false;
 
