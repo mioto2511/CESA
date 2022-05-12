@@ -17,17 +17,26 @@ public class WorldManager : MonoBehaviour
 
     public Text text;
 
+    //現在のワールドのスコア
     private int world_score;
+
+    //子
+    private GameObject chain;
 
     void Start()
     {
         //現在のworld_numを呼び出す
         world_score = PlayerPrefs.GetInt("WORLD" + world_num + "_SCORE", 0);
 
+        //子を取得
+        chain = this.transform.GetChild(0).gameObject;
+
         //現在のワールド番号が満たしていたら解放
         if (world_score >= conditions_score)
         {
             clear = true;
+            //鎖OFF
+            chain.SetActive(false);
         }
     }
 

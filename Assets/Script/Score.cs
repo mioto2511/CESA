@@ -71,6 +71,7 @@ public class Score : MonoBehaviour
                 stage_score = star;
             }
 
+            //ÉZÅ[Éu
             PlayerPrefs.SetInt("WORLD" + world_num + "_STAGE" + stage_num, stage_score);
             PlayerPrefs.SetInt("WORLD" + world_num + "_SCORE", world_score);
             PlayerPrefs.Save();

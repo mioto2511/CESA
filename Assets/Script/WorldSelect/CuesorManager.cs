@@ -21,6 +21,8 @@ public class CuesorManager : MonoBehaviour
 
     private bool stick_flg = true;
 
+    private bool button_flg = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,18 +39,24 @@ public class CuesorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ワールド選択処理
-        if (Input.GetKeyDown("joystick button 0"))
+        if (button_flg)
         {
-            SEManager.Instance.Play(SEPath.SE_005);
+            // ワールド選択処理
+            if (Input.GetKeyDown("joystick button 0"))
+            {
+                SEManager.Instance.Play(SEPath.SE_005);
 
-            shutter.shutter_flg = true;
+                button_flg = false;
 
-            change_scene.NextScene(movePoint[nowPoint].GetComponent<WorldManager>().World_No);
+                shutter.shutter_flg = true;
 
-            //Fade_Manager.FadeOut(movePoint[nowPoint].GetComponent<WorldManager>().World_No); // Aボタンが押されたらフェードアウトしてシーン遷移する
-            //Debug.Log(movePoint[nowPoint].GetComponent<World_Manager>().World_No);          
+                change_scene.NextScene(movePoint[nowPoint].GetComponent<WorldManager>().World_No);
+
+                //Fade_Manager.FadeOut(movePoint[nowPoint].GetComponent<WorldManager>().World_No); // Aボタンが押されたらフェードアウトしてシーン遷移する
+                //Debug.Log(movePoint[nowPoint].GetComponent<World_Manager>().World_No);          
+            }
         }
+        
 
         float lsh = Input.GetAxis("L_Stick_H");//横軸
         //Debug.Log(nowPoint);

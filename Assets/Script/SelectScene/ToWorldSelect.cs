@@ -9,6 +9,8 @@ public class ToWorldSelect : MonoBehaviour
 
     private int scene = 1;
 
+    private bool button_flg = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +22,16 @@ public class ToWorldSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("joystick button 7"))
+        if (button_flg)
         {
-            shutter.shutter_flg = true;
+            if (Input.GetKeyDown("joystick button 7"))
+            {
+                button_flg = false;
 
-            change_scene.NextScene(scene);
+                shutter.shutter_flg = true;
+
+                change_scene.NextScene(scene);
+            }
         }
     }
 }

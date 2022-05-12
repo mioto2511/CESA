@@ -24,6 +24,8 @@ public class StageCollision : MonoBehaviour
 
     private int now_stage_num;
 
+    private bool button_flg = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,12 +49,18 @@ public class StageCollision : MonoBehaviour
     {
         if (hit)
         {
-            if (Input.GetKeyDown("joystick button 0"))
+            if (button_flg)
             {
-                shutter.shutter_flg = true;
+                if (Input.GetKeyDown("joystick button 0"))
+                {
+                    button_flg = false;
 
-                change_scene.NextScene(scene);
+                    shutter.shutter_flg = true;
+
+                    change_scene.NextScene(scene);
+                }
             }
+            
         }
     }
 

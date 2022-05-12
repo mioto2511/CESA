@@ -6,17 +6,18 @@ public class SelectRotate : MonoBehaviour
 {
     private bool rotate_flg = true;
 
-    private float deadzone = 0.2f;
-
     private bool up_flg = false;
     private bool down_flg = false;
 
     private float max_rotate = 45f;
-    private float hight_max_rotate = 225f;
+    private float hight_max_rotate = 180f;
     private float now_rotate = 0;
 
     [Header("‰ñ“]‘¬“x")] public float speed = 0.1f;
+
     [Header("”{—¦")] public float magnification = 4f;
+
+    [Header("ƒfƒbƒgƒ][ƒ“")] public float deadzone = 0.5f;
 
     private int count = 1;
 
@@ -163,7 +164,7 @@ public class SelectRotate : MonoBehaviour
 
         if (down_flg)
         {
-            if (count >= 6)
+            if (count >= 5)
             {
                 this.transform.Rotate(new Vector3(0, 0, -speed * magnification));
 

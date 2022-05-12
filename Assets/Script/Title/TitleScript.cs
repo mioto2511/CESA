@@ -6,6 +6,8 @@ public class TitleScript : MonoBehaviour
 {
     private Shutter shutter;
 
+    private bool button_flg = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +18,14 @@ public class TitleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("joystick button 0"))
+        if (button_flg)
         {
-            shutter.shutter_flg = true;
-        }
+            if (Input.GetKeyDown("joystick button 0"))
+            {
+                button_flg = false;
+
+                shutter.shutter_flg = true;
+            }
+        }        
     }
 }

@@ -6,14 +6,14 @@ using KanKikuchi.AudioManager;
 public class SE : MonoBehaviour
 {
     private bool soudse;
-    private bool isrSE;
-    private bool is 
+    private bool isSE;
+    //private bool is 
 
     // Start is called before the first frame update
     void Start()
     {
         soudse = false;
-        isrSE = true;
+        isSE = true;
     }
 
     // Update is called once per frame
@@ -29,13 +29,13 @@ public class SE : MonoBehaviour
             if (isSE)
             {
                 SEManager.Instance.Play(SEPath.SE_001);
-                isrSE = false;
+                isSE = false;
             }
         }
         else
         {
             SEManager.Instance.Stop(SEPath.SE_001);
-            isrSE = true;
+            isSE = true;
         }
     }
     private void HitSE()
