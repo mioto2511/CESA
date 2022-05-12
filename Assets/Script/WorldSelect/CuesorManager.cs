@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KanKikuchi.AudioManager;
 
 public class CuesorManager : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class CuesorManager : MonoBehaviour
         // ワールド選択処理
         if (Input.GetKeyDown("joystick button 0"))
         {
-            SoundManager.Instance.PlaySE(SESoundData.SE.Pick);
+            SEManager.Instance.Play(SEPath.SE_005);
 
             shutter.shutter_flg = true;
 
@@ -63,7 +64,7 @@ public class CuesorManager : MonoBehaviour
                 //移動先が未開放の場合行けないようにする
                 if (movePoint[nextPoint].GetComponent<WorldManager>().clear == true)
                 {
-                    SoundManager.Instance.PlaySE(SESoundData.SE.Select);
+                    //SEManager.Instance.Play(SEPath.SE_004);
                     ++nowPoint;
                     Vector3 pos = movePoint[nowPoint].transform.position;
                     kari.transform.position = new Vector3(pos.x, pos.y, 0);
@@ -75,7 +76,7 @@ public class CuesorManager : MonoBehaviour
             {
                 stick_flg = false;
 
-                SoundManager.Instance.PlaySE(SESoundData.SE.Select);
+                //SoundManager.Instance.PlaySE(SESoundData.SE.Select);
                 --nowPoint;
                 Vector3 pos = movePoint[nowPoint].transform.position;
                 kari.transform.position = new Vector3(pos.x, pos.y, 0);

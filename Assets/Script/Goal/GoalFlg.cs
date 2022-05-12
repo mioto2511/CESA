@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using KanKikuchi.AudioManager;
 
 public class GoalFlg : MonoBehaviour
 {
     public bool goal_flg = false;
 
     private bool button_flg = false;
+
+    private bool goal_se = false;
 
     private Shutter shutter;
     private ChangeScene change_scene;
@@ -39,9 +42,16 @@ public class GoalFlg : MonoBehaviour
     {
         if (goal_flg)
         {
+            goal_se = true;
             goal_flg = false;
 
             Invoke("DelayMethod", 0.25f);           
+        }
+
+        if (goal_se)
+        {
+            GoalSE();
+            
         }
 
         if (button_flg)
@@ -106,5 +116,14 @@ public class GoalFlg : MonoBehaviour
         {
             goal_flg = true;
         }
+    }
+
+    private void GoalSE()
+    {
+        Debug.Log("ClearSE");
+        // BGMフェードアウト後クリアSEを鳴らす
+        BGMManager.Instance.Stop(BGMPath.BGM_001);
+        SEManager.Instance.Play(SEPath.SE_010);
+       goal_se = false;
     }
 }

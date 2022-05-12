@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KanKikuchi.AudioManager;
 
 public class RotateRoom : MonoBehaviour
 {
@@ -71,6 +72,9 @@ public class RotateRoom : MonoBehaviour
     //支点のコライダーフラグ
     public bool collider_flg = true;
 
+    // se
+    private int secout;
+
     void Start()
     {
         rotate_start = this.GetComponent<RotateStart>();//付いているスクリプトを取得
@@ -87,6 +91,8 @@ public class RotateRoom : MonoBehaviour
         //cursor = GameObject.Find("SelectCursor"); //オブジェクトを探す
 
         dtype = 2;
+
+        secout=0;
     }
 
     void Update()
@@ -104,6 +110,9 @@ public class RotateRoom : MonoBehaviour
             //boxの数とカウントが同じか以上なら
             if (child_cnt >= this.transform.childCount)
             {
+                // SE
+                SEManager.Instance.Play(SEPath.SE_002);
+
                 room_hit = false;
 
                 child_cnt = 0;
@@ -294,4 +303,21 @@ public class RotateRoom : MonoBehaviour
         //ボタンをふたたび押せる
         rotate_start.botton_flg = true;
     }
+
+    //private void RotateSE()
+    //{
+    //    if ((left_rotate == true || right_rotate == true) && secout == 0) 
+    //    {
+    //        SEManager.Instance.Play(SEPath.SE_001);
+    //        //Debug.Log(secout);
+    //        secout = 1;
+    //        Debug.Log(secout);
+    //    }
+    //    else if(left_rotate == false || right_rotate == false)
+    //    {
+    //        //SEManager.Instance.Stop(SEPath.SE_001);
+    //        Debug.Log("Stop");
+    //        secout = 0;
+    //    }
+    //}
 }

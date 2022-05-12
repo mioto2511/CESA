@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KanKikuchi.AudioManager;
 
 public class PauseActive : MonoBehaviour
 {
@@ -40,6 +41,10 @@ public class PauseActive : MonoBehaviour
 
                 //‰ñ“]ƒ{ƒ^ƒ“ON
                 rotate_start.botton_flg = true;
+
+                // SE
+                SEManager.Instance.Play(SEPath.SE_003);
+                BGMManager.Instance.UnPause(BGMPath.BGM_001);
             }
         }
         else
@@ -57,6 +62,10 @@ public class PauseActive : MonoBehaviour
 
                 //‰ñ“]ƒ{ƒ^ƒ“OFF
                 rotate_start.botton_flg = false;
+
+                // SE
+                SEManager.Instance.Play(SEPath.SE_003);
+                BGMManager.Instance.Pause(BGMPath.BGM_001);
             }
         }
 	}
