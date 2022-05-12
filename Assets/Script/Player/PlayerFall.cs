@@ -66,7 +66,7 @@ public class PlayerFall : MonoBehaviour
 					//Destroy(player);
 					Debug.Log("shi");
 					BGMManager.Instance.Stop(BGMPath.BGM_001);
-					SEManager.Instance.Play(SEPath.SE_011);
+					SEManager.Instance.Play(SEPath.SE_010);
 					goal_trigger.ColliderSwitch(false);
 				}
 
