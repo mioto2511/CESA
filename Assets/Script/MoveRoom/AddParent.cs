@@ -8,9 +8,8 @@ public class AddParent : MonoBehaviour
     private RoomCollition room_collition;
     //BoxVariableの変数を使う
     private BoxVariable box_variable;
-    //Scoreの変数を使う
-    private Score score;
 
+    //親オブジェクト
     private GameObject parent;
 
     // Start is called before the first frame update
@@ -20,9 +19,6 @@ public class AddParent : MonoBehaviour
 
         GameObject obj = transform.parent.gameObject;//オブジェクトを探す
         box_variable = obj.GetComponent<BoxVariable>();//付いているスクリプトを取得
-
-        GameObject score_obj = GameObject.Find("Room");
-        score = score_obj.GetComponent<Score>();
     }
 
     // Update is called once per frame
@@ -34,9 +30,8 @@ public class AddParent : MonoBehaviour
             //親
             GameObject parent = this.transform.parent.gameObject;
 
+            //タグ変更
             parent.tag = "ActiveBox";
-
-            //Debug.Log("become"+parent);
 
             //親の親をRoomにする
             parent.transform.parent = GameObject.Find("Room").transform;
@@ -48,12 +43,8 @@ public class AddParent : MonoBehaviour
             box_variable.child_cnt++;
 
             //4つの目の壁の時フラグを折る
-            if (box_variable.child_cnt >= 3)
+            if (box_variable.child_cnt >= 4)
             {
-                //スコア加算
-                score.score++;
-                //Debug.Log(score.score);
-
                 box_variable.become_child = false;
             }
 

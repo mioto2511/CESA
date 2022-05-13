@@ -18,6 +18,7 @@ public class Score : MonoBehaviour
     [Header("星3のスコア")] public int max_score;
 
     [Header("ワールドの番号")] public int world_num;
+
     [Header("ステージの番号")] public int stage_num;
 
     private int stage_score;
@@ -31,26 +32,46 @@ public class Score : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //現在のstage_numを呼び出す
+        //現在のworld_scoreを呼び出す
         world_score = PlayerPrefs.GetInt("WORLD" + world_num + "_SCORE", 0);
 
+        //現在のstage_scoreを呼び出す
         stage_score = PlayerPrefs.GetInt("WORLD"+world_num+"_STAGE"+stage_num, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //スコア加算用
+        int now_socre = 0;
+
+        // タグが同じオブジェクトを全て取得する
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("ActiveBox");
+
+        //ActiveBoxの数だけスコアに反映
+        foreach (GameObject gameObj in gameObjects)
+        {
+            now_socre++;
+        }
+
+        //現在のスコアを代入
+        score = now_socre;
+
         //テキスト表示
         text.text = score + "/" + max_score;
 
+        //クリア時のスコア表示
         if (score_flg)
         {
             score_flg = false;
 
+            //左上のスコア表示OFF
             text_obj.SetActive(false);
 
+            //はじめは星3
             star = 3;
 
+            //条件に達していないと星を減らす
             if (score < max_score)
             {
                 max_obj.SetActive(false);
