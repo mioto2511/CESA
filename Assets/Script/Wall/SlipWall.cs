@@ -19,31 +19,59 @@ public class SlipWall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (slipflg == true)
+        Debug.Log(autoPlayerMove.isSlip);
+        //if (slipflg == true)
+        //{
+        //    autoPlayerMove.isSlip = true;
+        //}
+        //else
+        //{
+        //    autoPlayerMove.isSlip = false;
+        //}
+    }
+
+    //void OnCollisionEnter2D(Collision2D other)
+    //{
+    //    if (other.gameObject.CompareTag("Player"))
+    //    {
+    //        Debug.Log("E");
+    //        autoPlayerMove.isSlip = true;
+    //    }
+    //}
+
+    //void OnCollisionExit2D(Collision2D other)
+    //{
+    //    if (other.gameObject.CompareTag("Player"))
+    //    {
+    //        Debug.Log("O");
+    //        //íxÇÁÇπÇƒèàóùÇ∑ÇÈÇ‡ÇÃ
+    //        Invoke("DelayMethod", 0.5f);
+    //    }
+    //}
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("GroundTrigger"))
         {
+            Debug.Log("E");
             autoPlayerMove.isSlip = true;
         }
-        else
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("GroundTrigger"))
         {
-            autoPlayerMove.isSlip = false;
+
+            //íxÇÁÇπÇƒèàóùÇ∑ÇÈÇ‡ÇÃ
+            Invoke("DelayMethod", 0.25f);
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    //íxâÑèàóù
+    private void DelayMethod()
     {
-        if(other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("t");
-            slipflg = true;
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("f");
-            slipflg = false;
-        }
+        Debug.Log("O");
+        autoPlayerMove.isSlip = false;
     }
 }
