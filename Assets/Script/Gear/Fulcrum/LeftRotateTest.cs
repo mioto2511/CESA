@@ -35,6 +35,8 @@ public class LeftRotateTest : MonoBehaviour
         if (other.gameObject.CompareTag("ActiveBox"))
         {
             box_hit = true;
+
+            Move();
         }
     }
 

@@ -36,6 +36,8 @@ public class RightRotateTest : MonoBehaviour
         if (other.gameObject.CompareTag("ActiveBox"))
         {
             box_hit = true;
+
+            Move();
         }
     }
 
