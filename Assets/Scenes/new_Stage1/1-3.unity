@@ -4389,6 +4389,7 @@ GameObject:
   - component: {fileID: 3132870676034754607}
   - component: {fileID: 7901006419190820283}
   - component: {fileID: 8491976831837788092}
+  - component: {fileID: 3132870676034754594}
   m_Layer: 0
   m_Name: Room
   m_TagString: Room
@@ -4411,6 +4412,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3132870676034754594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3132870676034754592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4e2617453db59418f28aec10e49058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3132870676034754607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12725,6 +12738,8 @@ GameObject:
   - component: {fileID: 7826057086281513777}
   - component: {fileID: 7826057086281513789}
   - component: {fileID: 7826057086281513788}
+  - component: {fileID: 7826057086281513780}
+  - component: {fileID: 7826057086281513781}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -12797,6 +12812,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7826057086281513780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7826057086281513776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d9065c7e6244dddaffda63eb37d64b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 8300000, guid: 48492af1a0ce50b41852809e83c52d84, type: 3}
+  _isAutoPlay: 1
+  _volumeRate: 0.1
+  _delay: 0
+  _pitch: 1
+  _fadeInDuration: 0
+  _fadeOutDuration: 0
+  _isLoop: 1
+  _isAutoStop: 1
+--- !u!114 &7826057086281513781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7826057086281513776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34775f09e018e454b897daf0eb635a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7826057086281513788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13237,6 +13285,7 @@ MonoBehaviour:
   max_score: 4
   world_num: 1
   stage_num: 3
+  star: 0
   score_flg: 0
 --- !u!1 &8526006533886874869
 GameObject:

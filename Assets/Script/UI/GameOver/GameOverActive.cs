@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; // UIコンポーネントの使用
+using KanKikuchi.AudioManager;
 
 public class GameOverActive : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class GameOverActive : MonoBehaviour
 
             //ポーズを出す
             over_ui.SetActive(true);
+
+            BGMManager.Instance.Stop();
 
             // 最初に選択状態にしたいボタンの設定
             b1.Select();

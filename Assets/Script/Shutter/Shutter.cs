@@ -29,6 +29,8 @@ public class Shutter : MonoBehaviour
 
             Change_Start = true;
 
+            BGMManager.Instance.Stop(BGMPath.BGM_001);
+
             SEManager.Instance.Play(SEPath.SE_005);
         }        
     }

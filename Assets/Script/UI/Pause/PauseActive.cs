@@ -15,6 +15,16 @@ public class PauseActive : MonoBehaviour
     //RotateStartの変数を使う
     private RotateStart rotate_start;
 
+    public static PauseActive instance;
+
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     void Start()
     {
         GameObject obj1 = GameObject.Find("Room"); //オブジェクトを探す
