@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using KanKikuchi.AudioManager;
 
 public class ChangeScene : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class ChangeScene : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Shutter"))
         {
+            SEManager.Instance.Play(SEPath.SE_009);
             Fade_Manager.FadeOut(next_scene); // フェードイン開始、番号でフェード後のsceneを指定
         }
        

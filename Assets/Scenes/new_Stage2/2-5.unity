@@ -5822,6 +5822,7 @@ GameObject:
   - component: {fileID: 2705879367831392097}
   - component: {fileID: 7156506570897963765}
   - component: {fileID: 8876181837977075954}
+  - component: {fileID: 2705879367831392112}
   m_Layer: 0
   m_Name: Room
   m_TagString: Room
@@ -5844,6 +5845,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2705879367831392112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2705879367831392110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4e2617453db59418f28aec10e49058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &2783217057914932218
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12363,6 +12376,9 @@ GameObject:
   - component: {fileID: 8750313844224805076}
   - component: {fileID: 8750313844224805080}
   - component: {fileID: 8750313844224805081}
+  - component: {fileID: 8750313844224805083}
+  - component: {fileID: 8750313844224805082}
+  - component: {fileID: 8750313844224805084}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -12476,6 +12492,58 @@ MonoBehaviour:
   cplayer: {fileID: 8979517316626712194}
   camerazoom: 1
   zoom: 16.2
+--- !u!114 &8750313844224805082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8750313844224805077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d9065c7e6244dddaffda63eb37d64b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 8300000, guid: 19deedd83a644944b9623cbc7912b7af, type: 3}
+  _isAutoPlay: 1
+  _volumeRate: 0.1
+  _delay: 0
+  _pitch: 1
+  _fadeInDuration: 0
+  _fadeOutDuration: 0
+  _isLoop: 1
+  _isAutoStop: 1
+--- !u!114 &8750313844224805083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8750313844224805077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84080b8f483464c93845cb502049e7eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 8300000, guid: d02573f279fb7744491caa316617d046, type: 3}
+  _isAutoPlay: 1
+  _volumeRate: 0.005
+  _delay: 0
+  _pitch: 1
+  _fadeInDuration: 0
+  _isLoop: 1
+--- !u!114 &8750313844224805084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8750313844224805077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34775f09e018e454b897daf0eb635a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8876181837977075954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12497,6 +12565,7 @@ MonoBehaviour:
   max_score: 5
   world_num: 2
   stage_num: 5
+  star: 0
   score_flg: 0
 --- !u!4 &8946633428990198320
 Transform:

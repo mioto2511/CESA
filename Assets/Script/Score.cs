@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using KanKikuchi.AudioManager;
 
 public class Score : MonoBehaviour
 {
@@ -23,11 +24,21 @@ public class Score : MonoBehaviour
 
     private int stage_score;
 
-    private int star;
+    public int star;
 
     public bool score_flg;
 
     private int world_score = 0;
+
+    public static Score instance;
+
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -82,10 +93,20 @@ public class Score : MonoBehaviour
                 mid_obj.SetActive(false);
                 star -= 1;
             }
-            
+
+            if (star >= 3)
+            {
+                Debug.Log("3");
+                SEManager.Instance.Play(SEPath.SE_013);
+            }
+            else if (star <= 2)
+            {
+                Debug.Log("2");
+                SEManager.Instance.Play(SEPath.SE_012);
+            }
 
             //スコア更新
-            if(star > stage_score)
+            if (star > stage_score)
             {
                 world_score += (star - stage_score);
 
