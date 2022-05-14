@@ -2998,6 +2998,7 @@ GameObject:
   - component: {fileID: 14176392150728678}
   - component: {fileID: 14176392150728680}
   - component: {fileID: 14176392150728681}
+  - component: {fileID: 14176392150728682}
   m_Layer: 0
   m_Name: Room
   m_TagString: Room
@@ -3039,6 +3040,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   botton_flg: 1
+--- !u!114 &14176392150728682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14176392150728679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4e2617453db59418f28aec10e49058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &169821783622412265
 Transform:
   m_ObjectHideFlags: 0
@@ -4225,7 +4238,7 @@ MonoBehaviour:
   scene: 2
   world_num: 1
   stage_num: 2
-  pauseUI: {fileID: 2190230344608981683}
+  clearUI: {fileID: 0}
 --- !u!50 &2299844399895334624
 Rigidbody2D:
   serializedVersion: 4
@@ -8774,9 +8787,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654c0a517db15df40892b69e510ab5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  star: {fileID: 5493323925411620416}
-  score_back: {fileID: 5493323923936085067}
-  score: 3
 --- !u!4 &5493323924020857781
 Transform:
   m_ObjectHideFlags: 0
@@ -8853,9 +8863,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654c0a517db15df40892b69e510ab5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  star: {fileID: 5493323925463378848}
-  score_back: {fileID: 5493323923936085067}
-  score: 6
 --- !u!1 &5493323925157156677
 GameObject:
   m_ObjectHideFlags: 0
@@ -8885,9 +8892,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654c0a517db15df40892b69e510ab5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  star: {fileID: 5493323925224759670}
-  score_back: {fileID: 5493323923936085067}
-  score: 5
 --- !u!4 &5493323925157156699
 Transform:
   m_ObjectHideFlags: 0

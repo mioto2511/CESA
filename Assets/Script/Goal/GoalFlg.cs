@@ -56,7 +56,6 @@ public class GoalFlg : MonoBehaviour
         if (goal_se)
         {
             GoalSE();
-            
         }
 
         if (button_flg)
@@ -125,8 +124,10 @@ public class GoalFlg : MonoBehaviour
     {
         Debug.Log("ClearSE");
         // BGMフェードアウト後クリアSEを鳴らす
-        BGMManager.Instance.Stop(BGMPath.BGM_001);
-        SEManager.Instance.Play(SEPath.SE_010);
+        BGMManager.Instance.Stop();
+        SEManager.Instance.Stop();
+        SEManager.Instance.Play(SEPath.SE_011);
+        
        goal_se = false;
     }
 }
