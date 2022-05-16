@@ -2998,7 +2998,6 @@ GameObject:
   - component: {fileID: 14176392150728678}
   - component: {fileID: 14176392150728680}
   - component: {fileID: 14176392150728681}
-  - component: {fileID: 14176392150728682}
   m_Layer: 0
   m_Name: Room
   m_TagString: Room
@@ -3022,6 +3021,7 @@ MonoBehaviour:
   rotate_cnt: 0
   target_object: {fileID: 688238267}
   SpeedFactor: 0.15
+  deadzone: 0.8
   rotate_flg: 0
   right_rotate: 0
   left_rotate: 0
@@ -3040,18 +3040,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   botton_flg: 1
---- !u!114 &14176392150728682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 14176392150728679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc4e2617453db59418f28aec10e49058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &169821783622412265
 Transform:
   m_ObjectHideFlags: 0
@@ -4238,7 +4226,7 @@ MonoBehaviour:
   scene: 2
   world_num: 1
   stage_num: 2
-  clearUI: {fileID: 2190230344608981683}
+  clearUI: {fileID: 0}
 --- !u!50 &2299844399895334624
 Rigidbody2D:
   serializedVersion: 4
