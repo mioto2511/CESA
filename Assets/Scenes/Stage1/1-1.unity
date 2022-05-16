@@ -3021,6 +3021,7 @@ MonoBehaviour:
   rotate_cnt: 0
   target_object: {fileID: 688238267}
   SpeedFactor: 0.15
+  deadzone: 0.8
   rotate_flg: 0
   right_rotate: 0
   left_rotate: 0
@@ -4225,7 +4226,7 @@ MonoBehaviour:
   scene: 2
   world_num: 1
   stage_num: 2
-  pauseUI: {fileID: 2190230344608981683}
+  clearUI: {fileID: 0}
 --- !u!50 &2299844399895334624
 Rigidbody2D:
   serializedVersion: 4
@@ -8774,9 +8775,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654c0a517db15df40892b69e510ab5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  star: {fileID: 5493323925411620416}
-  score_back: {fileID: 5493323923936085067}
-  score: 3
 --- !u!4 &5493323924020857781
 Transform:
   m_ObjectHideFlags: 0
@@ -8853,9 +8851,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654c0a517db15df40892b69e510ab5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  star: {fileID: 5493323925463378848}
-  score_back: {fileID: 5493323923936085067}
-  score: 6
 --- !u!1 &5493323925157156677
 GameObject:
   m_ObjectHideFlags: 0
@@ -8885,9 +8880,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654c0a517db15df40892b69e510ab5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  star: {fileID: 5493323925224759670}
-  score_back: {fileID: 5493323923936085067}
-  score: 5
 --- !u!4 &5493323925157156699
 Transform:
   m_ObjectHideFlags: 0

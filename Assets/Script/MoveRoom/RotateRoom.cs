@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using KanKikuchi.AudioManager;
+using KanKikuchi.AudioManager;
 
 public class RotateRoom : MonoBehaviour
 {
@@ -31,6 +31,10 @@ public class RotateRoom : MonoBehaviour
 
     [Header("速度係数")] public float SpeedFactor = 0.1f;
 
+    [Header("デットゾーン")] public float deadzone = 0.8f;
+
+    [Header("加速")] public float add_speed = 0.0025f;
+
     //回転軸
     private Vector3 RotateAxis = Vector3.forward;
 
@@ -49,9 +53,6 @@ public class RotateRoom : MonoBehaviour
 
     //自身のtf
     private Transform my_transform;
-
-    //デットゾーン
-    private float deadzone = 0.2f;
 
     //ステックの開始地点
     private float start_radian = 0;
@@ -74,6 +75,10 @@ public class RotateRoom : MonoBehaviour
 
     // se
     private int secout;
+
+    private float speed_radian;
+
+    private float add = 0;
 
     void Start()
     {
@@ -116,6 +121,8 @@ public class RotateRoom : MonoBehaviour
                 room_hit = false;
 
                 child_cnt = 0;
+
+                add = 0;
 
                 //回転方向の初期化
                 left_rotate = false;
@@ -163,6 +170,9 @@ public class RotateRoom : MonoBehaviour
 
     void FixedUpdate()
     {
+        //float a= 2;
+
+        //Debug.Log(old_radian);
         // 指定オブジェクトを中心に回転する
         if (rotate_flg == true)
         {
@@ -171,7 +181,7 @@ public class RotateRoom : MonoBehaviour
                 this.transform.RotateAround(
                 target_object.transform.position,
                 RotateAxis,
-                360.0f / (1.0f / -SpeedFactor) * Time.deltaTime
+                360.0f / (1.0f / -(SpeedFactor + add)) * Time.deltaTime
                 );
             }
             else if (left_rotate == true)
@@ -179,7 +189,7 @@ public class RotateRoom : MonoBehaviour
                 this.transform.RotateAround(
                 target_object.transform.position,
                 RotateAxis,
-                360.0f / (1.0f / SpeedFactor) * Time.deltaTime
+                360.0f / (1.0f / (SpeedFactor + add)) * Time.deltaTime
                 );
             }
         }       
@@ -192,6 +202,8 @@ public class RotateRoom : MonoBehaviour
         {
             float lsh = Input.GetAxis("L_Stick_H");//横軸
             float lsv = Input.GetAxis("L_Stick_V");//縦軸
+
+            float now_radian = 0;
 
             //ステックの角度産出
             float radian = Mathf.Atan2(lsv, lsh) * Mathf.Rad2Deg;
@@ -214,11 +226,10 @@ public class RotateRoom : MonoBehaviour
                     //回転前の初期位置
                     initial_pos = this.transform.position;
                 }
-
-
-                if (left_rotate == false && right_rotate == false)
+                else
                 {
-                    float now_radian = start_radian - radian;
+                    now_radian = start_radian - radian;
+
 
                     //0～360で飛ぶのを改善
                     if (old_radian >= 0 && now_radian < -200)
@@ -230,6 +241,20 @@ public class RotateRoom : MonoBehaviour
                         now_radian -= 360;
                     }
 
+                    if(now_radian >= 90)
+                    {
+                        add += add_speed;
+                    }
+                    if (now_radian <= -90)
+                    {
+                        add += add_speed;
+                    }
+
+                    //Debug.Log(SpeedFactor + add);
+                }
+
+                if (left_rotate == false && right_rotate == false)
+                {
                     //90度回転したら回転開始
                     if (dtype == 2)
                     {
@@ -302,6 +327,69 @@ public class RotateRoom : MonoBehaviour
 
         //ボタンをふたたび押せる
         rotate_start.botton_flg = true;
+    }
+
+    private void StickMove2()
+    {
+        if (rotate_flg)
+        {
+            float lsh = Input.GetAxis("L_Stick_H");//横軸
+            float lsv = Input.GetAxis("L_Stick_V");//縦軸
+
+            //ステックの角度産出
+            float radian = Mathf.Atan2(lsv, lsh) * Mathf.Rad2Deg;
+            if (radian < 0)
+            {
+                radian += 360;
+            }
+
+            //if (start_radian > 10 && radian > 300)
+            //{
+            //    radian = -radian;
+            //    radian = radian + 360;
+            //}
+
+            //スティック入力がはいったら
+            if ((lsh > deadzone) || (lsh < -deadzone) || (lsv > deadzone) || (lsv < -deadzone))
+            {
+                //初期位置の時
+                if (initial_flg)
+                {
+                    initial_flg = false;
+
+                    //スティックの開始角度
+                    start_radian = radian;
+
+                    //回転前の初期位置
+                    initial_pos = this.transform.position;
+                }
+
+                if (start_radian >= radian)
+                {
+                    //軸決め
+                    move_axis.SetAxis(0);
+                    right_rotate = true;
+                    old_radian = start_radian - radian;
+                    start_radian = radian;
+                }
+                else if (start_radian <= radian)
+                {
+                    //軸決め
+                    move_axis.SetAxis(1);
+                    left_rotate = true;
+
+                    old_radian = start_radian - radian;
+                    start_radian = radian;
+                }
+            }
+            else if (lsh == 0 && lsv == 0)
+            {
+                //回転初期位置の初期化
+                start_radian = 0;
+                old_radian = 0;
+                initial_flg = true;
+            }
+        }
     }
 
     //private void RotateSE()
