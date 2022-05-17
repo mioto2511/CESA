@@ -19,6 +19,8 @@ public class PauseActive : MonoBehaviour
 
     public static PauseActive instance;
 
+    public bool button_flg = true;
+
     public void Awake()
     {
         if (instance == null)
@@ -41,53 +43,57 @@ public class PauseActive : MonoBehaviour
 
     void Update()
     {
-        if (pause_flg)
+        if (button_flg)
         {
-            if (Input.GetKeyDown("joystick button 7"))
+            if (pause_flg)
             {
-                // 時間再起
-                Time.timeScale = 1;  
+                if (Input.GetKeyDown("joystick button 7"))
+                {
+                    // 時間再起
+                    Time.timeScale = 1;
 
-                //ポーズを消す
-                pauseUI.SetActive(false);
+                    //ポーズを消す
+                    pauseUI.SetActive(false);
 
-                //フラグ折る
-                pause_flg = false;
+                    //フラグ折る
+                    pause_flg = false;
 
-                //加速可能にする
-                acceleration.button_flg = true;
+                    //加速可能にする
+                    acceleration.button_flg = true;
 
-                //回転ボタンON
-                rotate_start.botton_flg = true;
+                    //回転ボタンON
+                    rotate_start.botton_flg = true;
 
-                // SE
-                SEManager.Instance.Play(SEPath.SE_003);
-                BGMManager.Instance.UnPause(BGMPath.BGM_001);
+                    // SE
+                    SEManager.Instance.Play(SEPath.SE_003);
+                    BGMManager.Instance.UnPause(BGMPath.BGM_001);
+                }
+            }
+            else
+            {
+                if (Input.GetKeyDown("joystick button 7"))
+                {
+                    // 時間停止
+                    Time.timeScale = 0;
+
+                    //ポーズを出す
+                    pauseUI.SetActive(true);
+
+                    //フラグ立つ
+                    pause_flg = true;
+
+                    //加速不可能にする
+                    acceleration.button_flg = false;
+
+                    //回転ボタンOFF
+                    rotate_start.botton_flg = false;
+
+                    // SE
+                    SEManager.Instance.Play(SEPath.SE_003);
+                    BGMManager.Instance.Pause(BGMPath.BGM_001);
+                }
             }
         }
-        else
-        {
-            if (Input.GetKeyDown("joystick button 7"))
-            {
-                // 時間停止
-                Time.timeScale = 0;  
-
-                //ポーズを出す
-                pauseUI.SetActive(true);
-
-                //フラグ立つ
-                pause_flg = true;
-
-                //加速不可能にする
-                acceleration.button_flg = false;
-
-                //回転ボタンOFF
-                rotate_start.botton_flg = false;
-
-                // SE
-                SEManager.Instance.Play(SEPath.SE_003);
-                BGMManager.Instance.Pause(BGMPath.BGM_001);
-            }
-        }
+        
 	}
 }
