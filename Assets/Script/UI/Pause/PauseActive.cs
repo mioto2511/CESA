@@ -14,6 +14,8 @@ public class PauseActive : MonoBehaviour
 
     //RotateStartの変数を使う
     private RotateStart rotate_start;
+    //Accelerationの変数を使う
+    private Acceleration acceleration;
 
     public static PauseActive instance;
 
@@ -29,6 +31,9 @@ public class PauseActive : MonoBehaviour
     {
         GameObject obj1 = GameObject.Find("Room"); //オブジェクトを探す
         rotate_start = obj1.GetComponent<RotateStart>();//付いているスクリプトを取得
+
+        GameObject obj2 = GameObject.Find("Player"); //オブジェクトを探す
+        acceleration = obj2.GetComponent<Acceleration>();//付いているスクリプトを取得
 
         //リザルト背景を消す
         pauseUI.SetActive(false);
@@ -48,6 +53,9 @@ public class PauseActive : MonoBehaviour
 
                 //フラグ折る
                 pause_flg = false;
+
+                //加速可能にする
+                acceleration.button_flg = true;
 
                 //回転ボタンON
                 rotate_start.botton_flg = true;
@@ -69,6 +77,9 @@ public class PauseActive : MonoBehaviour
 
                 //フラグ立つ
                 pause_flg = true;
+
+                //加速不可能にする
+                acceleration.button_flg = false;
 
                 //回転ボタンOFF
                 rotate_start.botton_flg = false;

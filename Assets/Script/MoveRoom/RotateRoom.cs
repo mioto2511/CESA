@@ -13,6 +13,8 @@ public class RotateRoom : MonoBehaviour
     private RotateStart rotate_start;
     //ChainGearを使う
     private ChainGear chain_gear;
+    //Accelerationの変数を使う
+    private Acceleration acceleration;
 
     public int dtype;
 
@@ -68,7 +70,6 @@ public class RotateRoom : MonoBehaviour
 
     //オブジェクト
     private GameObject player;
-    //private GameObject cursor;
 
     //支点のコライダーフラグ
     public bool collider_flg = true;
@@ -76,8 +77,7 @@ public class RotateRoom : MonoBehaviour
     // se
     private int secout;
 
-    private float speed_radian;
-
+    //加速分
     private float add = 0;
 
     void Start()
@@ -92,6 +92,7 @@ public class RotateRoom : MonoBehaviour
 
         player = GameObject.Find("Player"); //オブジェクトを探す
         auto_player_move = player.GetComponent<AutoPlayerMove>();　//付いているスクリプトを取得
+        acceleration = player.GetComponent<Acceleration>();//付いているスクリプトを取得
 
         //cursor = GameObject.Find("SelectCursor"); //オブジェクトを探す
 
@@ -137,11 +138,8 @@ public class RotateRoom : MonoBehaviour
                 //配列削除
                 move_axis.Delete();
 
-                //カーソル復活           
-                //cursor.SetActive(true);
-                //プレイヤーの位置にカーソル生成
-                //Vector3 player_pos = player.transform.position;
-                //cursor.transform.position = player_pos;
+                //加速可能にする
+                acceleration.button_flg = true;
 
                 //回転初期位置の初期化
                 start_radian = 0;

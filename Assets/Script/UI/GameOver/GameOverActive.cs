@@ -14,6 +14,9 @@ public class GameOverActive : MonoBehaviour
 
     private Button b1;
 
+    //Accelerationの変数を使う
+    private Acceleration acceleration;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,9 @@ public class GameOverActive : MonoBehaviour
 
         GameObject player = GameObject.Find("BoxTrigger");
         player_fall = player.GetComponent<PlayerFall>();　//付いているスクリプトを取得
+
+        GameObject obj2 = GameObject.Find("Player"); //オブジェクトを探す
+        acceleration = obj2.GetComponent<Acceleration>();//付いているスクリプトを取得
     }
 
     // Update is called once per frame
@@ -36,6 +42,9 @@ public class GameOverActive : MonoBehaviour
 
             // 時間停止
             Time.timeScale = 0;
+
+            //加速不可能にする
+            acceleration.button_flg = false;
 
             //ポーズを出す
             over_ui.SetActive(true);

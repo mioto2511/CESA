@@ -6,8 +6,10 @@ public class RotateStart : MonoBehaviour
 {
     //AutoPlayerMoveの変数を使う
     private AutoPlayerMove auto_player_move;
-    //MoveAxisOfRotate
+    //MoveAxisOfRotateの変数を使う
     private MoveAxisOfRotate move_axis;
+    //Accelerationの変数を使う
+    private Acceleration acceleration;
 
     //ボタンフラグ
     public bool botton_flg = true;
@@ -20,6 +22,7 @@ public class RotateStart : MonoBehaviour
 
         GameObject obj2 = GameObject.Find("Player"); //オブジェクトを探す
         auto_player_move = obj2.GetComponent<AutoPlayerMove>();　//付いているスクリプトを取得
+        acceleration = obj2.GetComponent<Acceleration>();//付いているスクリプトを取得
     }
 
     // Update is called once per frame
@@ -29,17 +32,20 @@ public class RotateStart : MonoBehaviour
         {
             if (Input.GetKeyDown("joystick button 0"))
             {
+                //時間を等倍に
+                Time.timeScale = 1;
+
                 //ボタンを押せなくする
                 botton_flg = false;
 
                 //軸セット
                 move_axis.move_flg = true;
 
-                //GameObject cursor = GameObject.Find("SelectCursor"); //オブジェクトを探す
-                //cursor.SetActive(false);
-
                 //プレイヤーを停止
                 auto_player_move.move_flg = false;
+
+                //加速不可能にする
+                acceleration.button_flg = false;
 
                 //歯車のコライダー削除
                 GameObject[] objects = GameObject.FindGameObjectsWithTag("LGear");
