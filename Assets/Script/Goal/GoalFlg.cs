@@ -25,8 +25,13 @@ public class GoalFlg : MonoBehaviour
     [SerializeField]
     private GameObject clearUI;
 
+    [SerializeField]
+    private GameObject pause_ui;
+
     //Scoreの変数
     private Score score;
+    //PauseActiveの変数
+    private PauseActive pause_active;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +42,8 @@ public class GoalFlg : MonoBehaviour
 
         GameObject s = GameObject.Find("Room"); // オブジェクトを探す
         score = s.GetComponent<Score>();
+
+        pause_active = pause_ui.GetComponent<PauseActive>();
 
         clearUI.SetActive(false);
     }
@@ -49,6 +56,8 @@ public class GoalFlg : MonoBehaviour
             goal_flg = false;
 
             score.score_flg = true;
+
+            pause_active.button_flg = false;
 
             Invoke("DelayMethod", 0.25f);           
         }
