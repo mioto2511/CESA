@@ -462,7 +462,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &114535343
 GameObject:
@@ -1352,7 +1352,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5439011685257986688, guid: fedfa0e07d433f14fadd71af60ca4cf4, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5439011685257986688, guid: fedfa0e07d433f14fadd71af60ca4cf4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1573,7 +1573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5197459393290931145, guid: 70901e09d0fa3214daa35728225ff052, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5197459393290931145, guid: 70901e09d0fa3214daa35728225ff052, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2679,6 +2679,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &2023419320
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1036599311890217435, guid: e0eac9b873a0d994ab18a071514d30bb, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036599311890217435, guid: e0eac9b873a0d994ab18a071514d30bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.0361485
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036599311890217435, guid: e0eac9b873a0d994ab18a071514d30bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.3243806
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036599311890217435, guid: e0eac9b873a0d994ab18a071514d30bb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17.232176
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036599311890217435, guid: e0eac9b873a0d994ab18a071514d30bb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036599311890217435, guid: e0eac9b873a0d994ab18a071514d30bb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036599311890217435, guid: e0eac9b873a0d994ab18a071514d30bb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036599311890217435, guid: e0eac9b873a0d994ab18a071514d30bb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036599311890217435, guid: e0eac9b873a0d994ab18a071514d30bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036599311890217435, guid: e0eac9b873a0d994ab18a071514d30bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036599311890217435, guid: e0eac9b873a0d994ab18a071514d30bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036599311890217509, guid: e0eac9b873a0d994ab18a071514d30bb, type: 3}
+      propertyPath: m_Name
+      value: Global Volume
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e0eac9b873a0d994ab18a071514d30bb, type: 3}
 --- !u!1 &2130475576
 GameObject:
   m_ObjectHideFlags: 0
@@ -5765,6 +5822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   over_ui: {fileID: 1796013788919582559}
+  pause_ui: {fileID: 0}
 --- !u!114 &1796013788101168388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5779,6 +5837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseUI: {fileID: 3817113360660311071}
   pause_flg: 0
+  button_flg: 1
 --- !u!224 &1796013788101168389
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9427,54 +9486,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.278, y: 0.278}
   m_EdgeRadius: 0
---- !u!114 &4842054098543488098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4842054098543488099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: 15b1c37682e71d74b962ec6532527a93, type: 2}
---- !u!1 &4842054098543488099
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4842054098543488925}
-  - component: {fileID: 4842054098543488098}
-  m_Layer: 0
-  m_Name: Global Volume
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4842054098543488925
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4842054098543488099}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.0361485, y: 1.3243806, z: -17.232176}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &4871675853018213256
 Rigidbody2D:
   serializedVersion: 4
@@ -11117,6 +11128,8 @@ MonoBehaviour:
   rotate_cnt: 0
   target_object: {fileID: 4939748520606847264}
   SpeedFactor: 0.15
+  deadzone: 0.8
+  add_speed: 0.0025
   rotate_flg: 0
   right_rotate: 0
   left_rotate: 0
@@ -14696,6 +14709,7 @@ MonoBehaviour:
   world_num: 2
   stage_num: 3
   clearUI: {fileID: 3920566916691268978}
+  pause_ui: {fileID: 0}
 --- !u!61 &9021486451290956708
 BoxCollider2D:
   m_ObjectHideFlags: 0
