@@ -52,6 +52,7 @@ public class GoalFlg : MonoBehaviour
     {
         if (goal_flg)
         {
+            Debug.Log(goal_flg);
             goal_se = true;
             goal_flg = false;
 
@@ -113,6 +114,7 @@ public class GoalFlg : MonoBehaviour
     //’x‰„ˆ—
     private void DelayMethod()
     {
+        Debug.Log("a");
         button_flg = true;
 
         // ŠÔ’â~

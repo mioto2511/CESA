@@ -7,7 +7,7 @@ public class CuesorManager : MonoBehaviour
 {
     [Header("ワールドマップ")] public GameObject[] movePoint;
 
-    public GameObject kari;
+    private GameObject kari;
 
     private int nowPoint = 0;
     private bool PointMax = false;
@@ -27,8 +27,8 @@ public class CuesorManager : MonoBehaviour
     void Start()
     {
         GameObject T = GameObject.Find("ShutterTrigger"); // オブジェクトを探す
-        change_scene = T.GetComponent<ChangeScene>();
-        shutter = T.GetComponent<Shutter>();
+        //change_scene = T.GetComponent<ChangeScene>();
+        //shutter = T.GetComponent<Shutter>();
 
         kari = GameObject.Find("Circle");
 
@@ -48,7 +48,7 @@ public class CuesorManager : MonoBehaviour
 
                 button_flg = false;
 
-                shutter.shutter_flg = true;
+                //shutter.shutter_flg = true;
 
                 change_scene.NextScene(movePoint[nowPoint].GetComponent<WorldManager>().World_No);
 

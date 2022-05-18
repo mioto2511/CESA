@@ -23,6 +23,9 @@ public class WorldManager : MonoBehaviour
     //子
     private GameObject chain;
 
+    private Vector3 pos;
+    private Vector3 scale;
+
     void Start()
     {
         //現在のworld_numを呼び出す
@@ -35,8 +38,6 @@ public class WorldManager : MonoBehaviour
         if (world_score >= conditions_score)
         {
             clear = true;
-            //鎖OFF
-            chain.SetActive(false);
         }
     }
 
@@ -47,6 +48,23 @@ public class WorldManager : MonoBehaviour
 
         //テキスト表示
         text.text = world_score + "/" + max_score;
+
+        pos = this.transform.position;
+        scale = this.transform.localScale;
+
+        if (pos.z <= 0)
+        {
+            pos.z += 0.1f;
+            pos.y -= 0.1f;
+            
+            this.transform.position = pos;
+            //this.transform.localScale = scale;
+        }
+
+        if(scale.x > 0.3f)
+        {
+            this.transform.localScale -= new Vector3(0.1f, 0.1f, 0);
+        }
     }
 
     private void ColorChange()
@@ -54,10 +72,12 @@ public class WorldManager : MonoBehaviour
         if (clear == true)
         {
             GetComponent<Renderer>().material.color = Color.white;
+            //鎖OFF
+            chain.SetActive(false);
         }
         else
         {
-            GetComponent<Renderer>().material.color = Color.black;
+            GetComponent<Renderer>().material.color = new Color32(99, 99, 99,255);
         }
     }
 }
