@@ -29,6 +29,9 @@ public class PlayerFall : MonoBehaviour
 	//死亡フラグ
 	public bool death_flg = false;
 
+	//boxcolリスト
+	private List<Collider2D> box_col = new List<Collider2D>();
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -76,6 +79,15 @@ public class PlayerFall : MonoBehaviour
 				//コライダーOFF
 				my_collider.enabled = false;
 
+				//boxのコライダーON
+				for(int i = 0; i < box_col.Count; i++)
+                {
+					box_col[i].enabled = true;
+                }
+
+				//リスト初期化
+				box_col.Clear();
+
 				//カウント初期化
 				count = 0;
 			}
@@ -97,14 +109,21 @@ public class PlayerFall : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag("Box"))
-		{
-			count++;
-		}
+		//if (other.gameObject.CompareTag("Box"))
+		//{
+		//	count++;
+		//}
 
 		if (other.gameObject.CompareTag("ActiveBox"))
 		{
 			count++;
+
+			//コライダーOFF
+			Collider2D col = other.GetComponent<Collider2D>();
+			col.enabled = false;
+
+			//後でコライダー復活リストに追加
+			box_col.Add(col);
 		}
 	}
 }

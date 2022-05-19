@@ -12,10 +12,13 @@ public class GoalActive : MonoBehaviour
 
     private bool generate_flag = true;
 
+    private RotateStart rotate_start;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        GameObject s = GameObject.Find("Room"); // オブジェクトを探す
+        rotate_start = s.GetComponent<RotateStart>();
     }
 
     // Update is called once per frame
@@ -36,6 +39,9 @@ public class GoalActive : MonoBehaviour
                 goal_obj.transform.localScale = new Vector3(goal_scale, goal_scale, 0);
 
                 generate_flag = false;
+
+                //回せ無くする
+                rotate_start.botton_flg = false;
             }
             else if (this.tag == "LDrive")
             {
@@ -50,6 +56,9 @@ public class GoalActive : MonoBehaviour
                 goal_obj.transform.localScale = new Vector3(goal_scale, goal_scale, 0);
 
                 generate_flag = false;
+
+                //回せ無くする
+                rotate_start.botton_flg = false;
             }
 
         }

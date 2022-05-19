@@ -15,6 +15,8 @@ public class RotateRoom : MonoBehaviour
     private ChainGear chain_gear;
     //Accelerationの変数を使う
     private Acceleration acceleration;
+    //VibrationScript
+    private VibrationScript vibration_script;
 
     private HitStop hit_stop;
 
@@ -87,6 +89,7 @@ public class RotateRoom : MonoBehaviour
     void Start()
     {
         rotate_start = this.GetComponent<RotateStart>();//付いているスクリプトを取得
+        vibration_script = this.GetComponent<VibrationScript>();
 
         GameObject obj2 = GameObject.Find("Main Camera");
         hit_stop = obj2.GetComponent <HitStop>();
@@ -158,6 +161,9 @@ public class RotateRoom : MonoBehaviour
 
                     //加速可能にする
                     acceleration.button_flg = true;
+
+                    //振動
+                    vibration_script.Vibration(1.0f, 1.0f,0.5f);
 
                     //回転初期位置の初期化
                     start_radian = 0;

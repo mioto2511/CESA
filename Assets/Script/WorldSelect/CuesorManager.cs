@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using KanKikuchi.AudioManager;
+using UnityEngine.SceneManagement;
 
 public class CuesorManager : MonoBehaviour
 {
     [Header("ワールドマップ")] public GameObject[] movePoint;
 
+    [Header("ワールドマップ")] public float up_size = 0.35f;
+
     private GameObject kari;
 
     private int nowPoint = 0;
+    private int oldPoint = 0;
     private bool PointMax = false;
     private bool PointMin = false;
 
@@ -50,7 +54,8 @@ public class CuesorManager : MonoBehaviour
 
                 //shutter.shutter_flg = true;
 
-                change_scene.NextScene(movePoint[nowPoint].GetComponent<WorldManager>().World_No);
+                //change_scene.NextScene(movePoint[nowPoint].GetComponent<WorldManager>().World_No);
+                SceneManager.LoadScene(movePoint[nowPoint].GetComponent<WorldManager>().World_No);
 
                 //Fade_Manager.FadeOut(movePoint[nowPoint].GetComponent<WorldManager>().World_No); // Aボタンが押されたらフェードアウトしてシーン遷移する
                 //Debug.Log(movePoint[nowPoint].GetComponent<World_Manager>().World_No);          
@@ -69,13 +74,20 @@ public class CuesorManager : MonoBehaviour
 
                 int nextPoint = nowPoint + 1;
 
-                //移動先が未開放の場合行けないようにする
+                //移動先が開放の場合行けるようにする
                 if (movePoint[nextPoint].GetComponent<WorldManager>().clear == true)
                 {
                     //SEManager.Instance.Play(SEPath.SE_004);
                     ++nowPoint;
+
+                    //カーソル設置
                     Vector3 pos = movePoint[nowPoint].transform.position;
                     kari.transform.position = new Vector3(pos.x, pos.y, 0);
+
+                    movePoint[nowPoint].transform.localScale = new Vector3(up_size, up_size, 1);
+                    movePoint[oldPoint].transform.localScale = new Vector3(0.3f, 0.3f, 1);
+
+                    oldPoint = nowPoint;
                 }
                 //遅らせて処理するもの
                 Invoke("DelayMethod", 0.5f);
@@ -86,8 +98,16 @@ public class CuesorManager : MonoBehaviour
 
                 //SoundManager.Instance.PlaySE(SESoundData.SE.Select);
                 --nowPoint;
+
+                //カーソル設置
                 Vector3 pos = movePoint[nowPoint].transform.position;
                 kari.transform.position = new Vector3(pos.x, pos.y, 0);
+
+                movePoint[nowPoint].transform.localScale = new Vector3(up_size, up_size, 1);
+                movePoint[oldPoint].transform.localScale = new Vector3(0.3f,0.3f,1);
+
+                oldPoint = nowPoint;
+
                 //遅らせて処理するもの
                 Invoke("DelayMethod", 0.5f);
             }
