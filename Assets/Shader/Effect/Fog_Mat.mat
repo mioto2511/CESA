@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: fog
-  m_Shader: {fileID: -6465566751694194690, guid: ef3ece53daad41d4fba10ca12d23ce87, type: 3}
+  m_Name: Fog_Mat
+  m_Shader: {fileID: -6465566751694194690, guid: c95460365ea0d2a46a171b9e1e148a1a, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,12 +19,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_42d4bb34d1ee493797012f88e18ccefe:
-        m_Texture: {fileID: 2800000, guid: 2c5cbf26d9e4c984a871dd3b06e918d8, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 2c5cbf26d9e4c984a871dd3b06e918d8, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -39,7 +35,9 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats: []
+    m_Floats:
+    - _FogSize: 32.39
     m_Colors:
-    - Color_56d2babc2f5a4a76b4f0265717273cea: {r: 137.187, g: 137.187, b: 137.187, a: 0}
+    - Color_6f4bce4200c94d2495c6443ac103613d: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
+    - _FogSpeed: {r: 0.02, g: -0.01, b: 0, a: 0}
   m_BuildTextureStacks: []
