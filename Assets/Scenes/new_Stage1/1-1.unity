@@ -2544,6 +2544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   over_ui: {fileID: 109457872700916396}
+  pause_ui: {fileID: 109457871876210922}
 --- !u!114 &109457871876210932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2628,6 +2629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseUI: {fileID: 3283540002016469484}
   pause_flg: 0
+  button_flg: 1
 --- !u!1 &109457872186619011
 GameObject:
   m_ObjectHideFlags: 0
@@ -9074,7 +9076,7 @@ GameObject:
   - component: {fileID: 6503417958079277191}
   m_Layer: 0
   m_Name: GroundTrigger
-  m_TagString: Untagged
+  m_TagString: GroundTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9131,6 +9133,8 @@ MonoBehaviour:
   rotate_cnt: 0
   target_object: {fileID: 2216264081738958303}
   SpeedFactor: 0.15
+  deadzone: 0.8
+  add_speed: 0.0025
   rotate_flg: 0
   right_rotate: 0
   left_rotate: 0
@@ -9368,6 +9372,7 @@ GameObject:
   - component: {fileID: 8391902485533782546}
   - component: {fileID: 8391902485533782547}
   - component: {fileID: 8391902485533782553}
+  - component: {fileID: 8391902485533782550}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9490,6 +9495,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &8391902485533782550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391902485533782545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e159210d6561c44883f2601ca1453a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button_flg: 1
 --- !u!4 &8391902485533782551
 Transform:
   m_ObjectHideFlags: 0
@@ -9619,6 +9637,7 @@ MonoBehaviour:
   world_num: 1
   stage_num: 1
   clearUI: {fileID: 3386918619727009921}
+  pause_ui: {fileID: 109457871876210922}
 --- !u!4 &8391902486609542307
 Transform:
   m_ObjectHideFlags: 0
