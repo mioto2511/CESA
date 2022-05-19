@@ -19,19 +19,24 @@ public class StageCollision : MonoBehaviour
 
     private bool hit = false;
 
-    private Shutter shutter;
-    private ChangeScene change_scene;
+    //private Shutter shutter;
+    //private ChangeScene change_scene;
 
     private int now_stage_num;
 
     private bool button_flg = true;
 
+    private ZoomCamera zoom_camera;
+
     // Start is called before the first frame update
     void Start()
     {
-        GameObject T = GameObject.Find("ShutterTrigger"); // オブジェクトを探す
-        change_scene = T.GetComponent<ChangeScene>();
-        shutter = T.GetComponent<Shutter>();
+        //GameObject T = GameObject.Find("ShutterTrigger"); // オブジェクトを探す
+        //change_scene = T.GetComponent<ChangeScene>();
+        //shutter = T.GetComponent<Shutter>();
+
+        GameObject T = GameObject.Find("Main Camera"); // オブジェクトを探す
+        zoom_camera = T.GetComponent<ZoomCamera>();
 
         //現在のstage_numを呼び出す
         now_stage_num = PlayerPrefs.GetInt("WORLD"+world_num, 1);
@@ -55,9 +60,13 @@ public class StageCollision : MonoBehaviour
                 {
                     button_flg = false;
 
-                    shutter.shutter_flg = true;
+                    //shutter.shutter_flg = true;
 
-                    change_scene.NextScene(scene);
+                    //change_scene.NextScene(scene);
+
+                    zoom_camera.zoom_flg = true;
+
+                    zoom_camera.next_scene = scene;
                 }
             }
             

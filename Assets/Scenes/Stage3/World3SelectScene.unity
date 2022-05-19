@@ -204,18 +204,6 @@ VideoPlayer:
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
---- !u!114 &712094590694592036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 712094590694592091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72a4d574e0546054d955c9b3b9f078c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &712094590694592038
 Transform:
   m_ObjectHideFlags: 0
@@ -326,7 +314,7 @@ GameObject:
   - component: {fileID: 712094590694592089}
   - component: {fileID: 712094590694592088}
   - component: {fileID: 712094590694592039}
-  - component: {fileID: 712094590694592036}
+  - component: {fileID: 712094590694592092}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -334,6 +322,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &712094590694592092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712094590694592091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6fe48f7f4b5a84080056149bf3fe4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 500
+  speed: 0.01
+  zoom_flg: 0
+  next_scene: 0
 --- !u!114 &998833838066793908
 MonoBehaviour:
   m_ObjectHideFlags: 0

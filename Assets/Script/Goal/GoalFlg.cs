@@ -22,11 +22,7 @@ public class GoalFlg : MonoBehaviour
     [Header("現在のステージ番号")] public int stage_num = 1;
 
     //表示ui
-    [SerializeField]
     private GameObject clearUI;
-
-    [SerializeField]
-    private GameObject pause_ui;
 
     //Scoreの変数
     private Score score;
@@ -43,7 +39,10 @@ public class GoalFlg : MonoBehaviour
         GameObject s = GameObject.Find("Room"); // オブジェクトを探す
         score = s.GetComponent<Score>();
 
-        pause_active = pause_ui.GetComponent<PauseActive>();
+        GameObject canvas = GameObject.Find("Canvas"); // オブジェクトを探す
+        pause_active = canvas.GetComponent<PauseActive>();
+
+        clearUI = GameObject.Find("ClearUI");
 
         clearUI.SetActive(false);
     }

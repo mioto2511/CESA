@@ -7,10 +7,10 @@ using KanKikuchi.AudioManager;
 public class Score : MonoBehaviour
 {
     // UI
-    public Text text;
-    public GameObject text_obj;
-    public GameObject mid_obj;
-    public GameObject max_obj;
+    private Text text;
+    private GameObject text_obj;
+    private GameObject mid_obj;
+    private GameObject max_obj;
 
     [Header("現在のスコア")] public int score;
 
@@ -48,6 +48,11 @@ public class Score : MonoBehaviour
 
         //現在のstage_scoreを呼び出す
         stage_score = PlayerPrefs.GetInt("WORLD"+world_num+"_STAGE"+stage_num, 0);
+
+        text_obj = GameObject.Find("CountUI");
+        text = text_obj.gameObject.GetComponent<Text>();
+        mid_obj = GameObject.Find("mid");
+        max_obj = GameObject.Find("max");
     }
 
     // Update is called once per frame

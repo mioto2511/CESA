@@ -10,10 +10,6 @@ public class GameOverActive : MonoBehaviour
     //　ポーズした時に表示するUIのプレハブ
     private GameObject over_ui;
 
-    [SerializeField]
-    //　ポーズした時に表示するUIのプレハブ
-    private GameObject pause_ui;
-
     private PlayerFall player_fall;
 
     private Button b1;
@@ -38,7 +34,8 @@ public class GameOverActive : MonoBehaviour
         GameObject obj2 = GameObject.Find("Player"); //オブジェクトを探す
         acceleration = obj2.GetComponent<Acceleration>();//付いているスクリプトを取得
 
-        pause_active = pause_ui.GetComponent<PauseActive>();
+        GameObject canvas = GameObject.Find("Canvas"); //オブジェクトを探す
+        pause_active = canvas.GetComponent<PauseActive>();
     }
 
     // Update is called once per frame

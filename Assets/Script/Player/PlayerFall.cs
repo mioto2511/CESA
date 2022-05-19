@@ -13,7 +13,7 @@ public class PlayerFall : MonoBehaviour
 	private Transform ray_position;
 
 	//ƒŒƒC‚ğ”ò‚Î‚·‹——£
-	private float ray_range = 0.8f;
+	private float ray_range = 1f;
 
 	//—‚¿‚½’n“_‚ğİ’è‚µ‚½‚©‚Ç‚¤‚©
 	private bool fall_flg;

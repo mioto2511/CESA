@@ -2544,7 +2544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   over_ui: {fileID: 109457872700916396}
-  pause_ui: {fileID: 109457871876210922}
+  canvas: {fileID: 109457871876210922}
 --- !u!114 &109457871876210932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3590,6 +3590,7 @@ GameObject:
   - component: {fileID: 1100512493106800807}
   - component: {fileID: 1100512493106800812}
   - component: {fileID: 1100512493106800813}
+  - component: {fileID: 1100512493106800814}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3628,6 +3629,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34775f09e018e454b897daf0eb635a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1100512493106800814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100512493106800811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a4d574e0546054d955c9b3b9f078c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!222 &1161539251032033394
@@ -9637,7 +9650,7 @@ MonoBehaviour:
   world_num: 1
   stage_num: 1
   clearUI: {fileID: 3386918619727009921}
-  pause_ui: {fileID: 109457871876210922}
+  canvas: {fileID: 109457871876210922}
 --- !u!4 &8391902486609542307
 Transform:
   m_ObjectHideFlags: 0

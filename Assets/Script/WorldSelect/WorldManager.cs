@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class WorldManager : MonoBehaviour
 {
+    [Header("フレームインするまでの時間")] public float in_time = 0.01f;
+
+    [Header("着地までの時間")] public float stand_time = 0.005f;
+
     [Header("ワールド開放")] public bool clear = false;
 
     [Header("シーンビルドの番号")] public int World_No = 0;
@@ -54,8 +58,8 @@ public class WorldManager : MonoBehaviour
 
         if (pos.z <= 0)
         {
-            pos.z += 0.1f;
-            pos.y -= 0.1f;
+            pos.z += in_time;
+            //pos.y -= 0.01f;
             
             this.transform.position = pos;
             //this.transform.localScale = scale;
@@ -63,7 +67,7 @@ public class WorldManager : MonoBehaviour
 
         if(scale.x > 0.3f)
         {
-            this.transform.localScale -= new Vector3(0.1f, 0.1f, 0);
+            this.transform.localScale -= new Vector3(stand_time, stand_time, 0);
         }
     }
 
