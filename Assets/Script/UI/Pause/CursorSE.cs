@@ -13,7 +13,7 @@ public class CursorSE : MonoBehaviour
     void Start()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener(OnClickButton);
+        //button.onClick.AddListener(OnClickButton);
     }
 
     // Update is called once per frame

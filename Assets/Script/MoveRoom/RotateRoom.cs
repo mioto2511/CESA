@@ -16,6 +16,8 @@ public class RotateRoom : MonoBehaviour
     //Accelerationの変数を使う
     private Acceleration acceleration;
 
+    private HitStop hit_stop;
+
     public int dtype;
 
     public static RotateRoom instance;
@@ -80,9 +82,14 @@ public class RotateRoom : MonoBehaviour
     //加速分
     private float add = 0;
 
+    public bool start_flg = true;
+
     void Start()
     {
         rotate_start = this.GetComponent<RotateStart>();//付いているスクリプトを取得
+
+        GameObject obj2 = GameObject.Find("Main Camera");
+        hit_stop = obj2.GetComponent <HitStop>();
 
         GameObject obj1 = GameObject.Find("AxisOfRotation"); //オブジェクトを探す
         move_axis = obj1.GetComponent<MoveAxisOfRotate>();　//付いているスクリプトを取得
@@ -109,57 +116,71 @@ public class RotateRoom : MonoBehaviour
         //部屋が当たった
         if (room_hit == true)
         {
-            child_cnt++;
-
-            rotate_flg = false;
-
-            //boxの数とカウントが同じか以上なら
-            if (child_cnt >= this.transform.childCount)
+            if (start_flg)
             {
-                // SE
-                //SEManager.Instance.Play(SEPath.SE_002);
-
+                start_flg = false;
                 room_hit = false;
+            }
+            else
+            {
+                child_cnt++;
 
-                child_cnt = 0;
+                rotate_flg = false;
 
-                add = 0;
-
-                //回転方向の初期化
-                left_rotate = false;
-                right_rotate = false;
-
-                //遅らせて処理するもの
-                Invoke("DelayMethod", 0.25f);
-
-                //プレイヤーを起動
-                auto_player_move.move_flg = true;
-
-                //配列削除
-                move_axis.Delete();
-
-                //加速可能にする
-                acceleration.button_flg = true;
-
-                //回転初期位置の初期化
-                start_radian = 0;
-                old_radian = 0;
-                initial_flg = true;
-
-                //歯車のコライダーON
-                GameObject[] objects = GameObject.FindGameObjectsWithTag("LGear");
-                foreach (GameObject num in objects)
+                //boxの数とカウントが同じか以上なら
+                if (child_cnt >= this.transform.childCount)
                 {
-                    var colliderTest = num.GetComponent<Collider2D>();
-                    colliderTest.enabled = true;
-                }
-                objects = GameObject.FindGameObjectsWithTag("RGear");
-                foreach (GameObject num in objects)
-                {
-                    var colliderTest = num.GetComponent<Collider2D>();
-                    colliderTest.enabled = true;
+                    // SE
+                    //SEManager.Instance.Play(SEPath.SE_002);
+
+                    Debug.Log("a");
+
+                    room_hit = false;
+
+                    child_cnt = 0;
+
+                    add = 0;
+
+                    //回転方向の初期化
+                    left_rotate = false;
+                    right_rotate = false;
+
+                    //遅らせて処理するもの
+                    Invoke("DelayMethod", 0.25f);
+
+                    hit_stop.hitstop_flg = true;
+
+                    //プレイヤーを起動
+                    auto_player_move.move_flg = true;
+
+                    //配列削除
+                    move_axis.Delete();
+
+                    //加速可能にする
+                    acceleration.button_flg = true;
+
+                    //回転初期位置の初期化
+                    start_radian = 0;
+                    old_radian = 0;
+                    initial_flg = true;
+
+                    //歯車のコライダーON
+                    GameObject[] objects = GameObject.FindGameObjectsWithTag("LGear");
+                    foreach (GameObject num in objects)
+                    {
+                        var colliderTest = num.GetComponent<Collider2D>();
+                        colliderTest.enabled = true;
+                    }
+                    objects = GameObject.FindGameObjectsWithTag("RGear");
+                    foreach (GameObject num in objects)
+                    {
+                        var colliderTest = num.GetComponent<Collider2D>();
+                        colliderTest.enabled = true;
+                    }
                 }
             }
+
+            
         }
 
         //コントローラーの処理

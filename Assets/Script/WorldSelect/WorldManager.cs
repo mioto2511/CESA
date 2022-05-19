@@ -53,6 +53,13 @@ public class WorldManager : MonoBehaviour
         //テキスト表示
         text.text = world_score + "/" + max_score;
 
+        
+
+        
+    }
+
+    private void FixedUpdate()
+    {
         pos = this.transform.position;
         scale = this.transform.localScale;
 
@@ -60,12 +67,12 @@ public class WorldManager : MonoBehaviour
         {
             pos.z += in_time;
             //pos.y -= 0.01f;
-            
+
             this.transform.position = pos;
             //this.transform.localScale = scale;
         }
 
-        if(scale.x > 0.3f)
+        if (scale.x > 0.3f)
         {
             this.transform.localScale -= new Vector3(stand_time, stand_time, 0);
         }
