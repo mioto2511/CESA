@@ -39,13 +39,18 @@ public class Shutter : MonoBehaviour
     {
         if (Change_Start == true)
         {
-            if (posL.x <= -479f)
+            if (posL.x <= -481f)
             {
                 posL.x += speed;
                 shutterL.anchoredPosition = new Vector3(posL.x, 0, 0);
 
                 posR.x -= speed;
                 shutterR.anchoredPosition = new Vector3(posR.x, 0, 0);
+            }
+            else
+            {
+                shutterL.anchoredPosition = new Vector3(-480, 0, 0);
+                shutterR.anchoredPosition = new Vector3(480, 0, 0);
             }
         }
     }

@@ -26,8 +26,14 @@ public class ChangeScene : MonoBehaviour
         if (other.gameObject.CompareTag("Shutter"))
         {
             SEManager.Instance.Play(SEPath.SE_009);
-            SceneManager.LoadScene(next_scene);
+            //’x‚ç‚¹‚Äˆ—‚·‚é‚à‚Ì
+            Invoke("DelayMethod", 0.5f);
         }
-       
+    }
+
+    //’x‰„ˆ—
+    private void DelayMethod()
+    {
+        SceneManager.LoadScene(next_scene);
     }
 }

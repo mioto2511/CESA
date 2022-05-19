@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 63515798}
   - component: {fileID: 63515801}
   - component: {fileID: 63515802}
+  - component: {fileID: 63515803}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -257,6 +258,22 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &63515803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63515797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 213a21ffc5c82bb479f77190409024ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitstop_flg: 0
+  time: 900
+  duration1: 0.05
+  magnitude1: 0.5
 --- !u!1 &67996703
 GameObject:
   m_ObjectHideFlags: 0
@@ -4030,7 +4047,6 @@ MonoBehaviour:
   scene: 2
   world_num: 1
   stage_num: 2
-  clearUI: {fileID: 7845865296304542901}
 --- !u!114 &3484117844928530344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4131,10 +4147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b34d1e08fb88344bca8e0be1bc7cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 4784515202784621827}
-  text_obj: {fileID: 4784515202784621825}
-  mid_obj: {fileID: 8252668257451736084}
-  max_obj: {fileID: 8252668257511471382}
   score: 0
   mid_score: 0
   max_score: 0
@@ -4374,6 +4386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseUI: {fileID: 7958887884584005080}
   pause_flg: 0
+  button_flg: 1
 --- !u!114 &4784515201992838340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7547,6 +7560,7 @@ MonoBehaviour:
   left_rotate: 0
   room_hit: 0
   collider_flg: 1
+  start_flg: 1
 --- !u!1 &7773992630251332520
 GameObject:
   m_ObjectHideFlags: 0
