@@ -3594,6 +3594,7 @@ GameObject:
   - component: {fileID: 1100512493106800812}
   - component: {fileID: 1100512493106800813}
   - component: {fileID: 1100512493106800814}
+  - component: {fileID: 1100512493106800815}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3646,6 +3647,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a4d574e0546054d955c9b3b9f078c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1100512493106800815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100512493106800811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 213a21ffc5c82bb479f77190409024ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitstop_flg: 0
+  time: 1000
+  duration1: 0.25
+  magnitude1: 0.1
 --- !u!222 &1161539251032033394
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9166,6 +9183,7 @@ GameObject:
   - component: {fileID: 3426898944308068561}
   - component: {fileID: 4031081186429123286}
   - component: {fileID: 7589401357893629260}
+  - component: {fileID: 7589401357893629261}
   m_Layer: 0
   m_Name: Room
   m_TagString: Room
@@ -9198,6 +9216,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc4e2617453db59418f28aec10e49058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7589401357893629261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7589401357893629258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ee9a2f075e25d499c94724e0fce21e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!61 &7811395676516834191
