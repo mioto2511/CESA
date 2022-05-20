@@ -745,7 +745,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 76e22418fb8282f4dbb0ed0a4bbfc2f1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1502,11 +1502,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5dcd20ed7a54149b0f3b07ba68573a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dtype: 0
+  rotate_cnt: 0
   target_object: {fileID: 0}
   SpeedFactor: 0.15
   deadzone: 0.2
-  dtype: 0
-  rotate_cnt: 0
+  add_speed: 0.0025
   rotate_flg: 0
   right_rotate: 0
   left_rotate: 0
@@ -1537,15 +1538,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b34d1e08fb88344bca8e0be1bc7cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
-  text_obj: {fileID: 0}
-  mid_obj: {fileID: 0}
-  max_obj: {fileID: 0}
   score: 0
   mid_score: 0
   max_score: 0
   world_num: 0
   stage_num: 0
+  star: 0
   score_flg: 0
 --- !u!1 &9212669451277605197
 GameObject:
