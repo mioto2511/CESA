@@ -105,7 +105,8 @@ public class GoalFlg : MonoBehaviour
 
                 PlayerPrefs.Save();
 
-                change_scene.NextScene(scene);
+                //change_scene.NextScene(scene);
+                Fade_Manager.FadeOut(scene);
             }
         }
     }
