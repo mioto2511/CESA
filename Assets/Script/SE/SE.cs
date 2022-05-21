@@ -7,6 +7,7 @@ public class SE : MonoBehaviour
 {
     private bool soudse;
     private bool isSE;
+    private bool ishitSE;
     //private bool is 
 
     // Start is called before the first frame update
@@ -14,6 +15,7 @@ public class SE : MonoBehaviour
     {
         soudse = false;
         isSE = true;
+        ishitSE = false;
     }
 
     // Update is called once per frame
@@ -43,7 +45,15 @@ public class SE : MonoBehaviour
         if(RotateRoom.instance.room_hit)
         {
             // SE
-            SEManager.Instance.Play(SEPath.SE_002);
+            if (ishitSE)
+            {
+                SEManager.Instance.Play(SEPath.SE_002);
+                ishitSE = false;
+            }
+        }
+        else
+        {
+            ishitSE = true;
         }
     }
 }

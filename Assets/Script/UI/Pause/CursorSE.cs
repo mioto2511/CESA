@@ -24,10 +24,17 @@ public class CursorSE : MonoBehaviour
             th = EventSystem.current.currentSelectedGameObject;
             SEManager.Instance.Play(SEPath.SE_004);
         }
+        OnClickButton();
     }
 
     public void OnClickButton()
     {
-        SEManager.Instance.Play(SEPath.SE_005);
+        if (PauseActive.instance.pause_flg)
+        {
+            if(Input.GetKeyDown("joystick button 0"))
+            {
+                SEManager.Instance.Play(SEPath.SE_005);
+            }
+        }
     }
 }
