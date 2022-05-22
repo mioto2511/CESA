@@ -34,7 +34,9 @@ public class CuesorManager : MonoBehaviour
         //change_scene = T.GetComponent<ChangeScene>();
         //shutter = T.GetComponent<Shutter>();
 
-        kari = GameObject.Find("Circle");
+        kari = GameObject.Find("Fuchi");
+        kari.transform.localScale = new Vector3(up_size, up_size, 1);
+        movePoint[nowPoint].transform.localScale = new Vector3(up_size, up_size, 1);
 
         Vector3 pos = movePoint[nowPoint].transform.position;
         kari.transform.position = new Vector3(pos.x, pos.y, 0);

@@ -24,9 +24,17 @@ public class AutoPlayerMove : MonoBehaviour
     //スケール保存
     private Vector3 tf_s;
 
+    //ゴールへ向かうフラグ
+    public bool to_goal = false;
+
+    //ゴール
+    private GameObject target;
+
     // Start is called before the first frame update
     void Start()
     {
+        target = GameObject.Find("Goal 1/DriveGear");
+
         rb = GetComponent<Rigidbody2D>();
 
         tf_s = transform.localScale;
@@ -37,7 +45,22 @@ public class AutoPlayerMove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (move_flg)
+        if (to_goal)
+        {
+            Vector3 p_pos = this.transform.position;
+            Vector3 t_pos = target.transform.position;
+
+            //ゴールより右なら左向きに
+            if(p_pos.x > t_pos.x)
+            {
+                right_f = false;
+            }
+            else if(p_pos.x < t_pos.x)
+            {
+                right_f = true;
+            }
+        }
+        else if (move_flg)
         {
             float xSpeed = 0.0f;
 

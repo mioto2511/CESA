@@ -18,6 +18,8 @@ public class RotateRoom : MonoBehaviour
     //VibrationScript
     private VibrationScript vibration_script;
 
+    private GoalActive goal_active;
+
     private HitStop hit_stop;
 
     public int dtype;
@@ -94,6 +96,9 @@ public class RotateRoom : MonoBehaviour
         GameObject obj2 = GameObject.Find("Main Camera");
         hit_stop = obj2.GetComponent <HitStop>();
 
+        GameObject obj3 = GameObject.Find("Goal/DriveGear");
+        goal_active = obj3.GetComponent<GoalActive>();
+
         GameObject obj1 = GameObject.Find("AxisOfRotation"); //オブジェクトを探す
         move_axis = obj1.GetComponent<MoveAxisOfRotate>();　//付いているスクリプトを取得
 
@@ -149,7 +154,7 @@ public class RotateRoom : MonoBehaviour
                     right_rotate = false;
 
                     //遅らせて処理するもの
-                    Invoke("DelayMethod", 0.25f);
+                    Invoke("DelayMethod", 0.5f);
 
                     hit_stop.hitstop_flg = true;
 
@@ -350,8 +355,12 @@ public class RotateRoom : MonoBehaviour
         //支点のコライダーON
         collider_flg = true;
 
-        //ボタンをふたたび押せる
-        rotate_start.botton_flg = true;
+        if (!goal_active.goal_active)
+        {
+            //ボタンをふたたび押せる
+            rotate_start.botton_flg = true;
+        }
+        
     }
 
     private void StickMove2()

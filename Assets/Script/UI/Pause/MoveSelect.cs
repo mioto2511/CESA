@@ -20,7 +20,9 @@ public class MoveSelect : MonoBehaviour
     {
         shutter.shutter_flg = true;
 
-        change_scene.NextScene(scene);
+        //change_scene.NextScene(scene);
+
+        Fade_Manager.FadeOut(scene);
 
         Time.timeScale = 1;
     }

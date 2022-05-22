@@ -14,16 +14,24 @@ public class GoalActive : MonoBehaviour
 
     private RotateStart rotate_start;
 
+    private AutoPlayerMove auto_player_move;
+
+    public bool goal_active = false;
+
     // Start is called before the first frame update
     void Start()
     {
         GameObject s = GameObject.Find("Room"); // オブジェクトを探す
         rotate_start = s.GetComponent<RotateStart>();
+
+        GameObject p = GameObject.Find("Player");
+        auto_player_move = p.GetComponent<AutoPlayerMove>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(rotate_start.botton_flg);
         if (generate_flag)
         {
             if (this.tag == "RDrive")
@@ -42,6 +50,11 @@ public class GoalActive : MonoBehaviour
 
                 //回せ無くする
                 rotate_start.botton_flg = false;
+
+                goal_active = true;
+
+                //プレイヤーがゴールへ向かう
+                //auto_player_move.to_goal = true;
             }
             else if (this.tag == "LDrive")
             {
@@ -59,6 +72,11 @@ public class GoalActive : MonoBehaviour
 
                 //回せ無くする
                 rotate_start.botton_flg = false;
+
+                goal_active = true;
+
+                //プレイヤーがゴールへ向かう
+                //auto_player_move.to_goal = true;
             }
 
         }

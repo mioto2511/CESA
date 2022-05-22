@@ -28,30 +28,47 @@ public class StageCollision : MonoBehaviour
 
     private ZoomCamera zoom_camera;
 
+    private NumDisplay num_display1;
+    private NumDisplay num_display2;
+
+    private int stage_score;
+
+    //スコア用
+    private GameObject min;
+    private GameObject mid;
+    private GameObject max;
+
     // Start is called before the first frame update
     void Start()
     {
-        //GameObject T = GameObject.Find("ShutterTrigger"); // オブジェクトを探す
-        //change_scene = T.GetComponent<ChangeScene>();
-        //shutter = T.GetComponent<Shutter>();
+        min = GameObject.Find("min");
+        mid = GameObject.Find("mid");
+        max = GameObject.Find("max");
 
         GameObject T = GameObject.Find("Main Camera"); // オブジェクトを探す
         zoom_camera = T.GetComponent<ZoomCamera>();
 
+        GameObject n = GameObject.Find("StageNum");
+        num_display1 = n.GetComponent<NumDisplay>();
+
+        GameObject w = GameObject.Find("WorldNum");
+        num_display2 = w.GetComponent<NumDisplay>();
+
         //現在のstage_numを呼び出す
         now_stage_num = PlayerPrefs.GetInt("WORLD"+world_num, 1);
 
-        if (now_stage_num >= stage_num)
-        {
-            Collider2D my_collider;
-            my_collider = GetComponent<Collider2D>();
-            my_collider.enabled = true;
-        }
+        //現在のstage_scoreを呼び出す
+        stage_score = PlayerPrefs.GetInt("WORLD" + world_num + "_STAGE" + stage_num, 0);
+
+        min.GetComponent<Renderer>().material.color = Color.black;
+        mid.GetComponent<Renderer>().material.color = Color.black;
+        max.GetComponent<Renderer>().material.color = Color.black;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (hit)
         {
             if (button_flg)
@@ -75,9 +92,34 @@ public class StageCollision : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        hit = true;
-        mp4.SetActive(true);
+        if (now_stage_num >= stage_num)
+        {
+            hit = true;
+            mp4.SetActive(true);
+        }
+
+        if (stage_score == 1)
+        {
+            min.GetComponent<Renderer>().material.color = Color.white;
+        }
+        else if (stage_score == 2)
+        {
+            min.GetComponent<Renderer>().material.color = Color.white;
+            mid.GetComponent<Renderer>().material.color = Color.white;
+        }
+        else if (stage_score == 3)
+        {
+            min.GetComponent<Renderer>().material.color = Color.white;
+            mid.GetComponent<Renderer>().material.color = Color.white;
+            max.GetComponent<Renderer>().material.color = Color.white;
+        }
+
+
         //Invoke("DelayMethod", 0.3f);
+
+        //数字生成
+        num_display1.GenerateNum(stage_num, 0.05f, 0);
+        num_display2.GenerateNum(world_num, 0.05f, 0);
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -85,6 +127,14 @@ public class StageCollision : MonoBehaviour
         hit = false;
 
         mp4.SetActive(false);
+
+        //数字削除
+        num_display1.DestroyNum();
+        num_display2.DestroyNum();
+
+        min.GetComponent<Renderer>().material.color = Color.black;
+        mid.GetComponent<Renderer>().material.color = Color.black;
+        max.GetComponent<Renderer>().material.color = Color.black;
     }
 
     //遅延処理
