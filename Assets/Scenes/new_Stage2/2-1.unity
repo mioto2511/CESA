@@ -1590,6 +1590,7 @@ GameObject:
   - component: {fileID: 137999206}
   - component: {fileID: 137999205}
   - component: {fileID: 137999204}
+  - component: {fileID: 137999208}
   m_Layer: 0
   m_Name: Room
   m_TagString: Room
@@ -1609,10 +1610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b34d1e08fb88344bca8e0be1bc7cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
-  text_obj: {fileID: 0}
-  mid_obj: {fileID: 0}
-  max_obj: {fileID: 0}
   score: 0
   mid_score: 0
   max_score: 0
@@ -1649,11 +1646,14 @@ MonoBehaviour:
   rotate_cnt: 0
   target_object: {fileID: 466548776}
   SpeedFactor: 0.15
+  deadzone: 0.8
+  add_speed: 0.0025
   rotate_flg: 0
   right_rotate: 0
   left_rotate: 0
   room_hit: 0
   collider_flg: 1
+  start_flg: 1
 --- !u!4 &137999207
 Transform:
   m_ObjectHideFlags: 0
@@ -1669,6 +1669,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &137999208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137999203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ee9a2f075e25d499c94724e0fce21e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &159646484
 GameObject:
   m_ObjectHideFlags: 0
@@ -2346,6 +2358,7 @@ GameObject:
   - component: {fileID: 348456143}
   - component: {fileID: 348456142}
   - component: {fileID: 348456141}
+  - component: {fileID: 348456146}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2366,7 +2379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  cplayer: {fileID: 0}
+  cplayer: {fileID: 1581442639}
   camerazoom: 1
   zoom: 16.2
 --- !u!114 &348456142
@@ -2467,6 +2480,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &348456146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348456140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 213a21ffc5c82bb479f77190409024ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitstop_flg: 0
+  time: 1000
+  duration1: 0.25
+  magnitude1: 0.1
 --- !u!1001 &362803214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6834,7 +6863,6 @@ MonoBehaviour:
   scene: 2
   world_num: 1
   stage_num: 1
-  clearUI: {fileID: 867475433}
 --- !u!61 &1020472941
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7860,6 +7888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseUI: {fileID: 1735692913}
   pause_flg: 0
+  button_flg: 1
 --- !u!114 &1253458295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9346,6 +9375,7 @@ GameObject:
   - component: {fileID: 1581442643}
   - component: {fileID: 1581442642}
   - component: {fileID: 1581442641}
+  - component: {fileID: 1581442646}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9401,6 +9431,7 @@ MonoBehaviour:
   isSlip: 0
   wall_trigger: {fileID: 584452907}
   ground_trigger: {fileID: 1645979306}
+  to_goal: 0
 --- !u!61 &1581442643
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9499,6 +9530,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1581442646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581442639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e159210d6561c44883f2601ca1453a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button_flg: 1
 --- !u!1 &1586107963
 GameObject:
   m_ObjectHideFlags: 0

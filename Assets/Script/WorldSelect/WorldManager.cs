@@ -19,8 +19,6 @@ public class WorldManager : MonoBehaviour
 
     [Header("ワールド最大スコア")] public int max_score;
 
-    public Text text;
-
     //現在のワールドのスコア
     private int world_score;
 
@@ -30,6 +28,8 @@ public class WorldManager : MonoBehaviour
     private Vector3 pos;
     private Vector3 scale;
 
+    private NumDisplay num_display;
+
     void Start()
     {
         //現在のworld_numを呼び出す
@@ -38,11 +38,22 @@ public class WorldManager : MonoBehaviour
         //子を取得
         chain = this.transform.GetChild(0).gameObject;
 
+        GameObject n = this.transform.GetChild(1).gameObject;
+        num_display = n.GetComponent<NumDisplay>();
+
         //現在のワールド番号が満たしていたら解放
         if (world_score >= conditions_score)
         {
             clear = true;
+            num_display.GenerateNum(world_score, 0.2f, 0);
         }
+        else
+        {
+            int remaining = conditions_score - world_score;
+            num_display.GenerateNum(remaining, 0.2f, 1);
+        }
+
+        
     }
 
     // Update is called once per frame
@@ -51,7 +62,8 @@ public class WorldManager : MonoBehaviour
         ColorChange();
 
         //テキスト表示
-        text.text = world_score + "/" + max_score;
+        //text.text = world_score + "/" + max_score;
+        
     }
 
     //private void FixedUpdate()

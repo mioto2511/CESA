@@ -4358,6 +4358,7 @@ MonoBehaviour:
   isSlip: 0
   wall_trigger: {fileID: 5797008728666002910}
   ground_trigger: {fileID: 867531890185618836}
+  to_goal: 0
 --- !u!61 &2467085686916062977
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4605,6 +4606,7 @@ GameObject:
   - component: {fileID: 7155558871485755323}
   - component: {fileID: 8877204495104693692}
   - component: {fileID: 2707108524377545250}
+  - component: {fileID: 2707108524377545251}
   m_Layer: 0
   m_Name: Room
   m_TagString: Room
@@ -4639,6 +4641,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4e2617453db59418f28aec10e49058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2707108524377545251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707108524377545248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ee9a2f075e25d499c94724e0fce21e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2707108524377545263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4662,6 +4676,7 @@ MonoBehaviour:
   left_rotate: 0
   room_hit: 0
   collider_flg: 1
+  start_flg: 1
 --- !u!212 &2750750919512948210
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7581,6 +7596,7 @@ GameObject:
   - component: {fileID: 4837580070475146817}
   - component: {fileID: 4837580070475146816}
   - component: {fileID: 4837580070475146818}
+  - component: {fileID: 4837580070475146819}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7697,6 +7713,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34775f09e018e454b897daf0eb635a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4837580070475146819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4837580070475146813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 213a21ffc5c82bb479f77190409024ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitstop_flg: 0
+  time: 1000
+  duration1: 0.25
+  magnitude1: 0.1
 --- !u!61 &4856123135083636488
 BoxCollider2D:
   m_ObjectHideFlags: 0

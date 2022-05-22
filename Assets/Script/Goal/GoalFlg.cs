@@ -52,12 +52,17 @@ public class GoalFlg : MonoBehaviour
         if (goal_flg)
         {
             Debug.Log(goal_flg);
-            goal_se = true;
+            
             goal_flg = false;
 
             score.score_flg = true;
 
             pause_active.button_flg = false;
+
+            goal_se = true;
+
+            Collider2D col = this.GetComponent<Collider2D>();
+            col.enabled = false;
 
             Invoke("DelayMethod", 0.25f);           
         }
@@ -117,10 +122,10 @@ public class GoalFlg : MonoBehaviour
         Debug.Log("a");
         button_flg = true;
 
+        clearUI.SetActive(true);
+
         // ŽžŠÔ’âŽ~
         Time.timeScale = 0;
-
-        clearUI.SetActive(true);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

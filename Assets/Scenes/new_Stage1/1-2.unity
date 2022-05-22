@@ -2937,6 +2937,7 @@ MonoBehaviour:
   left_rotate: 0
   room_hit: 0
   collider_flg: 1
+  start_flg: 1
 --- !u!1 &145930928952274360
 GameObject:
   m_ObjectHideFlags: 0
@@ -2950,6 +2951,7 @@ GameObject:
   - component: {fileID: 4961349776961984547}
   - component: {fileID: 6675968248358543908}
   - component: {fileID: 145930928952274362}
+  - component: {fileID: 145930928952274363}
   m_Layer: 0
   m_Name: Room
   m_TagString: Room
@@ -2982,6 +2984,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc4e2617453db59418f28aec10e49058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &145930928952274363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145930928952274360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ee9a2f075e25d499c94724e0fce21e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &277732084634487573
@@ -6888,6 +6902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goal: {fileID: 7147137312723416891, guid: b679fe9fbb3753647a15bc4ab2902ed9, type: 3}
   goal_scale: 0.15
+  goal_active: 0
 --- !u!212 &2379680142134416962
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10568,8 +10583,8 @@ GameObject:
   - component: {fileID: 6168929279744675509}
   - component: {fileID: 6168929279744675508}
   - component: {fileID: 6168929279744675516}
-  - component: {fileID: 6168929279744675517}
   - component: {fileID: 6168929279744675518}
+  - component: {fileID: 6168929279744675517}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -10672,9 +10687,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6168929279744675512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d658f09a043c02146a98138722f3eb69, type: 3}
+  m_Script: {fileID: 11500000, guid: 213a21ffc5c82bb479f77190409024ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitstop_flg: 0
+  time: 1000
+  duration1: 0.25
+  magnitude1: 0.1
 --- !u!114 &6168929279744675518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11561,6 +11580,7 @@ MonoBehaviour:
   isSlip: 0
   wall_trigger: {fileID: 116176656314183610}
   ground_trigger: {fileID: 6766013148213493744}
+  to_goal: 0
 --- !u!61 &8346150772053927269
 BoxCollider2D:
   m_ObjectHideFlags: 0

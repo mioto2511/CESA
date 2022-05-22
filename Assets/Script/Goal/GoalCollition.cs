@@ -20,13 +20,20 @@ public class GoalCollition : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            //プレイヤーとの判定ON
-            child.gameObject.SetActive(true);
-
             //Rigidbodyを取得
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             //停止
             rb.constraints = RigidbodyConstraints2D.FreezePosition;
+
+            //遅らせて処理するもの
+            Invoke("DelayMethod", 0.5f);
         } 
+    }
+
+    //遅延処理
+    private void DelayMethod()
+    {
+        //プレイヤーとの判定ON
+        child.gameObject.SetActive(true);
     }
 }
