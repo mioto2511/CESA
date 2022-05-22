@@ -117,6 +117,7 @@ public class StageCollision : MonoBehaviour
 
         //Invoke("DelayMethod", 0.3f);
 
+        
         //”š¶¬
         num_display1.GenerateNum(stage_num, 0.05f, 0);
         num_display2.GenerateNum(world_num, 0.05f, 0);
