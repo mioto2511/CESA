@@ -14,7 +14,7 @@ public class MoveCamera : MonoBehaviour
     private GameObject parent;
     public int camerazoom = 1;
     public float zoom;
-    private bool cflg = false;
+    private bool cflg = true;
 
     // Start is called before the first frame update
     void Start()
@@ -52,17 +52,17 @@ public class MoveCamera : MonoBehaviour
         //    tf.position = tf.position + new Vector3(0.0f, -speed, 0.0f);
         //}
 
-        if (Input.GetKeyDown("joystick button 2"))
-        {
-            if (cflg == false)
-            {
-                cflg = true;
-            }
-            else if (cflg == true)
-            {
-                cflg = false;
-            }
-        }
+        //if (Input.GetKeyDown("joystick button 2"))
+        //{
+        //    if (cflg == false)
+        //    {
+        //        cflg = true;
+        //    }
+        //    else if (cflg == true)
+        //    {
+        //        cflg = false;
+        //    }
+        //}
 
         switch (GameObject.Find("Room").transform.childCount)
         {
@@ -96,10 +96,10 @@ public class MoveCamera : MonoBehaviour
                 cam.orthographicSize = 8.3f;
             }
         }
-        if (cflg == false)
-        {
-            transform.position = new Vector3(0, 0, -10);
-            cam.orthographicSize = zoom;
-        }
+        //if (cflg == false)
+        //{
+        //    transform.position = new Vector3(0, 0, -10);
+        //    cam.orthographicSize = zoom;
+        //}
     }
 }
