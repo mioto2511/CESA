@@ -6,9 +6,9 @@ public class MiniMap_Camera : MonoBehaviour
 {
     private Camera cam;
     
-    float cma_hw = 1.0f;
-    float cam_x = 0.0f;
-    float cam_y = 0.0f;
+    public float cma_hw = 1.0f;
+    public float cam_x = 0.0f;
+    public float cam_y = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
