@@ -9,8 +9,7 @@ public class TutorialEnd : MonoBehaviour
 
     private GameObject image;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         video_player.loopPointReached += FinishPlayingVideo;
 
@@ -18,6 +17,8 @@ public class TutorialEnd : MonoBehaviour
 
         image.SetActive(false);
     }
+
+
 
     // Update is called once per frame
     void Update()

@@ -12,8 +12,7 @@ public class Tutorial : MonoBehaviour
 
     private RotateStart rotate_start;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         GameObject obj3 = GameObject.Find("Room");
         rotate_start = obj3.GetComponent<RotateStart>();
@@ -22,6 +21,12 @@ public class Tutorial : MonoBehaviour
         image = GameObject.Find("Tutorial");
 
         image.SetActive(false);
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame
