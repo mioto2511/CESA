@@ -17,6 +17,17 @@ public class RoomCollition : MonoBehaviour
     private GameObject parent;
     private GameObject root;
 
+    Vector3 save_pos;
+
+    Transform tf;
+
+
+    private void Awake()
+    {
+        save_pos = this.transform.localPosition;
+
+        Debug.Log(save_pos);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -32,14 +43,22 @@ public class RoomCollition : MonoBehaviour
 
         //座標取得
         box_variable.box_pos = parent.transform.position;
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        LocalErrorCorrection();
+
         // transformを取得
         my_transform = this.transform;
 
+        tf = this.transform;
+        save_pos = tf.localPosition;
+
+        //Debug.Log(save_pos);
         //自身以外の部屋が当たった場合
         if (root_room.room_hit == true)
         {
@@ -147,13 +166,37 @@ public class RoomCollition : MonoBehaviour
         //parent.transform.localPosition = parent_lpos;
 
         //壁の位置の誤差修正
-        Vector3 my_pos = this.transform.position;
-        my_pos.x = my_pos.x * 100000;
-        my_pos.y = my_pos.y * 100000;
+        //Vector3 my_pos = this.transform.position;
+        //my_pos.x = my_pos.x * 100000;
+        //my_pos.y = my_pos.y * 100000;
 
-        my_pos.x = Mathf.Floor(my_pos.x) / 100000;
-        my_pos.y = Mathf.Floor(my_pos.y) / 100000;
+        //my_pos.x = Mathf.Floor(my_pos.x) / 100000;
+        //my_pos.y = Mathf.Floor(my_pos.y) / 100000;
 
-        this.transform.position = my_pos;
+        //this.transform.position = my_pos;
+    }
+    void LocalErrorCorrection()
+    {
+        Vector3 pos = this.transform.localPosition;
+
+        pos = save_pos;
+
+
+
+        if ((pos.y < 0.0001) && (pos.y > -0.0001))
+        {
+            pos.y = 0;
+        }
+        if ((pos.x < 0.0001) && (pos.x > -0.0001))
+        {
+            pos.x = 0;
+        }
+
+        this.transform.localPosition = pos;
+
+        //my_pos.x = Mathf.Floor(my_pos.x) / 100000;
+        //my_pos.y = Mathf.Floor(my_pos.y) / 100000;
+
+        //this.transform.position = my_pos;
     }
 }

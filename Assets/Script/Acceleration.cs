@@ -11,6 +11,8 @@ public class Acceleration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(acceleration_flg);
+
         if (button_flg)
         {
             if (acceleration_flg)

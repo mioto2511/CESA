@@ -18,4 +18,6 @@ public class BoxVariable : MonoBehaviour
 
     //カメラ用の中心座標
     public Vector2 box_pos;
+
+    public bool box_hit = false;
 }

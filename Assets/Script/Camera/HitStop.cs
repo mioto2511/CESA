@@ -14,6 +14,8 @@ public class HitStop : MonoBehaviour
 
     public float magnitude1 = 0.1f;
 
+    private bool count_flg = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,8 @@ public class HitStop : MonoBehaviour
         {
             hitstop_flg = false;
 
+            count_flg = true;
+
             Time.timeScale = 0.5f;
             Shake(duration1, magnitude1);
         }
@@ -34,14 +38,22 @@ public class HitStop : MonoBehaviour
 
     private void FixedUpdate()
     {
-        count++;
-
-        if(count >= time)
+        if (count_flg)
         {
-            //hitstop_flg = false;
-            Time.timeScale = 1f;
-            //Shake();
+            count++;
+
+            if (count >= time)
+            {
+                //hitstop_flg = false;
+                Time.timeScale = 1f;
+
+                count_flg = false;
+
+                count = 0;
+                //Shake();
+            }
         }
+        
         //if (Input.GetKeyDown(KeyCode.Z))
         //{
             
