@@ -10,19 +10,24 @@ public class TutoiralStart : MonoBehaviour
     private GameObject s_image;
     public GameObject image;
 
-    // Start is called before the first frame update
-    void Start()
+    public bool play_flg = false;
+
+    private void Awake()
     {
         video_player.loopPointReached += FinishPlayingVideo;
 
         s_image = GameObject.Find("StartTutorial");
-        //image = GameObject.Find("Tutorial");
+        video_player.Pause();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (play_flg)
+        {
+            play_flg = false;
+
+            video_player.Play();
+        }
     }
 
     public void FinishPlayingVideo(VideoPlayer vp)

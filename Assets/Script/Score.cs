@@ -20,6 +20,8 @@ public class Score : MonoBehaviour
 
     [Header("ステージの番号")] public int stage_num;
 
+    [Header("ワールドの解放スコア")] public int release_score;
+
     private int stage_score;
 
     public int star;
@@ -33,12 +35,17 @@ public class Score : MonoBehaviour
     private NumDisplay num_display1;
     private NumDisplay num_display2;
 
+    private GoalFlg goal_flg;
+
     public void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
+
+        mid_obj = GameObject.Find("mid");
+        max_obj = GameObject.Find("max");
     }
 
     // Start is called before the first frame update
@@ -50,8 +57,8 @@ public class Score : MonoBehaviour
         //現在のstage_scoreを呼び出す
         stage_score = PlayerPrefs.GetInt("WORLD"+world_num+"_STAGE"+stage_num, 0);
 
-        mid_obj = GameObject.Find("mid");
-        max_obj = GameObject.Find("max");
+        GameObject g = GameObject.Find("GoalTrigger");
+        goal_flg = g.GetComponent<GoalFlg>();
 
         GameObject n = GameObject.Find("NowNum");
         num_display1 = n.GetComponent<NumDisplay>();
@@ -130,6 +137,12 @@ public class Score : MonoBehaviour
 
                 stage_score = star;
             }
+
+            //ワールド解放
+            //if(world_score>= release_score)
+            //{
+            //    goal_flg.scene = 2;
+            //}
 
             //セーブ
             PlayerPrefs.SetInt("WORLD" + world_num + "_STAGE" + stage_num, stage_score);

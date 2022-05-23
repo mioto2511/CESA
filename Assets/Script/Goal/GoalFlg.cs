@@ -12,8 +12,8 @@ public class GoalFlg : MonoBehaviour
 
     private bool goal_se = false;
 
-    private Shutter shutter;
-    private ChangeScene change_scene;
+    //private Shutter shutter;
+    //private ChangeScene change_scene;
 
     [Header("ゴールからのセレクト")] public int scene = 2;
 
@@ -32,9 +32,9 @@ public class GoalFlg : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject T = GameObject.Find("ShutterTrigger"); // オブジェクトを探す
-        change_scene = T.GetComponent<ChangeScene>();
-        shutter = T.GetComponent<Shutter>();
+        //GameObject T = GameObject.Find("ShutterTrigger"); // オブジェクトを探す
+        //change_scene = T.GetComponent<ChangeScene>();
+        //shutter = T.GetComponent<Shutter>();
 
         GameObject s = GameObject.Find("Room"); // オブジェクトを探す
         score = s.GetComponent<Score>();
@@ -79,7 +79,7 @@ public class GoalFlg : MonoBehaviour
                 // 時間再起
                 Time.timeScale = 1;
 
-                shutter.shutter_flg = true;
+                //shutter.shutter_flg = true;
 
                 switch (world_num)
                 {
@@ -103,10 +103,8 @@ public class GoalFlg : MonoBehaviour
                         break;
                 }
 
-                if (stage_num == 6)
-                {
-                    PlayerPrefs.SetInt("WORLD", world_num+1);
-                }
+                //ステージ番号の保存
+                PlayerPrefs.SetInt("OLDSTAGE", stage_num);
 
                 PlayerPrefs.Save();
 

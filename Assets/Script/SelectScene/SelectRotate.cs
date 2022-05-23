@@ -17,7 +17,7 @@ public class SelectRotate : MonoBehaviour
 
     [Header("倍率")] public float magnification = 4f;
 
-    [Header("デットゾーン")] public float deadzone = 0.5f;
+    [Header("デットゾーン")] public float deadzone = 0.8f;
 
     private int count = 1;
 
@@ -44,17 +44,6 @@ public class SelectRotate : MonoBehaviour
         {          
             float lsh = Input.GetAxis("L_Stick_H");//横軸
             float lsv = Input.GetAxis("L_Stick_V");//縦軸
-
-            //if(lsv > deadzone)
-            //{
-            //    up_flg = true;
-            //    rotate_flg = false;
-            //}
-            //else if(lsv < -deadzone)
-            //{
-            //    down_flg = true;
-            //    rotate_flg = false;
-            //}
 
             //ステックの角度産出
             float radian = Mathf.Atan2(lsv, lsh) * Mathf.Rad2Deg;

@@ -8,11 +8,11 @@ public class HitStop : MonoBehaviour
 
     private int count = 0;
 
-    public int time = 1000;
+    public int time = 50;
 
-    public float duration1 = 0.25f;
+    public float duration1 = 0.05f;
 
-    public float magnitude1 = 0.1f;
+    public float magnitude1 = 0.5f;
 
     private bool count_flg = false;
 

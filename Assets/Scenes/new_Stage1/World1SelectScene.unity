@@ -677,8 +677,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6fe48f7f4b5a84080056149bf3fe4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 500
-  speed: 0.001
+  time: 650
+  speed: 0.005
   shutter_time: 600
   shutter_speed: 0.0022
   zoom_flg: 0
@@ -1812,6 +1812,7 @@ GameObject:
   - component: {fileID: 1928506797}
   - component: {fileID: 1928506796}
   - component: {fileID: 1928506799}
+  - component: {fileID: 1928506800}
   m_Layer: 0
   m_Name: SelectGear
   m_TagString: Untagged
@@ -1833,7 +1834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.1
   magnification: 4
-  deadzone: 0.2
+  deadzone: 0.8
 --- !u!212 &1928506797
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1916,6 +1917,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba7ed41bfd3b184198bc2339c80aec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1928506800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928506795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c916019dfb2ce814796c0d0ff46184ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  world_num: 1
 --- !u!1 &1933479733
 GameObject:
   m_ObjectHideFlags: 0
