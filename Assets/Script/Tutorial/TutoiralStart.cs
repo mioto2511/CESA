@@ -17,6 +17,7 @@ public class TutoiralStart : MonoBehaviour
         video_player.loopPointReached += FinishPlayingVideo;
 
         s_image = GameObject.Find("StartTutorial");
+
         video_player.Pause();
     }
 

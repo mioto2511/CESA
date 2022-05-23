@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Video;
 
 public class Tutorial : MonoBehaviour
 {
-    public VideoPlayer video_player;
 
     private GameObject image;
     public GameObject e_image;
