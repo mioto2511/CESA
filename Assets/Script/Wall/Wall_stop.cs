@@ -21,18 +21,28 @@ public class Wall_stop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isstop)
+        if (isstop)
         {
             move.move_flg = false;
+            player.transform.parent = transform.root;
         }
         else if (!isstop)
         {
             move.move_flg = true;
         }
 
+        if (RotateRoom.instance.room_hit)
+        {
+            player.transform.parent = null;
+            //if (player.transform.rotation.z <= 180)
+            //{
+            //    player.transform.rotation=
+            //}
+            player.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
         PlaySE();
     }
-    
+
     void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -41,10 +51,10 @@ public class Wall_stop : MonoBehaviour
             Debug.Log("stop");
         }
     }
-    
+
     void OnCollisionExit2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             isstop = false;
         }
@@ -56,14 +66,15 @@ public class Wall_stop : MonoBehaviour
         {
             if (isSE)
             {
-                SEManager.Instance.Play(SEPath.SE_007);
+                SEManager.Instance.Play(SEPath.SE_006, volumeRate:0.1f);
                 isSE = false;
             }
         }
         else
         {
-            SEManager.Instance.Stop(SEPath.SE_007);
+            SEManager.Instance.Stop(SEPath.SE_006);
             isSE = true;
         }
     }
 }
+

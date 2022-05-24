@@ -119,16 +119,16 @@ public class Score : MonoBehaviour
                 star -= 1;
             }
 
-            if (star >= 3)
-            {
-                Debug.Log("3");
-                SEManager.Instance.Play(SEPath.SE_013);
-            }
-            else if (star <= 2)
-            {
-                Debug.Log("2");
-                SEManager.Instance.Play(SEPath.SE_012);
-            }
+            //if (star >= 3)
+            //{
+            //    Debug.Log("3");
+            //    SEManager.Instance.Play(SEPath.SE_013);
+            //}
+            //else if (star <= 2)
+            //{
+            //    Debug.Log("2");
+            //    SEManager.Instance.Play(SEPath.SE_012);
+            //}
 
             //スコア更新
             if (star > stage_score)

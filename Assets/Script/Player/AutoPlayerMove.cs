@@ -15,7 +15,7 @@ public class AutoPlayerMove : MonoBehaviour
     private bool right_f = true;
 
     //滑りフラグ
-    public bool isSlip;
+    public bool isSlip = false;
 
     //スクリプト取得
     [Header("壁接触判定")] public PlayerWallTrigger wall_trigger;

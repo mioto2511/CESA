@@ -140,7 +140,6 @@ public class GoalFlg : MonoBehaviour
         // BGMフェードアウト後クリアSEを鳴らす
         BGMManager.Instance.Stop();
         SEManager.Instance.Stop();
-        SEManager.Instance.Play(SEPath.SE_011);
         
        goal_se = false;
     }
