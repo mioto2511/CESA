@@ -154,7 +154,7 @@ public class RotateRoom : MonoBehaviour
                     right_rotate = false;
 
                     //’x‚ç‚¹‚Äˆ—‚·‚é‚à‚Ì
-                    Invoke("DelayMethod", 1f);
+                    Invoke("DelayMethod", 1.5f);
 
                     hit_stop.hitstop_flg = true;
 
