@@ -8,7 +8,7 @@ public class CuesorManager : MonoBehaviour
 {
     [Header("ワールドマップ")] public GameObject[] movePoint;
 
-    [Header("ワールドマップ")] public float up_size = 0.35f;
+    [Header("拡大")] public float up_size = 0.35f;
 
     private GameObject kari;
 
@@ -17,7 +17,7 @@ public class CuesorManager : MonoBehaviour
     private bool PointMax = false;
     private bool PointMin = false;
 
-    private Shutter shutter;
+    private OpenShutter shutter;
     private ChangeScene change_scene;
 
     //デットゾーン
@@ -31,8 +31,8 @@ public class CuesorManager : MonoBehaviour
     void Start()
     {
         GameObject T = GameObject.Find("ShutterTrigger"); // オブジェクトを探す
-        //change_scene = T.GetComponent<ChangeScene>();
-        //shutter = T.GetComponent<Shutter>();
+        change_scene = T.GetComponent<ChangeScene>();
+        shutter = T.GetComponent<OpenShutter>();
 
         kari = GameObject.Find("Fuchi");
         kari.transform.localScale = new Vector3(up_size, up_size, 1);
@@ -54,10 +54,10 @@ public class CuesorManager : MonoBehaviour
 
                 button_flg = false;
 
-                //shutter.shutter_flg = true;
+                shutter.shutter_flg = true;
 
-                //change_scene.NextScene(movePoint[nowPoint].GetComponent<WorldManager>().World_No);
-                SceneManager.LoadScene(movePoint[nowPoint].GetComponent<WorldManager>().World_No);
+                change_scene.NextScene(movePoint[nowPoint].GetComponent<WorldManager>().World_No);
+                //SceneManager.LoadScene(movePoint[nowPoint].GetComponent<WorldManager>().World_No);
 
                 //Fade_Manager.FadeOut(movePoint[nowPoint].GetComponent<WorldManager>().World_No); // Aボタンが押されたらフェードアウトしてシーン遷移する
                 //Debug.Log(movePoint[nowPoint].GetComponent<World_Manager>().World_No);          
@@ -87,7 +87,7 @@ public class CuesorManager : MonoBehaviour
                     kari.transform.position = new Vector3(pos.x, pos.y, 0);
 
                     movePoint[nowPoint].transform.localScale = new Vector3(up_size, up_size, 1);
-                    movePoint[oldPoint].transform.localScale = new Vector3(0.3f, 0.3f, 1);
+                    movePoint[oldPoint].transform.localScale = new Vector3(0.2f, 0.2f, 1);
 
                     oldPoint = nowPoint;
                 }
@@ -106,7 +106,7 @@ public class CuesorManager : MonoBehaviour
                 kari.transform.position = new Vector3(pos.x, pos.y, 0);
 
                 movePoint[nowPoint].transform.localScale = new Vector3(up_size, up_size, 1);
-                movePoint[oldPoint].transform.localScale = new Vector3(0.3f,0.3f,1);
+                movePoint[oldPoint].transform.localScale = new Vector3(0.2f,0.2f,1);
 
                 oldPoint = nowPoint;
 
