@@ -19,7 +19,9 @@ public class SelectRotate : MonoBehaviour
 
     [Header("デットゾーン")] public float deadzone = 0.8f;
 
-    private int count = 1;
+
+    //現在の位置
+    public int count = 1;
 
     private GameObject trigger_obj;
 
@@ -128,7 +130,7 @@ public class SelectRotate : MonoBehaviour
 
                 if (hight_max_rotate <= now_rotate)
                 {
-                    count = 6;
+                    count = 5;
                     up_flg = false;
                     now_rotate = 0;
                     Invoke("DelayMethod", 0.25f);
