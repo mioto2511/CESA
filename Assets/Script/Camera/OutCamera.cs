@@ -39,6 +39,5 @@ public class OutCamera : MonoBehaviour
             cam.orthographicSize = cam.orthographicSize + shutter_speed;
             shutter_count++;
         }
-
     }
 }

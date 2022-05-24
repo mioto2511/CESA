@@ -160,6 +160,7 @@ MonoBehaviour:
   child_cnt: 0
   location_flg: 1
   box_pos: {x: 0, y: 0}
+  box_hit: 0
 --- !u!1 &4132552485199532163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1468,6 +1469,7 @@ GameObject:
   - component: {fileID: 7773992630403771883}
   - component: {fileID: 3260314923078621311}
   - component: {fileID: 3837484369438270072}
+  - component: {fileID: 1565253008836185590}
   m_Layer: 0
   m_Name: Room
   m_TagString: Room
@@ -1506,11 +1508,14 @@ MonoBehaviour:
   rotate_cnt: 0
   target_object: {fileID: 0}
   SpeedFactor: 0.15
+  deadzone: 0.8
+  add_speed: 0.0025
   rotate_flg: 0
   right_rotate: 0
   left_rotate: 0
   room_hit: 0
   collider_flg: 1
+  start_flg: 1
 --- !u!114 &3260314923078621311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1536,16 +1541,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b34d1e08fb88344bca8e0be1bc7cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
-  text_obj: {fileID: 0}
-  mid_obj: {fileID: 0}
-  max_obj: {fileID: 0}
   score: 0
   mid_score: 0
   max_score: 0
   world_num: 0
   stage_num: 0
+  release_score: 0
+  star: 0
   score_flg: 0
+--- !u!114 &1565253008836185590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7773992630403771876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ee9a2f075e25d499c94724e0fce21e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9212669451277605197
 GameObject:
   m_ObjectHideFlags: 0

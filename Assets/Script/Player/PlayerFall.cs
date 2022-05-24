@@ -8,6 +8,8 @@ public class PlayerFall : MonoBehaviour
 	//GoalTrigger
 	private GoalTrigger goal_trigger;
 
+	private AutoPlayerMove auto_player;
+
 	//レイの開始地点
 	[SerializeField]
 	private Transform ray_position;
@@ -32,8 +34,9 @@ public class PlayerFall : MonoBehaviour
 	//boxcolリスト
 	private List<Collider2D> box_col = new List<Collider2D>();
 
-	// Start is called before the first frame update
-	void Start()
+
+    // Start is called before the first frame update
+    void Start()
     {
 		fall_flg = false;
 
@@ -41,6 +44,9 @@ public class PlayerFall : MonoBehaviour
 
 		GameObject obj1 = GameObject.Find("GoalTrigger"); //オブジェクトを探す
 		goal_trigger = obj1.GetComponent<GoalTrigger>();//付いているスクリプトを取得
+
+		GameObject p = GameObject.Find("Player");
+		auto_player = p.GetComponent<AutoPlayerMove>();
 
 		//コライダーOFF
 		my_collider = this.GetComponent<Collider2D>();
@@ -67,7 +73,9 @@ public class PlayerFall : MonoBehaviour
 				if (count >= 3)
                 {
 					death_flg = true;
-					//Destroy(player);
+
+					auto_player.move_flg = false;
+
 					Debug.Log("shi");
 					BGMManager.Instance.Stop(BGMPath.BGM_001);
 					goal_trigger.ColliderSwitch(false);

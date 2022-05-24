@@ -57,6 +57,10 @@ public class CuesorManager : MonoBehaviour
                 shutter.shutter_flg = true;
 
                 change_scene.NextScene(movePoint[nowPoint].GetComponent<WorldManager>().World_No);
+
+                //ステージ番号の保存
+                PlayerPrefs.SetInt("OLDSTAGE", 1);
+                PlayerPrefs.Save();
                 //SceneManager.LoadScene(movePoint[nowPoint].GetComponent<WorldManager>().World_No);
 
                 //Fade_Manager.FadeOut(movePoint[nowPoint].GetComponent<WorldManager>().World_No); // Aボタンが押されたらフェードアウトしてシーン遷移する

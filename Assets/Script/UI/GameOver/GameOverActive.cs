@@ -10,9 +10,9 @@ public class GameOverActive : MonoBehaviour
     //　ポーズした時に表示するUIのプレハブ
     private GameObject over_ui;
 
-    private PlayerFall player_fall;
-
     private Button b1;
+
+    public bool result_flg = false;
 
     //Accelerationの変数を使う
     private Acceleration acceleration;
@@ -28,22 +28,19 @@ public class GameOverActive : MonoBehaviour
         //リザルト背景を消す
         over_ui.SetActive(false);
 
-        GameObject player = GameObject.Find("BoxTrigger");
-        player_fall = player.GetComponent<PlayerFall>();　//付いているスクリプトを取得
-
         GameObject obj2 = GameObject.Find("Player"); //オブジェクトを探す
         acceleration = obj2.GetComponent<Acceleration>();//付いているスクリプトを取得
 
-        GameObject canvas = GameObject.Find("Canvas"); //オブジェクトを探す
-        pause_active = canvas.GetComponent<PauseActive>();
+        //GameObject canvas = GameObject.Find("Canvas"); //オブジェクトを探す
+        pause_active = this.GetComponent<PauseActive>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player_fall.death_flg)
+        if (result_flg)
         {
-            player_fall.death_flg = false;
+            result_flg = false;
 
             // 時間停止
             Time.timeScale = 0;
@@ -51,8 +48,11 @@ public class GameOverActive : MonoBehaviour
             //加速不可能にする
             acceleration.button_flg = false;
 
-            //ポーズを出す
+            //出す
             over_ui.SetActive(true);
+
+            //ポーズできない
+            pause_active.button_flg = false;
 
             BGMManager.Instance.Stop();
 
