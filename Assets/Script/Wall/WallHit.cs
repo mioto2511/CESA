@@ -51,16 +51,31 @@ public class WallHit : MonoBehaviour
     //}
 
     void ErrorCorrection()
-    { 
+    {
+        Vector3 parent_pos = parent.transform.position;
+        
+        parent_pos.x = Mathf.Round(parent_pos.x);     //四捨五入
+        parent_pos.y = Mathf.Round(parent_pos.y);     //四捨五入
+        parent.transform.position = parent_pos;
+
+        //ローカル座標
+        Vector3 parent_posl = parent.transform.localPosition;
+
+        parent_posl.x = Mathf.Round(parent_posl.x);     //四捨五入
+        parent_posl.y = Mathf.Round(parent_posl.y);     //四捨五入
+        parent.transform.localPosition = parent_posl;
+
+
+
         Vector3 pos = this.transform.localPosition;
 
         pos = save_pos;
 
-        if ((pos.y < 0.0001) && (pos.y > -0.0001))
+        if ((pos.y < 0.001) && (pos.y > -0.001))
         {
             pos.y = 0;
         }
-        if ((pos.x < 0.0001) && (pos.x > -0.0001))
+        if ((pos.x < 0.001) && (pos.x > -0.001))
         {
             pos.x = 0;
         }

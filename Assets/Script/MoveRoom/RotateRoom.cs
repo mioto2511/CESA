@@ -213,6 +213,12 @@ public class RotateRoom : MonoBehaviour
                 RotateAxis,
                 360.0f / (1.0f / -(SpeedFactor + add)) * Time.deltaTime
                 );
+
+                //this.transform.RotateAround(
+                //target_object.transform.position,
+                //RotateAxis,
+                //360.0f / (1.0f / -SpeedFactor) * Time.deltaTime
+                //);
             }
             else if (left_rotate == true)
             {
@@ -221,6 +227,11 @@ public class RotateRoom : MonoBehaviour
                 RotateAxis,
                 360.0f / (1.0f / (SpeedFactor + add)) * Time.deltaTime
                 );
+                //this.transform.RotateAround(
+                //target_object.transform.position,
+                //RotateAxis,
+                //360.0f / (1.0f / SpeedFactor) * Time.deltaTime
+                //);
             }
         }       
     }
@@ -271,7 +282,7 @@ public class RotateRoom : MonoBehaviour
                         now_radian -= 360;
                     }
 
-                    if(now_radian >= 90)
+                    if (now_radian >= 90)
                     {
                         add += add_speed;
                     }
