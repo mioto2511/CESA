@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using KanKikuchi.AudioManager;
 
 public class TutoiralStart : MonoBehaviour
 {
@@ -10,7 +11,10 @@ public class TutoiralStart : MonoBehaviour
     private GameObject s_image;
     public GameObject image;
 
+    public static TutoiralStart instance;
+
     public bool play_flg = false;
+
 
     private void Awake()
     {
@@ -28,6 +32,8 @@ public class TutoiralStart : MonoBehaviour
             play_flg = false;
 
             video_player.Play();
+            
+            ChainSE();
         }
     }
 
@@ -35,5 +41,10 @@ public class TutoiralStart : MonoBehaviour
     {
         image.SetActive(true);
         s_image.SetActive(false);
+    }
+
+    public void ChainSE()
+    {
+        SEManager.Instance.Play(SEPath.SE_008);
     }
 }

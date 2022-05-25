@@ -14,6 +14,7 @@ public class TutorialEnd : MonoBehaviour
 
     private Acceleration acceleration;
 
+
     private void Awake()
     {
         video_player.loopPointReached += FinishPlayingVideo;
