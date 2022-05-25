@@ -12,9 +12,6 @@ public class GoalFlg : MonoBehaviour
 
     private bool goal_se = false;
 
-    //private Shutter shutter;
-    //private ChangeScene change_scene;
-
     [Header("ゴールからのセレクト")] public int scene = 2;
 
     [Header("ワールド番号")] public int world_num = 1;
@@ -29,13 +26,15 @@ public class GoalFlg : MonoBehaviour
     //PauseActiveの変数
     private PauseActive pause_active;
 
+    private GameObject goal_obj;
+
+    private ClearEffect clear_effect;
+
+    public bool display_flg = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        //GameObject T = GameObject.Find("ShutterTrigger"); // オブジェクトを探す
-        //change_scene = T.GetComponent<ChangeScene>();
-        //shutter = T.GetComponent<Shutter>();
-
         GameObject s = GameObject.Find("Room"); // オブジェクトを探す
         score = s.GetComponent<Score>();
 
@@ -51,13 +50,14 @@ public class GoalFlg : MonoBehaviour
     {
         if (goal_flg)
         {
-            Debug.Log(goal_flg);
-            
             goal_flg = false;
 
             score.score_flg = true;
 
             pause_active.button_flg = false;
+
+            //エフェクト
+            clear_effect.ef_flg = true;
 
             goal_se = true;
 
@@ -65,6 +65,13 @@ public class GoalFlg : MonoBehaviour
             col.enabled = false;
 
             Invoke("DelayMethod", 0.25f);           
+        }
+
+        if (display_flg)
+        {
+            display_flg = false;
+
+            Invoke("DelayMethod2", 0.25f);
         }
 
         if (goal_se)
@@ -117,13 +124,16 @@ public class GoalFlg : MonoBehaviour
     //遅延処理
     private void DelayMethod()
     {
-        Debug.Log("a");
         button_flg = true;
-
-        clearUI.SetActive(true);
 
         // 時間停止
         Time.timeScale = 0;
+    }
+
+    //遅延処理
+    private void DelayMethod2()
+    {
+        clearUI.SetActive(true);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -131,6 +141,11 @@ public class GoalFlg : MonoBehaviour
         if (collision.gameObject.CompareTag("Goal"))
         {
             goal_flg = true;
+
+            //ゴールオブジェクト取得
+            goal_obj = collision.transform.GetChild(0).gameObject;
+            Debug.Log(goal_obj);
+            clear_effect = goal_obj.GetComponent<ClearEffect>();
         }
     }
 
