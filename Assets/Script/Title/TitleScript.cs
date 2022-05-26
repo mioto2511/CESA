@@ -36,7 +36,7 @@ public class TitleScript : MonoBehaviour
         {
             count++;
 
-            if(count >= 7)
+            if(count >= 8)
             {
                 start_flg = false;
 

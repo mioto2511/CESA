@@ -8,7 +8,7 @@ public class CuesorManager : MonoBehaviour
 {
     [Header("ワールドマップ")] public GameObject[] movePoint;
 
-    [Header("拡大")] public float up_size = 0.35f;
+    [Header("拡大")] public float up_size = 0.2f;
 
     private GameObject kari;
 
@@ -26,6 +26,8 @@ public class CuesorManager : MonoBehaviour
     private bool stick_flg = true;
 
     private bool button_flg = true;
+
+    public LoopFrame loop_frame;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +57,9 @@ public class CuesorManager : MonoBehaviour
                 button_flg = false;
 
                 shutter.shutter_flg = true;
+
+                //動画ループ停止
+                loop_frame.loop_flg = false;
 
                 change_scene.NextScene(movePoint[nowPoint].GetComponent<WorldManager>().World_No);
 
@@ -91,7 +96,7 @@ public class CuesorManager : MonoBehaviour
                     kari.transform.position = new Vector3(pos.x, pos.y, 0);
 
                     movePoint[nowPoint].transform.localScale = new Vector3(up_size, up_size, 1);
-                    movePoint[oldPoint].transform.localScale = new Vector3(0.2f, 0.2f, 1);
+                    movePoint[oldPoint].transform.localScale = new Vector3(0.18f, 0.18f, 1);
 
                     oldPoint = nowPoint;
                 }
@@ -110,7 +115,7 @@ public class CuesorManager : MonoBehaviour
                 kari.transform.position = new Vector3(pos.x, pos.y, 0);
 
                 movePoint[nowPoint].transform.localScale = new Vector3(up_size, up_size, 1);
-                movePoint[oldPoint].transform.localScale = new Vector3(0.2f,0.2f,1);
+                movePoint[oldPoint].transform.localScale = new Vector3(0.18f,0.18f,1);
 
                 oldPoint = nowPoint;
 

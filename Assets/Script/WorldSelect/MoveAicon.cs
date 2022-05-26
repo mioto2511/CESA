@@ -7,6 +7,8 @@ public class MoveAicon : MonoBehaviour
 
     [Header("アイコンの速さ")] public float speed = 2f;
 
+    [Header("アイコンの速さUP")] public float up_speed = 2f;
+
     Vector3 pos;
 
     public bool up_flg = false;
@@ -32,7 +34,7 @@ public class MoveAicon : MonoBehaviour
         {
             if(pos.y > 0.01f)
             {
-                pos.y = Mathf.Lerp(pos.y, 0, Time.deltaTime * speed);
+                pos.y -= speed;  
                 this.transform.position = new Vector3(0, pos.y, 0);
             }
             else
@@ -49,7 +51,7 @@ public class MoveAicon : MonoBehaviour
 
             if (pos.y < 10)
             {
-                pos.y = Mathf.Lerp(pos.y, 10, Time.deltaTime * speed);
+                pos.y = Mathf.Lerp(pos.y, 10, Time.deltaTime * up_speed);
                 this.transform.position = new Vector3(0, pos.y, 0);
             }
             else
