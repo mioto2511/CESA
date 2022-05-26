@@ -9,6 +9,8 @@ public class TutorialActive : MonoBehaviour
 
     private PauseActive pause_active;
 
+    private RotateStart rotate_start;
+
     private Acceleration acceleration;
 
     private int count = 0;
@@ -28,6 +30,10 @@ public class TutorialActive : MonoBehaviour
         GameObject p = GameObject.Find("Player");
         acceleration = p.GetComponent<Acceleration>();
         acceleration.button_flg = false;
+
+        GameObject obj3 = GameObject.Find("Room");
+        rotate_start = obj3.GetComponent<RotateStart>();
+        rotate_start.botton_flg = false;
     }
 
 

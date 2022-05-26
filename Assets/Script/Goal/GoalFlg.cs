@@ -30,6 +30,8 @@ public class GoalFlg : MonoBehaviour
 
     private ClearEffect clear_effect;
 
+    private AutoPlayerMove auto_player;
+
     public bool display_flg = false;
 
     // Start is called before the first frame update
@@ -40,6 +42,9 @@ public class GoalFlg : MonoBehaviour
 
         GameObject canvas = GameObject.Find("Canvas"); // オブジェクトを探す
         pause_active = canvas.GetComponent<PauseActive>();
+
+        GameObject p = GameObject.Find("Player");
+        auto_player = p.GetComponent<AutoPlayerMove>();
 
         clearUI = GameObject.Find("ClearUI");
 
@@ -72,10 +77,13 @@ public class GoalFlg : MonoBehaviour
             display_flg = false;
 
             clearUI.SetActive(true);
+
+            Time.timeScale = 0;
         }
 
         if (goal_se)
         {
+            Debug.Log(goal_obj);
             GoalSE();
         }
 
@@ -126,8 +134,7 @@ public class GoalFlg : MonoBehaviour
     {
         button_flg = true;
 
-        // 時間停止
-        Time.timeScale = 0;
+        auto_player.move_flg = false;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -136,9 +143,10 @@ public class GoalFlg : MonoBehaviour
         {
             goal_flg = true;
 
+            Time.timeScale = 1;
+
             //ゴールオブジェクト取得
             goal_obj = collision.transform.GetChild(0).gameObject;
-            Debug.Log(goal_obj);
             clear_effect = goal_obj.GetComponent<ClearEffect>();
         }
     }

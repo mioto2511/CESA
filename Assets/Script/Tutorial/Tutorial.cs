@@ -1,17 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
+using UnityEngine.UI;
 using KanKikuchi.AudioManager;
 
 public class Tutorial : MonoBehaviour
 {
+    private GameObject e_image;
 
-    private GameObject image;
-    public GameObject e_image;
+    public VideoPlayer video_player;
 
     private RotateStart rotate_start;
 
     public static Tutorial instance;
+
+    public bool loop_flg = false;
+
+    private TutorialEnd tutorial_end;
+
+    public RawImage image;
+
+    private GameObject s_image;
 
     private void Awake()
     {
@@ -19,9 +29,20 @@ public class Tutorial : MonoBehaviour
         rotate_start = obj3.GetComponent<RotateStart>();
         rotate_start.botton_flg = false;
 
-        image = GameObject.Find("Tutorial");
+        e_image = GameObject.Find("EndTutorial");
+        tutorial_end = e_image.GetComponent<TutorialEnd>();
 
-        image.SetActive(false);
+        s_image = GameObject.Find("StartTutorial");
+
+
+        //éñëOÉçÅ[Éh
+        video_player.Prepare();
+
+        image.enabled = false;
+
+        //ìßñæâª
+        //Material mat = this.gameObject.GetComponent<>().material;
+        //mat.SetFloat("_Near", 2);
     }
 
     // Start is called before the first frame update
@@ -33,16 +54,31 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("joystick button 0"))
+        if (loop_flg)
         {
-            rotate_start.botton_flg = true;
-            e_image.SetActive(true);
-            image.SetActive(false);
+            //ìÆâÊçƒê∂
+            video_player.started += OnMovieStarted;
+            video_player.Play();
 
-            Debug.Log("up");
+            loop_flg = false;
+        }
+
+        if (Input.GetKeyDown("joystick button 0"))
+        {           
+            tutorial_end.end_flg = true;
+
+            //this.gameObject.SetActive(false);
+
             ChainSE();
         }
     }
+    void OnMovieStarted(VideoPlayer vp)
+    {
+        //é¿ëÃâª
+        image.enabled = true;
+        s_image.SetActive(false);
+    }
+
     private void ChainSE()
     {
         SEManager.Instance.Play(SEPath.SE_008);
