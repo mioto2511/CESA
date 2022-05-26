@@ -63,6 +63,8 @@ public class PlayerFall : MonoBehaviour
 		//　落ちている状態
 		if (fall_flg)
 		{
+			auto_player.move_flg = false;
+
 			//　地面にレイが届いていたら
 			if (Physics2D.Linecast(ray_position.position, ray_position.position + Vector3.down * ray_range, LayerMask.GetMask("Wall")))
 			{
@@ -74,7 +76,7 @@ public class PlayerFall : MonoBehaviour
                 {
 					death_flg = true;
 
-					auto_player.move_flg = false;
+					
 
 					Debug.Log("shi");
 					BGMManager.Instance.Stop(BGMPath.BGM_001);
@@ -97,6 +99,8 @@ public class PlayerFall : MonoBehaviour
 
 				//カウント初期化
 				count = 0;
+
+				auto_player.move_flg = true;
 			}
 		}
 		else
