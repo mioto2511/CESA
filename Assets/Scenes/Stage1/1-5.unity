@@ -8628,6 +8628,8 @@ GameObject:
   - component: {fileID: 5834489667359929626}
   - component: {fileID: 5834489667359929616}
   - component: {fileID: 5834489667359929625}
+  - component: {fileID: 5834489667359929632}
+  - component: {fileID: 5834489667359929631}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -8783,6 +8785,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5834489667359929631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834489667359929624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9c7eca009a8564c86adc98c5ec9067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &5834489667359929632
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834489667359929624}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc96b078d39cda145bdbec0f8d31ebf9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5834489667880382194
 GameObject:
   m_ObjectHideFlags: 0
@@ -8828,6 +8861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ray_position: {fileID: 5834489667359929630}
+  fall_flg: 0
   death_flg: 0
 --- !u!58 &5834489667880382197
 CircleCollider2D:
@@ -8894,6 +8928,7 @@ MonoBehaviour:
   scene: 2
   world_num: 1
   stage_num: 5
+  display_flg: 0
 --- !u!61 &5834489668813306796
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ public class PlayerFall : MonoBehaviour
 	private float ray_range = 1f;
 
 	//落ちた地点を設定したかどうか
-	private bool fall_flg;
+	public bool fall_flg;
 
 	//部屋カウント
 	private int count = 0;

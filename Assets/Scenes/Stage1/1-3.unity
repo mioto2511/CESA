@@ -14008,6 +14008,8 @@ GameObject:
   - component: {fileID: 8986221498500686596}
   - component: {fileID: 8986221498500686606}
   - component: {fileID: 8986221498500686599}
+  - component: {fileID: 8986221498500686601}
+  - component: {fileID: 8986221498500686600}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -14028,6 +14030,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button_flg: 1
+--- !u!114 &8986221498500686600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8986221498500686598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9c7eca009a8564c86adc98c5ec9067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &8986221498500686601
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8986221498500686598}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc96b078d39cda145bdbec0f8d31ebf9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &8986221498500686606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14109,6 +14142,7 @@ MonoBehaviour:
   scene: 2
   world_num: 1
   stage_num: 3
+  display_flg: 0
 --- !u!1 &8986221500008623543
 GameObject:
   m_ObjectHideFlags: 0
@@ -14141,6 +14175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ray_position: {fileID: 8986221498500686592}
+  fall_flg: 0
   death_flg: 0
 --- !u!58 &8986221500126345451
 CircleCollider2D:

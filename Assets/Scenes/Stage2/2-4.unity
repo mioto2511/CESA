@@ -9518,6 +9518,8 @@ GameObject:
   - component: {fileID: 6984823854003874927}
   - component: {fileID: 6984823854003874917}
   - component: {fileID: 6984823854003874924}
+  - component: {fileID: 6984823854003874929}
+  - component: {fileID: 6984823854003874928}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9569,6 +9571,37 @@ MonoBehaviour:
   wall_trigger: {fileID: 1342303227172857521}
   ground_trigger: {fileID: 5681812913179866875}
   to_goal: 0
+--- !u!114 &6984823854003874928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6984823854003874925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9c7eca009a8564c86adc98c5ec9067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &6984823854003874929
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6984823854003874925}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc96b078d39cda145bdbec0f8d31ebf9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!58 &6984823854523611008
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9598,6 +9631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ray_position: {fileID: 6984823854003874923}
+  fall_flg: 0
   death_flg: 0
 --- !u!4 &6984823854523611014
 Transform:
@@ -9704,6 +9738,7 @@ MonoBehaviour:
   scene: 8
   world_num: 2
   stage_num: 4
+  display_flg: 0
 --- !u!4 &6984823854656004831
 Transform:
   m_ObjectHideFlags: 0
