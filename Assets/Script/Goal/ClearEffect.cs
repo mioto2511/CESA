@@ -15,6 +15,8 @@ public class ClearEffect : MonoBehaviour
 
     private GoalFlg goal_flg;
 
+    private GameObject parent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,31 +24,38 @@ public class ClearEffect : MonoBehaviour
 
         GameObject g = GameObject.Find("GoalTrigger");
         goal_flg = g.GetComponent<GoalFlg>();
+
+        parent = this.transform.parent.gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (start_flg)
-        {
-            count++;
+        //if (start_flg)
+        //{
+        //    count++;
 
-            if (count >= 7)
-            {
-                start_flg = false;
+        //    if (count >= 7)
+        //    {
+        //        start_flg = false;
 
-                video_player.Pause();
-            }
-        }
+        //        video_player.Pause();
+        //    }
+        //}
 
         if (ef_flg)
         {
             video_player.Play();
+
+            Color color = parent.GetComponent<SpriteRenderer>().material.color;
+            color.a = 0;
+            parent.GetComponent<SpriteRenderer>().material.color = color;
         }
     }
 
     public void FinishPlayingVideo(VideoPlayer vp)
     {
         goal_flg.display_flg = true;
+        ef_flg = false;
     }
 }

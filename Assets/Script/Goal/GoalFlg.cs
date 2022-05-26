@@ -71,7 +71,7 @@ public class GoalFlg : MonoBehaviour
         {
             display_flg = false;
 
-            Invoke("DelayMethod2", 0.25f);
+            clearUI.SetActive(true);
         }
 
         if (goal_se)
@@ -128,12 +128,6 @@ public class GoalFlg : MonoBehaviour
 
         // éûä‘í‚é~
         Time.timeScale = 0;
-    }
-
-    //íxâÑèàóù
-    private void DelayMethod2()
-    {
-        clearUI.SetActive(true);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
