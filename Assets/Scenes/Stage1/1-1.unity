@@ -6743,6 +6743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ray_position: {fileID: 4966864104926680285}
+  fall_flg: 0
   death_flg: 0
 --- !u!114 &4966864103389420136
 MonoBehaviour:
@@ -6760,6 +6761,7 @@ MonoBehaviour:
   scene: 2
   world_num: 1
   stage_num: 1
+  display_flg: 0
 --- !u!4 &4966864103389420137
 Transform:
   m_ObjectHideFlags: 0
@@ -6916,6 +6918,8 @@ GameObject:
   - component: {fileID: 4966864104926680281}
   - component: {fileID: 4966864104926680275}
   - component: {fileID: 4966864104926680282}
+  - component: {fileID: 4966864104926680288}
+  - component: {fileID: 4966864104926680284}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -6923,6 +6927,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4966864104926680284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4966864104926680283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9c7eca009a8564c86adc98c5ec9067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4966864104926680285
 Transform:
   m_ObjectHideFlags: 0
@@ -7014,6 +7030,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!95 &4966864104926680288
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4966864104926680283}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc96b078d39cda145bdbec0f8d31ebf9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &5095454986079633352
 SpriteRenderer:
   m_ObjectHideFlags: 0
