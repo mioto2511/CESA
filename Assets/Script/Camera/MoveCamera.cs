@@ -16,6 +16,8 @@ public class MoveCamera : MonoBehaviour
     public float zoom;
     private bool cflg = true;
 
+    public bool zoom_flg =false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,9 +73,14 @@ public class MoveCamera : MonoBehaviour
                 break;
 
             case 3:
-                cam.orthographicSize = 6.36f;
+                //cam.orthographicSize = 6.36f;
                 camerazoom = 3;
                 break;
+        }
+
+        if(zoom_flg)
+        {
+            cflg = false;
         }
 
         if (cflg == true)
@@ -101,5 +108,23 @@ public class MoveCamera : MonoBehaviour
         //    transform.position = new Vector3(0, 0, -10);
         //    cam.orthographicSize = zoom;
         //}
+    }
+
+    private void FixedUpdate()
+    {
+        if (zoom_flg)
+        {
+            pos = cplayer.transform.position;
+            transform.position = new Vector3(pos.x, pos.y, -10);
+
+            cam.orthographicSize = cam.orthographicSize - speed;
+
+            float si = cam.orthographicSize;
+
+            if (si <= 4.1f)
+            {
+                zoom_flg = false;
+            }
+        }
     }
 }
