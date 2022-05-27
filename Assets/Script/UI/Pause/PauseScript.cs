@@ -9,6 +9,8 @@ public class PauseScript : MonoBehaviour
 	private Button b2;
 	private Button b3;
 
+	private bool isPause;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -18,12 +20,25 @@ public class PauseScript : MonoBehaviour
 		b3 = GameObject.Find("/Canvas/Pause/Button3").GetComponent<Button>();
 
 		// Å‰‚É‘I‘ğó‘Ô‚É‚µ‚½‚¢ƒ{ƒ^ƒ“‚Ìİ’è
-		b1.Select();
+		b2.Select();
+
+		isPause = true;
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		
+		if (PauseActive.instance.pause_flg)
+		{
+			if (isPause)
+			{
+				b2.Select();
+				isPause = false;
+			}
+		}
+		else
+		{
+			isPause = true;
+		}
 	}
 }
