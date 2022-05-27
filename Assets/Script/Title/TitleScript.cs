@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using KanKikuchi.AudioManager;
 
 public class TitleScript : MonoBehaviour
 {
@@ -51,8 +52,14 @@ public class TitleScript : MonoBehaviour
             if (Input.GetKeyDown("joystick button 0"))
             {
                 button_flg = false;
-
+               
                 shutter.shutter_flg = true;
+
+                // BGMŽ~‚ß‚é
+                BGMManager.Instance.Stop(BGMPath.BGM_002);
+                // ƒ^ƒCƒgƒ‹‘JˆÚSE
+                Debug.Log("titlese");
+                SEManager.Instance.Play(SEPath.SE_009);
             }
         }
 

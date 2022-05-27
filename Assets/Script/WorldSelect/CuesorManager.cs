@@ -52,7 +52,7 @@ public class CuesorManager : MonoBehaviour
             // ƒ[ƒ‹ƒh‘I‘ğˆ—
             if (Input.GetKeyDown("joystick button 0"))
             {
-                SEManager.Instance.Play(SEPath.SE_005);
+               // SEManager.Instance.Play(SEPath.SE_005);
 
                 button_flg = false;
 

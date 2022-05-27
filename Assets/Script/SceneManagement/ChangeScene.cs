@@ -25,7 +25,6 @@ public class ChangeScene : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Shutter"))
         {
-            SEManager.Instance.Play(SEPath.SE_009);
             //’x‚ç‚¹‚Äˆ—‚·‚é‚à‚Ì
             Invoke("DelayMethod", 0.5f);
         }
