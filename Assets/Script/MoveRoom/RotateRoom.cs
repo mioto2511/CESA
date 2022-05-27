@@ -168,7 +168,7 @@ public class RotateRoom : MonoBehaviour
                     acceleration.button_flg = true;
 
                     //U“®
-                    vibration_script.Vibration(1.0f, 1.0f,0.5f);
+                    vibration_script.Vibration(0.8f, 0.8f,0.1f);
 
                     //‰ñ“]‰ŠúˆÊ’u‚Ì‰Šú‰»
                     start_radian = 0;

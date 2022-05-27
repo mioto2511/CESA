@@ -23,6 +23,8 @@ public class Tutorial : MonoBehaviour
 
     private GameObject s_image;
 
+    private bool button_flg = false;
+
     private void Awake()
     {
         GameObject obj3 = GameObject.Find("Room");
@@ -63,13 +65,16 @@ public class Tutorial : MonoBehaviour
             loop_flg = false;
         }
 
-        if (Input.GetKeyDown("joystick button 0"))
-        {           
-            tutorial_end.end_flg = true;
+        if (button_flg)
+        {
+            if (Input.GetKeyDown("joystick button 0"))
+            {
+                tutorial_end.end_flg = true;
 
-            //this.gameObject.SetActive(false);
+                //this.gameObject.SetActive(false);
 
-            ChainSE();
+                ChainSE();
+            }
         }
     }
     void OnMovieStarted(VideoPlayer vp)
@@ -77,6 +82,7 @@ public class Tutorial : MonoBehaviour
         //ŽÀ‘Ì‰»
         image.enabled = true;
         s_image.SetActive(false);
+        button_flg = true;
     }
 
     private void ChainSE()

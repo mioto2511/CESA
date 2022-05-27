@@ -19,18 +19,22 @@ public class VibrationScript : MonoBehaviour
 
     public void Vibration(float left,float right,float time)
     {
-        PriVibration(left,right,time);
+        StartCoroutine(PriVibration(left,right,time));
     }
 
     private static IEnumerator PriVibration(float left, float right,float time)
     {
         var gamepad = Gamepad.current;
 
-        if (gamepad != null)
-        {
-            gamepad.SetMotorSpeeds(left, right);
-            yield return new WaitForSeconds(time);//ïbêî
-            gamepad.SetMotorSpeeds(0, 0);
-        }            
+        Debug.Log("2");
+
+        gamepad.SetMotorSpeeds(left, right);
+        yield return new WaitForSeconds(time);//ïbêî
+        gamepad.SetMotorSpeeds(0, 0);
+
+        //if (gamepad != null)
+        //{
+            
+        //}            
     }
 }
