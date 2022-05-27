@@ -9,6 +9,7 @@ public class Player_anim : MonoBehaviour
     //’n–Ê‚É‚¢‚é‚©‚Ç‚¤‚©
     private GameObject animflg;
     PlayerFall playerFall;
+    AutoPlayerMove autoPlayerMove;
     
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,16 @@ public class Player_anim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        autoPlayerMove = this.GetComponent<AutoPlayerMove>();
         playerFall = animflg.GetComponent<PlayerFall>();
+        if(autoPlayerMove.move_flg == true)
+        {
+            animator.SetBool("move_player", true);
+        }
+        else if (autoPlayerMove.move_flg == false)
+        {
+            animator.SetBool("move_player", false);
+        }
         if (playerFall.fall_flg == true)
         {
             animator.SetBool("Isgrountrigger", false);
