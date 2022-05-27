@@ -59,7 +59,7 @@ public class TitleScript : MonoBehaviour
                 BGMManager.Instance.Stop(BGMPath.BGM_002);
                 // ƒ^ƒCƒgƒ‹‘JˆÚSE
                 Debug.Log("titlese");
-                SEManager.Instance.Play(SEPath.SE_009);
+                SEManager.Instance.Play(SEPath.SE_009,volumeRate:0.5f);
             }
         }
 

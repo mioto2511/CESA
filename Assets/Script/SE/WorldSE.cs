@@ -14,7 +14,7 @@ public class WorldSE : MonoBehaviour
             BGMManager.Instance.Stop(BGMPath.BGM_004);
             // ƒ^ƒCƒgƒ‹‘JˆÚSE
             Debug.Log("worldse");
-            SEManager.Instance.Play(SEPath.SE_009);
+            SEManager.Instance.Play(SEPath.SE_009,volumeRate:0.5f);
         }
     }
 }
