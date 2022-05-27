@@ -45,8 +45,6 @@ public class Shutter : MonoBehaviour
             zoom_camera.zoom_shutter_flg = true;
 
             BGMManager.Instance.Stop(BGMPath.BGM_001);
-
-            SEManager.Instance.Play(SEPath.SE_005);
         }        
     }
 
