@@ -54,58 +54,69 @@ public class SelectRotate : MonoBehaviour
                 radian += 360;
             }
             //スティック入力がはいったら
-            if ((lsh > deadzone) || (lsh < -deadzone) || (lsv > deadzone) || (lsv < -deadzone))
+            //if ((lsh > deadzone) || (lsh < -deadzone) || (lsv > deadzone) || (lsv < -deadzone))
+            //{
+            //    //初期位置の時
+            //    if (initial_flg)
+            //    {
+            //        initial_flg = false;
+
+            //        //スティックの開始角度
+            //        start_radian = radian;
+
+            //    }
+
+
+            //    if (up_flg == false && down_flg == false)
+            //    {
+            //        float now_radian = start_radian - radian;
+
+            //        //0～360で飛ぶのを改善
+            //        if (old_radian >= 0 && now_radian < -200)
+            //        {
+            //            now_radian += 360;
+            //        }
+            //        else if (old_radian <= 0 && now_radian > 200)
+            //        {
+            //            now_radian -= 360;
+            //        }
+
+            //        //90度回転したら回転開始
+            //        if (now_radian >= 90)
+            //        { 
+            //            up_flg = true;
+
+            //            rotate_flg = false;
+
+            //            initial_flg = true;
+
+            //            trigger_obj.SetActive(false);
+            //        }
+            //        else if (now_radian <= -90)
+            //        {
+            //            down_flg = true;
+
+            //            rotate_flg = false;
+
+            //            initial_flg = true;
+
+            //            trigger_obj.SetActive(false);
+            //        }
+
+            //        //保存
+            //        old_radian = now_radian;
+            //    }
+            //}
+            if(lsv > deadzone)
             {
-                //初期位置の時
-                if (initial_flg)
-                {
-                    initial_flg = false;
-
-                    //スティックの開始角度
-                    start_radian = radian;
-
-                }
-
-
-                if (up_flg == false && down_flg == false)
-                {
-                    float now_radian = start_radian - radian;
-
-                    //0～360で飛ぶのを改善
-                    if (old_radian >= 0 && now_radian < -200)
-                    {
-                        now_radian += 360;
-                    }
-                    else if (old_radian <= 0 && now_radian > 200)
-                    {
-                        now_radian -= 360;
-                    }
-
-                    //90度回転したら回転開始
-                    if (now_radian >= 90)
-                    { 
-                        up_flg = true;
-
-                        rotate_flg = false;
-
-                        initial_flg = true;
-
-                        trigger_obj.SetActive(false);
-                    }
-                    else if (now_radian <= -90)
-                    {
-                        down_flg = true;
-
-                        rotate_flg = false;
-
-                        initial_flg = true;
-
-                        trigger_obj.SetActive(false);
-                    }
-
-                    //保存
-                    old_radian = now_radian;
-                }
+                down_flg = true;
+                rotate_flg = false;
+            }
+            else if (lsv < -deadzone)
+            {
+                
+                up_flg = true;
+                rotate_flg = false;
             }
             else if (lsh == 0 && lsv == 0)
             {

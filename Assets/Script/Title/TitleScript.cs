@@ -8,7 +8,7 @@ public class TitleScript : MonoBehaviour
 {
     private Shutter shutter;
 
-    private bool button_flg = false;
+    private bool button_flg = true;
 
     public VideoPlayer video_player;
 
@@ -49,7 +49,7 @@ public class TitleScript : MonoBehaviour
 
         if (button_flg)
         {
-            if (Input.GetKeyDown("joystick button 0"))
+            if (Input.anyKeyDown)//("joystick button 0"))
             {
                 button_flg = false;
                

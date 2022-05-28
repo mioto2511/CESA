@@ -23,6 +23,8 @@ public class ClearEffect : MonoBehaviour
 
     private MoveCamera move_camera;
 
+    public float chroma;
+
     private void Awake()
     {
         video_player.loopPointReached += FinishPlayingVideo;
@@ -88,7 +90,7 @@ public class ClearEffect : MonoBehaviour
     {
         //Debug.Log("a");
         Material mat = this.gameObject.GetComponent<SpriteRenderer>().material;
-        mat.SetFloat("_Near", 0.8f);
+        mat.SetFloat("_Near", chroma);
 
         move_camera.zoom_flg = true;
     }
