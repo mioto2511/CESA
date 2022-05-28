@@ -24,13 +24,13 @@ public class Wall_stop : MonoBehaviour
         if (isstop)
         {
             
-            move.move_flg = false;
+            
             player.transform.parent = transform.root;
         }
-        else if (!isstop)
-        {
-            move.move_flg = true;
-        }
+        //else if (!isstop)
+        //{
+           
+        //}
 
         if (RotateRoom.instance.room_hit)
         {
@@ -50,6 +50,7 @@ public class Wall_stop : MonoBehaviour
         {    
             player_Localpos = player.GetComponent<Player_Localpos>();
             player_Localpos.Wall_stop = true;
+            move.move_flg = false;
             isstop = true;
             Debug.Log("stop");
         }
@@ -60,7 +61,8 @@ public class Wall_stop : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             player_Localpos = player.GetComponent<Player_Localpos>();
-            player_Localpos.Wall_stop = true;
+            player_Localpos.Wall_stop = false;
+            move.move_flg = true;
             isstop = false;
             player.transform.parent = null;
         }
