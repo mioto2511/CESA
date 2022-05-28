@@ -31,6 +31,7 @@ public class Player_anim : MonoBehaviour
         else if (autoPlayerMove.move_flg == false)
         {
             animator.SetBool("move_player", false);
+            Debug.Log(autoPlayerMove.move_flg);
         }
         if (playerFall.fall_flg == true)
         {
