@@ -52,23 +52,9 @@ public class AutoPlayerMove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Debug.Log(move_flg);
         playerFall = move_check.GetComponent<PlayerFall>();
-        if (to_goal)
-        {
-            Vector3 p_pos = this.transform.position;
-            Vector3 t_pos = target.transform.position;
-
-            //ƒS[ƒ‹‚æ‚è‰E‚È‚ç¶Œü‚«‚É
-            if(p_pos.x > t_pos.x)
-            {
-                right_f = false;
-            }
-            else if(p_pos.x < t_pos.x)
-            {
-                right_f = true;
-            }
-        }
-        else if (move_flg)
+        if (move_flg)
         {
             float xSpeed = 0.0f;
 
