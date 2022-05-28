@@ -23,6 +23,8 @@ public class ClearEffect : MonoBehaviour
 
     private MoveCamera move_camera;
 
+    private GameObject goal_pt;
+
     private void Awake()
     {
         video_player.loopPointReached += FinishPlayingVideo;
@@ -48,7 +50,7 @@ public class ClearEffect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        goal_pt = transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -62,9 +64,11 @@ public class ClearEffect : MonoBehaviour
             move_flg = true;
 
             //親の透明化
-            Color color = parent.GetComponent<SpriteRenderer>().material.color;
-            color.a = 0;
-            parent.GetComponent<SpriteRenderer>().material.color = color;
+            Material mat = parent.gameObject.GetComponent<SpriteRenderer>().material;
+            mat.SetFloat("_alpha",0);
+
+            // 取得後パーティクル消滅
+            Destroy(goal_pt);
         }
 
         //プレイヤーへ
