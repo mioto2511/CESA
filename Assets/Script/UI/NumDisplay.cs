@@ -47,21 +47,21 @@ public class NumDisplay : MonoBehaviour
 
             if(color == 0)
             {
-                GameObject obj = Instantiate(num_w_obj[ten], new Vector3(parent_pos.x-0.4f, parent_pos.y, parent_pos.z), Quaternion.identity, parent);
+                GameObject obj = Instantiate(num_w_obj[ten], new Vector3(parent_pos.x-0.25f, parent_pos.y, parent_pos.z), Quaternion.identity, parent);
                 obj.transform.localScale = new Vector3(size * 0.7f, size * 0.7f, 1);
                 save.Add(obj);
 
-                GameObject obj2 = Instantiate(num_w_obj[one], new Vector3(parent_pos.x +0.4f, parent_pos.y, parent_pos.z), Quaternion.identity, parent);
+                GameObject obj2 = Instantiate(num_w_obj[one], new Vector3(parent_pos.x +0.25f, parent_pos.y, parent_pos.z), Quaternion.identity, parent);
                 obj2.transform.localScale = new Vector3(size * 0.7f, size * 0.7f, 1);
                 save.Add(obj2);
             }
             else
             {
-                GameObject obj = Instantiate(num_r_obj[ten], new Vector3(parent_pos.x - 0.4f, parent_pos.y, parent_pos.z), Quaternion.identity, parent);
+                GameObject obj = Instantiate(num_r_obj[ten], new Vector3(parent_pos.x - 0.25f, parent_pos.y, parent_pos.z), Quaternion.identity, parent);
                 obj.transform.localScale = new Vector3(size*0.7f, size * 0.7f, 1);
                 save.Add(obj);
 
-                GameObject obj2 = Instantiate(num_r_obj[one], new Vector3(parent_pos.x + 0.4f, parent_pos.y, parent_pos.z), Quaternion.identity, parent);
+                GameObject obj2 = Instantiate(num_r_obj[one], new Vector3(parent_pos.x + 0.25f, parent_pos.y, parent_pos.z), Quaternion.identity, parent);
                 obj2.transform.localScale = new Vector3(size * 0.7f, size * 0.7f, 1);
                 save.Add(obj2);
             }         

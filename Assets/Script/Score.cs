@@ -59,7 +59,7 @@ public class Score : MonoBehaviour
     void Start()
     {
         //現在のworld_scoreを呼び出す
-        world_score = PlayerPrefs.GetInt("WORLD" + world_num + "_SCORE", 0);
+        world_score = PlayerPrefs.GetInt("WORLD_SCORE", 0);
 
         //現在のstage_scoreを呼び出す
         stage_score = PlayerPrefs.GetInt("WORLD"+world_num+"_STAGE"+stage_num, 0);
@@ -142,14 +142,14 @@ public class Score : MonoBehaviour
             }
 
             //ワールド解放
-            //if(world_score>= release_score)
-            //{
-            //    goal_flg.scene = 2;
-            //}
+            if (world_score >= release_score)
+            {
+                goal_flg.scene = 2;
+            }
 
             //セーブ
             PlayerPrefs.SetInt("WORLD" + world_num + "_STAGE" + stage_num, stage_score);
-            PlayerPrefs.SetInt("WORLD" + world_num + "_SCORE", world_score);
+            PlayerPrefs.SetInt("WORLD_SCORE", world_score);
             PlayerPrefs.Save();
         }
     }

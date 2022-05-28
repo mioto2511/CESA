@@ -8,7 +8,7 @@ public class TitleScript : MonoBehaviour
 {
     private Shutter shutter;
 
-    private bool button_flg = true;
+    private bool button_flg = false;
 
     public VideoPlayer video_player;
 
@@ -68,5 +68,6 @@ public class TitleScript : MonoBehaviour
     public void PlayLoop()
     {
         video_player.Play();
+        button_flg = true;
     }
 }

@@ -8,7 +8,7 @@ public class CuesorManager : MonoBehaviour
 {
     [Header("ワールドマップ")] public GameObject[] movePoint;
 
-    [Header("拡大")] public float up_size = 0.2f;
+    [Header("拡大")] public float up_size = 0.19f;
 
     private GameObject kari;
 
