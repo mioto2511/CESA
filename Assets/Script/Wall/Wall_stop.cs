@@ -9,7 +9,7 @@ public class Wall_stop : MonoBehaviour
     private bool isSE;
     public GameObject player;
     private AutoPlayerMove move;
-
+    Player_Localpos player_Localpos;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +23,7 @@ public class Wall_stop : MonoBehaviour
     {
         if (isstop)
         {
+            
             move.move_flg = false;
             player.transform.parent = transform.root;
         }
@@ -46,7 +47,9 @@ public class Wall_stop : MonoBehaviour
     void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
-        {
+        {    
+            player_Localpos = player.GetComponent<Player_Localpos>();
+            player_Localpos.Wall_stop = true;
             isstop = true;
             Debug.Log("stop");
         }
@@ -56,7 +59,10 @@ public class Wall_stop : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            player_Localpos = player.GetComponent<Player_Localpos>();
+            player_Localpos.Wall_stop = true;
             isstop = false;
+            player.transform.parent = null;
         }
     }
 

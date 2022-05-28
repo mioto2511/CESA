@@ -30,6 +30,10 @@ public class AutoPlayerMove : MonoBehaviour
     //ゴール
     private GameObject target;
 
+    PlayerFall playerFall;
+
+    private GameObject move_check;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,11 +44,15 @@ public class AutoPlayerMove : MonoBehaviour
         tf_s = transform.localScale;
 
         isSlip = false;
+
+        move_check = GameObject.Find("BoxTrigger");
     }
 
+    
     // Update is called once per frame
     void FixedUpdate()
     {
+        playerFall = move_check.GetComponent<PlayerFall>();
         if (to_goal)
         {
             Vector3 p_pos = this.transform.position;
@@ -75,24 +83,25 @@ public class AutoPlayerMove : MonoBehaviour
             {
                 right_f = !right_f;
             }
+            if (playerFall.fall_flg == false)
+            {                 //右向き
+                if (right_f)
+                {
+                    //進行方向
+                    xSpeed = speed;
+                    //向き
+                    transform.localScale = new Vector3(tf_s.x, tf_s.y, 1);
+                }
+                //左向き
+                else
+                {
+                    xSpeed = -speed;
+                    transform.localScale = new Vector3(-tf_s.x, tf_s.y, 1);
+                }
 
-            //右向き
-            if (right_f)
-            {
-                //進行方向
-                xSpeed = speed;
-                //向き
-                transform.localScale = new Vector3(tf_s.x, tf_s.y, 1);
+                //代入
+                rb.velocity = new Vector2(xSpeed, rb.velocity.y);
             }
-            //左向き
-            else
-            {
-                xSpeed = -speed;
-                transform.localScale = new Vector3(-tf_s.x, tf_s.y, 1);
-            }
-
-            //代入
-            rb.velocity = new Vector2(xSpeed, rb.velocity.y);
         }
         
     }

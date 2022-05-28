@@ -2049,10 +2049,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6862678330080957260, guid: 73b0e38ef0bc1b04e8fafdd54102d45d, type: 3}
-      propertyPath: eventSystem
+    - target: {fileID: 3216331232441121590, guid: 73b0e38ef0bc1b04e8fafdd54102d45d, type: 3}
+      propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 7084086836164767929}
+      objectReference: {fileID: 1981428334950152956}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73b0e38ef0bc1b04e8fafdd54102d45d, type: 3}
 --- !u!1 &668495720
@@ -14063,6 +14063,9 @@ GameObject:
   - component: {fileID: 6622152424182201197}
   - component: {fileID: 6622152424182201191}
   - component: {fileID: 6622152424182201200}
+  - component: {fileID: 6622152424182201201}
+  - component: {fileID: 6622152424182201203}
+  - component: {fileID: 6622152424182201202}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -14083,6 +14086,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button_flg: 1
+--- !u!114 &6622152424182201201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6622152424182201199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1827cea02e863de49955a51e46d05b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Wall_stop: 0
+--- !u!95 &6622152424182201202
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6622152424182201199}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc96b078d39cda145bdbec0f8d31ebf9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6622152424182201203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6622152424182201199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9c7eca009a8564c86adc98c5ec9067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6653135727810994795
 Transform:
   m_ObjectHideFlags: 0
@@ -15461,7 +15508,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 76e22418fb8282f4dbb0ed0a4bbfc2f1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
