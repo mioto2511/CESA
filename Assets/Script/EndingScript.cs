@@ -7,12 +7,19 @@ public class EndingScript : MonoBehaviour
 {
     public VideoPlayer video_player;
 
+    private bool play_flg = true;
+
 
     private void Awake()
     {
         video_player.loopPointReached += FinishPlayingVideo;
 
+        video_player.prepareCompleted += PrepareCompleted;
+
         video_player.Prepare();
+
+        Material mat = this.gameObject.GetComponent<SpriteRenderer>().material;
+        mat.SetFloat("_Near", 2);
     }
     // Start is called before the first frame update
     void Start()
@@ -23,6 +30,11 @@ public class EndingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (play_flg)
+        //{
+        //    video_player.started += OnMovieStarted;
+        //    video_player.Play();
+        //}
         //if (ef_flg)
         //{
         //    video_player.started += OnMovieStarted;
@@ -37,6 +49,13 @@ public class EndingScript : MonoBehaviour
         //}
     }
 
+    void PrepareCompleted(VideoPlayer vp)
+    {
+        vp.prepareCompleted -= PrepareCompleted;
+        video_player.started += OnMovieStarted;
+        vp.Play();
+    }
+
     void OnMovieStarted(VideoPlayer vp)
     {
         //Debug.Log("a");
@@ -44,6 +63,9 @@ public class EndingScript : MonoBehaviour
         //mat.SetFloat("_Near", chroma);
 
         //move_camera.zoom_flg = true;
+        Material mat = this.gameObject.GetComponent<SpriteRenderer>().material;
+        mat.SetFloat("_Near", 0);
+        play_flg = false;
     }
 
     public void FinishPlayingVideo(VideoPlayer vp)
