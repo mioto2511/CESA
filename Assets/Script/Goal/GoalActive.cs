@@ -18,6 +18,8 @@ public class GoalActive : MonoBehaviour
 
     public bool goal_active = false;
 
+    private GameObject goal_part;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,8 @@ public class GoalActive : MonoBehaviour
 
         GameObject p = GameObject.Find("Player");
         auto_player_move = p.GetComponent<AutoPlayerMove>();
+
+        goal_part = transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -77,9 +81,10 @@ public class GoalActive : MonoBehaviour
 
                 //プレイヤーがゴールへ向かう
                 //auto_player_move.to_goal = true;
-            }
 
+                // Goalの部屋のパーティクルをgoal_objのパーティクルに切り替えるため消す
+                Destroy(goal_part);
+            }
         }
-        
     }
 }
