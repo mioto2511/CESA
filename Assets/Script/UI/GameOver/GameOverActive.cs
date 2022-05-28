@@ -23,7 +23,7 @@ public class GameOverActive : MonoBehaviour
     void Start()
     {
         // ボタンコンポーネントの取得
-        b1 = GameObject.Find("/Canvas/GameoverUI/Button4").GetComponent<Button>();
+        b1 = GameObject.Find("/Canvas/GameoverUI/Frame (1)/Button4").GetComponent<Button>();
 
         //リザルト背景を消す
         over_ui.SetActive(false);

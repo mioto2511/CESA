@@ -8,7 +8,7 @@ public class GoalFlg : MonoBehaviour
 {
     public bool goal_flg = false;
 
-    private bool button_flg = false;
+    public bool button_flg = false;
 
     private bool goal_se = false;
 
@@ -132,7 +132,7 @@ public class GoalFlg : MonoBehaviour
     //’x‰„ˆ—
     private void DelayMethod()
     {
-        button_flg = true;
+        //button_flg = true;
 
         auto_player.move_flg = false;
     }
