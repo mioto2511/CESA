@@ -49,7 +49,7 @@ public class TitleScript : MonoBehaviour
 
         if (button_flg)
         {
-            if (Input.GetKeyDown("joystick button 0"))
+            if (Input.anyKeyDown)//("joystick button 0"))
             {
                 button_flg = false;
                
@@ -68,5 +68,6 @@ public class TitleScript : MonoBehaviour
     public void PlayLoop()
     {
         video_player.Play();
+        button_flg = true;
     }
 }

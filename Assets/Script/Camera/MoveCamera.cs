@@ -88,7 +88,7 @@ public class MoveCamera : MonoBehaviour
             //pos.x = cplayer.transform.position.x;
             //pos.y = GameObject.Find(PlayerPosition.instance.pPosition).transform.position.y;
             pos = cplayer.transform.position;
-            transform.position = new Vector3(pos.x, pos.y + 1.86f, -10);
+            transform.position = new Vector3(pos.x, pos.y + 1.86f, -100);
 
             if (camerazoom == 1)
             {
@@ -115,7 +115,7 @@ public class MoveCamera : MonoBehaviour
         if (zoom_flg)
         {
             pos = cplayer.transform.position;
-            transform.position = new Vector3(pos.x, pos.y, -10);
+            transform.position = new Vector3(pos.x, pos.y, -100);
 
             cam.orthographicSize = cam.orthographicSize - speed;
 

@@ -33,7 +33,7 @@ public class WorldManager : MonoBehaviour
     void Start()
     {
         //Œ»İ‚Ìworld_num‚ğŒÄ‚Ño‚·
-        world_score = PlayerPrefs.GetInt("WORLD" + world_num + "_SCORE", 0);
+        world_score = PlayerPrefs.GetInt("WORLD_SCORE", 0);
 
         //q‚ğæ“¾
         chain = this.transform.GetChild(0).gameObject;
