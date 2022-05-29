@@ -59,6 +59,10 @@ public class GoalActive : MonoBehaviour
 
                 //プレイヤーがゴールへ向かう
                 //auto_player_move.to_goal = true;
+
+                // Goalの部屋のパーティクルをgoal_objのパーティクルに切り替えるため消す
+                Destroy(goal_part);
+                Debug.Log(goal_part);
             }
             else if (this.tag == "LDrive")
             {
@@ -84,6 +88,7 @@ public class GoalActive : MonoBehaviour
 
                 // Goalの部屋のパーティクルをgoal_objのパーティクルに切り替えるため消す
                 Destroy(goal_part);
+                Debug.Log(goal_part);
             }
         }
     }
