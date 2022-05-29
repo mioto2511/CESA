@@ -7,15 +7,21 @@ public class WallEffect : MonoBehaviour
 {
     public VideoPlayer video_player;
 
+    private int count= 0;
+    bool flg = true;
+
+    public float chroma;
+
     private void Awake()
     {
+        Material mat = this.gameObject.GetComponent<SpriteRenderer>().material;
+        mat.SetFloat("_Near", 2);
 
-        video_player.prepareCompleted += PrepareCompleted;
+        //video_player.prepareCompleted += PrepareCompleted;
 
         video_player.Prepare();
 
-        Material mat = this.gameObject.GetComponent<SpriteRenderer>().material;
-        mat.SetFloat("_Near", 2);
+        
     }
 
     // Start is called before the first frame update
@@ -28,16 +34,28 @@ public class WallEffect : MonoBehaviour
     void Update()
     {
         
+
+        if (flg)
+        {
+            count++;
+            if(count >= 50)
+            {
+                video_player.started += OnMovieStarted;
+                video_player.Play();
+                flg = false;
+            }
+            
+        }
     }
     void PrepareCompleted(VideoPlayer vp)
     {
-        vp.prepareCompleted -= PrepareCompleted;
+        //vp.prepareCompleted -= PrepareCompleted;
         video_player.started += OnMovieStarted;
         vp.Play();
     }
     void OnMovieStarted(VideoPlayer vp)
     {
         Material mat = this.gameObject.GetComponent<SpriteRenderer>().material;
-        mat.SetFloat("_Near", 0.78f);
+        mat.SetFloat("_Near", chroma);
     }
 }
