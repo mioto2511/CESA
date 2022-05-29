@@ -24,6 +24,8 @@ public class TitleStart : MonoBehaviour
 
         //GameObject t = GameObject.Find("TitleStart");
         //title_script = t.GetComponent<TitleScript>();
+
+        SaveManager.Load();
     }
 
     private void Update()

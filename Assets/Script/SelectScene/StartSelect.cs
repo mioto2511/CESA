@@ -15,7 +15,8 @@ public class StartSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        now_stage = PlayerPrefs.GetInt("OLDSTAGE", 1);
+        //now_stage = PlayerPrefs.GetInt("OLDSTAGE", 1);
+        now_stage = SaveManager.save.OLD_STAGE;
 
         select_rotate = this.GetComponent<SelectRotate>();
     }
