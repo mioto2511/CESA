@@ -144,7 +144,7 @@ public class Score : MonoBehaviour
             //ワールド解放
             if (world_score >= release_score)
             {
-                goal_flg.scene = 2;
+                goal_flg.scene = 1;
             }
 
             //セーブ

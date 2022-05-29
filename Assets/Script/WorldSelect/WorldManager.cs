@@ -17,7 +17,7 @@ public class WorldManager : MonoBehaviour
 
     [Header("ワールド解放スコア")] public int conditions_score;
 
-    [Header("ワールド最大スコア")] public int max_score;
+    //[Header("ワールド最大スコア")] public int max_score;
 
     //現在のワールドのスコア
     private int world_score;
