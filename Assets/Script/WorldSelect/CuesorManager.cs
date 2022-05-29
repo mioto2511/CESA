@@ -25,7 +25,7 @@ public class CuesorManager : MonoBehaviour
 
     private bool stick_flg = true;
 
-    private bool button_flg = true;
+    public bool button_flg = false;
 
     public LoopFrame loop_frame;
 
@@ -60,6 +60,8 @@ public class CuesorManager : MonoBehaviour
 
                 //動画ループ停止
                 loop_frame.loop_flg = false;
+
+                SE();
 
                 change_scene.NextScene(movePoint[nowPoint].GetComponent<WorldManager>().World_No);
 
@@ -151,5 +153,14 @@ public class CuesorManager : MonoBehaviour
     private void DelayMethod()
     {
         stick_flg = true;
+    }
+
+    private void SE()
+    {
+        // BGM止める
+        BGMManager.Instance.Stop(BGMPath.BGM_004);
+        // タイトル遷移SE
+        Debug.Log("worldse");
+        SEManager.Instance.Play(SEPath.SE_009, volumeRate: 0.5f);
     }
 }

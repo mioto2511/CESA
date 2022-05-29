@@ -6,22 +6,13 @@ public class SaveManager : MonoBehaviour
     static string filePath;
     public static SaveData save;
 
-    //void Awake()
-    //{
-    //    Debug.Log("w");
-    //    filePath = Application.dataPath + "/.savedata.json";
-    //    Debug.Log("a");
-    //    save = new SaveData();
-
-    //}
-
     // 省略。以下のSave関数やLoad関数を呼び出して使用すること
 
     public static void Save()
     {
         
         string json = JsonUtility.ToJson(save);
-        Debug.Log(json);
+        //Debug.Log(json);
         StreamWriter streamWriter = new StreamWriter(filePath);
         streamWriter.Write(json); 
         streamWriter.Flush();

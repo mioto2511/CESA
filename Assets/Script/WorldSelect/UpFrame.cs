@@ -14,11 +14,15 @@ public class UpFrame : MonoBehaviour
 
     public bool end_flg = false;
 
+   
+
     private void Awake()
     {
         //video_player.loopPointReached += FinishPlayingVideo;
 
         l_image = GameObject.Find("Canvas/Frame");
+
+        
 
         //éñëOÉçÅ[Éh
         video_player.Prepare();

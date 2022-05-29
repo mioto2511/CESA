@@ -10,13 +10,13 @@ public class DownFrame : MonoBehaviour
 
     private GameObject l_image;
 
-    public static TutoiralStart instance;
-
     private LoopFrame loop_frame;
 
     public bool play_flg = false;
 
     public RawImage image;
+
+    int count = 0;
 
     private void Awake()
     {
@@ -40,11 +40,18 @@ public class DownFrame : MonoBehaviour
     {
         if (play_flg)
         {
-            play_flg = false;
+            count++;
 
-            video_player.started += OnMovieStarted;
-            video_player.Play();
+            if (count > 50)
+            {
+                play_flg = false;
+
+                video_player.started += OnMovieStarted;
+                video_player.Play();
+            }
         }
+
+        
     }
 
     void OnMovieStarted(VideoPlayer vp)

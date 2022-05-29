@@ -90,6 +90,7 @@ public class Score : MonoBehaviour
         num_display2 = m.GetComponent<NumDisplay>();
 
         num_display2.GenerateUINum(max_score, 0.028f, 0.4f, 0);
+        //num_display1.GenerateUINum(score, 0.028f, 0.6f, 0);
     }
 
     // Update is called once per frame

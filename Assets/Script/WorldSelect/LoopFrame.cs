@@ -20,12 +20,17 @@ public class LoopFrame : MonoBehaviour
 
     private GameObject s_image;
 
+    private CuesorManager cuesor_manager;
+
     private void Awake()
     {
         s_image = GameObject.Find("Canvas/Start");
 
         e_image = GameObject.Find("Canvas/End");
         up_frame = e_image.GetComponent<UpFrame>();
+
+        GameObject c = GameObject.Find("Cursor");
+        cuesor_manager = c.GetComponent<CuesorManager>();
 
 
         //éñëOÉçÅ[Éh
@@ -56,5 +61,6 @@ public class LoopFrame : MonoBehaviour
         //é¿ëÃâª
         image.enabled = true;
         s_image.SetActive(false);
+        cuesor_manager.button_flg = true;
     }
 }
