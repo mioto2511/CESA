@@ -16,40 +16,48 @@ public class TitleScript : MonoBehaviour
 
     private int count = 0;
 
+    public bool loop_flg = false;
+
+    public GameObject image;
+
     // Start is called before the first frame update
     void Awake()
     {
         GameObject T = GameObject.Find("ShutterTrigger"); // オブジェクトを探す
         shutter = T.GetComponent<Shutter>();
 
-        
-    }
+        video_player.Prepare();
 
-    private void Start()
-    {
-        
+        Material mat = this.gameObject.GetComponent<SpriteRenderer>().material;
+        mat.SetFloat("_Near", 2);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (start_flg)
+        //if (start_flg)
+        //{
+        //    count++;
+
+        //    if(count >= 8)
+        //    {
+        //        start_flg = false;
+
+        //        video_player.Pause();
+        //    }
+
+
+        //}
+
+        if (loop_flg)
         {
-            count++;
-
-            if(count >= 8)
-            {
-                start_flg = false;
-
-                video_player.Pause();
-            }
-
-            
+            video_player.started += OnMovieStarted;
+            video_player.Play();
         }
 
         if (button_flg)
         {
-            if (Input.GetKeyDown("joystick button 0"))
+            if (Input.anyKeyDown)//("joystick button 0"))
             {
                 button_flg = false;
                
@@ -65,8 +73,17 @@ public class TitleScript : MonoBehaviour
 
     }
 
-    public void PlayLoop()
+    void OnMovieStarted(VideoPlayer vp)
     {
-        video_player.Play();
+        Material mat = this.gameObject.GetComponent<SpriteRenderer>().material;
+        mat.SetFloat("_Near", 0);
+        button_flg = true;
+        image.SetActive(false);
     }
+
+    //public void PlayLoop()
+    //{
+    //    video_player.Play();
+        
+    //}
 }

@@ -17,7 +17,7 @@ public class WorldManager : MonoBehaviour
 
     [Header("ワールド解放スコア")] public int conditions_score;
 
-    [Header("ワールド最大スコア")] public int max_score;
+    //[Header("ワールド最大スコア")] public int max_score;
 
     //現在のワールドのスコア
     private int world_score;
@@ -33,7 +33,7 @@ public class WorldManager : MonoBehaviour
     void Start()
     {
         //現在のworld_numを呼び出す
-        world_score = PlayerPrefs.GetInt("WORLD" + world_num + "_SCORE", 0);
+        world_score = PlayerPrefs.GetInt("WORLD_SCORE", 0);
 
         //子を取得
         chain = this.transform.GetChild(0).gameObject;

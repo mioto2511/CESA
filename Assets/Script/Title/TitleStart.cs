@@ -15,10 +15,30 @@ public class TitleStart : MonoBehaviour
     {
         video_player.loopPointReached += FinishPlayingVideo;
 
+        video_player.prepareCompleted += PrepareCompleted;
+
+        video_player.Prepare();
+
+        Material mat = this.gameObject.GetComponent<SpriteRenderer>().material;
+        mat.SetFloat("_Near", 2);
+
         //GameObject t = GameObject.Find("TitleStart");
         //title_script = t.GetComponent<TitleScript>();
     }
- 
+
+    void PrepareCompleted(VideoPlayer vp)
+    {
+        vp.prepareCompleted -= PrepareCompleted;
+        video_player.started += OnMovieStarted;
+        vp.Play();
+    }
+
+    void OnMovieStarted(VideoPlayer vp)
+    {
+        Material mat = this.gameObject.GetComponent<SpriteRenderer>().material;
+        mat.SetFloat("_Near", 0);
+        
+    }
 
     public void FinishPlayingVideo(VideoPlayer vp)
     {
@@ -27,9 +47,10 @@ public class TitleStart : MonoBehaviour
         //Invoke("DelayMethod", 0.065f);
         //this.gameObject.SetActive(false);
 
-        title_script.PlayLoop();
+        //title_script.PlayLoop();
 
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
+        title_script.loop_flg = true;
     }
 
     //íxâÑèàóù

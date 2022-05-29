@@ -37,7 +37,7 @@ public class AutoPlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.Find("Goal 1/DriveGear");
+        //target = GameObject.Find("Goal/DriveGear");
 
         rb = GetComponent<Rigidbody2D>();
 
@@ -52,7 +52,6 @@ public class AutoPlayerMove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.Log(move_flg);
         playerFall = move_check.GetComponent<PlayerFall>();
         if (move_flg)
         {

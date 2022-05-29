@@ -7,8 +7,8 @@ using KanKikuchi.AudioManager;
 public class Score : MonoBehaviour
 {
     // UI
-    private GameObject mid_obj;
-    private GameObject max_obj;
+    //private GameObject mid_obj;
+    //private GameObject max_obj;
 
     [Header("現在のスコア")] public int score;
 
@@ -21,6 +21,13 @@ public class Score : MonoBehaviour
     [Header("ステージの番号")] public int stage_num;
 
     [Header("ワールドの解放スコア")] public int release_score;
+
+    public GameObject one_start;
+    public GameObject one_loop;
+    public GameObject two_start;
+    public GameObject two_loop;
+    public GameObject three_start;
+    public GameObject three_loop;
 
     private int stage_score;
 
@@ -44,15 +51,15 @@ public class Score : MonoBehaviour
             instance = this;
         }
 
-        mid_obj = GameObject.Find("mid");
-        max_obj = GameObject.Find("max");
+        //mid_obj = GameObject.Find("mid");
+        //max_obj = GameObject.Find("max");
     }
 
     // Start is called before the first frame update
     void Start()
     {
         //現在のworld_scoreを呼び出す
-        world_score = PlayerPrefs.GetInt("WORLD" + world_num + "_SCORE", 0);
+        world_score = PlayerPrefs.GetInt("WORLD_SCORE", 0);
 
         //現在のstage_scoreを呼び出す
         stage_score = PlayerPrefs.GetInt("WORLD"+world_num+"_STAGE"+stage_num, 0);
@@ -105,30 +112,26 @@ public class Score : MonoBehaviour
             //text_obj.SetActive(false);
 
             //はじめは星3
-            star = 3;
+            //star = 3;
 
-            //条件に達していないと星を減らす
-            if (score < max_score)
+            if(score >= max_score)
             {
-                max_obj.SetActive(false);
-                star -= 1;
+                three_start.SetActive(true);
+                three_loop.SetActive(true);
+                star = 3;
             }
-            if (score < mid_score)
+            else if (score >= mid_score)
             {
-                mid_obj.SetActive(false);
-                star -= 1;
+                two_start.SetActive(true);
+                two_loop.SetActive(true);
+                star = 2;
             }
-
-            //if (star >= 3)
-            //{
-            //    Debug.Log("3");
-            //    SEManager.Instance.Play(SEPath.SE_013);
-            //}
-            //else if (star <= 2)
-            //{
-            //    Debug.Log("2");
-            //    SEManager.Instance.Play(SEPath.SE_012);
-            //}
+            else
+            {
+                one_start.SetActive(true);
+                one_loop.SetActive(true);
+                star = 1;
+            }
 
             //スコア更新
             if (star > stage_score)
@@ -139,14 +142,14 @@ public class Score : MonoBehaviour
             }
 
             //ワールド解放
-            //if(world_score>= release_score)
-            //{
-            //    goal_flg.scene = 2;
-            //}
+            if (world_score >= release_score)
+            {
+                goal_flg.scene = 1;
+            }
 
             //セーブ
             PlayerPrefs.SetInt("WORLD" + world_num + "_STAGE" + stage_num, stage_score);
-            PlayerPrefs.SetInt("WORLD" + world_num + "_SCORE", world_score);
+            PlayerPrefs.SetInt("WORLD_SCORE", world_score);
             PlayerPrefs.Save();
         }
     }
