@@ -59,9 +59,7 @@ public class TutorialEnd : MonoBehaviour
         //実体化
         image.enabled = true;
         l_image.SetActive(false);
-    }
-    public void FinishPlayingVideo(VideoPlayer vp)
-    {
+
         //ポーズ出せる
         pause_active.button_flg = true;
 
@@ -70,6 +68,10 @@ public class TutorialEnd : MonoBehaviour
 
         //回転できる
         rotate_start.botton_flg = true;
+    }
+    public void FinishPlayingVideo(VideoPlayer vp)
+    {
+        
 
         this.gameObject.SetActive(false); 
     }

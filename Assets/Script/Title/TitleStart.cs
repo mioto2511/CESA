@@ -26,6 +26,14 @@ public class TitleStart : MonoBehaviour
         //title_script = t.GetComponent<TitleScript>();
     }
 
+    private void Update()
+    {
+        if (Input.anyKeyDown)//("joystick button 0"))
+        {
+            title_script.loop_flg = true;
+        }
+    }
+
     void PrepareCompleted(VideoPlayer vp)
     {
         vp.prepareCompleted -= PrepareCompleted;

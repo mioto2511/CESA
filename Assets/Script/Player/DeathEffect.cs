@@ -11,10 +11,6 @@ public class DeathEffect : MonoBehaviour
 
     private GameOverActive gameover_active;
 
-    private bool start_flg = true;
-
-    private int count = 0;
-
     private GameObject player;
 
     //ƒJƒ‰[

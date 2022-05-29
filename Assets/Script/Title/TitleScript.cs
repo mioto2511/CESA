@@ -8,7 +8,7 @@ public class TitleScript : MonoBehaviour
 {
     private Shutter shutter;
 
-    private bool button_flg = true;
+    private bool button_flg = false;
 
     public VideoPlayer video_player;
 
@@ -77,13 +77,21 @@ public class TitleScript : MonoBehaviour
     {
         Material mat = this.gameObject.GetComponent<SpriteRenderer>().material;
         mat.SetFloat("_Near", 0);
-        button_flg = true;
+        //button_flg = true;
         image.SetActive(false);
+
+        //’x‚ç‚¹‚Äˆ—‚·‚é‚à‚Ì
+        Invoke("DelayMethod", 0.25f);
+    }
+
+    private void DelayMethod()
+    {
+        button_flg = true;
     }
 
     //public void PlayLoop()
     //{
     //    video_player.Play();
-        
+
     //}
 }

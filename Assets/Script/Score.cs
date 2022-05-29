@@ -73,7 +73,7 @@ public class Score : MonoBehaviour
         GameObject m = GameObject.Find("MaxNum");
         num_display2 = m.GetComponent<NumDisplay>();
 
-        num_display2.GenerateUINum(max_score, 0.03f, 0);
+        num_display2.GenerateUINum(max_score, 0.028f,0.4f ,0);
     }
 
     // Update is called once per frame
@@ -97,7 +97,7 @@ public class Score : MonoBehaviour
             score = now_socre;
 
             num_display1.DestroyNum();
-            num_display1.GenerateUINum(score,0.03f,0);
+            num_display1.GenerateUINum(score,0.028f,0.6f,0);
         }
  
         //テキスト表示

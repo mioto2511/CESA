@@ -68,7 +68,7 @@ public class NumDisplay : MonoBehaviour
         }
     }
 
-    public void GenerateUINum(int num, float size,int color)
+    public void GenerateUINum(int num, float size,float haba,int color)
     {
         var parent = this.transform;
         Vector3 parent_pos = this.transform.position;
@@ -96,11 +96,11 @@ public class NumDisplay : MonoBehaviour
 
             if(color == 0)
             {
-                GameObject obj = Instantiate(uinum_w_obj[ten], new Vector3(parent_pos.x-0.4f, parent_pos.y, parent_pos.z), Quaternion.identity, parent);
+                GameObject obj = Instantiate(uinum_w_obj[ten], new Vector3(parent_pos.x-haba, parent_pos.y, parent_pos.z), Quaternion.identity, parent);
                 obj.transform.localScale = new Vector3(size, size, 1);
                 save.Add(obj);
 
-                GameObject obj2 = Instantiate(uinum_w_obj[one], new Vector3(parent_pos.x + 0.4f, parent_pos.y, parent_pos.z), Quaternion.identity, parent);
+                GameObject obj2 = Instantiate(uinum_w_obj[one], new Vector3(parent_pos.x + haba, parent_pos.y, parent_pos.z), Quaternion.identity, parent);
                 obj2.transform.localScale = new Vector3(size, size, 1);
                 save.Add(obj2);
             }

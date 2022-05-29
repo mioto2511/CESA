@@ -10,6 +10,8 @@ public class PlayerFall : MonoBehaviour
 
 	private AutoPlayerMove auto_player;
 
+	private FallEffect fall_effect;
+
 	//レイの開始地点
 	[SerializeField]
 	private Transform ray_position;
@@ -48,6 +50,9 @@ public class PlayerFall : MonoBehaviour
 		GameObject p = GameObject.Find("Player");
 		auto_player = p.GetComponent<AutoPlayerMove>();
 
+		GameObject e = GameObject.Find("FallEf");
+		fall_effect = e.GetComponent<FallEffect>();
+
 		//コライダーOFF
 		my_collider = this.GetComponent<Collider2D>();
 		my_collider.enabled = false;
@@ -82,6 +87,10 @@ public class PlayerFall : MonoBehaviour
 					BGMManager.Instance.Stop(BGMPath.BGM_001);
 					goal_trigger.ColliderSwitch(false);
 				}
+                else
+                {
+					fall_effect.ef_flg = true;
+				}
 
 				fall_flg = false;
 
@@ -101,6 +110,8 @@ public class PlayerFall : MonoBehaviour
 				count = 0;
 
 				auto_player.move_flg = true;
+
+				
 			}
 		}
 		else
