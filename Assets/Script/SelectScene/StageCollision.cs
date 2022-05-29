@@ -55,10 +55,42 @@ public class StageCollision : MonoBehaviour
         num_display2 = w.GetComponent<NumDisplay>();
 
         //åªç›ÇÃstage_numÇåƒÇ—èoÇ∑
-        now_stage_num = PlayerPrefs.GetInt("WORLD"+world_num, 1);
+        //now_stage_num = PlayerPrefs.GetInt("WORLD"+world_num, 1);
+
+        switch (world_num)
+        {
+            case 1:
+                now_stage_num = SaveManager.save.WORLD[0];
+                break;
+            case 2:
+                now_stage_num = SaveManager.save.WORLD[1];
+                break;
+            case 3:
+                now_stage_num = SaveManager.save.WORLD[2];
+                break;
+            case 4:
+                now_stage_num = SaveManager.save.WORLD[3];
+                break;
+        }
+        
 
         //åªç›ÇÃstage_scoreÇåƒÇ—èoÇ∑
-        stage_score = PlayerPrefs.GetInt("WORLD" + world_num + "_STAGE" + stage_num, 0);
+        //stage_score = PlayerPrefs.GetInt("WORLD" + world_num + "_STAGE" + stage_num, 0);
+        switch (world_num)
+        {
+            case 1:
+                Switch(1);
+                break;
+            case 2:
+                Switch(2);
+                break;
+            case 3:
+                Switch(3);
+                break;
+            case 4:
+                Switch(4);
+                break;
+        }
 
         min.GetComponent<Renderer>().material.color = Color.black;
         mid.GetComponent<Renderer>().material.color = Color.black;
@@ -142,6 +174,94 @@ public class StageCollision : MonoBehaviour
     private void DelayMethod()
     {
         mp4.SetActive(true);
+    }
+
+    private void Switch(int num)
+    {
+        if (num == 1)
+        {
+            switch (stage_num)
+            {
+                case 1:
+                    stage_score = SaveManager.save.WORLD1_STAGE[0];
+                    break;
+                case 2:
+                    stage_score = SaveManager.save.WORLD1_STAGE[1];
+                    break;
+                case 3:
+                    stage_score = SaveManager.save.WORLD1_STAGE[2];
+                    break;
+                case 4:
+                    stage_score = SaveManager.save.WORLD1_STAGE[3];
+                    break;
+                case 5:
+                    stage_score = SaveManager.save.WORLD1_STAGE[4];
+                    break;
+            }
+        }
+        if(num == 2)
+        {
+            switch (stage_num)
+            {
+                case 1:
+                    stage_score = SaveManager.save.WORLD2_STAGE[0];
+                    break;
+                case 2:
+                    stage_score = SaveManager.save.WORLD2_STAGE[1];
+                    break;
+                case 3:
+                    stage_score = SaveManager.save.WORLD2_STAGE[2];
+                    break;
+                case 4:
+                    stage_score = SaveManager.save.WORLD2_STAGE[3];
+                    break;
+                case 5:
+                    stage_score = SaveManager.save.WORLD2_STAGE[4];
+                    break;
+            }
+        }
+        if (num == 3)
+        {
+            switch (stage_num)
+            {
+                case 1:
+                    stage_score = SaveManager.save.WORLD3_STAGE[0];
+                    break;
+                case 2:
+                    stage_score = SaveManager.save.WORLD3_STAGE[1];
+                    break;
+                case 3:
+                    stage_score = SaveManager.save.WORLD3_STAGE[2];
+                    break;
+                case 4:
+                    stage_score = SaveManager.save.WORLD3_STAGE[3];
+                    break;
+                case 5:
+                    stage_score = SaveManager.save.WORLD3_STAGE[4];
+                    break;
+            }
+        }
+        if (num == 4)
+        {
+            switch (stage_num)
+            {
+                case 1:
+                    stage_score = SaveManager.save.WORLD4_STAGE[0];
+                    break;
+                case 2:
+                    stage_score = SaveManager.save.WORLD4_STAGE[1];
+                    break;
+                case 3:
+                    stage_score = SaveManager.save.WORLD4_STAGE[2];
+                    break;
+                case 4:
+                    stage_score = SaveManager.save.WORLD4_STAGE[3];
+                    break;
+                case 5:
+                    stage_score = SaveManager.save.WORLD4_STAGE[4];
+                    break;
+            }
+        }
     }
 
 

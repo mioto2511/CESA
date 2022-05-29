@@ -59,10 +59,26 @@ public class Score : MonoBehaviour
     void Start()
     {
         //現在のworld_scoreを呼び出す
-        world_score = PlayerPrefs.GetInt("WORLD_SCORE", 0);
+        //world_score = PlayerPrefs.GetInt("WORLD_SCORE", 0);
+        world_score = SaveManager.save.WORLD_SCORE;
 
         //現在のstage_scoreを呼び出す
-        stage_score = PlayerPrefs.GetInt("WORLD"+world_num+"_STAGE"+stage_num, 0);
+        //stage_score = PlayerPrefs.GetInt("WORLD" + world_num + "_STAGE" + stage_num, 0);
+        switch (world_num)
+        {
+            case 1:
+                SwitchLoad(1);
+                break;
+            case 2:
+                SwitchLoad(2);
+                break;
+            case 3:
+                SwitchLoad(3);
+                break;
+            case 4:
+                SwitchLoad(4);
+                break;
+        }
 
         GameObject g = GameObject.Find("GoalTrigger");
         goal_flg = g.GetComponent<GoalFlg>();
@@ -73,7 +89,7 @@ public class Score : MonoBehaviour
         GameObject m = GameObject.Find("MaxNum");
         num_display2 = m.GetComponent<NumDisplay>();
 
-        num_display2.GenerateUINum(max_score, 0.028f,0.4f ,0);
+        num_display2.GenerateUINum(max_score, 0.028f, 0.4f, 0);
     }
 
     // Update is called once per frame
@@ -91,15 +107,15 @@ public class Score : MonoBehaviour
             now_socre++;
         }
 
-        if(score != now_socre)
+        if (score != now_socre)
         {
             //現在のスコアを代入
             score = now_socre;
 
             num_display1.DestroyNum();
-            num_display1.GenerateUINum(score,0.028f,0.6f,0);
+            num_display1.GenerateUINum(score, 0.028f, 0.6f, 0);
         }
- 
+
         //テキスト表示
         //text.text = score + "/" + max_score;
 
@@ -114,7 +130,7 @@ public class Score : MonoBehaviour
             //はじめは星3
             //star = 3;
 
-            if(score >= max_score)
+            if (score >= max_score)
             {
                 three_start.SetActive(true);
                 three_loop.SetActive(true);
@@ -148,9 +164,203 @@ public class Score : MonoBehaviour
             }
 
             //セーブ
-            PlayerPrefs.SetInt("WORLD" + world_num + "_STAGE" + stage_num, stage_score);
-            PlayerPrefs.SetInt("WORLD_SCORE", world_score);
-            PlayerPrefs.Save();
+            //PlayerPrefs.SetInt("WORLD" + world_num + "_STAGE" + stage_num, stage_score);
+            //PlayerPrefs.SetInt("WORLD_SCORE", world_score);
+            //PlayerPrefs.Save();
+
+            switch (world_num)
+            {
+                case 1:
+                    SwitchSave(1);
+                    break;
+                case 2:
+                    SwitchSave(2);
+                    break;
+                case 3:
+                    SwitchSave(3);
+                    break;
+                case 4:
+                    SwitchSave(4);
+                    break;
+            }
+            SaveManager.save.WORLD_SCORE = world_score;
+            SaveManager.Save();
+        }
+    }
+
+    private void SwitchLoad(int num)
+    {
+        if (num == 1)
+        {
+            switch (stage_num)
+            {
+                case 1:
+                    stage_score = SaveManager.save.WORLD1_STAGE[0];
+                    break;
+                case 2:
+                    stage_score = SaveManager.save.WORLD1_STAGE[1];
+                    break;
+                case 3:
+                    stage_score = SaveManager.save.WORLD1_STAGE[2];
+                    break;
+                case 4:
+                    stage_score = SaveManager.save.WORLD1_STAGE[3];
+                    break;
+                case 5:
+                    stage_score = SaveManager.save.WORLD1_STAGE[4];
+                    break;
+            }
+        }
+        if (num == 2)
+        {
+            switch (stage_num)
+            {
+                case 1:
+                    stage_score = SaveManager.save.WORLD2_STAGE[0];
+                    break;
+                case 2:
+                    stage_score = SaveManager.save.WORLD2_STAGE[1];
+                    break;
+                case 3:
+                    stage_score = SaveManager.save.WORLD2_STAGE[2];
+                    break;
+                case 4:
+                    stage_score = SaveManager.save.WORLD2_STAGE[3];
+                    break;
+                case 5:
+                    stage_score = SaveManager.save.WORLD2_STAGE[4];
+                    break;
+            }
+        }
+        if (num == 3)
+        {
+            switch (stage_num)
+            {
+                case 1:
+                    stage_score = SaveManager.save.WORLD3_STAGE[0];
+                    break;
+                case 2:
+                    stage_score = SaveManager.save.WORLD3_STAGE[1];
+                    break;
+                case 3:
+                    stage_score = SaveManager.save.WORLD3_STAGE[2];
+                    break;
+                case 4:
+                    stage_score = SaveManager.save.WORLD3_STAGE[3];
+                    break;
+                case 5:
+                    stage_score = SaveManager.save.WORLD3_STAGE[4];
+                    break;
+            }
+        }
+        if (num == 4)
+        {
+            switch (stage_num)
+            {
+                case 1:
+                    stage_score = SaveManager.save.WORLD4_STAGE[0];
+                    break;
+                case 2:
+                    stage_score = SaveManager.save.WORLD4_STAGE[1];
+                    break;
+                case 3:
+                    stage_score = SaveManager.save.WORLD4_STAGE[2];
+                    break;
+                case 4:
+                    stage_score = SaveManager.save.WORLD4_STAGE[3];
+                    break;
+                case 5:
+                    stage_score = SaveManager.save.WORLD4_STAGE[4];
+                    break;
+            }
+        }
+    }
+
+    private void SwitchSave(int num)
+    {
+        if (num == 1)
+        {
+            switch (stage_num)
+            {
+                case 1:
+                    SaveManager.save.WORLD1_STAGE[0] = stage_score;
+                    break;
+                case 2:
+                    SaveManager.save.WORLD1_STAGE[1] = stage_score;
+                    break;
+                case 3:
+                    SaveManager.save.WORLD1_STAGE[2] = stage_score;
+                    break;
+                case 4:
+                    SaveManager.save.WORLD1_STAGE[3] = stage_score;
+                    break;
+                case 5:
+                    SaveManager.save.WORLD1_STAGE[4] = stage_score;
+                    break;
+            }
+        }
+        if (num == 2)
+        {
+            switch (stage_num)
+            {
+                case 1:
+                    SaveManager.save.WORLD1_STAGE[0] = stage_score;
+                    break;
+                case 2:
+                    SaveManager.save.WORLD1_STAGE[1] = stage_score;
+                    break;
+                case 3:
+                    SaveManager.save.WORLD1_STAGE[2] = stage_score;
+                    break;
+                case 4:
+                    SaveManager.save.WORLD1_STAGE[3] = stage_score;
+                    break;
+                case 5:
+                    SaveManager.save.WORLD1_STAGE[4] = stage_score;
+                    break;
+            }
+        }
+        if (num == 3)
+        {
+            switch (stage_num)
+            {
+                case 1:
+                    SaveManager.save.WORLD1_STAGE[0] = stage_score;
+                    break;
+                case 2:
+                    SaveManager.save.WORLD1_STAGE[1] = stage_score;
+                    break;
+                case 3:
+                    SaveManager.save.WORLD1_STAGE[2] = stage_score;
+                    break;
+                case 4:
+                    SaveManager.save.WORLD1_STAGE[3] = stage_score;
+                    break;
+                case 5:
+                    SaveManager.save.WORLD1_STAGE[4] = stage_score;
+                    break;
+            }
+        }
+        if (num == 4)
+        {
+            switch (stage_num)
+            {
+                case 1:
+                    SaveManager.save.WORLD1_STAGE[0] = stage_score;
+                    break;
+                case 2:
+                    SaveManager.save.WORLD1_STAGE[1] = stage_score;
+                    break;
+                case 3:
+                    SaveManager.save.WORLD1_STAGE[2] = stage_score;
+                    break;
+                case 4:
+                    SaveManager.save.WORLD1_STAGE[3] = stage_score;
+                    break;
+                case 5:
+                    SaveManager.save.WORLD1_STAGE[4] = stage_score;
+                    break;
+            }
         }
     }
 }

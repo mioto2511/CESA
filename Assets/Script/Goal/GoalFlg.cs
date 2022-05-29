@@ -18,6 +18,7 @@ public class GoalFlg : MonoBehaviour
 
     [Header("現在のステージ番号")] public int stage_num = 1;
 
+
     //表示ui
     private GameObject clearUI;
 
@@ -96,32 +97,64 @@ public class GoalFlg : MonoBehaviour
 
                 //shutter.shutter_flg = true;
 
-                switch (world_num)
+                //int old_num = PlayerPrefs.GetInt("WORLD" + world_num, 1);
+                int old_num = SaveManager.save.OLD_STAGE;
+
+                if (old_num < stage_num+1)
                 {
-                    case 1:
-                        PlayerPrefs.SetInt("WORLD1", stage_num+1);
-                        break;
-                    case 2:
-                        PlayerPrefs.SetInt("WORLD2", stage_num + 1);
-                        break;
-                    case 3:
-                        PlayerPrefs.SetInt("WORLD3", stage_num + 1);
-                        break;
-                    case 4:
-                        PlayerPrefs.SetInt("WORLD4", stage_num + 1);
-                        break;
-                    case 5:
-                        PlayerPrefs.SetInt("WORLD5", stage_num + 1);
-                        break;
-                    case 6:
-                        PlayerPrefs.SetInt("WORLD6", stage_num + 1);
-                        break;
+                    //
+                    //PlayerPrefs.SetInt("WORLD"+world_num, stage_num + 1);
+                    switch (world_num) {
+                        case 1:
+                            SaveManager.save.WORLD[0] = stage_num + 1;
+                            SaveManager.Save();
+                            break;
+                        case 2:
+                            SaveManager.save.WORLD[1] = stage_num + 1;
+                            SaveManager.Save();
+                            break;
+                        case 3:
+                            SaveManager.save.WORLD[2] = stage_num + 1;
+                            SaveManager.Save();
+                            break;
+                        case 4:
+                            SaveManager.save.WORLD[3] = stage_num + 1;
+                            SaveManager.Save();
+                            break;
+                    }
+
+                    
                 }
 
-                //ステージ番号の保存
-                PlayerPrefs.SetInt("OLDSTAGE", stage_num);
+                //switch (world_num)
+                //{
+                //    case 1:
+                //        PlayerPrefs.SetInt("WORLD1", stage_num+1);
+                //        break;
+                //    case 2:
+                //        PlayerPrefs.SetInt("WORLD2", stage_num + 1);
+                //        break;
+                //    case 3:
+                //        PlayerPrefs.SetInt("WORLD3", stage_num + 1);
+                //        break;
+                //    case 4:
+                //        PlayerPrefs.SetInt("WORLD4", stage_num + 1);
+                //        break;
+                //    case 5:
+                //        PlayerPrefs.SetInt("WORLD5", stage_num + 1);
+                //        break;
+                //    case 6:
+                //        PlayerPrefs.SetInt("WORLD6", stage_num + 1);
+                //        break;
+                //}
 
-                PlayerPrefs.Save();
+                //ステージ番号の保存
+                //PlayerPrefs.SetInt("OLDSTAGE", stage_num);
+
+                SaveManager.save.OLD_STAGE = stage_num;
+                SaveManager.Save();
+
+                //PlayerPrefs.Save();
 
                 //change_scene.NextScene(scene);
                 Fade_Manager.FadeOut(scene);
