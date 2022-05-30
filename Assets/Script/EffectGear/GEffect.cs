@@ -26,7 +26,7 @@ public class GEffect : MonoBehaviour
         {
             if (other.CompareTag("RGear_Connect") || other.CompareTag("LGear_Connect"))
             {
-                Debug.Log("E");
+                //Debug.Log("E");
                 Instantiate(effectObject, this.transform.position, Quaternion.identity);
                 isEffect = false;
             }

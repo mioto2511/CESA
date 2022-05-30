@@ -78,7 +78,7 @@ public class RoomCollition : MonoBehaviour
 
             //•”‰®“¯m‚ª‚ ‚½‚Á‚½
             root_room.room_hit = true;
-            Debug.Log("hit");
+            //Debug.Log("hit");
 
 
             ////Ä‚Ñİ’u‚Å‚«‚é‚æ‚¤‚É‚·‚é
