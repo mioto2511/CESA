@@ -21,6 +21,7 @@ public static class SEPath{
 	public const string SE_021 = "SE/SE_021";
 	public const string SE_022 = "SE/SE_022";
 	public const string SE_023 = "SE/SE_023";
+	public const string SE_034 = "SE/SE_034";
 
 }
 
