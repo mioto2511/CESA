@@ -88,6 +88,9 @@ public class RotateRoom : MonoBehaviour
 
     public bool start_flg = true;
 
+    // playerのパーティクル
+    private Material player_prt;
+
     void Start()
     {
         rotate_start = this.GetComponent<RotateStart>();//付いているスクリプトを取得
@@ -109,7 +112,10 @@ public class RotateRoom : MonoBehaviour
         auto_player_move = player.GetComponent<AutoPlayerMove>();　//付いているスクリプトを取得
         acceleration = player.GetComponent<Acceleration>();//付いているスクリプトを取得
 
-        //cursor = GameObject.Find("SelectCursor"); //オブジェクトを探す
+        // playerについているパーティクル
+         // 部屋を回すAbuttonを押したときのパーティクルのマテリアル
+        GameObject prt = GameObject.Find("ParticleActive");
+        player_prt = prt.GetComponent<Renderer>().material;
 
         dtype = 2;
 
@@ -138,11 +144,6 @@ public class RotateRoom : MonoBehaviour
                 //boxの数とカウントが同じか以上なら
                 if (child_cnt >= this.transform.childCount)
                 {
-                    // SE
-                    //SEManager.Instance.Play(SEPath.SE_002);
-
-                    Debug.Log("a");
-
                     room_hit = false;
 
                     child_cnt = 0;
@@ -305,6 +306,9 @@ public class RotateRoom : MonoBehaviour
 
                             //軸決め
                             move_axis.SetAxis(0);
+
+                            // Particleを消滅
+                            player_prt.SetFloat("_alpha", 0);
                         }
                         else if (now_radian <= -90)
                         {
@@ -312,6 +316,9 @@ public class RotateRoom : MonoBehaviour
 
                             //軸決め
                             move_axis.SetAxis(1);
+
+                            // Particleを消滅
+                            player_prt.SetFloat("_alpha", 0);
                         }
                     }
                     else if(dtype <= 1)
