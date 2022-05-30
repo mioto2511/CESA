@@ -10,6 +10,8 @@ public class RoomCollition : MonoBehaviour
     //BoxVariable
     private BoxVariable box_variable;
 
+    private PlayerFall player_fall;
+
     //自身のtf
     private Transform my_transform;
 
@@ -21,6 +23,9 @@ public class RoomCollition : MonoBehaviour
 
     Transform tf;
 
+    //Vector3 root_pos;
+
+    //Vector3 rotationAngles
 
     private void Awake()
     {
@@ -44,7 +49,11 @@ public class RoomCollition : MonoBehaviour
         //座標取得
         box_variable.box_pos = parent.transform.position;
 
-        
+        GameObject b = GameObject.Find("BoxTrigger");
+        player_fall = b.GetComponent<PlayerFall>();
+
+        //root_pos = root.transform.position;
+        //rotationAngles = root.transform.rotation.eulerAngles;
     }
 
     // Update is called once per frame
@@ -78,7 +87,7 @@ public class RoomCollition : MonoBehaviour
 
             //部屋同士があたった
             root_room.room_hit = true;
-            Debug.Log("hit");
+            //Debug.Log("hit");
 
 
             ////再び設置できるようにする
@@ -152,6 +161,10 @@ public class RoomCollition : MonoBehaviour
         else if ((rotationAngles.z >= 350) && (rotationAngles.z <= 370))
         {
             root.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 360);
+        }
+        else
+        {
+            player_fall.death_flg = true;
         }
 
         //親の位置の誤差修正

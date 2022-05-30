@@ -18,7 +18,7 @@ public class WallHit : MonoBehaviour
 
         box_variable = parent.GetComponent<BoxVariable>();
 
-        Debug.Log(save_pos);
+        //Debug.Log(save_pos);
     }
 
     // Start is called before the first frame update
