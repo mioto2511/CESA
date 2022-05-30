@@ -8,7 +8,7 @@ public class Drive_gearRotate : MonoBehaviour
     private bool lflg = false;   //¶‰ñ“]ƒtƒ‰ƒO
 
     //‰ñ“]‘¬“x
-    private float speed = 0.15f;
+    private float speed = 0.45f;
 
     // Start is called before the first frame update
     void Start()

@@ -193,6 +193,7 @@ public class Score : MonoBehaviour
     {
         if (num == 1)
         {
+            
             switch (stage_num)
             {
                 case 1:
@@ -214,6 +215,7 @@ public class Score : MonoBehaviour
         }
         if (num == 2)
         {
+            Debug.Log("sa");
             switch (stage_num)
             {
                 case 1:
@@ -305,19 +307,19 @@ public class Score : MonoBehaviour
             switch (stage_num)
             {
                 case 1:
-                    SaveManager.save.WORLD1_STAGE[0] = stage_score;
+                    SaveManager.save.WORLD2_STAGE[0] = stage_score;
                     break;
                 case 2:
-                    SaveManager.save.WORLD1_STAGE[1] = stage_score;
+                    SaveManager.save.WORLD2_STAGE[1] = stage_score;
                     break;
                 case 3:
-                    SaveManager.save.WORLD1_STAGE[2] = stage_score;
+                    SaveManager.save.WORLD2_STAGE[2] = stage_score;
                     break;
                 case 4:
-                    SaveManager.save.WORLD1_STAGE[3] = stage_score;
+                    SaveManager.save.WORLD2_STAGE[3] = stage_score;
                     break;
                 case 5:
-                    SaveManager.save.WORLD1_STAGE[4] = stage_score;
+                    SaveManager.save.WORLD2_STAGE[4] = stage_score;
                     break;
             }
         }
@@ -326,19 +328,19 @@ public class Score : MonoBehaviour
             switch (stage_num)
             {
                 case 1:
-                    SaveManager.save.WORLD1_STAGE[0] = stage_score;
+                    SaveManager.save.WORLD3_STAGE[0] = stage_score;
                     break;
                 case 2:
-                    SaveManager.save.WORLD1_STAGE[1] = stage_score;
+                    SaveManager.save.WORLD3_STAGE[1] = stage_score;
                     break;
                 case 3:
-                    SaveManager.save.WORLD1_STAGE[2] = stage_score;
+                    SaveManager.save.WORLD3_STAGE[2] = stage_score;
                     break;
                 case 4:
-                    SaveManager.save.WORLD1_STAGE[3] = stage_score;
+                    SaveManager.save.WORLD3_STAGE[3] = stage_score;
                     break;
                 case 5:
-                    SaveManager.save.WORLD1_STAGE[4] = stage_score;
+                    SaveManager.save.WORLD3_STAGE[4] = stage_score;
                     break;
             }
         }
@@ -347,19 +349,19 @@ public class Score : MonoBehaviour
             switch (stage_num)
             {
                 case 1:
-                    SaveManager.save.WORLD1_STAGE[0] = stage_score;
+                    SaveManager.save.WORLD4_STAGE[0] = stage_score;
                     break;
                 case 2:
-                    SaveManager.save.WORLD1_STAGE[1] = stage_score;
+                    SaveManager.save.WORLD4_STAGE[1] = stage_score;
                     break;
                 case 3:
-                    SaveManager.save.WORLD1_STAGE[2] = stage_score;
+                    SaveManager.save.WORLD4_STAGE[2] = stage_score;
                     break;
                 case 4:
-                    SaveManager.save.WORLD1_STAGE[3] = stage_score;
+                    SaveManager.save.WORLD4_STAGE[3] = stage_score;
                     break;
                 case 5:
-                    SaveManager.save.WORLD1_STAGE[4] = stage_score;
+                    SaveManager.save.WORLD4_STAGE[4] = stage_score;
                     break;
             }
         }

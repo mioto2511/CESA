@@ -20,6 +20,9 @@ public class MoveAicon : MonoBehaviour
         pos = this.transform.position;
 
         down_flg = true;
+
+        SaveManager.save.OLD_STAGE = 1;
+        SaveManager.Save();
     }
 
     // Update is called once per frame
