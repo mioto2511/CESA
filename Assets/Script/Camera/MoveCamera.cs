@@ -6,7 +6,7 @@ public class MoveCamera : MonoBehaviour
 {
     Transform tf;
 
-    public float speed;
+    public  float speed = 0.025f;
 
     private Camera cam;
     public GameObject cplayer;
