@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KanKikuchi.AudioManager;
 
 public class RotateStart : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class RotateStart : MonoBehaviour
     private MoveAxisOfRotate move_axis;
     //Accelerationの変数を使う
     private Acceleration acceleration;
+    
+    private Material player_prt;
 
     //ボタンフラグ
     public bool botton_flg = true;
@@ -25,6 +28,10 @@ public class RotateStart : MonoBehaviour
         GameObject obj2 = GameObject.Find("Player"); //オブジェクトを探す
         auto_player_move = obj2.GetComponent<AutoPlayerMove>();　//付いているスクリプトを取得
         acceleration = obj2.GetComponent<Acceleration>();//付いているスクリプトを取得
+
+        // 部屋を回すAbuttonを押したときのパーティクルのマテリアル
+        GameObject prt = GameObject.Find("ParticleActive");
+        player_prt = prt.GetComponent<Renderer>().material;
     }
 
     // Update is called once per frame
@@ -35,6 +42,12 @@ public class RotateStart : MonoBehaviour
             //StickEnter();
             if (Input.GetKeyDown("joystick button 0"))
             {
+                // Abuttonが押されたらplayerかParticleを出す
+                SEManager.Instance.Play(SEPath.SE_023); // SE
+                // Particleを発生
+                player_prt.SetFloat("_alpha", 1);
+                Debug.Log("RotationActive");
+
                 //時間を等倍に
                 Time.timeScale = 1;
 
