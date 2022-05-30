@@ -28,6 +28,9 @@ public class SetAxisOfRotate : MonoBehaviour
     private GameObject right_obj;
     private GameObject left_obj;
 
+    private bool hit_flg = true;
+    private int startcount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +64,8 @@ public class SetAxisOfRotate : MonoBehaviour
 
                 active = false;
 
+                hit_flg = false;
+
                 //支点に触れているBoxの位置にテストオブジェクト配置
                 right_obj.transform.position = activebox_pos;
                 left_obj.transform.position = activebox_pos;
@@ -92,6 +97,7 @@ public class SetAxisOfRotate : MonoBehaviour
         //コライダーのON/OFF
         if (rotate_room.collider_flg)
         {
+            hit_flg = true;
             //コライダーON
             my_collider.enabled = true;
         }
@@ -116,12 +122,28 @@ public class SetAxisOfRotate : MonoBehaviour
             count++;
         }
 
-        if (other.gameObject.CompareTag("ActiveBox"))
-        {
-            active = true;
+        //if (other.gameObject.CompareTag("ActiveBox"))
+        //{
+        //    Debug.Log(gameObject.name);
+        //    active = true;
 
-            //軸の当たってるboxの座標
-            activebox_pos = other.transform.position;
+        //    //軸の当たってるboxの座標
+        //    activebox_pos = other.transform.position;
+        //}
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (hit_flg)
+        {
+            if (collision.gameObject.CompareTag("ActiveBox"))
+            {
+                //Debug.Log(gameObject.name);
+                active = true;
+
+                //軸の当たってるboxの座標
+                activebox_pos = collision.transform.position;
+            }
         }
     }
 }

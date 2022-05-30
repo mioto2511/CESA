@@ -46,7 +46,7 @@ public class RotateStart : MonoBehaviour
                 SEManager.Instance.Play(SEPath.SE_023); // SE
                 // Particle‚ğ”­¶
                 player_prt.SetFloat("_alpha", 1);
-                Debug.Log("RotationActive");
+                //Debug.Log("RotationActive");
 
                 //ŠÔ‚ğ“™”{‚É
                 Time.timeScale = 1;

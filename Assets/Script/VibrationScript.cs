@@ -26,15 +26,15 @@ public class VibrationScript : MonoBehaviour
     {
         var gamepad = Gamepad.current;
 
-        Debug.Log("2");
+        //Debug.Log("2");
 
-        gamepad.SetMotorSpeeds(left, right);
-        yield return new WaitForSeconds(time);//ïbêî
-        gamepad.SetMotorSpeeds(0, 0);
 
-        //if (gamepad != null)
-        //{
-            
-        //}            
+
+        if (gamepad != null)
+        {
+            gamepad.SetMotorSpeeds(left, right);
+            yield return new WaitForSeconds(time);//ïbêî
+            gamepad.SetMotorSpeeds(0, 0);
+        }
     }
 }

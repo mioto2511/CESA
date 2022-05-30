@@ -29,7 +29,7 @@ public class Player_Localpos : MonoBehaviour
                     this.transform.parent = room.transform;
                     pos = this.transform.localPosition;
                     rotate_fix = true;
-                    Debug.Log(pos);
+                    //Debug.Log(pos);
                 }
                 else if (this.transform.parent == room.transform)
                 {

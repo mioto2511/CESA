@@ -91,6 +91,8 @@ public class RotateRoom : MonoBehaviour
     // playerのパーティクル
     private Material player_prt;
 
+    //private bool flg = true;
+
     void Start()
     {
         rotate_start = this.GetComponent<RotateStart>();//付いているスクリプトを取得
@@ -153,6 +155,7 @@ public class RotateRoom : MonoBehaviour
                     //回転方向の初期化
                     left_rotate = false;
                     right_rotate = false;
+                    //flg = true;
 
                     //遅らせて処理するもの
                     Invoke("DelayMethod", 1.5f);
@@ -309,6 +312,8 @@ public class RotateRoom : MonoBehaviour
 
                             // Particleを消滅
                             player_prt.SetFloat("_alpha", 0);
+
+
                         }
                         else if (now_radian <= -90)
                         {
@@ -321,37 +326,37 @@ public class RotateRoom : MonoBehaviour
                             player_prt.SetFloat("_alpha", 0);
                         }
                     }
-                    else if(dtype <= 1)
-                    {
-                        if (dtype == 1)
-                        {
-                            if (now_radian >= -80 && now_radian <= -1)
-                            {
-                                now_radian = 0;
-                            }
-                            if (now_radian >= 90)
-                            {
-                                right_rotate = true;
+                    //else if(dtype <= 1)
+                    //{
+                    //    if (dtype == 1)
+                    //    {
+                    //        if (now_radian >= -80 && now_radian <= -1)
+                    //        {
+                    //            now_radian = 0;
+                    //        }
+                    //        if (now_radian >= 90)
+                    //        {
+                    //            right_rotate = true;
 
-                                //軸決め
-                                move_axis.SetAxis(0);
-                            }
-                        }
-                        if (dtype == 0)
-                        {
-                            if (now_radian <= 80 && now_radian >= 1)
-                            {
-                                now_radian = 0;
-                            }
-                            else if (now_radian <= -90)
-                            {
-                                left_rotate = true;
+                    //            //軸決め
+                    //            move_axis.SetAxis(0);
+                    //        }
+                    //    }
+                    //    if (dtype == 0)
+                    //    {
+                    //        if (now_radian <= 80 && now_radian >= 1)
+                    //        {
+                    //            now_radian = 0;
+                    //        }
+                    //        else if (now_radian <= -90)
+                    //        {
+                    //            left_rotate = true;
 
-                                //軸決め
-                                move_axis.SetAxis(1);
-                            }
-                        }
-                    }
+                    //            //軸決め
+                    //            move_axis.SetAxis(1);
+                    //        }
+                    //    }
+                    //}
 
                         //保存
                         old_radian = now_radian;
