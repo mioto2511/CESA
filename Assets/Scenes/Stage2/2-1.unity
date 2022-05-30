@@ -10632,7 +10632,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d36bc22908f6bd64ab33dbe88ef8980c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseUI: {fileID: 5402481019255570529}
   pause_flg: 0
   button_flg: 1
 --- !u!1 &3216331232662936082
@@ -10649,6 +10648,7 @@ GameObject:
   - component: {fileID: 3216331232662936083}
   - component: {fileID: 3216331232662936079}
   - component: {fileID: 3216331232662936072}
+  - component: {fileID: 3216331232662936084}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -10673,6 +10673,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3216331232662936084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3216331232662936082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a1f64625751f1d4dab9c0559e6ad0f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  display_count: 50
 --- !u!1 &3253405899954132395
 GameObject:
   m_ObjectHideFlags: 0

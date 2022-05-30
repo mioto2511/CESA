@@ -7,9 +7,17 @@ using UnityEngine;
 
 public class GameStart : MonoBehaviour
 {
+    private void Awake()
+    {
+        SaveManager.Load();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+
+        
+
         Fade_Manager.FadeIn();
     }
 
