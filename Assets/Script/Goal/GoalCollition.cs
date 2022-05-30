@@ -14,6 +14,7 @@ public class GoalCollition : MonoBehaviour
 
         //ƒvƒŒƒCƒ„[‚Æ‚Ì”»’èOFF
         child.gameObject.SetActive(false);
+
     }
 
     void OnTriggerEnter2D(Collider2D collision)

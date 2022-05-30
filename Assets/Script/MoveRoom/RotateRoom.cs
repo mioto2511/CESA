@@ -158,6 +158,9 @@ public class RotateRoom : MonoBehaviour
                     Invoke("DelayMethod", 1.5f);
 
                     hit_stop.hitstop_flg = true;
+                    hit_stop.time = 50;
+                    hit_stop.duration1 = 0.05f;
+                    hit_stop.magnitude1 = 0.5f;
 
                     //プレイヤーを起動
                     auto_player_move.move_flg = true;

@@ -12,7 +12,9 @@ public class RotateStart : MonoBehaviour
     //Accelerationの変数を使う
     private Acceleration acceleration;
     
+    // プレイヤーがアクティブ状態になった時に使う
     private Material player_prt;
+    private HitStop hit_stop;
 
     //ボタンフラグ
     public bool botton_flg = true;
@@ -32,6 +34,9 @@ public class RotateStart : MonoBehaviour
         // 部屋を回すAbuttonを押したときのパーティクルのマテリアル
         GameObject prt = GameObject.Find("ParticleActive");
         player_prt = prt.GetComponent<Renderer>().material;
+
+        GameObject obj3 = GameObject.Find("Main Camera");
+        hit_stop = obj3.GetComponent<HitStop>();
     }
 
     // Update is called once per frame
@@ -46,6 +51,11 @@ public class RotateStart : MonoBehaviour
                 SEManager.Instance.Play(SEPath.SE_023); // SE
                 // Particleを発生
                 player_prt.SetFloat("_alpha", 1);
+                // HitStop
+                hit_stop.hitstop_flg = true;
+                hit_stop.time = 7;
+                hit_stop.duration1 = 0.02f;
+                hit_stop.magnitude1 = 0.3f;
                 Debug.Log("RotationActive");
 
                 //時間を等倍に
