@@ -32,7 +32,7 @@ public class PauseCursor : MonoBehaviour
 
         if (selectObject.name == "Button1")
         {
-            Debug.Log("button1");
+            //Debug.Log("button1");
             if (gameObject.transform.localEulerAngles.z != 25)
             {
                 if ((gameObject.transform.localEulerAngles.z >= 270 && gameObject.transform.localEulerAngles.z <= 360) ||
@@ -48,7 +48,7 @@ public class PauseCursor : MonoBehaviour
         }
         else if (selectObject.name == "Button2")
         {
-            Debug.Log("button2");
+            //Debug.Log("button2");
             if (gameObject.transform.localEulerAngles.z != 270)
             {
                 if (gameObject.transform.localEulerAngles.z <= 270 && gameObject.transform.localEulerAngles.z >= 155)
@@ -64,7 +64,7 @@ public class PauseCursor : MonoBehaviour
         }
         else if (selectObject.name == "Button3")
         {
-            Debug.Log("button3");
+            //Debug.Log("button3");
             if (gameObject.transform.localEulerAngles.z != 155)
             {
                 if (gameObject.transform.localEulerAngles.z <= 155)

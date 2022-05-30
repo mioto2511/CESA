@@ -27,7 +27,7 @@ public class Resume : MonoBehaviour
         pause_active = obj1.GetComponent<PauseActive>();//付いているスクリプトを取得
 
         //リザルト背景を消す
-        pauseUI.SetActive(false);
+        //pauseUI.SetActive(false);
     }
 
     public void OnClickStartButton()

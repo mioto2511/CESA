@@ -11,7 +11,6 @@ public class MoveCamera : MonoBehaviour
     private Camera cam;
     public GameObject cplayer;
     private Vector2 pos;
-    private GameObject parent;
     public int camerazoom = 1;
     public float zoom;
     private bool cflg = true;

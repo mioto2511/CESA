@@ -29,7 +29,7 @@ public class SetAxisOfRotate : MonoBehaviour
     private GameObject left_obj;
 
     private bool hit_flg = true;
-    private int startcount = 0;
+    //private int startcount = 0;
 
     // Start is called before the first frame update
     void Start()

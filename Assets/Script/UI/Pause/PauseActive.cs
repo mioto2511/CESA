@@ -45,6 +45,7 @@ public class PauseActive : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log(pauseUI.activeSelf);
         if (button_flg)
         {
             if (pause_flg)
@@ -70,6 +71,7 @@ public class PauseActive : MonoBehaviour
                     SEManager.Instance.Play(SEPath.SE_003);
                     BGMManager.Instance.UnPause(BGMPath.BGM_001);
                     BGMManager.Instance.UnPause(BGMPath.BGM_002);
+                    Debug.Log(pauseUI.activeSelf);
                 }
             }
             else if(!pause_flg)
