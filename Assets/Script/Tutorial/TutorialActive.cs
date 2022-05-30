@@ -15,7 +15,7 @@ public class TutorialActive : MonoBehaviour
 
     private int count = 0;
 
-    [Header("チュートリアル表示までの時間")] public int display_count = 100;
+    private int display_count = 150;
 
     private void Awake()
     {

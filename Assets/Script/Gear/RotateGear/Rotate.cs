@@ -8,7 +8,7 @@ public class Rotate : MonoBehaviour
     private bool lflg = false;   //¶‰ñ“]ƒtƒ‰ƒO
 
     //‰ñ“]‘¬“x
-    private float speed = 0.2f;
+    private float speed = 0.5f;
 
     // Start is called before the first frame update
     void Start()

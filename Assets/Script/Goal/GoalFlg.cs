@@ -98,7 +98,23 @@ public class GoalFlg : MonoBehaviour
                 //shutter.shutter_flg = true;
 
                 //int old_num = PlayerPrefs.GetInt("WORLD" + world_num, 1);
-                int old_num = SaveManager.save.OLD_STAGE;
+                int old_num  =0;
+
+                switch (world_num)
+                {
+                    case 1:
+                        old_num = SaveManager.save.WORLD[0];
+                        break;
+                    case 2:
+                        old_num = SaveManager.save.WORLD[1];
+                        break;
+                    case 3:
+                        old_num = SaveManager.save.WORLD[2];
+                        break;
+                    case 4:
+                        old_num = SaveManager.save.WORLD[3];
+                        break;
+                }
 
                 if (old_num < stage_num+1)
                 {
@@ -106,10 +122,12 @@ public class GoalFlg : MonoBehaviour
                     //PlayerPrefs.SetInt("WORLD"+world_num, stage_num + 1);
                     switch (world_num) {
                         case 1:
+                            Debug.Log("p");
                             SaveManager.save.WORLD[0] = stage_num + 1;
                             SaveManager.Save();
                             break;
                         case 2:
+                            Debug.Log("u");
                             SaveManager.save.WORLD[1] = stage_num + 1;
                             SaveManager.Save();
                             break;

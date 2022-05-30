@@ -6,6 +6,6 @@ public class RightRotate : MonoBehaviour
 {
     void FixedUpdate()
     {
-        transform.Rotate(new Vector3(0, 0, -0.15f));
+        transform.Rotate(new Vector3(0, 0, -0.45f));
     }
 }

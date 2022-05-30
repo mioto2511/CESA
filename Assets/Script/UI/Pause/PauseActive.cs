@@ -5,7 +5,7 @@ using KanKikuchi.AudioManager;
 
 public class PauseActive : MonoBehaviour
 {
-    //[SerializeField]
+    [SerializeField]
     //　ポーズした時に表示するUIのプレハブ
     private GameObject pauseUI;
 
@@ -37,7 +37,7 @@ public class PauseActive : MonoBehaviour
         GameObject obj2 = GameObject.Find("Player"); //オブジェクトを探す
         acceleration = obj2.GetComponent<Acceleration>();//付いているスクリプトを取得
 
-        pauseUI = GameObject.Find("Pause");
+        //pauseUI = GameObject.Find("Pause");
 
         //リザルト背景を消す
         pauseUI.SetActive(false);

@@ -31,7 +31,7 @@ public class RoomCollition : MonoBehaviour
     {
         save_pos = this.transform.localPosition;
 
-        Debug.Log(save_pos);
+        //Debug.Log(save_pos);
     }
 
     // Start is called before the first frame update
