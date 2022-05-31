@@ -1102,6 +1102,7 @@ GameObject:
   - component: {fileID: 1177310352}
   - component: {fileID: 1177310351}
   - component: {fileID: 1177310350}
+  - component: {fileID: 1177310355}
   m_Layer: 0
   m_Name: MiniMap_Camera
   m_TagString: Untagged
@@ -1222,6 +1223,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1177310355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177310349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732dd8489abc3104ba9b4b5ed96c6c30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dath_flg: 0
+  flame_camera: {fileID: 3253405899460422636}
 --- !u!1 &1250197394
 GameObject:
   m_ObjectHideFlags: 0
@@ -5841,6 +5856,7 @@ GameObject:
   - component: {fileID: 3253405899460422635}
   - component: {fileID: 3253405899460422633}
   - component: {fileID: 3253405899460422634}
+  - component: {fileID: 3253405899460422637}
   m_Layer: 5
   m_Name: Minimap_Fream
   m_TagString: Untagged
@@ -5848,6 +5864,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3253405899460422637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3253405899460422636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35145aca1a5e4064e9d0b9f6d8cd6d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dath_flg: 0
 --- !u!1 &3359805614501941248
 GameObject:
   m_ObjectHideFlags: 0
