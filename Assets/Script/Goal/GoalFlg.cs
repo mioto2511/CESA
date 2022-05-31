@@ -18,7 +18,7 @@ public class GoalFlg : MonoBehaviour
 
     [Header("現在のステージ番号")] public int stage_num = 1;
 
-
+    
     //表示ui
     private GameObject clearUI;
 
@@ -35,6 +35,12 @@ public class GoalFlg : MonoBehaviour
 
     public bool display_flg = false;
 
+    minimap_date minimap_Date;
+
+    flame_date flame_Date;
+
+    GameObject minimap_camera;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +56,11 @@ public class GoalFlg : MonoBehaviour
         clearUI = GameObject.Find("ClearUI");
 
         clearUI.SetActive(false);
+
+        minimap_camera = GameObject.Find("MiniMap_Camera");
+        minimap_Date = minimap_camera.GetComponent<minimap_date>();
+
+       
     }
 
     void Update()
@@ -70,6 +81,8 @@ public class GoalFlg : MonoBehaviour
             Collider2D col = this.GetComponent<Collider2D>();
             col.enabled = false;
 
+            minimap_Date.dath_flg = true;
+           
             Invoke("DelayMethod", 0.25f);           
         }
 
