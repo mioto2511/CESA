@@ -94,8 +94,7 @@ public class PauseActive : MonoBehaviour
 
                     // SE
                     SEManager.Instance.Play(SEPath.SE_003);
-                    BGMManager.Instance.Pause(BGMPath.BGM_001);
-                    BGMManager.Instance.Pause(BGMPath.BGM_002);
+                    BGMManager.Instance.Pause();
                     Debug.Log(pauseUI.activeSelf);
                 }
             }

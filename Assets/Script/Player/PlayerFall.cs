@@ -84,7 +84,7 @@ public class PlayerFall : MonoBehaviour
 					
 
 					Debug.Log("shi");
-					BGMManager.Instance.Stop(BGMPath.BGM_001);
+					BGMManager.Instance.Stop();
 					goal_trigger.ColliderSwitch(false);
 				}
                 else
