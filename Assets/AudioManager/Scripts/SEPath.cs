@@ -14,10 +14,6 @@ public static class SEPath{
 	public const string SE_007 = "SE/SE_007";
 	public const string SE_008 = "SE/SE_008";
 	public const string SE_009 = "SE/SE_009";
-	public const string SE_017 = "SE/SE_017";
-	public const string SE_018 = "SE/SE_018";
-	public const string SE_019 = "SE/SE_019";
-	public const string SE_020 = "SE/SE_020";
 	public const string SE_021 = "SE/SE_021";
 	public const string SE_022 = "SE/SE_022";
 	public const string SE_023 = "SE/SE_023";
