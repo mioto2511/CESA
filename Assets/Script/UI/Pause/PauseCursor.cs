@@ -38,12 +38,13 @@ public class PauseCursor : MonoBehaviour
                 if ((gameObject.transform.localEulerAngles.z >= 270 && gameObject.transform.localEulerAngles.z <= 360) ||
                     (gameObject.transform.localEulerAngles.z >= -90 && gameObject.transform.localEulerAngles.z <= 24))
                 {
-                    transform.Rotate(new Vector3(0, 0, 5));
+                    transform.Rotate(new Vector3(0, 0, 15));
                 }
                 else if (gameObject.transform.localEulerAngles.z <= 155 && gameObject.transform.localEulerAngles.z >= 26)
                 {
-                    transform.Rotate(new Vector3(0, 0, -5));
+                    transform.Rotate(new Vector3(0, 0, -15));
                 }
+                //transform.rotation = Quaternion.Euler(0, 0, 25);
             }
         }
         else if (selectObject.name == "Button2")
@@ -53,13 +54,14 @@ public class PauseCursor : MonoBehaviour
             {
                 if (gameObject.transform.localEulerAngles.z <= 270 && gameObject.transform.localEulerAngles.z >= 155)
                 {
-                    transform.Rotate(new Vector3(0, 0, 5));
+                    transform.Rotate(new Vector3(0, 0, 15));
                 }
                 else if ((gameObject.transform.localEulerAngles.z >= 270 && gameObject.transform.localEulerAngles.z <= 360) ||
                     (gameObject.transform.localEulerAngles.z >= 0 && gameObject.transform.localEulerAngles.z <= 25))
                 {
-                    transform.Rotate(new Vector3(0, 0, -5));
+                    transform.Rotate(new Vector3(0, 0, -15));
                 }
+                //transform.rotation = Quaternion.Euler(0, 0, 270);
             }
         }
         else if (selectObject.name == "Button3")
@@ -69,12 +71,13 @@ public class PauseCursor : MonoBehaviour
             {
                 if (gameObject.transform.localEulerAngles.z <= 155)
                 {
-                    transform.Rotate(new Vector3(0, 0, 5));
+                    transform.Rotate(new Vector3(0, 0, 15));
                 }
                 else if (gameObject.transform.localEulerAngles.z >= 155)
                 {
-                    transform.Rotate(new Vector3(0, 0, -5));
+                    transform.Rotate(new Vector3(0, 0, -15));
                 }
+                //transform.rotation = Quaternion.Euler(0, 0, 155);
             }
         }
 
