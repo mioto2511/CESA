@@ -90,7 +90,7 @@ public class GoalFlg : MonoBehaviour
 
         if (button_flg)
         {
-            if (Input.GetKeyDown("joystick button 0"))
+            if (Input.anyKeyDown)
             {
                 // ŠÔÄ‹N
                 Time.timeScale = 1;
